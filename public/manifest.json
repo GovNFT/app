@@ -1,0 +1,17 @@
+{
+  "short_name": "GOVNFT",
+  "name": "GOVNFT",
+  "description": "GOVNFT: The central grant management hub on Optimism network.",
+  "iconPath": "govnft.svg",
+  "icons": [
+    {
+      "src": "govnft.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    }
+  ],
+  "start_url": ".",
+  "display": "standalone",
+  "theme_color": "#EE2524",
+  "background_color": "#ffffff"
+}

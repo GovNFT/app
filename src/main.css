@@ -1,0 +1,86 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("/fonts/Inter-Regular.woff2?v=3.19") format("woff2");
+}
+@font-face {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("/fonts/Inter-SemiBold.woff2?v=3.19") format("woff2");
+}
+@font-face {
+  font-family: "Inter";
+  font-style: italic;
+  font-weight: 400;
+  font-display: swap;
+  src: url("/fonts/Inter-Italic.woff2?v=3.19") format("woff2");
+}
+@font-face {
+  font-family: "Inter";
+  font-style: italic;
+  font-weight: 500;
+  font-display: swap;
+  src: url("/fonts/Inter-SemiBoldItalic.woff2?v=3.19") format("woff2");
+}
+@font-face {
+  font-family: "JetBrainsMono";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("/fonts/JetBrainsMono-Regular.ttf");
+}
+
+@layer base {
+  body {
+    @apply text-gray-900 dark:text-white bg-white dark:bg-gray-900 min-h-screen;
+  }
+}
+
+/**
+ * Custom backgrounds...
+ */
+
+.bg-blackhole {
+  background-image: url("/svg/blackhole.svg");
+}
+
+.bg-parallel {
+  background-image: url("/svg/parallel.svg");
+}
+
+.bg-worm {
+  background-image: url("/svg/worm.svg");
+}
+
+.bg-50 {
+  background-size: 50%;
+}
+
+/**
+ * Custom slider colors
+ *
+ * See: https://css-tricks.com/sliding-nightmare-understanding-range-input/
+ */
+input[type="range"]::-moz-range-thumb {
+  background: #ee2524;
+}
+input[type="range"]::-moz-range-progress {
+  background: #ee2524;
+}
+input[type="range"]::-webkit-slider-thumb {
+  background: #ee2524;
+}
+input[type="range"]::-ms-thumb {
+  background: #ee2524;
+}
+input[type="range"]::-ms-fill-lower {
+  background: #ee2524;
+}
