@@ -18,28 +18,12 @@ export default {
       root: {
         base: "py-2.5",
       },
-      link: {
-        base: "block py-2 pl-3 md:pl-0",
-        active: {
-          on: "bg-gray-900 bg-opacity-5 dark:bg-white dark:bg-opacity-5 rounded md:rounded-none border-l-4 md:bg-transparent dark:md:bg-transparent mb-1 mx-0 xl:mx-2 dark:text-white text-gray-900 md:border-b md:border-l-0 border-primary",
-          off: "bg-gray-900 bg-opacity-5 dark:bg-white dark:bg-opacity-5 rounded md:bg-transparent dark:md:bg-transparent mb-1 mx-0 xl:mx-2 text-gray-700 hover:bg-gray-900 hover:bg-opacity-10 md:border-b md:border-transparent dark:hover:bg-white dark:hover:bg-opacity-10 dark:text-gray-400 dark:hover:text-white md:border-0 md:hover:bg-transparent md:hover:text-gray-900 md:dark:hover:bg-transparent md:dark:hover:text-white",
-        },
-      },
-      toggle: {
-        base: "inline-flex items-center rounded-lg p-2 text-sm text-gray-500 dark:text-gray-400 md:hidden bg-gray-900 bg-opacity-5 hover:bg-gray-900 hover:bg-opacity-10 dark:bg-white dark:bg-opacity-5 dark:hover:bg-white dark:hover:bg-opacity-10 ml-4 mr-2",
-        icon: "h-4 w-6 shrink-0",
-      },
     },
     avatar: {
       root: {
         base: "flex items-start",
         bordered: "ring-0 bg-neutral-200/50 dark:bg-gray-700/50",
         stacked: "ring-0 bg-neutral-200/50 dark:bg-gray-700/50",
-      },
-    },
-    card: {
-      root: {
-        base: "flex rounded-lg border border-gray-200 bg-white shadow dark:border-gray-700 dark:bg-gray-800",
       },
     },
     dropdown: {
@@ -58,46 +42,6 @@ export default {
       },
       inlineWrapper: "flex items-center gap-8",
     },
-    pagination: {
-      base: "",
-      pages: {
-        base: "shadow-sm rounded-lg xs:mt-0 mt-2 inline-flex items-center -space-x-px border border-neutral-200 dark:border-gray-700 dark:border-opacity-50",
-        previous: {
-          base: "h-10 items-center text-sm ml-0 rounded-l-lg bg-white py-2 pl-3 pr-5 leading-tight text-gray-500 hover:bg-neutral-50 hover:text-gray-700 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:hover:bg-gray-800 dark:hover:text-white",
-          icon: "h-4 w-4 mr-3",
-        },
-        next: {
-          base: "h-10 items-center text-sm rounded-r-lg bg-white py-2 pr-3 pl-5 leading-tight text-gray-500 hover:bg-neutral-50 hover:text-gray-700 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:hover:bg-gray-800 dark:hover:text-white",
-          icon: "h-4 w-4 ml-3",
-        },
-        selector: {
-          base: "h-10 items-center text-sm w-12 bg-white py-2 leading-tight text-gray-500 hover:bg-neutral-50 hover:text-gray-700 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:hover:bg-gray-800 dark:hover:text-white",
-          active:
-            "bg-neutral-50 text-gray-400 dark:bg-gray-800 dark:text-gray-600 ",
-        },
-      },
-    },
-    darkThemeToggle: {
-      root: {
-        base: "rounded-lg p-2.5 text-sm text-gray-800 hover:bg-gray-900 dark:text-white dark:hover:bg-white hover:bg-opacity-5 dark:hover:bg-opacity-5",
-      },
-    },
-    timeline: {
-      item: {
-        content: {
-          time: "mb-1 text-sm font-normal leading-none text-gray-700 dark:text-gray-400",
-        },
-        point: {
-          marker: {
-            icon: {
-              wrapper:
-                "space-x-2 absolute -left-3 flex h-6 w-6 items-center justify-center rounded-full bg-white ring-0 dark:ring-0 ring-white dark:bg-gray-900 dark:ring-gray-700",
-              base: "h-3 w-3 text-primary dark:text-white",
-            },
-          },
-        },
-      },
-    },
     toast: {
       root: {
         base: "flex w-full max-w-lg items-center rounded-lg bg-white p-4 text-gray-500 dark:bg-gray-800 dark:text-gray-400",
@@ -108,25 +52,6 @@ export default {
     },
     tooltip: {
       target: "inline cursor-pointer",
-    },
-    accordion: {
-      root: {
-        base: "divide-y divide-gray-200 border-none dark:divide-gray-700 dark:border-none",
-      },
-      title: {
-        base: "flex w-full items-center justify-between first:rounded-t-lg last:rounded-b-lg py-5 px-5 text-left font-medium text-gray-500 dark:text-gray-400 !bg-white hover:!bg-neutral-50 dark:!bg-gray-800 dark:hover:!bg-gray-800",
-        flush: {
-          off: "hover:bg-neutral-50 dark:hover:bg-gray-800",
-        },
-      },
-    },
-    badge: {
-      root: {
-        base: "flex h-fit items-center gap-1 rounded-full font-normal",
-        color: {
-          gray: "bg-gray-200 bg-opacity-50 text-gray-500 dark:bg-gray-700 dark:bg-opacity-50 dark:text-gray-400 group-hover:bg-gray-200 dark:group-hover:bg-gray-600",
-        },
-      },
     },
     textInput: {
       addon:
@@ -146,43 +71,9 @@ export default {
         },
       },
     },
-    fileInput: {
-      field: {
-        input: {
-          colors: {
-            gray: "bg-transparent border-gray-300 text-gray-900 hover:border-opacity-70 dark:hover:border-opacity-70 focus:border-gray-400 dark:border-gray-600 dark:bg-transparent dark:text-white dark:focus:border-gray-500 outline-0",
-          },
-        },
-      },
-    },
     textarea: {
       colors: {
         gray: "bg-transparent border-gray-300 text-gray-900 hover:border-opacity-70 dark:hover:border-opacity-70 focus:border-gray-400 dark:border-gray-600 dark:bg-transparent dark:text-white dark:focus:border-gray-500 outline-0",
-      },
-    },
-    modal: {
-      content: {
-        base: "relative h-full w-full p-2 lg:py-12 md:h-auto",
-        inner: "relative rounded-lg bg-white shadow dark:bg-gray-800",
-      },
-      body: {
-        base: "px-0 py-6",
-      },
-      header: {
-        base: "flex items-start justify-between rounded-t dark:border-gray-800 border-b p-5",
-      },
-    },
-    carousel: {
-      root: {
-        base: "relative h-full w-full",
-        leftControl:
-          "absolute top-0 left-0 flex h-full items-center justify-center focus:outline-none",
-        rightControl:
-          "absolute top-0 left-0 flex h-full items-center justify-center focus:outline-none",
-      },
-      control: {
-        base: "",
-        icon: "h-4 w-4 text-gray-800 dark:text-gray-300",
       },
     },
   },
