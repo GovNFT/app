@@ -3,6 +3,7 @@ import {
   ExternalLink as ExternalLinkIcon,
   Settings as SettingsIcon,
   Wallet as WalletIcon,
+  Plus as PlusIcon,
 } from "lucide-react";
 import { useState } from "react";
 import {
@@ -89,15 +90,16 @@ export default function Profile() {
         </Modal>
 
         <div className="flex gap-2">
-          <Button size="xs" color="light" href="/dash">
-            <div className="uppercase font-bold tracking-widest">Dashboard</div>
+          <Button size="sm" color="light" href="/dash">
+            <div className="uppercase font-bold tracking-widest text-[11px]">Dashboard</div>
           </Button>
-          <Button size="xs" color="light" href="/create">
-            <div className="uppercase font-bold tracking-widest">Create</div>
+          <Button size="sm" color="light" href="/create">
+            <div className="hidden sm:block uppercase font-bold tracking-widest text-[11px]">Create</div>
+            <div className="py-0.5 sm:hidden uppercase font-bold tracking-widest"><PlusIcon size={16} /></div>
           </Button>
 
           <div
-            className="py-2 px-3 text-xs bg-gray-900 bg-opacity-5 hover:bg-opacity-10 dark:bg-gray-700 dark:bg-opacity-20 dark:hover:bg-opacity-40 rounded-md cursor-pointer"
+            className="flex py-2 px-3 text-xs bg-gray-900 bg-opacity-5 hover:bg-opacity-10 dark:bg-gray-700 dark:bg-opacity-20 dark:hover:bg-opacity-40 rounded-md cursor-pointer"
             onClick={() => setShowDisconnect(true)}
           >
             <div className="flex items-center gap-3 sm:pl-0.5 text-gray-600 dark:text-gray-400">
