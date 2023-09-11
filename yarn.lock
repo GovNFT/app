@@ -6538,10 +6538,10 @@ uri-js@^4.2.2:
   dependencies:
     punycode "^2.1.0"
 
-use-local-storage-state@^18.1.2:
-  version "18.2.1"
-  resolved "https://registry.yarnpkg.com/use-local-storage-state/-/use-local-storage-state-18.2.1.tgz#21c2949d8ecff898d0039a5140603a17fd114e27"
-  integrity sha512-JgFWmMIIsN3uIQ2hSDhYGiYdfykMFVPNX/vz5JX/9V1igJSUjEe30CgswH076YqBx4Njea1NJ6B4farIlnSLuA==
+use-local-storage-state@^19.0.4:
+  version "19.0.4"
+  resolved "https://registry.yarnpkg.com/use-local-storage-state/-/use-local-storage-state-19.0.4.tgz#3d205b039b7771b731508f3331143d39c971d5f1"
+  integrity sha512-NfJmA/VOFTmYHSCO8AzMBoGl70ZFFwBNw0sYM05N7TPHL7e7AZn8kjAk9KiUlNl01vKJldOCB4Fv42dTXJa4Fg==
 
 use-sync-external-store@1.2.0, use-sync-external-store@^1.2.0:
   version "1.2.0"
