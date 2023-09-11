@@ -37,7 +37,7 @@ export default function Create() {
             <div className="px-4 mb-8">
               <div className="space-y-3 pb-6">
                 <div className="text-xs opacity-20">Recipient Address</div>
-                <TextInput placeholder="e.g. Velodrome Foundation" />
+                <TextInput placeholder="e.g. 0x00" />
               </div>
 
               <div className="space-y-3 pb-6">
