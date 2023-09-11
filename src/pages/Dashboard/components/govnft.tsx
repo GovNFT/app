@@ -21,11 +21,17 @@ export default function Govnft({ withdraw }) {
               </div>
               <div className="text-xs opacity-20">0x0951...d68Da</div>
               <div className="text-xs opacity-40 flex gap-1.5">
-                <NavLink href="/delegate" className="underline hover:no-underline">
+                <NavLink
+                  href="/delegate"
+                  className="underline hover:no-underline"
+                >
                   Delegate
                 </NavLink>{" "}
                 &middot;{" "}
-                <NavLink href="/transfer" className="underline hover:no-underline">
+                <NavLink
+                  href="/transfer"
+                  className="underline hover:no-underline"
+                >
                   Transfer
                 </NavLink>
               </div>

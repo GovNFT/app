@@ -1,7 +1,8 @@
+import { Button, TextInput, Tooltip } from "flowbite-react";
+import { Info as InfoIcon, Wallet as WalletIcon } from "lucide-react";
+
 import Footer from "../../components/Footer";
 import Header from "../../components/Header";
-import { Info as InfoIcon, Wallet as WalletIcon } from "lucide-react";
-import { Tooltip, TextInput, Button } from "flowbite-react";
 
 export default function Create() {
   return (
@@ -30,36 +31,33 @@ export default function Create() {
             </div>
 
             <div className="flex gap-16 items-center pb-6 mb-6 border-b border-black/5 dark:border-white/5">
-            <div className="space-y-1.5">
-              <div className="text-xs opacity-20">Amount</div>
-              <div>42,300.00</div>
-              <div className="text-xs opacity-40">Started a month ago</div>
+              <div className="space-y-1.5">
+                <div className="text-xs opacity-20">Amount</div>
+                <div>42,300.00</div>
+                <div className="text-xs opacity-40">Started a month ago</div>
+              </div>
+
+              <div className="space-y-1.5">
+                <div className="text-xs opacity-20">Vesting</div>
+                <div>42,300.00</div>
+                <div className="text-xs opacity-40">Ends in 2 years</div>
+              </div>
             </div>
 
-            <div className="space-y-1.5">
-              <div className="text-xs opacity-20">Vesting</div>
-              <div>42,300.00</div>
-              <div className="text-xs opacity-40">Ends in 2 years</div>
+            <div className="space-y-3 pb-2">
+              <div className="text-xs opacity-20">Address</div>
+              <TextInput placeholder="e.g. 0x00" />
             </div>
-          </div>
-
-          <div className="space-y-3 pb-2">
-            <div className="text-xs opacity-20">
-              Address
-            </div>
-            <TextInput
-              placeholder="e.g. 0x00"
-            />
-          </div>
-
           </div>
           <div className="lg:w-6/12 p-6 sm:p-10 bg-black/[.08] dark:bg-white/[.08] bg-opacity-70 dark:bg-opacity-50 rounded-lg">
             <div className="flex flex-col items-center justify-center h-full space-y-6 py-8">
-              <div className="bg-white/5 p-3 rounded-full"><WalletIcon size={16} /></div>
-              <div className="text-xs opacity-40 w-48 text-center">Enter the wallet address where the lock will be delegated</div>
-              <Button className="px-6">
-                Transfer
-              </Button>
+              <div className="bg-white/5 p-3 rounded-full">
+                <WalletIcon size={16} />
+              </div>
+              <div className="text-xs opacity-40 w-48 text-center">
+                Enter the wallet address where the lock will be delegated
+              </div>
+              <Button className="px-6">Transfer</Button>
             </div>
           </div>
         </div>
