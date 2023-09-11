@@ -1,9 +1,9 @@
 import { Button } from "flowbite-react";
 import {
   ExternalLink as ExternalLinkIcon,
+  Plus as PlusIcon,
   Settings as SettingsIcon,
   Wallet as WalletIcon,
-  Plus as PlusIcon,
 } from "lucide-react";
 import { useState } from "react";
 import {
@@ -91,11 +91,17 @@ export default function Profile() {
 
         <div className="flex gap-2">
           <Button size="sm" color="light" href="/dash">
-            <div className="uppercase font-bold tracking-widest text-[11px]">Dashboard</div>
+            <div className="uppercase font-bold tracking-widest text-[11px]">
+              Dashboard
+            </div>
           </Button>
           <Button size="sm" color="light" href="/create">
-            <div className="hidden sm:block uppercase font-bold tracking-widest text-[11px]">Create</div>
-            <div className="py-0.5 sm:hidden uppercase font-bold tracking-widest"><PlusIcon size={16} /></div>
+            <div className="hidden sm:block uppercase font-bold tracking-widest text-[11px]">
+              Create
+            </div>
+            <div className="py-0.5 sm:hidden uppercase font-bold tracking-widest">
+              <PlusIcon size={16} />
+            </div>
           </Button>
 
           <div
