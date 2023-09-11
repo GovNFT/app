@@ -1,5 +1,6 @@
 import Footer from "../../components/Footer";
 import Header from "../../components/Header";
+import Govnfts from "./components/Govnfts";
 
 export default function Dashboard() {
   return (
@@ -7,8 +8,8 @@ export default function Dashboard() {
       {/* @ts-ignore */}
       <Header />
 
-      <div className="md:w-1/2 xl:w-1/3 mx-auto text-center pt-16 pb-32">
-        DASH
+      <div className="max-w-screen-xl mx-auto">
+        <Govnfts />
       </div>
 
       <Footer />
