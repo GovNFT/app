@@ -24,7 +24,7 @@
     "react-google-charts": "^4.0.1",
     "react-hot-toast": "^2.4.1",
     "react-image": "^4.1.0",
-    "react-router-dom": "6.14.1",
+    "react-router-dom": "6.15.0",
     "react-svgmt": "^1.2.0",
     "use-local-storage-state": "^18.1.2",
     "util": "^0.12.5",
