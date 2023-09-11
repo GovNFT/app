@@ -22,7 +22,7 @@
     "react-dom": "^18.2.0",
     "react-error-boundary": "^4.0.11",
     "react-google-charts": "^4.0.1",
-    "react-hot-toast": "^2.4.0",
+    "react-hot-toast": "^2.4.1",
     "react-image": "^4.1.0",
     "react-router-dom": "6.14.1",
     "react-svgmt": "^1.2.0",
