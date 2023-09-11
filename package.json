@@ -25,7 +25,7 @@
     "react-hot-toast": "^2.4.1",
     "react-image": "^4.1.0",
     "react-router-dom": "6.15.0",
-    "react-svgmt": "^1.2.0",
+    "react-svgmt": "^2.0.2",
     "use-local-storage-state": "^18.1.2",
     "util": "^0.12.5",
     "wagmi": "^0.12.18"
