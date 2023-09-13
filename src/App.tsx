@@ -1,5 +1,6 @@
-import { Navigate, Route, Routes, useLocation } from "react-router-dom";
+import { useEffect } from "react";
 import { useAccount } from "wagmi";
+import { Route, Switch, useLocation } from "wouter";
 
 import Toaster from "./components/Toaster";
 import Error from "./Error";
@@ -12,58 +13,60 @@ import Transfer from "./pages/Transfer";
 
 function ConnectedOnly({ children }) {
   const { isConnected } = useAccount();
-  const { search } = useLocation();
+  const [_location, navigate] = useLocation();
 
-  if (!isConnected) {
-    return <Navigate replace={true} to={`/connect${search}`} />;
+  useEffect(() => {
+    !isConnected && navigate("/connect");
+  }, [isConnected]);
+
+  if (isConnected) {
+    return children;
   }
-
-  return children;
 }
 
 export default function App() {
   return (
     <>
       <Toaster />
-      <Routes>
-        <Route path="/" element={<Landing />} />
-        <Route path="connect" element={<Connect />} />
-        <Route
-          path="dash"
-          element={
-            <ConnectedOnly>
-              <Dash />
-            </ConnectedOnly>
-          }
-        />
-        <Route
-          path="create"
-          element={
-            <ConnectedOnly>
-              <Create />
-            </ConnectedOnly>
-          }
-        />
-        <Route
-          path="transfer"
-          element={
-            <ConnectedOnly>
-              <Transfer />
-            </ConnectedOnly>
-          }
-        />
-        <Route
-          path="delegate"
-          element={
-            <ConnectedOnly>
-              <Delegate />
-            </ConnectedOnly>
-          }
-        />
 
-        {/* 404 page */}
-        <Route path="*" element={<Error>This page does not exist.</Error>} />
-      </Routes>
+      {/* 404 page support using the `Switch` */}
+      <Switch>
+        <Route path="/">
+          <Landing />
+        </Route>
+
+        <Route path="/connect">
+          <Connect />
+        </Route>
+
+        <Route path="/dash">
+          <ConnectedOnly>
+            <Dash />
+          </ConnectedOnly>
+        </Route>
+
+        <Route path="/create">
+          <ConnectedOnly>
+            <Create />
+          </ConnectedOnly>
+        </Route>
+
+        <Route path="/transfer">
+          <ConnectedOnly>
+            <Transfer />
+          </ConnectedOnly>
+        </Route>
+
+        <Route path="/delegate">
+          <ConnectedOnly>
+            <Delegate />
+          </ConnectedOnly>
+        </Route>
+
+        <Route>
+          <Error>This page does not exist.</Error>
+        </Route>
+      </Switch>
     </>
   );
 }

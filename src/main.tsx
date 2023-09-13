@@ -8,7 +8,6 @@ import { Flowbite } from "flowbite-react";
 import React from "react";
 import ReactDOM from "react-dom/client";
 import { ErrorBoundary } from "react-error-boundary";
-import { BrowserRouter } from "react-router-dom";
 import { configureChains, createConfig, WagmiConfig } from "wagmi";
 import { CoinbaseWalletConnector } from "wagmi/connectors/coinbaseWallet";
 import { WalletConnectConnector } from "wagmi/connectors/walletConnect";
@@ -69,9 +68,7 @@ ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
       <ErrorBoundary FallbackComponent={Error}>
         <WagmiConfig config={wagmiConfig}>
           <QueryClientProvider client={queryClient}>
-            <BrowserRouter>
-              <App />
-            </BrowserRouter>
+            <App />
           </QueryClientProvider>
         </WagmiConfig>
       </ErrorBoundary>

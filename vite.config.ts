@@ -12,9 +12,6 @@ const info = getGitInfo(process.cwd());
 export default defineConfig({
   plugins: [
     react(),
-    legacy({
-      modernPolyfills: ["es/global-this"],
-    }),
     mdx({
       providerImportSource: "@mdx-js/react",
     }),

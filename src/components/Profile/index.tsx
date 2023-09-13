@@ -1,7 +1,6 @@
 import { Button } from "flowbite-react";
 import {
   ExternalLink as ExternalLinkIcon,
-  Plus as PlusIcon,
   Settings as SettingsIcon,
   Wallet as WalletIcon,
 } from "lucide-react";
@@ -20,7 +19,7 @@ import Modal from "../Modal";
 import NavLink from "../NavLink";
 import CustomRpc from "./CustomRpc";
 
-export default function Profile() {
+export default function Profile({ children }) {
   const { chain } = useNetwork();
   const { switchNetwork } = useSwitchNetwork();
   const { address, isConnected } = useAccount();
@@ -90,19 +89,7 @@ export default function Profile() {
         </Modal>
 
         <div className="flex gap-2">
-          <Button size="sm" color="light" href="/dash">
-            <div className="uppercase font-bold tracking-widest text-[11px]">
-              Dashboard
-            </div>
-          </Button>
-          <Button size="sm" color="light" href="/create">
-            <div className="hidden sm:block uppercase font-bold tracking-widest text-[11px]">
-              Create
-            </div>
-            <div className="py-0.5 sm:hidden uppercase font-bold tracking-widest">
-              <PlusIcon size={16} />
-            </div>
-          </Button>
+          {children}
 
           <div
             className="flex py-2 px-3 text-xs bg-gray-900 bg-opacity-5 hover:bg-opacity-10 dark:bg-gray-700 dark:bg-opacity-20 dark:hover:bg-opacity-40 rounded-md cursor-pointer"

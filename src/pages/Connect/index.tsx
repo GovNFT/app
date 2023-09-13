@@ -1,7 +1,7 @@
 import { useEffect } from "react";
-import { useLocation, useNavigate } from "react-router-dom";
 import { SvgLoader } from "react-svgmt";
 import { useAccount } from "wagmi";
+import { useLocation } from "wouter";
 
 import Footer from "../../components/Footer";
 import NavLink from "../../components/NavLink";
@@ -9,11 +9,10 @@ import Connectors from "./components/Connectors";
 
 export default function Connect() {
   const { isConnected } = useAccount();
-  const { search } = useLocation();
-  const navigate = useNavigate();
+  const [_location, navigate] = useLocation();
 
   useEffect(() => {
-    isConnected && navigate(`/dash${search}`);
+    isConnected && navigate("/dash");
   }, [isConnected]);
 
   return (

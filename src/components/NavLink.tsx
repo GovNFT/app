@@ -1,5 +1,5 @@
 import { Button } from "flowbite-react";
-import { useNavigate } from "react-router-dom";
+import { useLocation } from "wouter";
 
 export default function NavLink({
   href,
@@ -7,23 +7,14 @@ export default function NavLink({
   useButton = false,
   ...opts
 }) {
-  let navigate = null;
-
-  // For any page using this component outside the router...
-  try {
-    navigate = useNavigate();
-  } catch {
-    // @ts-ignore
-  }
-
+  const LinkComponent = useButton ? Button : "a";
+  const [_location, navigate] = useLocation();
   const goTo = function (event, ref) {
     if (navigate) {
       event.preventDefault();
       navigate(ref);
     }
   };
-
-  const LinkComponent = useButton ? Button : "a";
 
   return (
     <LinkComponent href={href} onClick={(event) => goTo(event, href)} {...opts}>
