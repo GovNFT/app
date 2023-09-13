@@ -27,9 +27,8 @@ export default function DarkThemeToggle() {
 // Load system dark/light mode settings...
 DarkThemeToggle.isDarkMode = function () {
   const storedDarkMode = window.localStorage.getItem("darkMode");
-  const sysDarkMode = window.matchMedia?.(
-    "(prefers-color-scheme: dark)"
-  ).matches;
+  const sysDarkMode = window.matchMedia?.("(prefers-color-scheme: dark)")
+    .matches;
 
   return storedDarkMode ? storedDarkMode === "true" : sysDarkMode;
 };

@@ -3,7 +3,7 @@ import { optimism } from "wagmi/chains";
 export const ZERO_ADDRESS = "0x0000000000000000000000000000000000000000";
 export const RPC_URI = import.meta.env.VITE_RPC_URI;
 export const TOKEN_ASSETS_CDN = String(
-  import.meta.env.VITE_TOKEN_ASSETS_CDN
+  import.meta.env.VITE_TOKEN_ASSETS_CDN,
 ).split(",");
 export const DEFAULT_CHAIN = optimism;
 export const WALLETCONNECT_PROJECT_ID = import.meta.env
