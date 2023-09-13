@@ -4,7 +4,7 @@ import { useEffect } from "react";
 import { useConnect } from "wagmi";
 
 import { DEFAULT_CHAIN } from "../../../constants";
-import { wagmiClient } from "../../../main";
+import { wagmiConfig } from "../../../main";
 
 export default function Connectors({ className }) {
   const { connect, connectors, isLoading, pendingConnector } = useConnect({
@@ -19,7 +19,7 @@ export default function Connectors({ className }) {
       connect({ connector: safeConnector });
     } else {
       // Comment out to disable auto-connect...
-      wagmiClient.autoConnect();
+      wagmiConfig.autoConnect();
     }
   }, [connect, connectors]);
 

@@ -12,7 +12,6 @@
   "dependencies": {
     "buffer": "^6.0.3",
     "dayjs": "^1.11.9",
-    "ethers": "^5.7.2",
     "events": "^3.3.0",
     "flowbite-react": "0.6.0",
     "lodash": "*",
@@ -28,7 +27,8 @@
     "react-svgmt": "^2.0.2",
     "use-local-storage-state": "^19.0.4",
     "util": "^0.12.5",
-    "wagmi": "^0.12.18"
+    "viem": "^1.10.9",
+    "wagmi": "^1.4.1"
   },
   "devDependencies": {
     "@mdx-js/react": "^2.3.0",

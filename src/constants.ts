@@ -1,7 +1,6 @@
-import { constants } from "ethers";
 import { optimism } from "wagmi/chains";
 
-export const ZERO_ADDRESS = constants.AddressZero;
+export const ZERO_ADDRESS = "0x0000000000000000000000000000000000000000";
 export const RPC_URI = import.meta.env.VITE_RPC_URI;
 export const TOKEN_ASSETS_CDN = String(
   import.meta.env.VITE_TOKEN_ASSETS_CDN
