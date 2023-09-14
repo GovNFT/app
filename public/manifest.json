@@ -1,0 +1,17 @@
+{
+  "short_name": "GOVNFT",
+  "name": "GOVNFT",
+  "description": "Mint NFTs for vesting and distribution of (governance) tokens.",
+  "iconPath": "govnft.svg",
+  "icons": [
+    {
+      "src": "govnft.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    }
+  ],
+  "start_url": ".",
+  "display": "standalone",
+  "theme_color": "#EE2524",
+  "background_color": "#ffffff"
+}

@@ -1,0 +1,16 @@
+name: CI
+
+on: [push, pull_request]
+
+jobs:
+  ci:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@master
+
+      - name: Builds the Docker image
+        run: docker build ./ -t govnft/app
+
+      - name: Runs code QA and tests
+        run: docker run --rm --env-file=.env.example -t govnft/app sh -c 'yarn build'
