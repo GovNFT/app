@@ -66,7 +66,7 @@ export default function Create() {
                     <TextInput value="1" />
                     <Select
                       sizing="sm"
-                      className="absolute top-1 right-1 w-24"
+                      className="absolute top-1.5 right-1.5 w-24"
                       color="gray"
                     >
                       <option>Mths</option>
@@ -81,7 +81,7 @@ export default function Create() {
                     <TextInput value="0" />
                     <Select
                       sizing="sm"
-                      className="absolute top-1 right-1 w-24"
+                      className="absolute top-1.5 right-1.5 w-24"
                       color="gray"
                     >
                       <option>Days</option>
