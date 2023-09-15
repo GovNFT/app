@@ -76,18 +76,18 @@ export default {
         gray: "bg-transparent border-gray-300 text-gray-900 hover:border-opacity-70 dark:hover:border-opacity-70 focus:border-gray-400 dark:border-gray-600 dark:bg-transparent dark:text-white dark:focus:border-gray-500 outline-0",
       },
     },
-    "toggleSwitch": {
-      "root": {
-        "label": "text-sm font-medium text-gray-900 dark:text-gray-300"
+    toggleSwitch: {
+      root: {
+        label: "text-sm font-medium text-gray-900 dark:text-gray-300",
       },
-      "toggle": {
-        "base": "toggle-bg h-6 w-11 rounded-full border group-focus:ring-0 group-focus:ring-cyan-500/25",
-        "checked": {
-          "color": {
-            "green": "bg-green-500 border-green-500",
-          }
-        }
-      }
-    }
+      toggle: {
+        base: "toggle-bg h-6 w-11 rounded-full group-focus:ring-0 group-focus:ring-cyan-500/25",
+        checked: {
+          color: {
+            green: "bg-green-500 border-green-500",
+          },
+        },
+      },
+    },
   },
 };

@@ -12,10 +12,10 @@ import {
   Minus as MinusIcon,
   Plus as PlusIcon,
 } from "lucide-react";
+import { useState } from "react";
 
 import Footer from "../../components/Footer";
 import Header from "../../components/Header";
-import { useState } from "react";
 
 export default function Create() {
   const [transferable, setTransferable] = useState(true);
@@ -99,10 +99,12 @@ export default function Create() {
                 <div className="bg-white/[.02] rounded-lg flex items-center px-3.5 py-3">
                   <div className="text-xs opacity-20 grow">Transferable</div>
                   <ToggleSwitch
+                    // @ts-ignore
                     color="green"
-                    checked={transferable === "true"}
+                    label=""
+                    checked={transferable}
                     onChange={() =>
-                      setTransferable(transferable === "false" ? "true" : "false")
+                      setTransferable(!transferable ? true : false)
                     }
                   />
                 </div>
