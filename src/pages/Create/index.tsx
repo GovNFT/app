@@ -15,8 +15,11 @@ import {
 
 import Footer from "../../components/Footer";
 import Header from "../../components/Header";
+import { useState } from "react";
 
 export default function Create() {
+  const [transferable, setTransferable] = useState(true);
+
   return (
     <div className="container mx-auto px-4 lg:px-8">
       {/* @ts-ignore */}
@@ -96,10 +99,11 @@ export default function Create() {
                 <div className="bg-white/[.02] rounded-lg flex items-center px-3.5 py-3">
                   <div className="text-xs opacity-20 grow">Transferable</div>
                   <ToggleSwitch
-                    checked
-                    label={<div className="opacity-40 text-xs">ON</div>}
                     color="green"
-                    size="sm"
+                    checked={transferable === "true"}
+                    onChange={() =>
+                      setTransferable(transferable === "false" ? "true" : "false")
+                    }
                   />
                 </div>
               </div>
