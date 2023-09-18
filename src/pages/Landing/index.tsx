@@ -9,12 +9,9 @@ export default function Landing() {
       {/* @ts-ignore */}
       <Header />
 
-      <div className="md:w-1/2 xl:w-1/3 mx-auto text-center pt-16 pb-32">
-        <div className="uppercase text-xl">How it works</div>
-        <div className="text-sm pt-8 opacity-40 px-8">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-          minim veniam.
+      <div className="md:w-1/2 xl:w-1/3 mx-auto text-center pt-28 pb-48">
+        <div className="text-3xl leading-10 px-8">
+          The central grant management hub on Optimism network
         </div>
         <div className="flex justify-center pt-12">
           <SvgLoader src="./svg/illustration.svg" />

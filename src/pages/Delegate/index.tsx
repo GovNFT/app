@@ -12,8 +12,8 @@ export default function Create() {
 
       <div className="lg:max-w-screen-lg mx-auto">
         <div className="lg:flex gap-6">
-          <div className="lg:w-8/12 mb-4 lg:mb-0 bg-black/5 dark:bg-white/5 p-6 sm:p-12 rounded-lg">
-            <div className="text-xs opacity-20">Delegate GOVNFT</div>
+          <div className="lg:w-8/12 mb-4 lg:mb-0 bg-white shadow-lg dark:bg-white/5 p-6 sm:p-12 rounded-lg">
+            <div className="text-xs font-bold">Delegate GOVNFT</div>
 
             <div className="flex items-center py-6 my-6 border-y border-black/5 dark:border-white/5">
               <div className="space-y-1.5 grow">
@@ -23,38 +23,42 @@ export default function Create() {
                     <InfoIcon size={12} className="opacity-40" />
                   </Tooltip>
                 </div>
-                <div className="text-xs opacity-20">0x0951...d68Da</div>
+                <div className="text-xs opacity-30 dark:opacity-20">
+                  0x0951...d68Da
+                </div>
               </div>
-              <div className="bg-black/10 dark:bg-white/5 rounded px-8 h-12 flex items-center justify-center text-xs opacity-40 font-bold">
+              <div className="bg-white dark:bg-stone-600 shadow-md rounded px-8 h-12 flex items-center justify-center text-xs font-bold">
                 ID #30
               </div>
             </div>
 
             <div className="flex gap-16 items-center pb-6 mb-6 border-b border-black/5 dark:border-white/5">
               <div className="space-y-1.5">
-                <div className="text-xs opacity-20">Amount</div>
+                <div className="text-xs opacity-30 dark:opacity-20">Amount</div>
                 <div>42,300.00</div>
                 <div className="text-xs opacity-40">Started a month ago</div>
               </div>
 
               <div className="space-y-1.5">
-                <div className="text-xs opacity-20">Vesting</div>
+                <div className="text-xs opacity-30 dark:opacity-20">
+                  Vesting
+                </div>
                 <div>42,300.00</div>
                 <div className="text-xs opacity-40">Ends in 2 years</div>
               </div>
             </div>
 
             <div className="space-y-3 pb-2">
-              <div className="text-xs opacity-20">Address</div>
+              <div className="text-xs opacity-30 dark:opacity-20">Address</div>
               <TextInput placeholder="e.g. 0x00" />
             </div>
           </div>
-          <div className="lg:w-6/12 p-6 sm:p-10 bg-black/[.08] dark:bg-white/[.08] bg-opacity-70 dark:bg-opacity-50 rounded-lg">
+          <div className="lg:w-6/12 p-6 sm:p-10 bg-black/[.035]  dark:bg-white/[.08] bg-opacity-70 dark:bg-opacity-50 rounded-lg">
             <div className="flex flex-col items-center justify-center h-full space-y-6 py-8">
-              <div className="bg-white/5 p-3 rounded-full">
-                <WalletIcon size={16} />
+              <div className="bg-gray-500/10 dark:bg-white/5 p-4 rounded-full">
+                <WalletIcon size={20} strokeWidth={1} />
               </div>
-              <div className="text-xs opacity-40 w-48 text-center">
+              <div className="text-sm opacity-40 w-52 text-center">
                 Enter the wallet address where the lock will be delegated
               </div>
               <Button className="px-6">Deletage</Button>
