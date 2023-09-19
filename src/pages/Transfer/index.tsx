@@ -1,6 +1,7 @@
 import { Button, TextInput, Tooltip } from "flowbite-react";
 import { Info as InfoIcon, Wallet as WalletIcon } from "lucide-react";
 
+import Amount from "../../components/Amount";
 import Footer from "../../components/Footer";
 import Header from "../../components/Header";
 
@@ -27,7 +28,7 @@ export default function Create() {
                   0x0951...d68Da
                 </div>
               </div>
-              <div className="bg-white dark:bg-stone-600 shadow-sm text-black/80 rounded px-8 h-12 flex items-center justify-center text-xs font-bold">
+              <div className="bg-white dark:bg-stone-600 shadow-md rounded px-8 h-12 flex items-center justify-center text-xs font-bold">
                 ID #30
               </div>
             </div>
@@ -35,16 +36,27 @@ export default function Create() {
             <div className="flex gap-16 items-center pb-6 mb-6 border-b border-black/5 dark:border-white/5">
               <div className="space-y-1.5">
                 <div className="text-xs opacity-30 dark:opacity-20">Amount</div>
-                <div>42,300.00</div>
-                <div className="text-xs opacity-40">Started a month ago</div>
+                <div className="text-sm">
+                  <Amount amount="0" decimals="0" symbol="OP" />
+                </div>
+                <div className="text-xs opacity-40 pt-1">
+                  Started a month ago
+                </div>
               </div>
 
               <div className="space-y-1.5">
                 <div className="text-xs opacity-30 dark:opacity-20">
                   Vesting
                 </div>
-                <div>42,300.00</div>
-                <div className="text-xs opacity-40">Ends in 2 years</div>
+                <div className="text-sm">
+                  <Amount
+                    amount="0"
+                    decimals="0"
+                    symbol="OP"
+                    showLogo={false}
+                  />
+                </div>
+                <div className="text-xs opacity-40 pt-1">Ends in 2 years</div>
               </div>
             </div>
 
@@ -53,13 +65,13 @@ export default function Create() {
               <TextInput placeholder="e.g. 0x00" />
             </div>
           </div>
-          <div className="lg:w-6/12 p-6 sm:p-10 bg-black/[.035] dark:bg-white/[.08] bg-opacity-70 dark:bg-opacity-50 rounded-lg">
+          <div className="lg:w-6/12 p-6 sm:p-10 bg-black/[.035]  dark:bg-white/[.08] bg-opacity-70 dark:bg-opacity-50 rounded-lg">
             <div className="flex flex-col items-center justify-center h-full space-y-6 py-8">
-              <div className="bg-gray-500/10 dark:bg-white/5 p-4 rounded-full">
+              <div className="bg-gray-500/10 dark:bg-white/5 p-3.5 rounded-full">
                 <WalletIcon size={20} strokeWidth={1} />
               </div>
-              <div className="text-sm opacity-40 w-52 text-center">
-                Enter the wallet address where the lock will be delegated
+              <div className="text-sm opacity-40 w-52 text-center pb-3">
+                Enter the wallet address where the lock will be transfer
               </div>
               <Button className="px-6">Transfer</Button>
             </div>

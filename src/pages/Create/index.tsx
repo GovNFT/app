@@ -14,6 +14,7 @@ import {
 } from "lucide-react";
 import { useState } from "react";
 
+import Amount from "../../components/Amount";
 import Footer from "../../components/Footer";
 import Header from "../../components/Header";
 
@@ -167,8 +168,10 @@ export default function Create() {
               </div>
               <div className="space-y-1.5 border-t border-black/5 dark:border-white/5 pt-6">
                 <div className="text-xs opacity-30 dark:opacity-20">Amount</div>
-                <div>42,300.00</div>
-                <div className="text-xs opacity-40">
+                <div className="text-sm">
+                  <Amount amount="0" decimals="0" symbol="OP" />
+                </div>
+                <div className="text-xs opacity-40 pt-1">
                   Starts in a month, ends in 3 years
                 </div>
               </div>
