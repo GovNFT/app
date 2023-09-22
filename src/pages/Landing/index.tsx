@@ -11,7 +11,7 @@ export default function Landing() {
 
       <div className="md:w-1/2 xl:w-1/3 mx-auto text-center pt-28 pb-48">
         <div className="text-3xl leading-10 px-8">
-          The central grant management hub on Optimism network
+          NFTs for vesting and distribution of (governance) tokens.
         </div>
         <div className="flex justify-center pt-12">
           <SvgLoader src="./svg/illustration.svg" />
