@@ -70,7 +70,9 @@ export default function Govnft({ withdraw }) {
                   />
                 </div>
                 <div className="flex justify-end text-xs pt-1">
-                  <ActionLink disabled={false} onClick="#">Withdraw</ActionLink>
+                  <ActionLink disabled={false} onClick="#">
+                    Withdraw
+                  </ActionLink>
                 </div>
               </div>
             )}
