@@ -1,6 +1,9 @@
 import { Spinner } from "flowbite-react";
 
+import TokenAvatar from "./TokenAvatar";
+
 export default function Amount({
+  address,
   amount,
   decimals = null,
   symbol = null,
@@ -13,7 +16,10 @@ export default function Amount({
   return (
     <span className="flex gap-2 items-center">
       {showLogo ? (
-        <img src="/temp_token_logo.png" className="h-4 rounded-full" />
+        <TokenAvatar
+          address={address}
+          className="h-4"
+        />
       ) : (
         ""
       )}

@@ -12,15 +12,30 @@ import {
   Minus as MinusIcon,
   Plus as PlusIcon,
 } from "lucide-react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useAccount } from "wagmi";
 
 import Amount from "../../components/Amount";
+import AssetSelect from "../../components/AssetSelect";
 import Footer from "../../components/Footer";
 import Header from "../../components/Header";
+import { useTokens } from "../../hooks/token";
 
 export default function Create() {
   const [transferable, setTransferable] = useState(true);
   const [showInfo, setShowInfo] = useState(false);
+
+  const { address: accountAddress } = useAccount();
+
+  const { data: tokens } = useTokens(accountAddress);
+  const [token, setToken] = useState();
+
+  useEffect(() => {
+    // @ts-ignore
+    setToken(tokens[0]);
+  }, [tokens]);
+
+  console.log(token);
 
   return (
     <div className="container mx-auto px-4 lg:px-8">
@@ -29,7 +44,7 @@ export default function Create() {
 
       <div className="lg:max-w-screen-lg mx-auto">
         <div className="lg:flex gap-6">
-          <div className="lg:w-8/12 mb-4 lg:mb-0 bg-white shadow-lg dark:bg-white/5 p-6 rounded-lg">
+          <div className="lg:w-8/12 mb-4 lg:mb-0 bg-white shadow-lg dark:bg-white/5 p-2 md:p-6 rounded-lg">
             <div className="px-4 mb-8 mt-4">
               <div className="space-y-3 pb-6">
                 <div className="text-xs opacity-30 dark:opacity-20">
@@ -47,7 +62,18 @@ export default function Create() {
                     Available 214.57368 VELO
                   </div>
                 </div>
-                <TextInput addon={<>test</>} placeholder="WIP" />
+                <TextInput
+                  required={true}
+                  addon={
+                    <AssetSelect
+                      assets={tokens}
+                      selectedAsset={token}
+                      onSelect={setToken}
+                      className="w-28"
+                    />
+                  }
+                  placeholder="0.0"
+                />
               </div>
 
               <div className="space-y-3 pb-6">
@@ -57,7 +83,7 @@ export default function Create() {
                 <Datepicker minDate={new Date("2023-09-17T22:00:00.000Z")} />
               </div>
 
-              <div className="flex gap-6">
+              <div className="md:flex gap-6">
                 <div className="space-y-3 pb-6 grow">
                   <div className="text-xs opacity-30 dark:opacity-20">
                     Vesting Duration
@@ -66,7 +92,7 @@ export default function Create() {
                     <TextInput value="1" />
                     <Select
                       sizing="sm"
-                      className="absolute top-1.5 right-1.5 w-24"
+                      className="absolute top-0.5 right-0.5 sm:top-1.5 sm:right-1.5 w-24"
                       color="gray"
                     >
                       <option>Mths</option>
@@ -83,7 +109,7 @@ export default function Create() {
                     <TextInput value="0" />
                     <Select
                       sizing="sm"
-                      className="absolute top-1.5 right-1.5 w-24"
+                      className="absolute top-0.5 right-0.5 sm:top-1.5 sm:right-1.5 w-24"
                       color="gray"
                     >
                       <option>Days</option>
@@ -119,7 +145,7 @@ export default function Create() {
               }
             >
               <div className="grow uppercase text-xs opacity-40">
-                Optional: Add Nft Info
+                GovNft Extra Info (Optional)
               </div>
               {!showInfo ? <PlusIcon size={16} /> : <MinusIcon size={16} />}
             </div>
@@ -150,6 +176,11 @@ export default function Create() {
           <div className="lg:w-6/12 p-6 sm:p-10 bg-black/[.035] dark:bg-white/[.08] bg-opacity-70 dark:bg-opacity-50 rounded-lg">
             <div className="space-y-6 pb-8">
               <div className="space-y-1.5">
+                <div className="text-xs pb-3 mb-6 border-b border-black/5 dark:border-white/5">
+                  <span className="opacity-40 dark:opacity-20">
+                    Preview GovNFT
+                  </span>
+                </div>
                 <div className="flex gap-2 items-center">
                   Unknown Recipient
                   <Tooltip content="No extra info">
@@ -169,7 +200,7 @@ export default function Create() {
               <div className="space-y-1.5 border-t border-black/5 dark:border-white/5 pt-6">
                 <div className="text-xs opacity-30 dark:opacity-20">Amount</div>
                 <div className="text-sm">
-                  <Amount amount="0" decimals="0" symbol="OP" />
+                  <Amount address={0} amount="0" decimals="0" symbol="OP" />
                 </div>
                 <div className="text-xs opacity-40 pt-1">
                   Starts in a month, ends in 3 years
