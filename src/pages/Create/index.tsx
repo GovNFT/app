@@ -13,10 +13,11 @@ import {
   Plus as PlusIcon,
 } from "lucide-react";
 import { useEffect, useState } from "react";
+import { parseUnits } from "viem";
 import { useAccount } from "wagmi";
 
 import Amount from "../../components/Amount";
-import AssetSelect from "../../components/AssetSelect";
+import AssetInput from "../../components/AssetInput";
 import Footer from "../../components/Footer";
 import Header from "../../components/Header";
 import { useTokens } from "../../hooks/token";
@@ -24,6 +25,7 @@ import { useTokens } from "../../hooks/token";
 export default function Create() {
   const [transferable, setTransferable] = useState(true);
   const [showInfo, setShowInfo] = useState(false);
+  const [amount, setAmount] = useState(parseUnits("0", 18));
 
   const { address: accountAddress } = useAccount();
 
@@ -54,25 +56,14 @@ export default function Create() {
               </div>
 
               <div className="space-y-3 pb-6">
-                <div className="flex">
-                  <div className="text-xs opacity-30 dark:opacity-20 grow">
-                    Vest
-                  </div>
-                  <div className="text-xs opacity-30 dark:opacity-20">
-                    Available 214.57368 VELO
-                  </div>
-                </div>
-                <TextInput
-                  required={true}
-                  addon={
-                    <AssetSelect
-                      assets={tokens}
-                      selectedAsset={token}
-                      onSelect={setToken}
-                      className="w-28"
-                    />
-                  }
-                  placeholder="0.0"
+                <AssetInput
+                  assets={tokens}
+                  asset={token}
+                  setAsset={setToken}
+                  amount={amount}
+                  setAmount={setAmount}
+                  validate={false}
+                  title="Vest"
                 />
               </div>
 
@@ -200,7 +191,7 @@ export default function Create() {
               <div className="space-y-1.5 border-t border-black/5 dark:border-white/5 pt-6">
                 <div className="text-xs opacity-30 dark:opacity-20">Amount</div>
                 <div className="text-sm">
-                  <Amount address={0} amount="0" decimals="0" symbol="OP" />
+                  <Amount address={0} amount="0" symbol="OP" />
                 </div>
                 <div className="text-xs opacity-40 pt-1">
                   Starts in a month, ends in 3 years

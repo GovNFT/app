@@ -5,7 +5,6 @@ import TokenAvatar from "./TokenAvatar";
 export default function Amount({
   address,
   amount,
-  decimals = null,
   symbol = null,
   showLogo = true,
 }) {
@@ -15,16 +14,9 @@ export default function Amount({
 
   return (
     <span className="flex gap-2 items-center">
-      {showLogo ? (
-        <TokenAvatar
-          address={address}
-          className="h-4"
-        />
-      ) : (
-        ""
-      )}
-      {amount}.{decimals}
-      <span className="opacity-40">{symbol}</span>
+      {showLogo ? <TokenAvatar address={address} className="h-4" /> : ""}
+      {amount}
+      <span className="opacity-60">{symbol}</span>
     </span>
   );
 }

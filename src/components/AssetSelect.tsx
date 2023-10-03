@@ -65,7 +65,7 @@ export default function AssetSelect({
 
   return (
     <>
-      <div className="text-center w-24">
+      <div className="text-center w-28">
         <Spinner color="gray" size="sm" />
       </div>
 

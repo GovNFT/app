@@ -37,7 +37,7 @@ export default function Create() {
               <div className="space-y-1.5">
                 <div className="text-xs opacity-30 dark:opacity-20">Amount</div>
                 <div className="text-sm">
-                  <Amount address={0} amount="0" decimals="0" symbol="OP" />
+                  <Amount address={0} amount="0" symbol="OP" />
                 </div>
                 <div className="text-xs opacity-40 pt-1">
                   Started a month ago
@@ -49,13 +49,7 @@ export default function Create() {
                   Vesting
                 </div>
                 <div className="text-sm">
-                  <Amount
-                    address={0}
-                    amount="0"
-                    decimals="0"
-                    symbol="OP"
-                    showLogo={false}
-                  />
+                  <Amount address={0} amount="0" symbol="OP" showLogo={false} />
                 </div>
                 <div className="text-xs opacity-40 pt-1">Ends in 2 years</div>
               </div>

@@ -7,7 +7,7 @@ async function fetchTokens(accountAddress) {
   const tokens = TOKEN_ADDRESSES.map(async (tokenAddress) => {
     const token = await fetchBalance({
       address: accountAddress,
-      token: tokenAddress  as `0x${string}`,
+      token: tokenAddress as `0x${string}`,
     });
     return { ...token, address: tokenAddress };
   });

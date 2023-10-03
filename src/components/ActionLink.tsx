@@ -1,18 +1,27 @@
-import { Spinner } from "flowbite-react";
+import { Button, Spinner } from "flowbite-react";
 
-export default function ActionLink({ onClick, disabled = false, children }) {
+export default function ActionLink({
+  onClick,
+  disabled = false,
+  children,
+  className = "",
+  useButton = false,
+}) {
   const handler = (event) => {
     event.preventDefault();
     !disabled && onClick?.(event);
   };
 
+  const LinkComponent = useButton ? Button : "a";
+  const withClassName = useButton ? className || "no-underline" : className;
+
   return (
-    <a
+    <LinkComponent
       href=""
       onClick={handler}
       color="light"
       className={
-        disabled
+        withClassName || disabled
           ? "opacity-30 dark:opacity-20 flex items-center gap-3"
           : "text-primary underline hover:no-underline underline-offset-2"
       }
@@ -21,6 +30,6 @@ export default function ActionLink({ onClick, disabled = false, children }) {
         {disabled && <Spinner size="xs" color="gray" />}
         {children}
       </div>
-    </a>
+    </LinkComponent>
   );
 }
