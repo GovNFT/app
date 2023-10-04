@@ -45,14 +45,24 @@ export default function Govnft({ withdraw }) {
             <div className="space-y-1.5">
               <div className="text-xs opacity-30 dark:opacity-20">Amount</div>
               <div>
-                <Amount address={0} amount="0" symbol="OP" />
+                <Amount
+                  tokenAddress={"0x4200000000000000000000000000000000000042"}
+                  amount="0.00"
+                  symbol="OP"
+                  showLogo={true}
+                />
               </div>
               <div className="text-xs opacity-40 pt-1">Started a month ago</div>
             </div>
 
             <div className="space-y-1.5">
               <div className="text-xs opacity-30 dark:opacity-20">Vesting</div>
-              <Amount address={0} amount="0" symbol="OP" showLogo={false} />
+              <Amount
+                tokenAddress={"0x4200000000000000000000000000000000000042"}
+                amount="0.00"
+                symbol="OP"
+                showLogo={false}
+              />
               <div className="text-xs opacity-40 pt-1">Ends in 2 years</div>
             </div>
 
@@ -63,8 +73,8 @@ export default function Govnft({ withdraw }) {
                 </div>
                 <div className="flex justify-end">
                   <Amount
-                    address={0}
-                    amount="100"
+                    tokenAddress={"0x4200000000000000000000000000000000000042"}
+                    amount="0.00"
                     symbol="OP"
                     showLogo={false}
                   />

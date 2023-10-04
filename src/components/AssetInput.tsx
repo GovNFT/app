@@ -32,11 +32,12 @@ export default function AssetInput({
   useEffect(() => {
     setInvalid(false);
 
-    let parsedAmount = parseUnits("0", 18);
+    // @ts-ignore
+    let parsedAmount = parseUnits("0");
 
     try {
       // @ts-ignore
-      parsedAmount = parseUnits(value, 18);
+      parsedAmount = parseUnits(value);
     } catch (error) {
       value !== "" && Toaster.toast(error);
     }
@@ -73,9 +74,9 @@ export default function AssetInput({
             >
               Available{" "}
               <Amount
-                address={0}
-                amount={asset?.formatted}
-                symbol={asset?.symbol}
+                tokenAddress={asset.address}
+                amount={asset.formatted}
+                symbol={asset.symbol}
                 showLogo={false}
               />
             </ActionLink>

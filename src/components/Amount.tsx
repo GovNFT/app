@@ -3,8 +3,8 @@ import { Spinner } from "flowbite-react";
 import TokenAvatar from "./TokenAvatar";
 
 export default function Amount({
-  address,
   amount,
+  tokenAddress = "",
   symbol = null,
   showLogo = true,
 }) {
@@ -12,11 +12,20 @@ export default function Amount({
     return <Spinner color="gray" size="xs" />;
   }
 
+  if (showLogo) {
+    return (
+      <div className="flex gap-1.5 items-center">
+        <TokenAvatar address={tokenAddress} className="w-4 h-4 mr-0.5" />
+        <span className="tracking-wider">{amount}</span>
+        <span className="opacity-60">{symbol}</span>
+      </div>
+    );
+  }
+
   return (
-    <span className="flex gap-2 items-center">
-      {showLogo ? <TokenAvatar address={address} className="h-4" /> : ""}
-      {amount}
+    <div className="flex gap-1.5 items-center">
+      <span className="tracking-wider">{amount}</span>
       <span className="opacity-60">{symbol}</span>
-    </span>
+    </div>
   );
 }
