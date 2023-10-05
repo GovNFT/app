@@ -43,7 +43,8 @@ export default function DelegateNft() {
                 <div className="text-sm">
                   <Amount
                     tokenAddress={"0x4200000000000000000000000000000000000042"}
-                    amount="0.00"
+                    decimals={18}
+                    amount="0"
                     symbol="OP"
                     showLogo={true}
                   />
@@ -60,7 +61,8 @@ export default function DelegateNft() {
                 <div className="text-sm">
                   <Amount
                     tokenAddress={"0x4200000000000000000000000000000000000042"}
-                    amount="0.00"
+                    decimals={18}
+                    amount="0"
                     symbol="OP"
                     showLogo={false}
                   />

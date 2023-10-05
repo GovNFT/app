@@ -2,10 +2,12 @@ import { Spinner } from "flowbite-react";
 import { isEmpty } from "lodash";
 import { AlertCircle as AlertCircleleIcon } from "lucide-react";
 import { isAddress } from "viem";
+import Amount from "./Amount";
 
 import TokenAvatar from "./TokenAvatar";
 
 export default function AssetsList({ assets, onSelect, search = null }) {
+
   if (isAddress(search) && isEmpty(assets)) {
     return (
       <div className="flex p-8 items-center text-sm gap-2 text-gray-500 dark:text-gray-400">
@@ -47,7 +49,15 @@ export default function AssetsList({ assets, onSelect, search = null }) {
 
                 <div className="w-1/2 text-sm opacity-40">
                   {asset?.value && asset.value > 0 && (
-                    <div className="text-right">{asset.formatted}</div>
+                    <div className="flex justify-end">
+                      <Amount
+                        tokenAddress={asset.address}
+                        decimals={asset.decimals}
+                        amount={asset.value}
+                        symbol={asset.symbol}
+                        showLogo={false}
+                      />
+                    </div>
                   )}
                 </div>
               </div>

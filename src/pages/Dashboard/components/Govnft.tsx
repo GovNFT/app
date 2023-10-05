@@ -47,7 +47,8 @@ export default function Govnft({ withdraw }) {
               <div>
                 <Amount
                   tokenAddress={"0x4200000000000000000000000000000000000042"}
-                  amount="0.00"
+                  decimals={18}
+                  amount="0"
                   symbol="OP"
                   showLogo={true}
                 />
@@ -59,7 +60,8 @@ export default function Govnft({ withdraw }) {
               <div className="text-xs opacity-30 dark:opacity-20">Vesting</div>
               <Amount
                 tokenAddress={"0x4200000000000000000000000000000000000042"}
-                amount="0.00"
+                decimals={18}
+                amount="0"
                 symbol="OP"
                 showLogo={false}
               />
@@ -74,7 +76,8 @@ export default function Govnft({ withdraw }) {
                 <div className="flex justify-end">
                   <Amount
                     tokenAddress={"0x4200000000000000000000000000000000000042"}
-                    amount="0.00"
+                    decimals={18}
+                    amount="0"
                     symbol="OP"
                     showLogo={false}
                   />

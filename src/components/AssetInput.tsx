@@ -32,28 +32,25 @@ export default function AssetInput({
   useEffect(() => {
     setInvalid(false);
 
-    // @ts-ignore
-    let parsedAmount = parseUnits("0");
+    let parsedAmount = parseUnits("0", asset?.decimals);
 
     try {
-      // @ts-ignore
-      parsedAmount = parseUnits(value);
+      parsedAmount = parseUnits(value, asset?.decimals);
     } catch (error) {
       value !== "" && Toaster.toast(error);
     }
 
     if (
-      // @ts-ignore
-      parsedAmount == 0 &&
-      asset?.value
-      // TODO: Make input validate above max amount, that thing below is not working
-      // && asset.value.lt(parsedAmount)
+      parsedAmount != 0 &&
+      asset?.value &&
+      asset.value < parsedAmount
     ) {
       if (validate) {
         setFromBalance();
       }
       setInvalid(true);
     }
+
 
     if (!validate) {
       setAmount?.(parsedAmount);
@@ -75,7 +72,8 @@ export default function AssetInput({
               Available{" "}
               <Amount
                 tokenAddress={asset.address}
-                amount={asset.formatted}
+                decimals={asset.decimals}
+                amount={asset.value}
                 symbol={asset.symbol}
                 showLogo={false}
               />
