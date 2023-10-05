@@ -1,11 +1,11 @@
 import { Tooltip } from "flowbite-react";
 import { Info as InfoIcon } from "lucide-react";
-import { isAddress } from 'viem'
+import { isAddress } from "viem";
 
 import Amount from "../../../components/Amount";
 import CreateButton from "./CreateButton";
 
-export default function Preview({toAddress, token, amount}) {
+export default function Preview({ toAddress, token, amount }) {
   return (
     <>
       <div className="space-y-6 pb-8">
@@ -17,9 +17,9 @@ export default function Preview({toAddress, token, amount}) {
             </Tooltip>
           </div>
           <div className="text-xs">
-            {isAddress(toAddress) &&
-              <span className="opacity-30 dark:opacity-20">{toAddress}</span> 
-            }
+            {isAddress(toAddress) && (
+              <span className="opacity-30 dark:opacity-20">{toAddress}</span>
+            )}
           </div>
         </div>
         <div className="space-y-1.5 border-t border-black/5 dark:border-white/5 pt-6">

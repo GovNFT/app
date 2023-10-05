@@ -1,13 +1,8 @@
-import { useEffect, useState } from "react";
-import { parseUnits } from "viem";
-import { useAccount } from "wagmi";
-
 import Footer from "../../components/Footer";
 import Header from "../../components/Header";
 import Creator from "./components/Creator";
 
 export default function CreateGovnft() {
-
   return (
     <div className="container mx-auto px-4 lg:px-8">
       {/* @ts-ignore */}

@@ -5,28 +5,25 @@ import {
   TextInput,
   ToggleSwitch,
 } from "flowbite-react";
-import { Minus as MinusIcon, Plus as PlusIcon } from "lucide-react";
 import { useEffect, useState } from "react";
 import { parseUnits } from "viem";
+import { isAddress } from "viem";
 import { useAccount } from "wagmi";
-import { useTokens } from "../../../hooks/token";
-import Preview from "./Preview";
-import Graph from "./Graph";
-import Checklist from "./Checklist";
 
 import AssetInput from "../../../components/AssetInput";
-
-import { isAddress } from 'viem'
+import { useTokens } from "../../../hooks/token";
+import Checklist from "./Checklist";
+import Graph from "./Graph";
+import Preview from "./Preview";
 
 export default function Creator() {
   const [transferable, setTransferable] = useState(true);
-  const [amount, setAmount] = useState(parseUnits("0",18));
+  const [amount, setAmount] = useState(parseUnits("0", 18));
   const [preview, setPreview] = useState(false);
   const [toAddress, setToAddress] = useState(null);
   const [vestingDuration, setVestingDuration] = useState("1");
   const [cliffDuration, setCliffDuration] = useState("0");
   const { address: accountAddress } = useAccount();
-
 
   const { data: tokens } = useTokens(accountAddress);
   const [token, setToken] = useState();
@@ -38,22 +35,24 @@ export default function Creator() {
   }, [tokens]);
 
   useEffect(() => {
-    if(vestingDuration < 1) {
-      setVestingDuration("1")
+    // @ts-ignore
+    if (vestingDuration < 1) {
+      setVestingDuration("1");
     }
-    if(cliffDuration < 1) {
-      setCliffDuration("0")
+    // @ts-ignore
+    if (cliffDuration < 1) {
+      setCliffDuration("0");
     }
   }, [vestingDuration, cliffDuration]);
 
-    useEffect(() => {
-      if(isAddress(toAddress) && amount != 0) {
-        setPreview(true);
-      } else {
-        setPreview(false);
-      }
+  useEffect(() => {
+    // @ts-ignore
+    if (isAddress(toAddress) && amount != 0) {
+      setPreview(true);
+    } else {
+      setPreview(false);
+    }
   }, [toAddress, amount]);
-
 
   return (
     <>
@@ -115,7 +114,7 @@ export default function Creator() {
                 Cliff Duration
               </div>
               <div className="relative">
-                <TextInput 
+                <TextInput
                   value={cliffDuration}
                   onChange={(e) => setCliffDuration(e.target.value)}
                   type="number"
@@ -177,9 +176,9 @@ export default function Creator() {
       <div className="lg:w-6/12 p-6 sm:p-10 bg-black/[.035] dark:bg-white/[.08] bg-opacity-70 dark:bg-opacity-50 rounded-lg">
         <Checklist toAddress={toAddress} amount={amount} />
         <Graph />
-      {preview &&
-        <Preview toAddress={toAddress} amount={amount} token={token} />
-      }
+        {preview && (
+          <Preview toAddress={toAddress} amount={amount} token={token} />
+        )}
       </div>
     </>
   );

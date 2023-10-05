@@ -40,17 +40,13 @@ export default function AssetInput({
       value !== "" && Toaster.toast(error);
     }
 
-    if (
-      parsedAmount != 0 &&
-      asset?.value &&
-      asset.value < parsedAmount
-    ) {
+    // @ts-ignore
+    if (parsedAmount != 0 && asset?.value && asset.value < parsedAmount) {
       if (validate) {
         setFromBalance();
       }
       setInvalid(true);
     }
-
 
     if (!validate) {
       setAmount?.(parsedAmount);
