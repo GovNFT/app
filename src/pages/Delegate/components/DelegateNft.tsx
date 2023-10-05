@@ -1,14 +1,16 @@
 import { TextInput, Tooltip } from "flowbite-react";
-import { Info as InfoIcon, Wallet as WalletIcon, CheckCircle2 as CheckCircle2Icon } from "lucide-react";
-import { isAddress } from 'viem'
+import {
+  CheckCircle2 as CheckCircle2Icon,
+  Info as InfoIcon,
+  Wallet as WalletIcon,
+} from "lucide-react";
+import { useState } from "react";
+import { isAddress } from "viem";
 
 import Amount from "../../../components/Amount";
 import DelegateButton from "./DelegateButton";
 
-import { useState } from "react";
-
 export default function DelegateNft() {
-
   const [toAddress, setToAddress] = useState(null);
 
   return (
@@ -78,7 +80,6 @@ export default function DelegateNft() {
           </div>
           <div className="lg:w-6/12 p-6 sm:p-10 bg-black/[.035]  dark:bg-white/[.08] bg-opacity-70 dark:bg-opacity-50 rounded-lg">
             <div className="flex flex-col items-center justify-center h-full space-y-6 py-8">
-              
               {!isAddress(toAddress) && (
                 <>
                   <div className="bg-gray-500/10 dark:bg-white/5 p-3.5 rounded-full">
@@ -95,7 +96,9 @@ export default function DelegateNft() {
                   <div className="bg-green-500/5 p-3.5 rounded-full text-green-500">
                     <CheckCircle2Icon size={20} strokeWidth={1} />
                   </div>
-                  <div className="text-sm opacity-40 w-52 text-center pb-3">Wallet address is valid. You can now delegate the GovNFT.</div>
+                  <div className="text-sm opacity-40 w-52 text-center pb-3">
+                    Wallet address is valid. You can now delegate the GovNFT.
+                  </div>
                   <DelegateButton />
                 </>
               )}
