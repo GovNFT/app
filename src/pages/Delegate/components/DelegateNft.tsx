@@ -1,20 +1,22 @@
-import { Button, TextInput, Tooltip } from "flowbite-react";
-import { Info as InfoIcon, Wallet as WalletIcon } from "lucide-react";
+import { TextInput, Tooltip } from "flowbite-react";
+import { Info as InfoIcon, Wallet as WalletIcon, CheckCircle2 as CheckCircle2Icon } from "lucide-react";
+import { isAddress } from 'viem'
 
-import Amount from "../../components/Amount";
-import Footer from "../../components/Footer";
-import Header from "../../components/Header";
+import Amount from "../../../components/Amount";
+import DelegateButton from "./DelegateButton";
 
-export default function Transfer() {
+import { useState } from "react";
+
+export default function DelegateNft() {
+
+  const [toAddress, setToAddress] = useState(null);
+
   return (
-    <div className="container mx-auto px-4 lg:px-8">
-      {/* @ts-ignore */}
-      <Header />
-
+    <>
       <div className="lg:max-w-screen-lg mx-auto">
         <div className="lg:flex gap-6">
           <div className="lg:w-8/12 mb-4 lg:mb-0 bg-white shadow-lg dark:bg-white/5 p-6 sm:p-12 rounded-lg">
-            <div className="text-xs font-bold">Transfer GOVNFT</div>
+            <div className="text-xs opacity-40">Delegate GOVNFT</div>
 
             <div className="flex items-center py-6 my-6 border-y border-black/5 dark:border-white/5">
               <div className="space-y-1.5 grow">
@@ -67,24 +69,40 @@ export default function Transfer() {
 
             <div className="space-y-3 pb-2">
               <div className="text-xs opacity-30 dark:opacity-20">Address</div>
-              <TextInput placeholder="e.g. 0x00" />
+              <TextInput
+                placeholder="0x"
+                value={toAddress}
+                onChange={(e) => setToAddress(e.target.value)}
+              />
             </div>
           </div>
           <div className="lg:w-6/12 p-6 sm:p-10 bg-black/[.035]  dark:bg-white/[.08] bg-opacity-70 dark:bg-opacity-50 rounded-lg">
             <div className="flex flex-col items-center justify-center h-full space-y-6 py-8">
-              <div className="bg-gray-500/10 dark:bg-white/5 p-3.5 rounded-full">
-                <WalletIcon size={20} strokeWidth={1} />
-              </div>
-              <div className="text-sm opacity-40 w-52 text-center pb-3">
-                Enter the wallet address where the lock will be transfer
-              </div>
-              <Button className="px-6">Transfer</Button>
+              
+              {!isAddress(toAddress) && (
+                <>
+                  <div className="bg-gray-500/10 dark:bg-white/5 p-3.5 rounded-full">
+                    <WalletIcon size={20} strokeWidth={1} />
+                  </div>
+                  <div className="text-sm opacity-40 w-52 text-center pb-3">
+                    Enter the wallet address where the lock will be delegated
+                  </div>
+                </>
+              )}
+
+              {isAddress(toAddress) && (
+                <>
+                  <div className="bg-green-500/5 p-3.5 rounded-full text-green-500">
+                    <CheckCircle2Icon size={20} strokeWidth={1} />
+                  </div>
+                  <div className="text-sm opacity-40 w-52 text-center pb-3">Wallet address is valid. You can now delegate the GovNFT.</div>
+                  <DelegateButton />
+                </>
+              )}
             </div>
           </div>
         </div>
       </div>
-
-      <Footer />
-    </div>
+    </>
   );
 }
