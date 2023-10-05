@@ -28,7 +28,6 @@ export default function Creator() {
   const [tags, setTags] = useState(null);
   const [desc, setDesc] = useState("");
 
-
   const { address: accountAddress } = useAccount();
 
   const { data: tokens } = useTokens(accountAddress);
@@ -97,9 +96,9 @@ export default function Creator() {
                   className="absolute top-0.5 right-0.5 sm:top-1.5 sm:right-1.5 w-24"
                   color="gray"
                 >
-                  <option>{vestingDuration==1 ? "Year" : "Years"}</option>
-                  <option>{vestingDuration==1 ? "Month" : "Months"}</option>
-                  <option>{vestingDuration==1 ? "Week" : "Weeks"}</option>
+                  <option>Years</option>
+                  <option>Months</option>
+                  <option>Weeks</option>
                 </Select>
               </div>
             </div>
@@ -119,9 +118,9 @@ export default function Creator() {
                   className="absolute top-0.5 right-0.5 sm:top-1.5 sm:right-1.5 w-24"
                   color="gray"
                 >
-                  <option>{cliffDuration==1 ? "Year" : "Years"}</option>
-                  <option>{cliffDuration==1 ? "Month" : "Months"}</option>
-                  <option>{cliffDuration==1 ? "Week" : "Weeks"}</option>
+                  <option>Years</option>
+                  <option>Months</option>
+                  <option>Weeks</option>
                 </Select>
               </div>
             </div>
@@ -151,7 +150,7 @@ export default function Creator() {
             <div className="text-xs opacity-30 dark:opacity-20">
               Recipient Name
             </div>
-            <TextInput 
+            <TextInput
               placeholder="e.g. Velodrome Foundation"
               value={recipientName}
               onChange={(e) => setRecipientName(e.target.value)}
@@ -160,8 +159,8 @@ export default function Creator() {
 
           <div className="space-y-3 pb-6">
             <div className="text-xs opacity-30 dark:opacity-20">Tags</div>
-            <TextInput 
-              placeholder="Search for exiting or create new tag ..." 
+            <TextInput
+              placeholder="Search for exiting or create new tag ..."
               value={tags}
               onChange={(e) => setTags(e.target.value)}
             />
@@ -171,19 +170,26 @@ export default function Creator() {
             <div className="text-xs opacity-30 dark:opacity-20">
               Description
             </div>
-            <Textarea 
-              value={desc}
-              onChange={(e) => setDesc(e.target.value)}
-            />
+            <Textarea value={desc} onChange={(e) => setDesc(e.target.value)} />
           </div>
         </div>
       </div>
 
       <div className="lg:w-6/12 p-6 sm:p-10 bg-black/[.035] dark:bg-white/[.08] bg-opacity-70 dark:bg-opacity-50 rounded-lg">
-        <Checklist toAddress={toAddress} amount={amount} vestingDuration={vestingDuration} />
+        <Checklist
+          toAddress={toAddress}
+          amount={amount}
+          vestingDuration={vestingDuration}
+        />
         <Graph />
         {preview && (
-          <Preview toAddress={toAddress} amount={amount} token={token} recipient={recipientName} desc={desc} />
+          <Preview
+            toAddress={toAddress}
+            amount={amount}
+            token={token}
+            recipient={recipientName}
+            desc={desc}
+          />
         )}
       </div>
     </>
