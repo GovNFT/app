@@ -4,6 +4,7 @@ import { Info as InfoIcon } from "lucide-react";
 import ActionLink from "../../../components/ActionLink";
 import Amount from "../../../components/Amount";
 import NavLink from "../../../components/NavLink";
+import AddressMask from "../../../components/AddressMask";
 
 export default function Govnft({ withdraw }) {
   return (
@@ -22,7 +23,7 @@ export default function Govnft({ withdraw }) {
                 </Tooltip>
               </div>
               <div className="text-xs opacity-30 dark:opacity-20">
-                0x0951...d68Da
+                <AddressMask address={"0x09516bBBc08B8AC950A6ee22B443ca9C55Cd68Da"} />
               </div>
               <div className="text-xs opacity-40 flex gap-1.5 pt-1">
                 <NavLink

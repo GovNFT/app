@@ -63,8 +63,8 @@ export default {
             md: "p-3 text-sm",
           },
           colors: {
-            gray: "bg-transparent border-gray-300 text-gray-900 placeholder-white/20 hover:border-opacity-70 dark:hover:border-opacity-70 focus:border-gray-400 dark:border-gray-600 dark:bg-transparent dark:text-white dark:focus:border-gray-500 outline-0",
-            info: "border-gray-900 border-opacity-10 placeholder-white/20 focus:border-opacity-30 bg-transparent text-gray-900 dark:text-white dark:border-white dark:border-opacity-10 dark:focus:border-opacity-30 dark:bg-transparent outline-0",
+            gray: "bg-transparent border-gray-300 text-gray-900 placeholder-black/40 dark:placeholder-white/20 hover:border-opacity-70 dark:hover:border-opacity-70 focus:border-gray-400 dark:border-gray-600 dark:bg-transparent dark:text-white dark:focus:border-gray-500 outline-0",
+            info: "border-gray-900 border-opacity-10 placeholder-black/40 dark:placeholder-white/20 focus:border-opacity-30 bg-transparent text-gray-900 dark:text-white dark:border-white dark:border-opacity-10 dark:focus:border-opacity-30 dark:bg-transparent outline-0",
             warning:
               "border-amber-500 bg-transparent text-yellow-500 placeholder-yellow-700 focus:border-amber-500 dark:border-yellow-700 dark:bg-amber-800 dark:bg-opacity-10 dark:focus:border-amber-600 outline-0",
           },

@@ -23,6 +23,12 @@ export default function Creator() {
   const [toAddress, setToAddress] = useState(null);
   const [vestingDuration, setVestingDuration] = useState("1");
   const [cliffDuration, setCliffDuration] = useState("0");
+
+  const [recipientName, setRecipientName] = useState("");
+  const [tags, setTags] = useState(null);
+  const [desc, setDesc] = useState("");
+
+
   const { address: accountAddress } = useAccount();
 
   const { data: tokens } = useTokens(accountAddress);
@@ -33,17 +39,6 @@ export default function Creator() {
     // @ts-ignore
     setToken(tokens[0]);
   }, [tokens]);
-
-  useEffect(() => {
-    // @ts-ignore
-    if (vestingDuration < 1) {
-      setVestingDuration("1");
-    }
-    // @ts-ignore
-    if (cliffDuration < 1) {
-      setCliffDuration("0");
-    }
-  }, [vestingDuration, cliffDuration]);
 
   useEffect(() => {
     // @ts-ignore
@@ -102,9 +97,9 @@ export default function Creator() {
                   className="absolute top-0.5 right-0.5 sm:top-1.5 sm:right-1.5 w-24"
                   color="gray"
                 >
-                  <option>Years</option>
-                  <option>Months</option>
-                  <option>Weeks</option>
+                  <option>{vestingDuration==1 ? "Year" : "Years"}</option>
+                  <option>{vestingDuration==1 ? "Month" : "Months"}</option>
+                  <option>{vestingDuration==1 ? "Week" : "Weeks"}</option>
                 </Select>
               </div>
             </div>
@@ -124,15 +119,15 @@ export default function Creator() {
                   className="absolute top-0.5 right-0.5 sm:top-1.5 sm:right-1.5 w-24"
                   color="gray"
                 >
-                  <option>Years</option>
-                  <option>Months</option>
-                  <option>Weeks</option>
+                  <option>{cliffDuration==1 ? "Year" : "Years"}</option>
+                  <option>{cliffDuration==1 ? "Month" : "Months"}</option>
+                  <option>{cliffDuration==1 ? "Week" : "Weeks"}</option>
                 </Select>
               </div>
             </div>
           </div>
 
-          <div className="space-y-3 pb-2 grow">
+          <div className="space-y-3 pt-3 pb-2 grow">
             <div className="bg-black/[.03] dark:bg-white/[.02] rounded-lg flex items-center px-3.5 py-3">
               <div className="text-xs opacity-30 dark:opacity-20 grow">
                 Transferable
@@ -156,28 +151,39 @@ export default function Creator() {
             <div className="text-xs opacity-30 dark:opacity-20">
               Recipient Name
             </div>
-            <TextInput placeholder="e.g. Velodrome Foundation" />
+            <TextInput 
+              placeholder="e.g. Velodrome Foundation"
+              value={recipientName}
+              onChange={(e) => setRecipientName(e.target.value)}
+            />
           </div>
 
           <div className="space-y-3 pb-6">
             <div className="text-xs opacity-30 dark:opacity-20">Tags</div>
-            <TextInput placeholder="Search for exiting or create new tag ..." />
+            <TextInput 
+              placeholder="Search for exiting or create new tag ..." 
+              value={tags}
+              onChange={(e) => setTags(e.target.value)}
+            />
           </div>
 
           <div className="space-y-3 pb-6">
             <div className="text-xs opacity-30 dark:opacity-20">
               Description
             </div>
-            <Textarea />
+            <Textarea 
+              value={desc}
+              onChange={(e) => setDesc(e.target.value)}
+            />
           </div>
         </div>
       </div>
 
       <div className="lg:w-6/12 p-6 sm:p-10 bg-black/[.035] dark:bg-white/[.08] bg-opacity-70 dark:bg-opacity-50 rounded-lg">
-        <Checklist toAddress={toAddress} amount={amount} />
+        <Checklist toAddress={toAddress} amount={amount} vestingDuration={vestingDuration} />
         <Graph />
         {preview && (
-          <Preview toAddress={toAddress} amount={amount} token={token} />
+          <Preview toAddress={toAddress} amount={amount} token={token} recipient={recipientName} desc={desc} />
         )}
       </div>
     </>
