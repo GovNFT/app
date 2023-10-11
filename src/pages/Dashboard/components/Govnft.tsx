@@ -1,6 +1,9 @@
 import { Tooltip } from "flowbite-react";
 import { Info as InfoIcon } from "lucide-react";
 
+import ActionLink from "../../../components/ActionLink";
+import AddressMask from "../../../components/AddressMask";
+import Amount from "../../../components/Amount";
 import NavLink from "../../../components/NavLink";
 
 export default function Govnft({ withdraw }) {
@@ -20,9 +23,11 @@ export default function Govnft({ withdraw }) {
                 </Tooltip>
               </div>
               <div className="text-xs opacity-30 dark:opacity-20">
-                0x0951...d68Da
+                <AddressMask
+                  address={"0x09516bBBc08B8AC950A6ee22B443ca9C55Cd68Da"}
+                />
               </div>
-              <div className="text-xs opacity-40 flex gap-1.5">
+              <div className="text-xs opacity-40 flex gap-1.5 pt-1">
                 <NavLink
                   href="/delegate"
                   className="underline hover:no-underline"
@@ -39,31 +44,52 @@ export default function Govnft({ withdraw }) {
               </div>
             </div>
           </div>
-          <div className="flex flex-wrap gap-8 md:flex-row md:gap-16 items-center grow px-2 border-t border-white/5 lg:border-none pt-5 lg:pt-0">
+          <div className="flex flex-wrap gap-8 md:flex-row md:gap-20 items-center grow px-2 border-t border-white/5 lg:border-none pt-5 lg:pt-0">
             <div className="space-y-1.5">
               <div className="text-xs opacity-30 dark:opacity-20">Amount</div>
-              <div>42,300.00</div>
-              <div className="text-xs opacity-40">Started a month ago</div>
+              <div>
+                <Amount
+                  tokenAddress={"0x4200000000000000000000000000000000000042"}
+                  decimals={18}
+                  amount="0"
+                  symbol="OP"
+                  showLogo={true}
+                />
+              </div>
+              <div className="text-xs opacity-40 pt-1">Started a month ago</div>
             </div>
 
             <div className="space-y-1.5">
               <div className="text-xs opacity-30 dark:opacity-20">Vesting</div>
-              <div>42,300.00</div>
-              <div className="text-xs opacity-40">Ends in 2 years</div>
+              <Amount
+                tokenAddress={"0x4200000000000000000000000000000000000042"}
+                decimals={18}
+                amount="0"
+                symbol="OP"
+                showLogo={false}
+              />
+              <div className="text-xs opacity-40 pt-1">Ends in 2 years</div>
             </div>
 
             {withdraw && (
-              <div className="space-y-1.5 lg:text-right grow">
+              <div className="space-y-1.5 text-right grow">
                 <div className="text-xs opacity-30 dark:opacity-20">
                   Withdrawable
                 </div>
-                <div>100.00</div>
-                <NavLink
-                  href="#"
-                  className="block text-primary text-xs underline hover:no-underline"
-                >
-                  Withdraw
-                </NavLink>
+                <div className="flex justify-end">
+                  <Amount
+                    tokenAddress={"0x4200000000000000000000000000000000000042"}
+                    decimals={18}
+                    amount="0"
+                    symbol="OP"
+                    showLogo={false}
+                  />
+                </div>
+                <div className="flex justify-end text-xs pt-1">
+                  <ActionLink disabled={false} onClick="#">
+                    Withdraw
+                  </ActionLink>
+                </div>
               </div>
             )}
           </div>

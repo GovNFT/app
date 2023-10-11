@@ -30,6 +30,9 @@ module.exports = {
       animation: {
         loop: "loop 3s linear infinite",
       },
+      backgroundSize: {
+        "200%": "200%",
+      },
       keyframes: {
         loop: {
           "0%": { "background-position": "0% 0%" },
