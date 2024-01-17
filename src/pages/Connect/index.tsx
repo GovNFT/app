@@ -25,19 +25,12 @@ export default function Connect() {
           <img src="govnft.svg" className="h-8 mr-1.5" alt="GOVNFT" />
           <SvgLoader
             src="/wordmark.svg"
-            className="hidden sm:block h-4 w-auto dark:text-white"
+            className="block h-4 w-auto dark:text-white"
             alt="GOVNFT"
           />
         </NavLink>
 
         <div className="pt-16 pb-32">
-          <a href="/landing" className="inline lg:hidden">
-            <div className="flex justify-center py-16">
-              <div className="flex items-center">
-                <img src="govnft.svg" className="ml-2 mr-3 h-9" alt="GOVNFT" />
-              </div>
-            </div>
-          </a>
           {!isConnected && <Connectors className="flex justify-center" />}
         </div>
 

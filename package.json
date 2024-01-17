@@ -10,6 +10,7 @@
     "lint": "prettier -w . && eslint ./src"
   },
   "dependencies": {
+    "@tanstack/react-query": "^5.17.15",
     "buffer": "^6.0.3",
     "dayjs": "^1.11.9",
     "events": "^3.3.0",
@@ -26,8 +27,8 @@
     "react-svgmt": "^2.0.2",
     "use-local-storage-state": "^19.0.4",
     "util": "^0.12.5",
-    "viem": "^1.10.9",
-    "wagmi": "^1.4.1",
+    "viem": "2.x",
+    "wagmi": "^2.2.1",
     "wouter": "^2.11.0"
   },
   "devDependencies": {
