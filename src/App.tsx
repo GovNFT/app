@@ -16,7 +16,7 @@ function ConnectedOnly({ children }) {
   const [_location, navigate] = useLocation();
 
   useEffect(() => {
-    !isConnected && navigate("/connect");
+    !isConnected && navigate("/");
   }, [isConnected]);
 
   if (isConnected) {

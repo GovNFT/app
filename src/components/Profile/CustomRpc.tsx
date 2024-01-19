@@ -1,12 +1,11 @@
 import { TextInput } from "flowbite-react";
-import { isEmpty } from "lodash";
 import { PlugZap as PlugZapIcon } from "lucide-react";
 import useLocalStorageState from "use-local-storage-state";
 
-import { RPC_URI } from "../../constants";
+import { CUSTOM_RPC_URI_KEY } from "../../rpc";
 
 export default function CustomRpc() {
-  const [customRpc, setCustomRpc] = useLocalStorageState("customRPC", {
+  const [customRpc, setCustomRpc] = useLocalStorageState(CUSTOM_RPC_URI_KEY, {
     defaultValue: "",
     serializer: { stringify: String, parse: String },
   });
@@ -36,13 +35,3 @@ export default function CustomRpc() {
     </div>
   );
 }
-
-CustomRpc.getRpc = function () {
-  const customRpc = window.localStorage.getItem("customRPC");
-
-  if (isEmpty(customRpc)) {
-    return RPC_URI;
-  }
-
-  return customRpc;
-};

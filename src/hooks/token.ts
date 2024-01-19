@@ -1,11 +1,12 @@
 import { useQuery } from "@tanstack/react-query";
-import { fetchBalance } from "@wagmi/core";
+import { getBalance } from "@wagmi/core";
 
 import { TOKEN_ADDRESSES } from "../constants";
+import rpc from "../rpc";
 
 async function fetchTokens(accountAddress) {
   const tokens = TOKEN_ADDRESSES.map(async (tokenAddress) => {
-    const token = await fetchBalance({
+    const token = await getBalance(rpc, {
       address: accountAddress,
       token: tokenAddress as `0x${string}`,
     });
@@ -16,12 +17,13 @@ async function fetchTokens(accountAddress) {
 }
 
 export function useTokens(accountAddress, opts = {}) {
-  return useQuery(["fetchTokens"], () => fetchTokens(accountAddress), {
+  return useQuery({
+    queryKey: ["fetchTokens"],
+    queryFn: () => fetchTokens(accountAddress),
     ...opts,
-    // @ts-ignore
     placeholderData: [],
-    // 5 minute
-    cacheTime: 5_000 * 60,
+    // @ts-ignore
+    cacheTime: 5_000 * 60, // 5 minute
     keepPreviousData: true,
   });
 }

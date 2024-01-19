@@ -1,4 +1,4 @@
-import { optimism } from "wagmi/chains";
+import { optimism } from "viem/chains";
 
 export const ZERO_ADDRESS = "0x0000000000000000000000000000000000000000";
 export const TOKEN_ICON = "/svg/coin.svg";
