@@ -11,14 +11,14 @@ import FlowbiteTheme from "../flowbite.config";
 import App from "./App";
 import DarkThemeToggle from "./components/DarkThemeToggle";
 import Error from "./Error";
-import rpc from "./rpc";
+import config from "./rpc";
 
 const queryClient = new QueryClient();
 
 ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
   <React.StrictMode>
     <Flowbite theme={{ ...FlowbiteTheme, dark: DarkThemeToggle.isDarkMode() }}>
-      <WagmiProvider config={rpc}>
+      <WagmiProvider config={config}>
         <QueryClientProvider client={queryClient}>
           {/* @ts-ignore */}
           <ErrorBoundary FallbackComponent={Error}>

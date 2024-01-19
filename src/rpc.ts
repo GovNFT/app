@@ -8,10 +8,10 @@ import {
 } from "wagmi/connectors";
 
 import { DEFAULT_CHAIN, RPC_URI, WALLETCONNECT_PROJECT_ID } from "./constants";
-export const customRPCLocalStorageKey = "customRPC";
+export const CUSTOM_RPC_URI_KEY = "customRPC";
 
 export const getRpc = (): string => {
-  const customRpc = window.localStorage.getItem(customRPCLocalStorageKey);
+  const customRpc = window.localStorage.getItem(CUSTOM_RPC_URI_KEY);
 
   if (isEmpty(customRpc)) {
     return RPC_URI;
@@ -20,7 +20,7 @@ export const getRpc = (): string => {
   return customRpc;
 };
 
-const rpc = createConfig({
+const config = createConfig({
   chains: [DEFAULT_CHAIN],
   transports: {
     [DEFAULT_CHAIN.id]: http(getRpc()),
@@ -34,4 +34,4 @@ const rpc = createConfig({
   ],
 });
 
-export default rpc;
+export default config;
