@@ -2,11 +2,11 @@ import { useQuery } from "@tanstack/react-query";
 import { getBalance } from "@wagmi/core";
 
 import { TOKEN_ADDRESSES } from "../constants";
-import wagmiConfig from "../wagmiconfig";
+import rpc from "../rpc";
 
-export async function fetchTokens(accountAddress) {
+async function fetchTokens(accountAddress) {
   const tokens = TOKEN_ADDRESSES.map(async (tokenAddress) => {
-    const token = await getBalance(wagmiConfig, {
+    const token = await getBalance(rpc, {
       address: accountAddress,
       token: tokenAddress as `0x${string}`,
     });
