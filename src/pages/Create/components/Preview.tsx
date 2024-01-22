@@ -15,13 +15,16 @@ export default function Preview({ toAddress, token, amount, recipient, desc }) {
               {recipient ? recipient : "Unknown Recipient"}
             </span>
             <Tooltip content={desc ? desc : "No optional details"}>
-              <InfoIcon size={12} className="opacity-40" />
+              <InfoIcon
+                size={12}
+                className="text-gray-600 dark:text-gray-400"
+              />
             </Tooltip>
           </div>
 
-          <div className="divide-y divide-white/5">
+          <div className="divide-y divide-black/5 dark:divide-white/5">
             <div className="flex justify-between items-center text-xs py-3">
-              <div className="opacity-30 dark:opacity-20">
+              <div className="text-gray-400 dark:text-gray-600">
                 Recipient Address
               </div>
               <div className="opacity-60">
@@ -29,7 +32,7 @@ export default function Preview({ toAddress, token, amount, recipient, desc }) {
               </div>
             </div>
             <div className="flex justify-between items-center text-xs py-3">
-              <div className="opacity-30 dark:opacity-20">Amount</div>
+              <div className="text-gray-400 dark:text-gray-600">Amount</div>
               <div>
                 <Amount
                   tokenAddress={token.address}
@@ -41,12 +44,16 @@ export default function Preview({ toAddress, token, amount, recipient, desc }) {
               </div>
             </div>
             <div className="flex justify-between items-center text-xs py-3">
-              <div className="opacity-30 dark:opacity-20">Starts</div>
-              <div className="opacity-60">in one month</div>
+              <div className="text-gray-400 dark:text-gray-600">Starts</div>
+              <div className="text-gray-600 dark:text-gray-400">
+                in one month
+              </div>
             </div>
             <div className="flex justify-between items-center text-xs pt-3">
-              <div className="opacity-30 dark:opacity-20">Ends</div>
-              <div className="opacity-60">in 3 months</div>
+              <div className="text-gray-400 dark:text-gray-600">Ends</div>
+              <div className="text-gray-600 dark:text-gray-400">
+                in 3 months
+              </div>
             </div>
           </div>
         </div>
