@@ -6,12 +6,12 @@ import {
   ToggleSwitch,
 } from "flowbite-react";
 import { useEffect, useState } from "react";
-import { parseUnits } from "viem";
-import { isAddress } from "viem";
+import { isAddress, parseUnits } from "viem";
 import { useAccount } from "wagmi";
 
 import AssetInput from "../../../components/AssetInput";
 import { useTokens } from "../../../hooks/token";
+import { Token } from "../../../hooks/types";
 import Checklist from "./Checklist";
 import Graph from "./Graph";
 import Preview from "./Preview";
@@ -31,7 +31,7 @@ export default function Creator() {
   const { address: accountAddress } = useAccount();
 
   const { data: tokens } = useTokens(accountAddress);
-  const [token, setToken] = useState();
+  const [token, setToken] = useState<Token>(null);
 
   // Set default token if non selected
   useEffect(() => {

@@ -7,8 +7,15 @@ import {
   TOKEN_ASSETS_CDN,
   TOKEN_ICON,
 } from "../constants";
+import { Address } from "../hooks/types";
 
-export default function TokenAvatar({ address, className = null }) {
+export default function TokenAvatar({
+  address,
+  className = null,
+}: {
+  address: Address;
+  className?: string;
+}) {
   if (!address) {
     return <></>;
   }

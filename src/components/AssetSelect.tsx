@@ -6,6 +6,7 @@ import {
 } from "lucide-react";
 import { useEffect, useState } from "react";
 
+import { Token } from "../hooks/types";
 import AssetList from "./AssetList";
 import Modal from "./Modal";
 import TokenAvatar from "./TokenAvatar";
@@ -15,6 +16,11 @@ export default function AssetSelect({
   assets,
   onSelect,
   className = "",
+}: {
+  selectedAsset: Token | null;
+  assets: Token[];
+  onSelect: (asset: Token | null) => void;
+  className?: string;
 }) {
   const [open, setOpen] = useState(false);
   const [search, setSearch] = useState("");
