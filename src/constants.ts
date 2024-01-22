@@ -12,19 +12,6 @@ export const TOKEN_ASSETS_CDN = String(
   import.meta.env.VITE_TOKEN_ASSETS_CDN,
 ).split(",");
 export const DEFAULT_CHAIN = optimism;
-export const NATIVE_TOKEN_LOGO = import.meta.env.VITE_NATIVE_TOKEN_LOGO;
-export const NATIVE_TOKEN = {
-  ...DEFAULT_CHAIN.nativeCurrency,
-  wrappedAddress:
-    import.meta.env.VITE_WRAPPED_NATIVE_TOKEN.toLowerCase() as Address,
-  /**
-   * TODO: This is an exception for the native token where "address" is "ETH"
-   * - Change this later so it's type-safe
-   * Discussion: https://github.com/velodrome-finance/app/pull/347#discussion_r1380073009
-   */
-
-  address: DEFAULT_CHAIN.nativeCurrency.symbol.toLowerCase() as Address,
-};
 
 export const WALLETCONNECT_PROJECT_ID = import.meta.env
   .VITE_WALLETCONNECT_PROJECT_ID;

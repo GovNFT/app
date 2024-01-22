@@ -1,12 +1,6 @@
 import { Img } from "react-image";
 
-import {
-  DEFAULT_CHAIN,
-  NATIVE_TOKEN,
-  NATIVE_TOKEN_LOGO,
-  TOKEN_ASSETS_CDN,
-  TOKEN_ICON,
-} from "../constants";
+import { DEFAULT_CHAIN, TOKEN_ASSETS_CDN, TOKEN_ICON } from "../constants";
 import { Address } from "../hooks/types";
 
 export default function TokenAvatar({
@@ -26,10 +20,6 @@ export default function TokenAvatar({
   const classNames = className
     ? `${className} rounded-full bg-gray-200 dark:bg-gray-700 hover:opacity-80`
     : `w-8 h-8 rounded-full bg-gray-200 dark:bg-gray-700 hover:opacity-80`;
-
-  if (lowcase == NATIVE_TOKEN.address) {
-    return <Img className={classNames} src={NATIVE_TOKEN_LOGO} />;
-  }
 
   // Builds a list of potential CDN logo URIs
   const logoURIs = TOKEN_ASSETS_CDN.map((cdnUri) => [
