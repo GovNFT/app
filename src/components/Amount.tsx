@@ -34,7 +34,8 @@ export default function Amount({
   const amountDecimals = decimals || token?.decimals || 18;
 
   const amountFrom = from([amount, amountDecimals]);
-  const ndigits = Number(format(amountFrom)) < 1 ? CURRENCY_MAXIMUM_FRACTION_DIGITS : 2;
+  const ndigits =
+    Number(format(amountFrom)) < 1 ? CURRENCY_MAXIMUM_FRACTION_DIGITS : 2;
   const pretty = format(amountFrom, ndigits);
 
   if (showLogo) {
