@@ -1,4 +1,4 @@
-import { FixedNumber } from "ethers";
+import { format, from } from "dnum";
 import { Spinner } from "flowbite-react";
 import { useAccount } from "wagmi";
 
@@ -7,26 +7,6 @@ import { useTokens } from "../hooks/token";
 import { Address } from "../hooks/types";
 import TokenAvatar from "./TokenAvatar";
 
-const NUMBER_FORMAT = "en-US";
-
-function prettify(value: FixedNumber) {
-  const ndigits =
-    value.cmp(FixedNumber.fromString("1")) === -1
-      ? CURRENCY_MAXIMUM_FRACTION_DIGITS
-      : 2;
-
-  // most numbers will look OK with standard US number formatting (e.g. 12.56)
-  // however, 0.00034 will look like 0
-  // let's remedy this with custom formatting based on decimals value
-  return new Intl.NumberFormat(NUMBER_FORMAT, {
-    maximumFractionDigits: ndigits,
-  }).format(
-    // @ts-expect-error: format takes a string as well not just a number, so we need to disable TS
-    // Source: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/NumberFormat/format#syntax
-    value.round(ndigits).toString(),
-  );
-}
-
 export default function Amount({
   amount,
   decimals = null,
@@ -34,7 +14,7 @@ export default function Amount({
   symbol = null,
   showLogo = true,
 }: {
-  amount: bigint | number;
+  amount: bigint;
   decimals?: number | null;
   tokenAddress?: string;
   symbol?: string | null;
@@ -53,7 +33,9 @@ export default function Amount({
   // @ts-ignore
   const amountDecimals = decimals || token?.decimals || 18;
 
-  const pretty = prettify(FixedNumber.fromValue(amount, amountDecimals));
+  const amountFrom = from([amount, amountDecimals]);
+  const ndigits = Number(format(amountFrom)) < 1 ? CURRENCY_MAXIMUM_FRACTION_DIGITS : 2;
+  const pretty = format(amountFrom, ndigits);
 
   if (showLogo) {
     return (
