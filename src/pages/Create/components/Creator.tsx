@@ -6,12 +6,12 @@ import {
   ToggleSwitch,
 } from "flowbite-react";
 import { useEffect, useState } from "react";
-import { parseUnits } from "viem";
-import { isAddress } from "viem";
+import { isAddress, parseUnits } from "viem";
 import { useAccount } from "wagmi";
 
 import AssetInput from "../../../components/AssetInput";
 import { useTokens } from "../../../hooks/token";
+import { Token } from "../../../hooks/types";
 import Checklist from "./Checklist";
 import Graph from "./Graph";
 import Preview from "./Preview";
@@ -31,7 +31,7 @@ export default function Creator() {
   const { address: accountAddress } = useAccount();
 
   const { data: tokens } = useTokens(accountAddress);
-  const [token, setToken] = useState();
+  const [token, setToken] = useState<Token>(null);
 
   // Set default token if non selected
   useEffect(() => {
@@ -50,10 +50,10 @@ export default function Creator() {
 
   return (
     <>
-      <div className="lg:w-8/12 mb-4 lg:mb-0 bg-white shadow-lg dark:bg-white/5 p-2 md:p-6 rounded-lg">
+      <div className="lg:w-8/12 mb-4 lg:mb-0 bg-white shadow-md dark:bg-white/5 p-2 md:p-6 rounded-lg">
         <div className="px-4 mb-8 mt-4">
           <div className="space-y-3 pb-6">
-            <div className="text-xs opacity-30 dark:opacity-20">
+            <div className="text-xs text-gray-600 dark:text-gray-400">
               Recipient Address
             </div>
             <TextInput
@@ -76,13 +76,15 @@ export default function Creator() {
           </div>
 
           <div className="space-y-3 pb-6">
-            <div className="text-xs opacity-30 dark:opacity-20">Start Date</div>
+            <div className="text-xs text-gray-600 dark:text-gray-400">
+              Start Date
+            </div>
             <Datepicker minDate={new Date("2023-09-17T22:00:00.000Z")} />
           </div>
 
           <div className="md:flex gap-6">
             <div className="space-y-3 pb-6 grow">
-              <div className="text-xs opacity-30 dark:opacity-20">
+              <div className="text-xs text-gray-600 dark:text-gray-400">
                 Vesting Duration
               </div>
               <div className="relative">
@@ -104,7 +106,7 @@ export default function Creator() {
             </div>
 
             <div className="space-y-3 pb-6 grow">
-              <div className="text-xs opacity-30 dark:opacity-20">
+              <div className="text-xs text-gray-600 dark:text-gray-400">
                 Cliff Duration
               </div>
               <div className="relative">
@@ -128,7 +130,7 @@ export default function Creator() {
 
           <div className="space-y-3 pt-3 pb-2 grow">
             <div className="bg-black/[.03] dark:bg-white/[.02] rounded-lg flex items-center px-3.5 py-3">
-              <div className="text-xs opacity-30 dark:opacity-20 grow">
+              <div className="text-xs text-gray-600 dark:text-gray-400 grow">
                 Transferable
               </div>
               <ToggleSwitch
@@ -143,11 +145,11 @@ export default function Creator() {
         </div>
 
         <div className="px-4">
-          <div className="text-xs pb-3 mb-6 border-b border-black/5 dark:border-white/5">
+          <div className="text-xs pt-4 pb-3 mb-6 border-b border-black/5 dark:border-white/5">
             <span className="opacity-50">Optional Details</span>
           </div>
           <div className="space-y-3 pb-6">
-            <div className="text-xs opacity-30 dark:opacity-20">
+            <div className="text-xs text-gray-600 dark:text-gray-400">
               Recipient Name
             </div>
             <TextInput
@@ -158,7 +160,7 @@ export default function Creator() {
           </div>
 
           <div className="space-y-3 pb-6">
-            <div className="text-xs opacity-30 dark:opacity-20">Tags</div>
+            <div className="text-xs text-gray-600 dark:text-gray-400">Tags</div>
             <TextInput
               placeholder="Search for exiting or create new tag ..."
               value={tags}
@@ -167,7 +169,7 @@ export default function Creator() {
           </div>
 
           <div className="space-y-3 pb-6">
-            <div className="text-xs opacity-30 dark:opacity-20">
+            <div className="text-xs text-gray-600 dark:text-gray-400">
               Description
             </div>
             <Textarea value={desc} onChange={(e) => setDesc(e.target.value)} />
@@ -175,7 +177,7 @@ export default function Creator() {
         </div>
       </div>
 
-      <div className="lg:w-6/12 p-6 sm:p-10 bg-black/[.035] dark:bg-white/[.08] bg-opacity-70 dark:bg-opacity-50 rounded-lg">
+      <div className="lg:w-6/12 p-6 sm:p-10 bg-white/90 dark:bg-white/[.08] dark:bg-opacity-50 rounded-lg">
         <Checklist
           toAddress={toAddress}
           amount={amount}

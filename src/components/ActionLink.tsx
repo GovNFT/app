@@ -22,7 +22,7 @@ export default function ActionLink({
       color="light"
       className={
         withClassName || disabled
-          ? "opacity-30 dark:opacity-20 flex items-center gap-3"
+          ? "text-gray-600 dark:text-gray-400 flex items-center gap-3"
           : "text-primary underline hover:no-underline underline-offset-2"
       }
     >

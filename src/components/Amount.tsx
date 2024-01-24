@@ -3,23 +3,30 @@ import { formatUnits, parseUnits } from "viem";
 import { useAccount } from "wagmi";
 
 import { useTokens } from "../hooks/token";
+import { Address } from "../hooks/types";
 import TokenAvatar from "./TokenAvatar";
 
 export default function Amount({
   amount,
   decimals = null,
-  tokenAddress = "",
+  tokenAddress,
   symbol = null,
   showLogo = true,
+}: {
+  amount: bigint;
+  decimals?: number | null;
+  tokenAddress?: Address;
+  symbol?: string | null;
+  showLogo?: boolean;
 }) {
   const { address: accountAddress } = useAccount();
   const { data: tokens } = useTokens(accountAddress);
 
-  if (!amount) {
+  if (amount == null) {
     return <Spinner color="gray" size="xs" />;
   }
 
-  const addr = String(tokenAddress).toLowerCase();
+  const addr = String(tokenAddress).toLowerCase() as Address;
   const token = tokens.filter((asset) => asset.address.includes(addr));
 
   // @ts-ignore

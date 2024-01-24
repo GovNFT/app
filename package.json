@@ -13,6 +13,7 @@
     "@tanstack/react-query": "^5.17.15",
     "buffer": "^6.0.3",
     "dayjs": "^1.11.9",
+    "dnum": "^2.10.0",
     "events": "^3.3.0",
     "flowbite-react": "0.6.0",
     "lodash": "*",

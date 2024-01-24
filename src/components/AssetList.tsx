@@ -3,10 +3,19 @@ import { isEmpty } from "lodash";
 import { AlertCircle as AlertCircleleIcon } from "lucide-react";
 import { isAddress } from "viem";
 
+import { Token } from "../hooks/types";
 import Amount from "./Amount";
 import TokenAvatar from "./TokenAvatar";
 
-export default function AssetsList({ assets, onSelect, search = null }) {
+export default function AssetsList({
+  assets,
+  onSelect,
+  search = null,
+}: {
+  assets: Token[];
+  onSelect: (asset: Token | null) => void;
+  search?: string;
+}) {
   if (isAddress(search) && isEmpty(assets)) {
     return (
       <div className="flex p-8 items-center text-sm gap-2 text-gray-500 dark:text-gray-400">
@@ -28,8 +37,10 @@ export default function AssetsList({ assets, onSelect, search = null }) {
   return (
     <div>
       <div className="mt-8 pb-2 px-4 mx-4 flex justify-between text-xs border-b border-black/5 dark:border-white/5">
-        <span className="opacity-40">{assets.length} Tokens</span>
-        <span className="opacity-40">Balance</span>
+        <span className="text-gray-400 dark:text-gray-600">
+          {assets.length} Tokens
+        </span>
+        <span className="text-gray-400 dark:text-gray-600">Balance</span>
       </div>
 
       <div className="h-[calc(100vh-300px)] overflow-auto overflow-x-hidden pb-4 pt-2">
@@ -46,7 +57,7 @@ export default function AssetsList({ assets, onSelect, search = null }) {
                   <div className="text-sm">{asset.symbol}</div>
                 </div>
 
-                <div className="w-1/2 text-sm opacity-40">
+                <div className="w-1/2 text-sm text-gray-600 dark:text-gray-400">
                   {asset?.value && asset.value > 0 && (
                     <div className="flex justify-end">
                       <Amount
