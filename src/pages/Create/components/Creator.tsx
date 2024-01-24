@@ -23,7 +23,7 @@ export default function Creator() {
   const [preview, setPreview] = useState(false);
   const [toAddress, setToAddress] = useState(null);
 
-  const today = dayjs().format("YYYY-MM-DD");
+  const today = dayjs();
   const [vestingDuration, setVestingDuration] = useState(1);
   const [cliffDuration, setCliffDuration] = useState(0);
   const [selectedStartDate, setSelectedStartDate] = useState(today);
@@ -33,6 +33,7 @@ export default function Creator() {
   const [recipientName, setRecipientName] = useState("");
   const [tags, setTags] = useState(null);
   const [desc, setDesc] = useState("");
+  const timeframe = ["years", "months", "weeks"];
 
   const { address: accountAddress } = useAccount();
 
@@ -87,8 +88,7 @@ export default function Creator() {
             </div>
             <Datepicker
               // @ts-ignore
-              onSelect={(e) => setSelectedStartDate(e.target.value)} // not working
-              minDate={new Date(today)}
+              onSelect={(e) => setSelectedStartDate(dayjs(e.target.value))} // not working
             />
             {/*<TextInput
               onSelect={(e) => setSelectedStartDate(e.target.value)} // not working
@@ -117,9 +117,11 @@ export default function Creator() {
                   onChange={(e) => setVestingInterval(e.target.value)}
                   defaultValue={vestingInterval}
                 >
-                  <option value="years">Years</option>
-                  <option value="months">Months</option>
-                  <option value="weeks">Weeks</option>
+                  {timeframe.map((time, index) => (
+                    <option value={time} key={index}>
+                      {time}
+                    </option>
+                  ))}
                 </Select>
               </div>
             </div>
@@ -144,9 +146,11 @@ export default function Creator() {
                   onChange={(e) => setCliffInterval(e.target.value)}
                   defaultValue={cliffInterval}
                 >
-                  <option value="years">Years</option>
-                  <option value="months">Months</option>
-                  <option value="weeks">Weeks</option>
+                  {timeframe.map((time, index) => (
+                    <option value={time} key={index}>
+                      {time}
+                    </option>
+                  ))}
                 </Select>
               </div>
             </div>
@@ -208,7 +212,7 @@ export default function Creator() {
           vestingDuration={vestingDuration}
         />
         <Chart
-          selectedStartDate={selectedStartDate}
+          startDate={selectedStartDate}
           vestingDuration={vestingDuration}
           vestingInterval={vestingInterval}
           cliffDuration={cliffDuration}
