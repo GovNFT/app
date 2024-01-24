@@ -1,23 +1,18 @@
-import "chartjs-adapter-dayjs-4/dist/chartjs-adapter-dayjs-4.esm";
-
 import {
+  CategoryScale,
   Chart as ChartJS,
   Legend,
   LinearScale,
   LineElement,
   PointElement,
-  TimeScale,
   Title,
   Tooltip,
 } from "chart.js";
-
 import dayjs from "dayjs";
-import * as dnum from "dnum";
-
 import { Line } from "react-chartjs-2";
 
 ChartJS.register(
-  TimeScale,
+  CategoryScale,
   LinearScale,
   PointElement,
   LineElement,
@@ -32,7 +27,6 @@ export default function Chart({
   cliffDuration,
   cliffInterval,
   selectedStartDate,
-  amount,
 }) {
   const startDate = dayjs(selectedStartDate);
   const endDate = dayjs(startDate).add(vestingDuration, vestingInterval);
@@ -42,47 +36,11 @@ export default function Chart({
   const clifWeeks = cliffDate.diff(startDate, "weeks");
   const cliffPercentage = (clifWeeks / totalWeeks) * 100;
 
-  const tooltip = (tooltipItems) => {
-    let vested = "0";
-    const totalAmount = dnum.format(dnum.from([amount, 18]), 5);
-    const cliffAmount = (Number(totalAmount) / 100) * Number(cliffPercentage);
-
-    // @ts-ignore
-    const clifVestedAmount = dnum.format(dnum.from([cliffAmount]), 5);
-
-    tooltipItems.forEach(function (tooltipItem) {
-      if (tooltipItem.dataIndex === 2) {
-        vested = totalAmount;
-      } else if (tooltipItem.dataIndex === 1) {
-        vested = clifVestedAmount;
-      } else if (tooltipItem.dataIndex === 0) {
-        vested = "0";
-      }
-    });
-
-    return "Amount: " + vested;
-  };
-
   const options = {
     responsive: true,
-    animation: false,
-    tooltips: {},
     // @ts-ignore
     scales: {
       x: {
-        display: true,
-        beginAtZero: true,
-        type: "time",
-        time: {
-          parser: 'YYYY-MM-DD',
-          displayFormats: { month: 'MMM YYYY' },
-          tooltipFormat: 'DD/MM/YY',
-          unit: 'month',
-        },
-        ticks: {
-          autoSkip: true,
-          maxTicksLimit: 3,
-        },
         grid: {
           display: false,
         },
@@ -93,17 +51,12 @@ export default function Chart({
         ticks: {
           display: true,
           callback: function (value) {
-            return "—  " + value + "%";
+            return " —  " + value + "%";
           },
         },
       },
     },
     plugins: {
-      tooltip: {
-        callbacks: {
-          footer: tooltip,
-        },
-      },
       legend: {
         display: false,
       },
@@ -111,17 +64,21 @@ export default function Chart({
   };
 
   const labels = [
-    startDate.format("YYYY-MM-DD"),
-    cliffDate.format("YYYY-MM-DD"),
-    endDate.format("YYYY-MM-DD"),
+    startDate.format("MMM YYYY"),
+    cliffDate.format("MMM YYYY"),
+    endDate.format("MMM YYYY"),
   ];
+
+  const vestingData =
+    cliffDuration == 0 ? [0, 50, 100] : [NaN, cliffPercentage, 100];
+  const cliffData = cliffDuration == 0 ? NaN : [0, 100];
 
   const data = {
     labels,
     datasets: [
       {
         label: "Vesting",
-        data: [null, cliffPercentage, 100],
+        data: vestingData,
         borderColor: "rgb(53, 162, 235)",
         backgroundColor: "rgba(53, 162, 235)",
         borderWidth: 1,
@@ -129,7 +86,7 @@ export default function Chart({
       },
       {
         label: "Cliff",
-        data: cliffDuration == 0 ? null : [0, 100],
+        data: cliffData,
         borderDash: [1, 3],
         borderColor: "rgb(250, 218, 94)",
         backgroundColor: "rgba(250, 218, 94)",
@@ -155,3 +112,17 @@ export default function Chart({
     </div>
   );
 }
+
+// x: ...
+// type: "line",
+// time: {
+//   parser: 'YYYY-MM-DD',
+//   displayFormats: { month: 'MMM YYYY' },
+//   tooltipFormat: 'DD/MM/YY',
+//   unit: 'month',
+// },
+
+// ticks: {
+//   autoSkip: true,
+//   maxTicksLimit: 3,
+// },

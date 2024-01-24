@@ -13,8 +13,8 @@ import { useAccount } from "wagmi";
 import AssetInput from "../../../components/AssetInput";
 import { useTokens } from "../../../hooks/token";
 import { Token } from "../../../hooks/types";
-import Checklist from "./Checklist";
 import Chart from "./Chart";
+import Checklist from "./Checklist";
 import Preview from "./Preview";
 
 export default function Creator() {
@@ -104,6 +104,7 @@ export default function Creator() {
               <div className="relative">
                 <TextInput
                   value={Number(vestingDuration)}
+                  // @ts-ignore
                   onChange={(e) => setVestingDuration(e.target.value)}
                   type="number"
                   min="0"
@@ -130,6 +131,7 @@ export default function Creator() {
               <div className="relative">
                 <TextInput
                   value={Number(cliffDuration)}
+                  // @ts-ignore
                   onChange={(e) => setCliffDuration(e.target.value)}
                   type="number"
                   min="0"
@@ -211,7 +213,6 @@ export default function Creator() {
           vestingInterval={vestingInterval}
           cliffDuration={cliffDuration}
           cliffInterval={cliffInterval}
-          amount={amount}
         />
 
         {preview && (
