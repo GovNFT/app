@@ -20,7 +20,3 @@ export const WALLETCONNECT_PROJECT_ID = import.meta.env
 export const FEATURE_FLAGS = String(
   import.meta.env.VITE_FEATURE_FLAGS
 ).split(",");
-
-export const CURRENCY_MAXIMUM_FRACTION_DIGITS = parseInt(
-  import.meta.env.VITE_CURRENCY_MAXIMUM_FRACTION_DIGITS || "5",
-);

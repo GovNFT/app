@@ -1,8 +1,7 @@
-import * as dnum from "dnum";
 import { Spinner } from "flowbite-react";
+import { formatUnits, parseUnits } from "viem";
 import { useAccount } from "wagmi";
 
-import { CURRENCY_MAXIMUM_FRACTION_DIGITS } from "../constants";
 import { useTokens } from "../hooks/token";
 import { Address } from "../hooks/types";
 import TokenAvatar from "./TokenAvatar";
@@ -33,10 +32,10 @@ export default function Amount({
   // @ts-ignore
   const amountDecimals = decimals || token?.decimals || 18;
 
-  const amountFrom = dnum.from([amount, amountDecimals]);
-  const ndigits =
-    Number(dnum.format(amountFrom)) < 1 ? CURRENCY_MAXIMUM_FRACTION_DIGITS : 2;
-  const pretty = dnum.format(amountFrom, ndigits);
+  const ndigits = amount < parseUnits("1", amountDecimals) ? 5 : 2;
+  const pretty = Number(formatUnits(amount, amountDecimals))
+    .toFixed(ndigits)
+    .toString();
 
   if (showLogo) {
     return (
