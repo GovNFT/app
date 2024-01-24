@@ -14,7 +14,7 @@ import AssetInput from "../../../components/AssetInput";
 import { useTokens } from "../../../hooks/token";
 import { Token } from "../../../hooks/types";
 import Checklist from "./Checklist";
-import Graph from "./Graph";
+import Chart from "./Chart";
 import Preview from "./Preview";
 
 export default function Creator() {
@@ -22,9 +22,11 @@ export default function Creator() {
   const [amount, setAmount] = useState(parseUnits("0", 18));
   const [preview, setPreview] = useState(false);
   const [toAddress, setToAddress] = useState(null);
-  const [vestingDuration, setVestingDuration] = useState("1");
-  const [cliffDuration, setCliffDuration] = useState("0");
-  const [selectedStartDate, setSelectedStartDate] = useState(dayjs().format());
+
+  const today = dayjs().format("YYYY-MM-DD");
+  const [vestingDuration, setVestingDuration] = useState(1);
+  const [cliffDuration, setCliffDuration] = useState(0);
+  const [selectedStartDate, setSelectedStartDate] = useState(today);
   const [vestingInterval, setVestingInterval] = useState("years");
   const [cliffInterval, setCliffInterval] = useState("months");
 
@@ -86,7 +88,12 @@ export default function Creator() {
             <Datepicker
               // @ts-ignore
               onSelect={(e) => setSelectedStartDate(e.target.value)} // not working
+              minDate={new Date(today)}
             />
+            {/*<TextInput
+              onSelect={(e) => setSelectedStartDate(e.target.value)} // not working
+              type="date"
+            />*/}
           </div>
 
           <div className="md:flex gap-6">
@@ -96,9 +103,11 @@ export default function Creator() {
               </div>
               <div className="relative">
                 <TextInput
-                  value={vestingDuration}
+                  value={Number(vestingDuration)}
                   onChange={(e) => setVestingDuration(e.target.value)}
                   type="number"
+                  min="0"
+                  step="1"
                 />
                 <Select
                   sizing="sm"
@@ -120,9 +129,11 @@ export default function Creator() {
               </div>
               <div className="relative">
                 <TextInput
-                  value={cliffDuration}
+                  value={Number(cliffDuration)}
                   onChange={(e) => setCliffDuration(e.target.value)}
                   type="number"
+                  min="0"
+                  step="1"
                 />
                 <Select
                   sizing="sm"
@@ -194,7 +205,7 @@ export default function Creator() {
           amount={amount}
           vestingDuration={vestingDuration}
         />
-        <Graph
+        <Chart
           selectedStartDate={selectedStartDate}
           vestingDuration={vestingDuration}
           vestingInterval={vestingInterval}

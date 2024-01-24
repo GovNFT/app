@@ -10,8 +10,10 @@ import {
   Title,
   Tooltip,
 } from "chart.js";
+
 import dayjs from "dayjs";
-import { format, from } from "dnum";
+import * as dnum from "dnum";
+
 import { Line } from "react-chartjs-2";
 
 ChartJS.register(
@@ -24,7 +26,7 @@ ChartJS.register(
   Legend,
 );
 
-export default function Graph({
+export default function Chart({
   vestingDuration,
   vestingInterval,
   cliffDuration,
@@ -42,11 +44,11 @@ export default function Graph({
 
   const tooltip = (tooltipItems) => {
     let vested = "0";
-    const totalAmount = format(from([amount, 18]), 5);
+    const totalAmount = dnum.format(dnum.from([amount, 18]), 5);
     const cliffAmount = (Number(totalAmount) / 100) * Number(cliffPercentage);
 
     // @ts-ignore
-    const clifVestedAmount = format(from([cliffAmount]), 5);
+    const clifVestedAmount = dnum.format(dnum.from([cliffAmount]), 5);
 
     tooltipItems.forEach(function (tooltipItem) {
       if (tooltipItem.dataIndex === 2) {
@@ -72,7 +74,14 @@ export default function Graph({
         beginAtZero: true,
         type: "time",
         time: {
-          unit: "year",
+          parser: 'YYYY-MM-DD',
+          displayFormats: { month: 'MMM YYYY' },
+          tooltipFormat: 'DD/MM/YY',
+          unit: 'month',
+        },
+        ticks: {
+          autoSkip: true,
+          maxTicksLimit: 3,
         },
         grid: {
           display: false,
@@ -84,7 +93,7 @@ export default function Graph({
         ticks: {
           display: true,
           callback: function (value) {
-            return "-  " + value + "%";
+            return "—  " + value + "%";
           },
         },
       },
@@ -112,7 +121,7 @@ export default function Graph({
     datasets: [
       {
         label: "Vesting",
-        data: [NaN, cliffPercentage, 100],
+        data: [null, cliffPercentage, 100],
         borderColor: "rgb(53, 162, 235)",
         backgroundColor: "rgba(53, 162, 235)",
         borderWidth: 1,
@@ -120,7 +129,7 @@ export default function Graph({
       },
       {
         label: "Cliff",
-        data: cliffDuration == 0 ? NaN : [0, 100],
+        data: cliffDuration == 0 ? null : [0, 100],
         borderDash: [1, 3],
         borderColor: "rgb(250, 218, 94)",
         backgroundColor: "rgba(250, 218, 94)",
@@ -130,14 +139,6 @@ export default function Graph({
       },
     ],
   };
-
-  if (dayjs(startDate).isAfter(dayjs(endDate))) {
-    return (
-      <div className="my-8 text-xs bg-black/5 dark:bg-black/5 p-6 text-center">
-        Vesting Duration error
-      </div>
-    );
-  }
 
   if (dayjs(cliffDate).isAfter(dayjs(endDate))) {
     return (
