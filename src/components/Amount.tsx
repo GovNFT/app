@@ -1,4 +1,4 @@
-import { format, from } from "dnum";
+import * as dnum from "dnum";
 import { Spinner } from "flowbite-react";
 import { useAccount } from "wagmi";
 
@@ -10,13 +10,13 @@ import TokenAvatar from "./TokenAvatar";
 export default function Amount({
   amount,
   decimals = null,
-  tokenAddress = "",
+  tokenAddress,
   symbol = null,
   showLogo = true,
 }: {
   amount: bigint;
   decimals?: number | null;
-  tokenAddress?: string;
+  tokenAddress?: Address;
   symbol?: string | null;
   showLogo?: boolean;
 }) {
@@ -28,15 +28,15 @@ export default function Amount({
   }
 
   const addr = String(tokenAddress).toLowerCase() as Address;
-  const token = tokens?.filter((asset) => asset.address.includes(addr));
+  const token = tokens.filter((asset) => asset.address.includes(addr));
 
   // @ts-ignore
   const amountDecimals = decimals || token?.decimals || 18;
 
-  const amountFrom = from([amount, amountDecimals]);
+  const amountFrom = dnum.from([amount, amountDecimals]);
   const ndigits =
-    Number(format(amountFrom)) < 1 ? CURRENCY_MAXIMUM_FRACTION_DIGITS : 2;
-  const pretty = format(amountFrom, ndigits);
+    Number(dnum.format(amountFrom)) < 1 ? CURRENCY_MAXIMUM_FRACTION_DIGITS : 2;
+  const pretty = dnum.format(amountFrom, ndigits);
 
   if (showLogo) {
     return (
