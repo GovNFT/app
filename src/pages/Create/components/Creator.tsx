@@ -1,3 +1,4 @@
+import dayjs from "dayjs";
 import {
   Datepicker,
   Select,
@@ -23,6 +24,9 @@ export default function Creator() {
   const [toAddress, setToAddress] = useState(null);
   const [vestingDuration, setVestingDuration] = useState("1");
   const [cliffDuration, setCliffDuration] = useState("0");
+  const [selectedStartDate, setSelectedStartDate] = useState(dayjs().format());
+  const [vestingInterval, setVestingInterval] = useState("years");
+  const [cliffInterval, setCliffInterval] = useState("months");
 
   const [recipientName, setRecipientName] = useState("");
   const [tags, setTags] = useState(null);
@@ -79,7 +83,10 @@ export default function Creator() {
             <div className="text-xs text-gray-600 dark:text-gray-400">
               Start Date
             </div>
-            <Datepicker minDate={new Date("2023-09-17T22:00:00.000Z")} />
+            <Datepicker
+              // @ts-ignore
+              onSelect={(e) => setSelectedStartDate(e.target.value)} // not working
+            />
           </div>
 
           <div className="md:flex gap-6">
@@ -97,10 +104,12 @@ export default function Creator() {
                   sizing="sm"
                   className="absolute top-0.5 right-0.5 sm:top-1.5 sm:right-1.5 w-24"
                   color="gray"
+                  onChange={(e) => setVestingInterval(e.target.value)}
+                  defaultValue={vestingInterval}
                 >
-                  <option>Years</option>
-                  <option>Months</option>
-                  <option>Weeks</option>
+                  <option value="years">Years</option>
+                  <option value="months">Months</option>
+                  <option value="weeks">Weeks</option>
                 </Select>
               </div>
             </div>
@@ -119,10 +128,12 @@ export default function Creator() {
                   sizing="sm"
                   className="absolute top-0.5 right-0.5 sm:top-1.5 sm:right-1.5 w-24"
                   color="gray"
+                  onChange={(e) => setCliffInterval(e.target.value)}
+                  defaultValue={cliffInterval}
                 >
-                  <option>Years</option>
-                  <option>Months</option>
-                  <option>Weeks</option>
+                  <option value="years">Years</option>
+                  <option value="months">Months</option>
+                  <option value="weeks">Weeks</option>
                 </Select>
               </div>
             </div>
@@ -183,7 +194,15 @@ export default function Creator() {
           amount={amount}
           vestingDuration={vestingDuration}
         />
-        <Graph />
+        <Graph
+          selectedStartDate={selectedStartDate}
+          vestingDuration={vestingDuration}
+          vestingInterval={vestingInterval}
+          cliffDuration={cliffDuration}
+          cliffInterval={cliffInterval}
+          amount={amount}
+        />
+
         {preview && (
           <Preview
             toAddress={toAddress}
