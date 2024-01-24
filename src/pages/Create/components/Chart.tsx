@@ -5,7 +5,7 @@ import {
   LineElement,
   PointElement,
 } from "chart.js";
-import dayjs, {Dayjs} from "dayjs";
+import dayjs, { Dayjs } from "dayjs";
 import { Line } from "react-chartjs-2";
 
 ChartJS.register(CategoryScale, LinearScale, LineElement, PointElement);
@@ -23,13 +23,12 @@ export default function Chart({
   cliffInterval: string;
   startDate: Dayjs | null;
 }) {
-
   // @ts-ignore
   const endDate = dayjs(startDate).add(vestingDuration, vestingInterval);
   // @ts-ignore
   const cliffDate = dayjs(startDate).add(cliffDuration, cliffInterval);
 
-  console.log(typeof startDate)
+  console.log(typeof startDate);
 
   const options = {
     // responsive: true,
