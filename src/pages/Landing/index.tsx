@@ -1,4 +1,5 @@
-import { SvgLoader } from "react-svgmt";
+import { Button } from "flowbite-react";
+import { Github as GithubIcon } from "lucide-react";
 
 import Footer from "../../components/Footer";
 import Header from "../../components/Header";
@@ -9,10 +10,33 @@ export default function Landing() {
       {/* @ts-ignore */}
       <Header />
 
-      <div className="md:w-1/2 xl:w-1/3 mx-auto text-center pt-28 pb-48">
-        <div className="text-3xl leading-10 px-8">NFTs for vesting and distribution of (governance) tokens.</div>
-        <div className="flex justify-center pt-12">
-          <SvgLoader src="./svg/illustration.svg" />
+      <div className="w-full text-center flex flex-col items-center">
+        <div className="py-20 space-y-28 flex flex-col items-center">
+          <div className="text-center md:w-7/12 bg-gradient-to-r from-red-600 via-fuchsia-800 to-fuchsia-600 inline-block text-transparent bg-clip-text">
+            <div className="text-lg md:text-4xl font-bold pb-8">
+              veToken{" "}
+              <span className="bg-fuchsia-900 text-neutral-100 dark:text-gray-900 px-3 py-1.5">
+                Governance
+              </span>
+            </div>
+            <div className="text-lg md:text-4xl leading-tight pb-8 px-4">
+              Vest tokens as veNFTs (ERC-721) for better governance and
+              long-term incentive alignment. Compatible with any ERC-20 token.
+            </div>
+          </div>
+        </div>
+
+        <div className="flex flex-col md:flex-row items-center gap-8 pb-32">
+          <span className="w-44 md:w-fit text-gray-400 dark:text-gray-600 text-sm">
+            A public good supported by{" "}
+            <span className="font-bold italic">OPTIMISM</span>
+          </span>
+          <Button color="light" size="sm">
+            <div className="flex items-center gap-3 px-2 text-sm">
+              Git Hub
+              <GithubIcon size={14} />
+            </div>
+          </Button>
         </div>
       </div>
 
