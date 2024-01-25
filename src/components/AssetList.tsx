@@ -37,9 +37,7 @@ export default function AssetsList({
   return (
     <div>
       <div className="mt-8 pb-2 px-4 mx-4 flex justify-between text-xs border-b border-black/5 dark:border-white/5">
-        <span className="text-gray-400 dark:text-gray-600">
-          {assets.length} Tokens
-        </span>
+        <span className="text-gray-400 dark:text-gray-600">{assets.length} Tokens</span>
         <span className="text-gray-400 dark:text-gray-600">Balance</span>
       </div>
 

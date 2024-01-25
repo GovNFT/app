@@ -1,8 +1,4 @@
-import {
-  CheckCircle2 as CheckCircle2Icon,
-  Coins as CoinsIcon,
-  Wallet as WalletIcon,
-} from "lucide-react";
+import { CheckCircle2 as CheckCircle2Icon, Coins as CoinsIcon, Wallet as WalletIcon } from "lucide-react";
 import { isAddress } from "viem";
 
 export default function Checklist({ toAddress, amount, vestingDuration }) {
@@ -10,9 +6,7 @@ export default function Checklist({ toAddress, amount, vestingDuration }) {
     <>
       <div className="space-y-4 text-sm">
         <div className="text-xs pb-3 mb-6 border-b border-black/5 dark:border-white/5">
-          <span className="text-gray-600 dark:text-gray-400">
-            Create a GovNFT
-          </span>
+          <span className="text-gray-600 dark:text-gray-400">Create a GovNFT</span>
         </div>
         {!isAddress(toAddress) ? (
           <div className="flex gap-2 items-center text-gray-600 dark:text-gray-400">
@@ -30,10 +24,7 @@ export default function Checklist({ toAddress, amount, vestingDuration }) {
           </div>
         )}
 
-        {!amount ||
-        amount === 0 ||
-        !vestingDuration ||
-        vestingDuration === 0 ? (
+        {!amount || amount === 0 || !vestingDuration || vestingDuration === 0 ? (
           <div className="flex gap-2 items-center text-gray-600 dark:text-gray-400">
             <div className="bg-black/5 dark:bg-white/5 w-8 h-8 flex items-center justify-center mr-2 rounded">
               <CoinsIcon size={14} />

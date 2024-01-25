@@ -12,11 +12,7 @@ export default function Transfer() {
       {/* @ts-ignore */}
       <Header />
 
-      {!govnft ? (
-        <LoadingPlaceholder message="Loading data..." />
-      ) : (
-        <TransferNft />
-      )}
+      {!govnft ? <LoadingPlaceholder message="Loading data..." /> : <TransferNft />}
 
       <Footer />
     </div>

@@ -1,9 +1,5 @@
 import { Button } from "flowbite-react";
-import {
-  ExternalLink as ExternalLinkIcon,
-  Settings as SettingsIcon,
-  Wallet as WalletIcon,
-} from "lucide-react";
+import { ExternalLink as ExternalLinkIcon, Settings as SettingsIcon, Wallet as WalletIcon } from "lucide-react";
 import { useState } from "react";
 import { useAccount, useBalance, useDisconnect, useSwitchChain } from "wagmi";
 
@@ -50,9 +46,7 @@ export default function Profile({ children }) {
                     </div>
                     <div className="text-xs">
                       Balance: &nbsp;
-                      <span className="font-mono">
-                        {parseFloat(balance?.formatted || "0").toFixed(5)}
-                      </span>{" "}
+                      <span className="font-mono">{parseFloat(balance?.formatted || "0").toFixed(5)}</span>{" "}
                       {balance?.symbol}
                     </div>
                   </div>
@@ -60,10 +54,7 @@ export default function Profile({ children }) {
               </div>
 
               {invalidChain && (
-                <Button
-                  onClick={() => switchChain({ chainId: DEFAULT_CHAIN.id })}
-                  className="w-full"
-                >
+                <Button onClick={() => switchChain({ chainId: DEFAULT_CHAIN.id })} className="w-full">
                   Switch to {DEFAULT_CHAIN.name} to continue
                 </Button>
               )}
@@ -71,11 +62,7 @@ export default function Profile({ children }) {
 
             <CustomRpc />
 
-            <Button
-              onClick={() => disconnect()}
-              className="w-full"
-              color="light"
-            >
+            <Button onClick={() => disconnect()} className="w-full" color="light">
               Disconnect
             </Button>
           </div>

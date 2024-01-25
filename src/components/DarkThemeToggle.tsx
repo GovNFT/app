@@ -13,10 +13,7 @@ export default function DarkThemeToggle() {
 
   return (
     <>
-      <div
-        className="hover:bg-gray-900/5 dark:hover:bg-gray-700/20 rounded-full cursor-pointer p-3"
-        onClick={toggle}
-      >
+      <div className="hover:bg-gray-900/5 dark:hover:bg-gray-700/20 rounded-full cursor-pointer p-3" onClick={toggle}>
         <MoonIcon size={16} className="inline dark:hidden" />
         <SunIcon size={16} className="hidden dark:inline" />
       </div>
@@ -27,9 +24,7 @@ export default function DarkThemeToggle() {
 // Load system dark/light mode settings...
 DarkThemeToggle.isDarkMode = () => {
   const storedDarkMode = window.localStorage.getItem("darkMode");
-  const sysDarkMode = window.matchMedia?.(
-    "(prefers-color-scheme: dark)",
-  ).matches;
+  const sysDarkMode = window.matchMedia?.("(prefers-color-scheme: dark)").matches;
 
   return storedDarkMode ? storedDarkMode === "true" : sysDarkMode;
 };

@@ -1,9 +1,6 @@
 import { Spinner, TextInput } from "flowbite-react";
 import { isEmpty } from "lodash";
-import {
-  ChevronDown as ChevronDownIcon,
-  Search as SearchIcon,
-} from "lucide-react";
+import { ChevronDown as ChevronDownIcon, Search as SearchIcon } from "lucide-react";
 import { useEffect, useState } from "react";
 
 import { Token } from "../hooks/types";
@@ -33,11 +30,7 @@ export default function AssetSelect({
     if (!isEmpty(found)) {
       found = assets;
     } else {
-      found = assets.filter(
-        (asset) =>
-          asset.address.includes(toFind) ||
-          asset.symbol.toLowerCase().includes(toFind),
-      );
+      found = assets.filter((asset) => asset.address.includes(toFind) || asset.symbol.toLowerCase().includes(toFind));
     }
 
     setFilteredAssetOptions(found);
@@ -87,11 +80,7 @@ export default function AssetSelect({
               autoFocus
             />
           </div>
-          <AssetList
-            assets={filteredAssetOptions}
-            onSelect={onLocalSelect}
-            search={search}
-          />
+          <AssetList assets={filteredAssetOptions} onSelect={onLocalSelect} search={search} />
         </div>
       </Modal>
     </>

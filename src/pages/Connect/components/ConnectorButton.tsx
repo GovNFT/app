@@ -22,11 +22,7 @@ export default function ConnectorButton({ connector, onClick }) {
       >
         <div className="flex items-center gap-3 !justify-start">
           <img
-            src={
-              connector.icon
-                ? connector.icon
-                : `svg/icn-connect-${connector.id}.svg`
-            }
+            src={connector.icon ? connector.icon : `svg/icn-connect-${connector.id}.svg`}
             className="h-6"
             alt={`Connect with ${connector.name}`}
           />

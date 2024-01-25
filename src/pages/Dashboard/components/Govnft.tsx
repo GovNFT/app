@@ -19,29 +19,18 @@ export default function Govnft({ withdraw }) {
               <div className="flex gap-2 items-center">
                 Unknown Recipient
                 <Tooltip content="No extra info">
-                  <InfoIcon
-                    size={12}
-                    className="text-gray-600 dark:text-gray-400"
-                  />
+                  <InfoIcon size={12} className="text-gray-600 dark:text-gray-400" />
                 </Tooltip>
               </div>
               <div className="text-xs text-gray-400 dark:text-gray-600">
-                <AddressMask
-                  address={"0x09516bBBc08B8AC950A6ee22B443ca9C55Cd68Da"}
-                />
+                <AddressMask address={"0x09516bBBc08B8AC950A6ee22B443ca9C55Cd68Da"} />
               </div>
               <div className="text-xs text-gray-600 dark:text-gray-400 flex gap-1.5 pt-1">
-                <NavLink
-                  href="/delegate"
-                  className="underline hover:no-underline"
-                >
+                <NavLink href="/delegate" className="underline hover:no-underline">
                   Delegate
                 </NavLink>{" "}
                 &middot;{" "}
-                <NavLink
-                  href="/transfer"
-                  className="underline hover:no-underline"
-                >
+                <NavLink href="/transfer" className="underline hover:no-underline">
                   Transfer
                 </NavLink>
               </div>
@@ -49,9 +38,7 @@ export default function Govnft({ withdraw }) {
           </div>
           <div className="flex flex-wrap gap-8 md:flex-row md:gap-20 items-center grow px-2 border-t border-white/5 lg:border-none pt-5 lg:pt-0">
             <div className="space-y-1.5">
-              <div className="text-xs text-gray-400 dark:text-gray-600">
-                Amount
-              </div>
+              <div className="text-xs text-gray-400 dark:text-gray-600">Amount</div>
               <div>
                 <Amount
                   tokenAddress={"0x4200000000000000000000000000000000000042"}
@@ -61,15 +48,11 @@ export default function Govnft({ withdraw }) {
                   showLogo={true}
                 />
               </div>
-              <div className="text-xs text-gray-600 dark:text-gray-400 pt-1">
-                Started a month ago
-              </div>
+              <div className="text-xs text-gray-600 dark:text-gray-400 pt-1">Started a month ago</div>
             </div>
 
             <div className="space-y-1.5">
-              <div className="text-xs text-gray-400 dark:text-gray-600">
-                Vesting
-              </div>
+              <div className="text-xs text-gray-400 dark:text-gray-600">Vesting</div>
               <div>
                 <Amount
                   tokenAddress={"0x4200000000000000000000000000000000000042"}
@@ -79,16 +62,12 @@ export default function Govnft({ withdraw }) {
                   showLogo={false}
                 />
               </div>
-              <div className="text-xs text-gray-600 dark:text-gray-400 pt-1">
-                Ends in 2 years
-              </div>
+              <div className="text-xs text-gray-600 dark:text-gray-400 pt-1">Ends in 2 years</div>
             </div>
 
             {withdraw && (
               <div className="space-y-1.5 text-right grow">
-                <div className="text-xs text-gray-400 dark:text-gray-600">
-                  Withdrawable
-                </div>
+                <div className="text-xs text-gray-400 dark:text-gray-600">Withdrawable</div>
                 <div className="flex justify-end">
                   <Amount
                     tokenAddress={"0x4200000000000000000000000000000000000042"}

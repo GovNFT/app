@@ -1,12 +1,7 @@
 import { Button } from "flowbite-react";
 import { useLocation } from "wouter";
 
-export default function NavLink({
-  href,
-  children,
-  useButton = false,
-  ...opts
-}) {
+export default function NavLink({ href, children, useButton = false, ...opts }) {
   const LinkComponent = useButton ? Button : "a";
   const [_location, navigate] = useLocation();
   const goTo = (event, ref) => {

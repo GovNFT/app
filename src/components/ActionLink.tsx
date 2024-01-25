@@ -1,12 +1,6 @@
 import { Button, Spinner } from "flowbite-react";
 
-export default function ActionLink({
-  onClick,
-  disabled = false,
-  children,
-  className = "",
-  useButton = false,
-}) {
+export default function ActionLink({ onClick, disabled = false, children, className = "", useButton = false }) {
   const handler = (event) => {
     event.preventDefault();
     !disabled && onClick?.(event);

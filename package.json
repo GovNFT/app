@@ -5,9 +5,9 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "tsc && biome check --apply ./src && vite build",
+    "build": "tsc && biome check ./src && vite build",
     "preview": "vite preview",
-    "lint": "biome lint ./src"
+    "lint": "biome check ./src"
   },
   "dependencies": {
     "@tanstack/react-query": "^5.17.15",

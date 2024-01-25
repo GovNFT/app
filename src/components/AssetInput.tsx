@@ -59,24 +59,19 @@ export default function AssetInput({
     }
 
     if (!validate) {
-      setAmount?.(parsedAmount);
+      setAmount(parsedAmount);
     }
   }, [value, asset, validate, setAmount]);
 
   return (
     <div>
       <div className="flex flex-col gap-1.5 sm:flex-row justify-between items-baseline mb-3">
-        <div className="text-xs text-gray-600 dark:text-gray-400 grow">
-          {title}
-        </div>
+        <div className="text-xs text-gray-600 dark:text-gray-400 grow">{title}</div>
         <div className="text-xs text-right flex gap-3 items-center">
           {!asset && <Spinner size="xs" color="gray" />}
 
           {asset?.value && (
-            <ActionLink
-              className="no-underline"
-              onClick={() => setFromBalance()}
-            >
+            <ActionLink className="no-underline" onClick={() => setFromBalance()}>
               Available{" "}
               <Amount
                 tokenAddress={asset.address}
@@ -98,14 +93,7 @@ export default function AssetInput({
         onClick={(e) => e.target.select()}
         onChange={(e) => !disabled && setValue(e.target.value)}
         color={invalid ? "warning" : "gray"}
-        addon={
-          <AssetSelect
-            className="w-28"
-            assets={assets}
-            selectedAsset={asset}
-            onSelect={setAsset}
-          />
-        }
+        addon={<AssetSelect className="w-28" assets={assets} selectedAsset={asset} onSelect={setAsset} />}
       />
     </div>
   );

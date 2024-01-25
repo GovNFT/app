@@ -6,15 +6,13 @@ import config from "../rpc";
 import { Address, Token } from "./types";
 
 async function fetchTokens(accountAddress: Address): Promise<Token[]> {
-  const tokens = TOKEN_ADDRESSES.map(
-    async (tokenAddress: Address): Promise<Token> => {
-      const token = await getBalance(config, {
-        address: accountAddress,
-        token: tokenAddress,
-      });
-      return { ...token, address: tokenAddress };
-    },
-  );
+  const tokens = TOKEN_ADDRESSES.map(async (tokenAddress: Address): Promise<Token> => {
+    const token = await getBalance(config, {
+      address: accountAddress,
+      token: tokenAddress,
+    });
+    return { ...token, address: tokenAddress };
+  });
 
   return Promise.all(tokens);
 }

@@ -2,7 +2,7 @@
   "formatter": {
     "enabled": true,
     "indentStyle": "space",
-    "lineWidth": 80,
+    "lineWidth": 120,
     "ignore": []
   },
   "linter": {
