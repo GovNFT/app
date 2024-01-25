@@ -1,0 +1,104 @@
+[
+  {
+    "stateMutability": "nonpayable",
+    "type": "constructor",
+    "inputs": [
+      {
+        "name": "_nft",
+        "type": "address"
+      }
+    ],
+    "outputs": []
+  },
+  {
+    "stateMutability": "view",
+    "type": "function",
+    "name": "all",
+    "inputs": [
+      {
+        "name": "_account",
+        "type": "address"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "",
+        "type": "tuple[]",
+        "components": [
+          {
+            "name": "id",
+            "type": "uint256"
+          },
+          {
+            "name": "total_locked",
+            "type": "uint256"
+          },
+          {
+            "name": "amount",
+            "type": "uint256"
+          },
+          {
+            "name": "total_claimed",
+            "type": "uint256"
+          },
+          {
+            "name": "claimable",
+            "type": "uint256"
+          },
+          {
+            "name": "split_count",
+            "type": "uint256"
+          },
+          {
+            "name": "cliff_length",
+            "type": "uint256"
+          },
+          {
+            "name": "start",
+            "type": "uint256"
+          },
+          {
+            "name": "end",
+            "type": "uint256"
+          },
+          {
+            "name": "token",
+            "type": "address"
+          },
+          {
+            "name": "vault",
+            "type": "address"
+          },
+          {
+            "name": "minter",
+            "type": "address"
+          },
+          {
+            "name": "owner",
+            "type": "address"
+          },
+          {
+            "name": "address",
+            "type": "address"
+          },
+          {
+            "name": "delegated",
+            "type": "address"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "stateMutability": "view",
+    "type": "function",
+    "name": "nft",
+    "inputs": [],
+    "outputs": [
+      {
+        "name": "",
+        "type": "address"
+      }
+    ]
+  }
+]
