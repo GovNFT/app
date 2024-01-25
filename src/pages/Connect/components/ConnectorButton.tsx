@@ -8,7 +8,7 @@ export default function ConnectorButton({ connector, onClick }) {
       const provider = await connector.getProvider();
       setReady(!!provider);
     })();
-  }, [connector, setReady]);
+  }, [connector]);
 
   return (
     <>
@@ -22,14 +22,11 @@ export default function ConnectorButton({ connector, onClick }) {
       >
         <div className="flex items-center gap-3 !justify-start">
           <img
-            src={
-              connector.icon
-                ? connector.icon
-                : `svg/icn-connect-${connector.id}.svg`
-            }
+            src={connector.icon ? connector.icon : `svg/icn-connect-${connector.id}.svg`}
             className="h-6"
+            alt={`Connect with ${connector.name}`}
           />
-          {connector.id == "injected" ? "Browser Wallet" : connector.name}
+          {connector.id === "injected" ? "Browser Wallet" : connector.name}
         </div>
       </Button>
     </>

@@ -19,15 +19,13 @@ export default function TokenAvatar({
 
   const classNames = className
     ? `${className} rounded-full bg-gray-200 dark:bg-gray-700 hover:opacity-80`
-    : `w-8 h-8 rounded-full bg-gray-200 dark:bg-gray-700 hover:opacity-80`;
+    : "w-8 h-8 rounded-full bg-gray-200 dark:bg-gray-700 hover:opacity-80";
 
   // Builds a list of potential CDN logo URIs
-  const logoURIs = TOKEN_ASSETS_CDN.map((cdnUri) => [
+  const logoURIs = TOKEN_ASSETS_CDN.flatMap((cdnUri) => [
     `${cdnUri}/${DEFAULT_CHAIN.id}/${checksum}/logo.svg`,
     `${cdnUri}/${DEFAULT_CHAIN.id}/${checksum}/logo-128.png`,
-  ])
-    .flat()
-    .concat([TOKEN_ICON]);
+  ]).concat([TOKEN_ICON]);
 
   return <Img className={classNames} src={logoURIs} />;
 }
