@@ -8,7 +8,7 @@ export default function ConnectorButton({ connector, onClick }) {
       const provider = await connector.getProvider();
       setReady(!!provider);
     })();
-  }, [connector, setReady]);
+  }, [connector]);
 
   return (
     <>
@@ -28,8 +28,9 @@ export default function ConnectorButton({ connector, onClick }) {
                 : `svg/icn-connect-${connector.id}.svg`
             }
             className="h-6"
+            alt={`Connect with ${connector.name}`}
           />
-          {connector.id == "injected" ? "Browser Wallet" : connector.name}
+          {connector.id === "injected" ? "Browser Wallet" : connector.name}
         </div>
       </Button>
     </>

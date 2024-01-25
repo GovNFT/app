@@ -19,7 +19,7 @@ export default function Profile({ children }) {
   const { disconnect } = useDisconnect();
   const { data: balance } = useBalance({ address: address });
 
-  const invalidChain = chain?.id != DEFAULT_CHAIN.id;
+  const invalidChain = chain?.id !== DEFAULT_CHAIN.id;
   const explorer = chain?.blockExplorers?.default;
   const url = `${explorer?.url}/address/${address}`;
 

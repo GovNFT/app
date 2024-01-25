@@ -5,15 +5,14 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "eslint ./src && tsc && prettier -c . && vite build",
+    "build": "tsc && biome check --apply ./src && vite build",
     "preview": "vite preview",
-    "lint": "prettier -w . && eslint ./src"
+    "lint": "biome lint ./src"
   },
   "dependencies": {
     "@tanstack/react-query": "^5.17.15",
     "buffer": "^6.0.3",
     "dayjs": "^1.11.9",
-    "dnum": "^2.10.0",
     "events": "^3.3.0",
     "flowbite-react": "0.6.0",
     "lodash": "*",
@@ -33,24 +32,16 @@
     "wouter": "^2.11.0"
   },
   "devDependencies": {
+    "@biomejs/biome": "1.5.3",
     "@mdx-js/react": "^2.3.0",
     "@mdx-js/rollup": "^2.3.0",
     "@types/react": "^18.2.21",
     "@types/react-dom": "^18.2.7",
-    "@typescript-eslint/eslint-plugin": "^6.7.0",
-    "@typescript-eslint/parser": "^6.7.0",
     "@vitejs/plugin-react": "^4.0.4",
     "autoprefixer": "^10.4.15",
-    "eslint": "^8.49.0",
-    "eslint-config-prettier": "^9.0.0",
-    "eslint-plugin-prettier": "^5.0.0",
-    "eslint-plugin-react": "^7.33.2",
-    "eslint-plugin-simple-import-sort": "^10.0.0",
-    "eslint-plugin-unused-imports": "^3.0.0",
     "flowbite": "1.8.1",
     "git-repo-info": "^2.1.1",
     "postcss": "^8.4.29",
-    "prettier": "3.0.3",
     "prop-types": "^15.8.1",
     "tailwindcss": "^3.3.3",
     "terser": "^5.19.4",

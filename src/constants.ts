@@ -17,6 +17,6 @@ export const WALLETCONNECT_PROJECT_ID = import.meta.env
   .VITE_WALLETCONNECT_PROJECT_ID;
 
 // prettier-ignore
-export const FEATURE_FLAGS = String(
-  import.meta.env.VITE_FEATURE_FLAGS
-).split(",");
+export const FEATURE_FLAGS = String(import.meta.env.VITE_FEATURE_FLAGS).split(
+  ",",
+);

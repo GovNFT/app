@@ -13,7 +13,7 @@ export default function Connect() {
 
   useEffect(() => {
     isConnected && navigate("/dash");
-  }, [isConnected]);
+  }, [isConnected, navigate]);
 
   return (
     <>
@@ -22,11 +22,11 @@ export default function Connect() {
           href="/"
           className="flex flex-col justify-center gap-6 pt-24 pb-4"
         >
-          <img src="govnft.svg" className="h-8 mr-1.5" alt="GOVNFT" />
+          <img src="govnft.svg" alt="GovNFT" className="h-8 mr-1.5" />
           <SvgLoader
             src="/wordmark.svg"
-            className="block h-4 w-auto dark:text-white"
             alt="GOVNFT"
+            className="block h-4 w-auto dark:text-white"
           />
         </NavLink>
 

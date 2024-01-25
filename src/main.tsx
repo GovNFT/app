@@ -9,8 +9,8 @@ import { WagmiProvider } from "wagmi";
 
 import FlowbiteTheme from "../flowbite.config";
 import App from "./App";
+import NotFound from "./NotFound";
 import DarkThemeToggle from "./components/DarkThemeToggle";
-import Error from "./Error";
 import config from "./rpc";
 
 const queryClient = new QueryClient();

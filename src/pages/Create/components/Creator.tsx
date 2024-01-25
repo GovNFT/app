@@ -1,8 +1,8 @@
 import {
   Datepicker,
   Select,
-  Textarea,
   TextInput,
+  Textarea,
   ToggleSwitch,
 } from "flowbite-react";
 import { useEffect, useState } from "react";
@@ -37,11 +37,11 @@ export default function Creator() {
   useEffect(() => {
     // @ts-ignore
     setToken(tokens[0]);
-  }, [tokens]);
+  }, [tokens, tokens[0]]);
 
   useEffect(() => {
     // @ts-ignore
-    if (isAddress(toAddress) && amount != 0) {
+    if (isAddress(toAddress) && amount !== 0) {
       setPreview(true);
     } else {
       setPreview(false);

@@ -30,7 +30,10 @@ export default function Checklist({ toAddress, amount, vestingDuration }) {
           </div>
         )}
 
-        {!amount || amount == 0 || !vestingDuration || vestingDuration == 0 ? (
+        {!amount ||
+        amount === 0 ||
+        !vestingDuration ||
+        vestingDuration === 0 ? (
           <div className="flex gap-2 items-center text-gray-600 dark:text-gray-400">
             <div className="bg-black/5 dark:bg-white/5 w-8 h-8 flex items-center justify-center mr-2 rounded">
               <CoinsIcon size={14} />

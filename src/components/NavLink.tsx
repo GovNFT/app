@@ -9,7 +9,7 @@ export default function NavLink({
 }) {
   const LinkComponent = useButton ? Button : "a";
   const [_location, navigate] = useLocation();
-  const goTo = function (event, ref) {
+  const goTo = (event, ref) => {
     if (navigate) {
       event.preventDefault();
       navigate(ref);

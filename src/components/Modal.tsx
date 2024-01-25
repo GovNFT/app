@@ -58,7 +58,7 @@ export default function Modal({ open, onClose, size = null, children }) {
       </div>,
       document.body,
     );
-  } else {
-    return null;
   }
+
+  return null;
 }

@@ -51,7 +51,7 @@ export default function AssetInput({
     }
 
     // @ts-ignore
-    if (parsedAmount != 0 && asset?.value && asset.value < parsedAmount) {
+    if (parsedAmount !== 0 && asset?.value && asset.value < parsedAmount) {
       if (validate) {
         setFromBalance();
       }
@@ -61,7 +61,7 @@ export default function AssetInput({
     if (!validate) {
       setAmount?.(parsedAmount);
     }
-  }, [value, asset]);
+  }, [value, asset, validate, setAmount]);
 
   return (
     <div>
@@ -72,7 +72,7 @@ export default function AssetInput({
         <div className="text-xs text-right flex gap-3 items-center">
           {!asset && <Spinner size="xs" color="gray" />}
 
-          {asset && asset?.value && (
+          {asset?.value && (
             <ActionLink
               className="no-underline"
               onClick={() => setFromBalance()}

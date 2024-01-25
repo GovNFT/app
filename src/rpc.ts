@@ -1,5 +1,5 @@
 import { isEmpty } from "lodash";
-import { createConfig, http } from "wagmi";
+import { http, createConfig } from "wagmi";
 import {
   coinbaseWallet,
   injected,
