@@ -13,6 +13,7 @@ async function fetchGovNfts(account): Promise<GovNft[]> {
     args: [account],
   });
 
+  // @ts-ignore
   return govnfts;
 }
 
