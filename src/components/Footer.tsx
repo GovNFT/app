@@ -10,13 +10,9 @@ export default function Footer() {
       </span>
       <div className="flex gap-8 items-center">
         <div className="hidden md:flex gap-2 items-center">
-          <span className="text-gray-600 dark:text-gray-400">
-            A public good for
-          </span>{" "}
-          <img src="./svg/op-logo.svg" className="h-5" />
-          <span className="font-bold italic text-gray-600 dark:text-gray-400">
-            OPTIMISM
-          </span>
+          <span className="text-gray-600 dark:text-gray-400">A public good for</span>{" "}
+          <img src="./svg/op-logo.svg" alt="Optimism" className="h-5" />
+          <span className="font-bold italic text-gray-600 dark:text-gray-400">OPTIMISM</span>
         </div>
         <DarkThemeToggle />
       </div>

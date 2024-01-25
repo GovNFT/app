@@ -2,8 +2,8 @@ import { useEffect } from "react";
 import { useAccount } from "wagmi";
 import { Route, Switch, useLocation } from "wouter";
 
+import NotFound from "./NotFound";
 import Toaster from "./components/Toaster";
-import Error from "./Error";
 import Connect from "./pages/Connect";
 import Create from "./pages/Create";
 import Dash from "./pages/Dashboard";
@@ -17,7 +17,7 @@ function ConnectedOnly({ children }) {
 
   useEffect(() => {
     !isConnected && navigate("/");
-  }, [isConnected]);
+  }, [isConnected, navigate]);
 
   if (isConnected) {
     return children;
@@ -64,7 +64,7 @@ export default function App() {
         </Route>
 
         <Route>
-          <Error>This page does not exist.</Error>
+          <NotFound>This page does not exist.</NotFound>
         </Route>
       </Switch>
     </>

@@ -27,9 +27,7 @@ export default function Modal({ open, onClose, size = null, children }) {
 
   if (typeof document !== "undefined") {
     return createPortal(
-      <div
-        className={`fixed z-40 inset-0 ${open ? "" : "pointer-events-none"}`}
-      >
+      <div className={`fixed z-40 inset-0 ${open ? "" : "pointer-events-none"}`}>
         {/* backdrop */}
         <div
           className={`fixed inset-0 bg-black ${
@@ -41,9 +39,7 @@ export default function Modal({ open, onClose, size = null, children }) {
         <div
           className={`fixed fixed left-1/2 -translate-x-1/2 sm:mt-12 bg-white dark:bg-gray-800 md:rounded-lg shadow-lg w-full pt-6 ${
             size === "lg" ? "sm:container" : "max-w-screen-sm"
-          } ${
-            open ? "opacity-100" : "pointer-events-none opacity-0"
-          } transition-opacity duration-300 ease-in-out`}
+          } ${open ? "opacity-100" : "pointer-events-none opacity-0"} transition-opacity duration-300 ease-in-out`}
         >
           <div className="flex justify-end sm:absolute -right-2 -top-10 ">
             <div
@@ -58,7 +54,7 @@ export default function Modal({ open, onClose, size = null, children }) {
       </div>,
       document.body,
     );
-  } else {
-    return null;
   }
+
+  return null;
 }

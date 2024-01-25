@@ -21,7 +21,7 @@ yarn lint
 To auto-fix some issues, run
 
 ```
-yarn lint --fix
+yarn lint --apply
 ```
 
 ## Dependencies

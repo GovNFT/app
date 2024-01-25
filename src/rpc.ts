@@ -1,11 +1,6 @@
 import { isEmpty } from "lodash";
-import { createConfig, http } from "wagmi";
-import {
-  coinbaseWallet,
-  injected,
-  safe,
-  walletConnect,
-} from "wagmi/connectors";
+import { http, createConfig } from "wagmi";
+import { coinbaseWallet, injected, safe, walletConnect } from "wagmi/connectors";
 
 import { DEFAULT_CHAIN, RPC_URI, WALLETCONNECT_PROJECT_ID } from "./constants";
 export const CUSTOM_RPC_URI_KEY = "customRPC";

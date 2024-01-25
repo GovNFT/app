@@ -55,9 +55,7 @@ const Toaster = () => {
               <div className="mx-5 text-sm font-normal text-gray-600 dark:text-gray-400 break-words">
                 {toast.message?.reason ||
                   toast.message?.message ||
-                  (toast.message.props
-                    ? toast.message
-                    : toast.message.toString())}
+                  (toast.message.props ? toast.message : toast.message.toString())}
               </div>
 
               <Toast.Toggle />

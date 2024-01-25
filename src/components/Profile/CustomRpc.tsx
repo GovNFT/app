@@ -15,8 +15,8 @@ export default function CustomRpc() {
       <div className="flex justify-between items-center gap-8 text-gray-600 dark:text-gray-400">
         <div className="w-full">
           <div className="pb-4">
-            To communicate with the network with your personal RPC, add it here
-            and reload the page. This is saved only in your browser, locally.
+            To communicate with the network with your personal RPC, add it here and reload the page. This is saved only
+            in your browser, locally.
           </div>
 
           <TextInput
@@ -27,9 +27,7 @@ export default function CustomRpc() {
             onChange={(e) => setCustomRpc(e.target.value)}
             placeholder="RPC URL ..."
           />
-          <div className="pt-3 text-xs opacity-50">
-            Leave blank if you want to use the RPC provided by us.
-          </div>
+          <div className="pt-3 text-xs opacity-50">Leave blank if you want to use the RPC provided by us.</div>
         </div>
       </div>
     </div>

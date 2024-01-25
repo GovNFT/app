@@ -33,9 +33,7 @@ export default function Amount({
   const amountDecimals = decimals || token?.decimals || 18;
 
   const ndigits = amount < parseUnits("1", amountDecimals) ? 5 : 2;
-  const pretty = Number(formatUnits(amount, amountDecimals))
-    .toFixed(ndigits)
-    .toString();
+  const pretty = Number(formatUnits(amount, amountDecimals)).toFixed(ndigits).toString();
 
   if (showLogo) {
     return (

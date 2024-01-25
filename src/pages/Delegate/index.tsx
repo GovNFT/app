@@ -12,11 +12,7 @@ export default function Delegate() {
       {/* @ts-ignore */}
       <Header />
 
-      {!govnft ? (
-        <LoadingPlaceholder message="Loading data..." />
-      ) : (
-        <DelegateNft />
-      )}
+      {!govnft ? <LoadingPlaceholder message="Loading data..." /> : <DelegateNft />}
 
       <Footer />
     </div>
