@@ -1,10 +1,4 @@
-import {
-  CategoryScale,
-  Chart as ChartJS,
-  LinearScale,
-  LineElement,
-  PointElement,
-} from "chart.js";
+import { CategoryScale, Chart as ChartJS, LineElement, LinearScale, PointElement } from "chart.js";
 import dayjs, { Dayjs } from "dayjs";
 import { Line } from "react-chartjs-2";
 
@@ -51,9 +45,7 @@ export default function Chart({
           font: {
             size: 10,
           },
-          callback: function (value) {
-            return " -  " + value + "%";
-          },
+          callback: (value) => ` -  ${value} %`,
         },
       },
     },
@@ -63,21 +55,14 @@ export default function Chart({
   const clifWeeks = cliffDate.diff(startDate, "weeks");
   const cliff = (clifWeeks / totalWeeks) * 100;
 
-  const labels = [
-    startDate.format("MMM YYYY"),
-    "•",
-    "•",
-    "•",
-    "•",
-    endDate.format("MMM YYYY"),
-  ];
+  const labels = [startDate.format("MMM YYYY"), "•", "•", "•", "•", endDate.format("MMM YYYY")];
 
   const vestingData =
     // Display 6 nodes on the graph.
     // If Cliff is set, we will hide the graph based on the Cliff percentage.
 
     // No cliff
-    (cliff == 0 && [0, 20, 40, 60, 80, 100]) ||
+    (cliff === 0 && [0, 20, 40, 60, 80, 100]) ||
     // Cliff 0 to 20 percent
     (cliff > 0 && cliff <= 20 && [NaN, 20, 40, 60, 80, 100]) ||
     // Cliff 20 to 40 percent
@@ -94,18 +79,18 @@ export default function Chart({
     cliff > 0 && cliff <= 20
       ? [0, 100]
       : NaN ||
-        // Cliff 20 to 40 percent
-        (cliff > 20 && cliff <= 40)
-      ? [0, 0, 100]
-      : NaN ||
-        // Cliff 40 to 60 percent
-        (cliff > 40 && cliff <= 60)
-      ? [0, 0, 0, 100]
-      : NaN ||
-        // Cliff 60 to 100 percent
-        (cliff > 60 && cliff <= 100)
-      ? [0, 0, 0, 0, 100]
-      : NaN;
+          // Cliff 20 to 40 percent
+          (cliff > 20 && cliff <= 40)
+        ? [0, 0, 100]
+        : NaN ||
+            // Cliff 40 to 60 percent
+            (cliff > 40 && cliff <= 60)
+          ? [0, 0, 0, 100]
+          : NaN ||
+              // Cliff 60 to 100 percent
+              (cliff > 60 && cliff <= 100)
+            ? [0, 0, 0, 0, 100]
+            : NaN;
 
   const data = {
     labels,

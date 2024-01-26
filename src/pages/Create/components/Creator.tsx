@@ -1,11 +1,5 @@
 import dayjs from "dayjs";
-import {
-  Datepicker,
-  Select,
-  Textarea,
-  TextInput,
-  ToggleSwitch,
-} from "flowbite-react";
+import { Datepicker, Select, TextInput, Textarea, ToggleSwitch } from "flowbite-react";
 import { useEffect, useState } from "react";
 import { isAddress, parseUnits } from "viem";
 import { useAccount } from "wagmi";
@@ -44,11 +38,11 @@ export default function Creator() {
   useEffect(() => {
     // @ts-ignore
     setToken(tokens[0]);
-  }, [tokens]);
+  }, [tokens, tokens[0]]);
 
   useEffect(() => {
     // @ts-ignore
-    if (isAddress(toAddress) && amount != 0) {
+    if (isAddress(toAddress) && amount !== 0) {
       setPreview(true);
     } else {
       setPreview(false);
@@ -60,14 +54,8 @@ export default function Creator() {
       <div className="lg:w-8/12 mb-4 lg:mb-0 bg-white shadow-md dark:bg-white/5 p-2 md:p-6 rounded-lg">
         <div className="px-4 mb-8 mt-4">
           <div className="space-y-3 pb-6">
-            <div className="text-xs text-gray-600 dark:text-gray-400">
-              Recipient Address
-            </div>
-            <TextInput
-              placeholder="0x"
-              value={toAddress}
-              onChange={(e) => setToAddress(e.target.value)}
-            />
+            <div className="text-xs text-gray-600 dark:text-gray-400">Recipient Address</div>
+            <TextInput placeholder="0x" value={toAddress} onChange={(e) => setToAddress(e.target.value)} />
           </div>
 
           <div className="space-y-3 pb-6">
@@ -83,9 +71,7 @@ export default function Creator() {
           </div>
 
           <div className="space-y-3 pb-6">
-            <div className="text-xs text-gray-600 dark:text-gray-400">
-              Start Date
-            </div>
+            <div className="text-xs text-gray-600 dark:text-gray-400">Start Date</div>
             <Datepicker
               // @ts-ignore
               onSelect={(e) => setSelectedStartDate(dayjs(e.target.value))} // not working
@@ -98,9 +84,7 @@ export default function Creator() {
 
           <div className="md:flex gap-6">
             <div className="space-y-3 pb-6 grow">
-              <div className="text-xs text-gray-600 dark:text-gray-400">
-                Vesting Duration
-              </div>
+              <div className="text-xs text-gray-600 dark:text-gray-400">Vesting Duration</div>
               <div className="relative">
                 <TextInput
                   value={Number(vestingDuration)}
@@ -117,8 +101,8 @@ export default function Creator() {
                   onChange={(e) => setVestingInterval(e.target.value)}
                   defaultValue={vestingInterval}
                 >
-                  {timeframe.map((time, index) => (
-                    <option value={time} key={index}>
+                  {timeframe.map((time) => (
+                    <option value={time} key={`vest-key-${time}`}>
                       {time}
                     </option>
                   ))}
@@ -127,9 +111,7 @@ export default function Creator() {
             </div>
 
             <div className="space-y-3 pb-6 grow">
-              <div className="text-xs text-gray-600 dark:text-gray-400">
-                Cliff Duration
-              </div>
+              <div className="text-xs text-gray-600 dark:text-gray-400">Cliff Duration</div>
               <div className="relative">
                 <TextInput
                   value={Number(cliffDuration)}
@@ -146,8 +128,8 @@ export default function Creator() {
                   onChange={(e) => setCliffInterval(e.target.value)}
                   defaultValue={cliffInterval}
                 >
-                  {timeframe.map((time, index) => (
-                    <option value={time} key={index}>
+                  {timeframe.map((time) => (
+                    <option value={time} key={`cliff-key-${time}`}>
                       {time}
                     </option>
                   ))}
@@ -158,9 +140,7 @@ export default function Creator() {
 
           <div className="space-y-3 pt-3 pb-2 grow">
             <div className="bg-black/[.03] dark:bg-white/[.02] rounded-lg flex items-center px-3.5 py-3">
-              <div className="text-xs text-gray-600 dark:text-gray-400 grow">
-                Transferable
-              </div>
+              <div className="text-xs text-gray-600 dark:text-gray-400 grow">Transferable</div>
               <ToggleSwitch
                 // @ts-ignore
                 color="green"
@@ -177,9 +157,7 @@ export default function Creator() {
             <span className="opacity-50">Optional Details</span>
           </div>
           <div className="space-y-3 pb-6">
-            <div className="text-xs text-gray-600 dark:text-gray-400">
-              Recipient Name
-            </div>
+            <div className="text-xs text-gray-600 dark:text-gray-400">Recipient Name</div>
             <TextInput
               placeholder="e.g. Velodrome Foundation"
               value={recipientName}
@@ -197,20 +175,14 @@ export default function Creator() {
           </div>
 
           <div className="space-y-3 pb-6">
-            <div className="text-xs text-gray-600 dark:text-gray-400">
-              Description
-            </div>
+            <div className="text-xs text-gray-600 dark:text-gray-400">Description</div>
             <Textarea value={desc} onChange={(e) => setDesc(e.target.value)} />
           </div>
         </div>
       </div>
 
       <div className="lg:w-6/12 p-6 sm:p-10 bg-white/90 dark:bg-white/[.08] dark:bg-opacity-50 rounded-lg">
-        <Checklist
-          toAddress={toAddress}
-          amount={amount}
-          vestingDuration={vestingDuration}
-        />
+        <Checklist toAddress={toAddress} amount={amount} vestingDuration={vestingDuration} />
         <Chart
           startDate={selectedStartDate}
           vestingDuration={vestingDuration}
@@ -220,13 +192,7 @@ export default function Creator() {
         />
 
         {preview && (
-          <Preview
-            toAddress={toAddress}
-            amount={amount}
-            token={token}
-            recipient={recipientName}
-            desc={desc}
-          />
+          <Preview toAddress={toAddress} amount={amount} token={token} recipient={recipientName} desc={desc} />
         )}
       </div>
     </>
