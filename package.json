@@ -5,9 +5,10 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "tsc && biome check ./src && vite build",
+    "build": "yarn run codegen && tsc && biome check ./src && vite build",
     "preview": "vite preview",
-    "lint": "biome check ./src"
+    "lint": "biome check ./src",
+    "codegen": "yarn wagmi generate"
   },
   "dependencies": {
     "@tanstack/react-query": "^5.17.15",
@@ -38,6 +39,7 @@
     "@types/react": "^18.2.21",
     "@types/react-dom": "^18.2.7",
     "@vitejs/plugin-react": "^4.0.4",
+    "@wagmi/cli": "^2",
     "autoprefixer": "^10.4.15",
     "flowbite": "1.8.1",
     "git-repo-info": "^2.1.1",
