@@ -8,10 +8,10 @@ import Connect from "./pages/Connect";
 import Create from "./pages/Create";
 import Dash from "./pages/Dashboard";
 import Delegate from "./pages/Delegate";
+import Govnft from "./pages/Govnft";
 import Landing from "./pages/Landing";
 import Minted from "./pages/Minted";
 import Transfer from "./pages/Transfer";
-import Govnft from "./pages/Govnft";
 
 function ConnectedOnly({ children }) {
   const { isConnected } = useAccount();

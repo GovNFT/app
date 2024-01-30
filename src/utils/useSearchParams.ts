@@ -11,7 +11,7 @@ export default function useSearchParams() {
       const newSearchParamsObj = new URLSearchParams(params);
       navigate(`${pathname}?${newSearchParamsObj}`);
     },
-    [pathname]
+    [pathname],
   );
 
   return [searchParams, setSearchParams] as const;
