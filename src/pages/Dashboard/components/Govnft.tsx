@@ -10,6 +10,7 @@ import {
 
 /* Enable relative time plugin */
 dayjs.extend(relativeTime);
+import { formatUnits } from "viem";
 
 import ActionLink from "../../../components/ActionLink";
 import AddressMask from "../../../components/AddressMask";
@@ -21,12 +22,17 @@ import GovnftProgress from "./GovnftProgress";
 export default function Govnft({ govnft, address }) {
   const startDate = dayjs(govnft.start).add(govnft.cliff_length, "seconds");
   const endDate = dayjs(govnft.end);
+  const percent = Math.trunc(
+    (Number(formatUnits(govnft.amount, 2)) / Number(formatUnits(govnft.total_locked, 2))) * 100,
+  );
+
+  console.log(percent);
 
   return (
-    <div className="bg-white hover:bg-white/50 dark:bg-white/5 dark:hover:bg-white/[.07] rounded text-sm p-5 shadow-sm">
+    <div className="bg-white hover:bg-white/50 dark:bg-white/5 dark:hover:bg-white/[.07] rounded text-sm pl-8 pr-4 py-4 shadow-sm">
       <div className="flex justify-between gap-12">
-        <div className="flex flex-col gap-5 sm:flex-row sm:gap-6 sm:items-center">
-          <GovnftProgress startDate={startDate} endDate={endDate} />
+        <div className="flex flex-col gap-5 sm:flex-row sm:gap-8 sm:items-center">
+          <GovnftProgress percent={percent} />
           <div className="space-y-1.5 sm:grow">
             <div className="flex gap-2 items-center">GovNFT #{govnft.id}</div>
             <div className="text-xs flex gap-2 pb-1 items-center text-gray-400 dark:text-gray-600">
@@ -51,6 +57,7 @@ export default function Govnft({ govnft, address }) {
 
         <div className="flex gap-4 items-center">
           <div className="px-5 py-4 w-52 flex flex-col justify-center items-end bg-gray-50 dark:bg-gray-900/20 rounded-md">
+            <div className="text-gray-400 dark:text-gray-600 pb-2 text-xs">Timeframe</div>
             <div className="flex gap-3 items-center">
               {startDate.isBefore() && (
                 <>
@@ -76,19 +83,22 @@ export default function Govnft({ govnft, address }) {
           <span className="text-gray-400 dark:text-gray-600">:</span>
 
           <div className="px-5 py-4 w-52 flex flex-col justify-center items-end bg-gray-50 dark:bg-gray-900/20 rounded-md">
+            <div className="text-gray-400 dark:text-gray-600 pb-2 text-xs">Locked</div>
             <Amount tokenAddress={govnft.token} amount={govnft.amount} showLogo={true} />
-            <div className="text-gray-400 dark:text-gray-600 pt-2 text-xs">Amount Locked</div>
+            <div className="text-gray-400 dark:text-gray-600 pt-2 text-xs flex gap-2 items-center">
+              30% of inital locked
+            </div>
           </div>
 
           <div className="px-5 py-4 w-52 flex flex-col justify-center items-end bg-gray-50 dark:bg-gray-900/20 rounded-md">
+            <div className="text-gray-400 dark:text-gray-600 pb-2 text-xs">Vested</div>
             <Amount tokenAddress={govnft.token} amount={govnft.amount} showLogo={false} />
             <div className="pt-2 text-xs flex gap-2 items-center">
-              <span className="text-gray-400 dark:text-gray-600">Vested Amount &rarr; </span>
               <ActionLink onClick="#">Claim</ActionLink>
             </div>
           </div>
 
-          <div className="px-3 hover:bg-gray-50 hover:dark:bg-gray-900/20 h-full flex items-center rounded-md cursor-pointer">
+          <div className="px-3 bg-gray-50 hover:bg-gray-100 dark:bg-gray-900/20 hover:dark:bg-gray-900/40 h-full flex items-center rounded-md cursor-pointer">
             <ChevronRightIcon size={14} />
           </div>
         </div>
