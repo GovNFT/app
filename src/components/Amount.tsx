@@ -38,7 +38,7 @@ export default function Amount({
 
   if (showLogo) {
     return (
-      <div className="flex gap-1.5 items-center">
+      <div className="flex gap-1 items-center">
         <TokenAvatar address={addr} className="w-4 h-4 mr-0.5" />
         <span className="tracking-wider">{pretty}</span>
         <span className="opacity-60">{tokenSymbol}</span>
@@ -47,7 +47,7 @@ export default function Amount({
   }
 
   return (
-    <div className="flex gap-1.5 items-center">
+    <div className="flex gap-1 items-center">
       <span className="tracking-wider">{pretty}</span>
       <span className="opacity-60">{tokenSymbol}</span>
     </div>

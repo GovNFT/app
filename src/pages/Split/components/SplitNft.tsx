@@ -9,9 +9,9 @@ import GovnftProgress from "../../../components/GovnftProgress";
 import NavLink from "../../../components/NavLink";
 
 import Amount from "../../../components/Amount";
-import DelegateButton from "./DelegateButton";
+import SplitButton from "./SplitButton";
 
-export default function DelegateNft({ govnft }) {
+export default function SplitNft({ govnft }) {
   const [toAddress, setToAddress] = useState(null);
 
   return (
@@ -24,7 +24,7 @@ export default function DelegateNft({ govnft }) {
               <GovnftAvatar govnft={govnft} />
             </div>
 
-            <GovnftNavbar govnft={govnft} active="delegate" />
+            <GovnftNavbar govnft={govnft} active="split" />
 
             <div className="space-y-3 py-12">
               <div className="text-xs text-gray-600 dark:text-gray-400">Address</div>
@@ -39,7 +39,7 @@ export default function DelegateNft({ govnft }) {
                     <WalletIcon size={20} strokeWidth={1} />
                   </div>
                   <div className="text-sm text-gray-600 dark:text-gray-400 w-52 text-center pb-3">
-                    Enter the wallet address where the lock will be delegated
+                    Enter the wallet address where the lock will be transfered
                   </div>
                 </>
               )}
@@ -50,9 +50,9 @@ export default function DelegateNft({ govnft }) {
                     <CheckCircle2Icon size={20} strokeWidth={1} />
                   </div>
                   <div className="text-sm text-gray-600 dark:text-gray-400 w-52 text-center pb-3">
-                    Wallet address is valid. You can now delegated the GovNFT.
+                    Wallet address is valid. You can now transfer the GovNFT.
                   </div>
-                  <DelegateButton />
+                  <SplitButton />
                 </>
               )}
             </div>
