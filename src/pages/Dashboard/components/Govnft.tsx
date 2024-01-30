@@ -34,7 +34,7 @@ export default function Govnft({ govnft, address }) {
           <div className="space-y-1.5 sm:grow">
             <div className="flex gap-2 items-center">GovNFT #{govnft.id}</div>
             <div className="text-xs flex gap-2 pb-1 items-center text-gray-400 dark:text-gray-600">
-              <AddressMask address={address} />
+              <AddressMask address={govnft.owner} />
               <InfoIcon size={12} />
             </div>
             <div className="text-xs text-gray-600 dark:text-gray-400 flex gap-1.5">

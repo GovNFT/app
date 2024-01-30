@@ -2,7 +2,7 @@ import DarkThemeToggle from "./DarkThemeToggle";
 
 export default function Footer() {
   return (
-    <div className="flex justify-between items-center text-xs border-t border-black/5 dark:border-white/5 py-4 mt-24 mb-24">
+    <div className="flex justify-between items-center text-xs border-t border-black/5 dark:border-white/5 py-4 mt-48 mb-24">
       {/* @ts-ignore */}
       <span className="text-gray-600 dark:text-gray-400">
         {/* @ts-ignore */}
