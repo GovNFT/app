@@ -26,8 +26,6 @@ export default function Govnft({ govnft, address }) {
     (Number(formatUnits(govnft.amount, 2)) / Number(formatUnits(govnft.total_locked, 2))) * 100,
   );
 
-  console.log(percent);
-
   return (
     <div className="bg-white hover:bg-white/50 dark:bg-white/5 dark:hover:bg-white/[.07] rounded text-sm pl-8 pr-4 py-4 shadow-sm">
       <div className="flex justify-between gap-12">
@@ -86,12 +84,12 @@ export default function Govnft({ govnft, address }) {
             <div className="text-gray-400 dark:text-gray-600 pb-2 text-xs">Locked</div>
             <Amount tokenAddress={govnft.token} amount={govnft.amount} showLogo={true} />
             <div className="text-gray-400 dark:text-gray-600 pt-2 text-xs flex gap-2 items-center">
-              30% of inital locked
+              {percent}% vested
             </div>
           </div>
 
           <div className="px-5 py-4 w-52 flex flex-col justify-center items-end bg-gray-50 dark:bg-gray-900/20 rounded-md">
-            <div className="text-gray-400 dark:text-gray-600 pb-2 text-xs">Vested</div>
+            <div className="text-gray-400 dark:text-gray-600 pb-2 text-xs">Unlocked</div>
             <Amount tokenAddress={govnft.token} amount={govnft.amount} showLogo={false} />
             <div className="pt-2 text-xs flex gap-2 items-center">
               <ActionLink onClick="#">Claim</ActionLink>

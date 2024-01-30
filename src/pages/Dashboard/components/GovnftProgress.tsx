@@ -33,14 +33,14 @@ export default function GovnftProgress({ percent }) {
         />
         <path
           className="circle"
-          stroke-dasharray="40, 100"
+          stroke-dasharray={`${percent}, 100`}
           d="M18 2.0845
             a 15.9155 15.9155 0 0 1 0 31.831
             a 15.9155 15.9155 0 0 1 0 -31.831"
         />
       </svg>
       <div className="absolute w-16 h-16 top-0 left-0 flex items-center justify-center text-gray-600 dark:text-gray-400 text-xs">
-        {percent}
+        {percent}%
       </div>
     </div>
   );
