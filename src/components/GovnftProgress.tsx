@@ -1,4 +1,4 @@
-import { Check as CheckIcon, Hourglass as HourglassIcon } from "lucide-react";
+import { Calendar as CalendarIcon, Check as CheckIcon } from "lucide-react";
 import { formatUnits } from "viem";
 
 export default function GovnftProgress({ amount, totalAmount }) {
@@ -18,7 +18,7 @@ export default function GovnftProgress({ amount, totalAmount }) {
     return (
       <div className="w-16 h-16 flex items-center justify-center">
         <div className="p-5 rounded-full border border-gray-700/10 dark:border-gray-700/40 text-amber-600 flex items-center justify-center">
-          <HourglassIcon size={16} className="animate-pulse" />
+          <CalendarIcon size={16} className="animate-pulse" />
         </div>
       </div>
     );

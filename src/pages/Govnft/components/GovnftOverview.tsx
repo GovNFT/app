@@ -1,4 +1,3 @@
-import dayjs from "dayjs";
 import { Button } from "flowbite-react";
 import { Info as InfoIcon } from "lucide-react";
 import { useEffect, useState } from "react";
@@ -12,10 +11,6 @@ import GovnftProgress from "../../../components/GovnftProgress";
 import NavLink from "../../../components/NavLink";
 
 export default function GovnftOverview({ govnft }) {
-  const startDate = dayjs(govnft.start);
-  const cliffDate = dayjs(govnft.start).add(govnft.cliff_length, "seconds");
-  const endDate = dayjs(govnft.end);
-
   return (
     <>
       <div className="max-w-screen-lg mx-auto">

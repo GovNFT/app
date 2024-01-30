@@ -24,7 +24,7 @@ export default function GovnftAvatar({ govnft, expTooltip = true }) {
         <div className="text-xs pt-1.5 text-gray-600 dark:text-gray-400 whitespace-nowrap flex items-center">
           <Amount amount={govnft.amount} tokenAddress={govnft.token} showLogo={false} />
           &nbsp;
-          <DateFromNow ts={govnft.end} prefix="locked for" pastPrefix="unlocked" tooltip={expTooltip} />
+          <DateFromNow ts={Number(govnft.end)} prefix="locked for" pastPrefix="unlocked" tooltip={expTooltip} />
         </div>
       </div>
     </div>

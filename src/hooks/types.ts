@@ -11,7 +11,6 @@ export type Token = {
 };
 
 export type GovNft = {
-
   id: bigint;
   total_locked: bigint;
   amount: bigint;

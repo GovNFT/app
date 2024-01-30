@@ -3,7 +3,7 @@
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 /**
- * [__View Contract on Op Mainnet Optimism Explorer__](https://explorer.optimism.io/address/0x35eC163FBaE44a825A9c17c64445261B8121F53c)
+ * [__View Contract on Op Mainnet Optimism Explorer__](https://explorer.optimism.io/address/0x2afCa920f4c0B01B120EcA4396C0379a7e40c07f)
  */
 export const govnftSugarAbi = [
   {
@@ -50,14 +50,14 @@ export const govnftSugarAbi = [
 ] as const
 
 /**
- * [__View Contract on Op Mainnet Optimism Explorer__](https://explorer.optimism.io/address/0x35eC163FBaE44a825A9c17c64445261B8121F53c)
+ * [__View Contract on Op Mainnet Optimism Explorer__](https://explorer.optimism.io/address/0x2afCa920f4c0B01B120EcA4396C0379a7e40c07f)
  */
 export const govnftSugarAddress = {
-  10: '0x35eC163FBaE44a825A9c17c64445261B8121F53c',
+  10: '0x2afCa920f4c0B01B120EcA4396C0379a7e40c07f',
 } as const
 
 /**
- * [__View Contract on Op Mainnet Optimism Explorer__](https://explorer.optimism.io/address/0x35eC163FBaE44a825A9c17c64445261B8121F53c)
+ * [__View Contract on Op Mainnet Optimism Explorer__](https://explorer.optimism.io/address/0x2afCa920f4c0B01B120EcA4396C0379a7e40c07f)
  */
 export const govnftSugarConfig = {
   address: govnftSugarAddress,
