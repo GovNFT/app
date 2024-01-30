@@ -3,7 +3,7 @@
     "enabled": true,
     "indentStyle": "space",
     "lineWidth": 120,
-    "ignore": []
+    "ignore": ["./src/generated.ts"]
   },
   "linter": {
     "enabled": true,
@@ -11,6 +11,7 @@
       "a11y": {
         "useKeyWithClickEvents": "off"
       }
-    }
+    },
+    "ignore": ["./src/generated.ts"]
   }
 }
