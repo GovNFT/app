@@ -19,11 +19,11 @@ import DateFromNow from "../../../components/DateFromNow";
 import NavLink from "../../../components/NavLink";
 import GovnftProgress from "./GovnftProgress";
 
-export default function Govnft({ govnft, address }) {
+export default function Govnft({ govnft }) {
   const startDate = dayjs(govnft.start).add(govnft.cliff_length, "seconds");
   const endDate = dayjs(govnft.end);
   const percent = Math.trunc(
-    (Number(formatUnits(govnft.amount, 2)) / Number(formatUnits(govnft.total_locked, 2))) * 100,
+    100 - (Number(formatUnits(govnft.amount, 2)) / Number(formatUnits(govnft.total_locked, 2))) * 100,
   );
 
   return (
@@ -71,9 +71,9 @@ export default function Govnft({ govnft, address }) {
               {startDate.isAfter() && endDate.format("MMM DD, YYYY")}
             </div>
             <div className="text-gray-400 dark:text-gray-600 pt-2 text-xs">
-              {startDate.isBefore() && <DateFromNow ts={govnft.start} prefix="Vesting starts in" tooltip={false} />}
+              {startDate.isBefore() && <DateFromNow ts={govnft.start} prefix="vesting starts in" tooltip={false} />}
               {startDate.isAfter() && (
-                <DateFromNow ts={govnft.end} prefix="Vesting ends in" pastPrefix="Vesting ended" tooltip={false} />
+                <DateFromNow ts={govnft.end} prefix="vesting ends in" pastPrefix="vesting ended" tooltip={false} />
               )}
             </div>
           </div>
@@ -83,8 +83,8 @@ export default function Govnft({ govnft, address }) {
           <div className="px-5 py-4 w-52 flex flex-col justify-center items-end bg-gray-50 dark:bg-gray-900/20 rounded-md">
             <div className="text-gray-400 dark:text-gray-600 pb-2 text-xs">Locked</div>
             <Amount tokenAddress={govnft.token} amount={govnft.amount} showLogo={true} />
-            <div className="text-gray-400 dark:text-gray-600 pt-2 text-xs flex gap-2 items-center">
-              {percent}% vested
+            <div className="text-gray-400 dark:text-gray-600 pt-2 text-xs flex gap-1 items-center">
+              of <Amount tokenAddress={govnft.token} amount={govnft.total_locked} showLogo={false} /> total
             </div>
           </div>
 

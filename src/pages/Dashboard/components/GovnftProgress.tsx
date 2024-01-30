@@ -4,7 +4,7 @@ export default function GovnftProgress({ percent }) {
   if (percent === 100) {
     return (
       <div className="w-16 h-16 flex items-center justify-center">
-        <div className="p-5 rounded-full border border-green-500 text-green-500 flex items-center justify-center">
+        <div className="p-5 rounded-full border border-green-700/20 text-green-500 flex items-center justify-center">
           <CheckIcon size={16} />
         </div>
       </div>
@@ -14,8 +14,8 @@ export default function GovnftProgress({ percent }) {
   if (percent === 0) {
     return (
       <div className="w-16 h-16 flex items-center justify-center">
-        <div className="p-5 rounded-full border border-amber-500 text-amber-500 flex items-center justify-center">
-          <HourglassIcon size={16} />
+        <div className="p-5 rounded-full border border-amber-700/20 text-amber-500 flex items-center justify-center">
+          <HourglassIcon size={16} className="animate-pulse" />
         </div>
       </div>
     );

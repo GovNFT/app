@@ -5,7 +5,7 @@ import Header from "../../components/Header";
 import LoadingPlaceholder from "../../components/LoadingPlaceholder";
 import { useGovNfts } from "../../hooks/govnft";
 import Govnfts from "./components/Govnfts";
-import Activities from "./components/Activities";
+import MintedGovnfts from "./components/MintedGovnfts";
 
 export default function Dashboard() {
   const { address } = useAccount();
@@ -20,8 +20,6 @@ export default function Dashboard() {
       <Header />
 
       <div className="max-w-screen-xl mx-auto">
-
-
         {isEmpty(ownedGovnfts) ? (
           <LoadingPlaceholder message="Loading your gonfts..." />
         ) : (
@@ -31,9 +29,8 @@ export default function Dashboard() {
         {isEmpty(mintedGovnfts) ? (
           <LoadingPlaceholder message="Loading activities..." />
         ) : (
-          <Activities govnfts={mintedGovnfts} />
+          <MintedGovnfts govnfts={mintedGovnfts} />
         )}
-
       </div>
 
       <Footer />
