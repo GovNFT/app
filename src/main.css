@@ -43,3 +43,21 @@
     @apply text-black dark:text-white bg-gray-50 dark:bg-gray-900 min-h-screen;
   }
 }
+
+@layer components {
+  .circle {
+    fill: none;
+    stroke-width: 1.2;
+    stroke-linecap: round;
+    animation: progress 1s ease-out forwards;
+  }
+
+  @keyframes progress {
+    0% {
+      stroke-dasharray: 0 100;
+    }
+  }
+
+}
+
+

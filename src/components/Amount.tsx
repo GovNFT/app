@@ -30,25 +30,26 @@ export default function Amount({
   const token = tokens.filter((asset) => asset.address.includes(addr));
 
   // @ts-ignore
-  const amountDecimals = decimals || token?.decimals || 18;
+  const amountDecimals = decimals || token[0]?.decimals || 18;
+  const tokenSymbol = symbol || token[0]?.symbol;
 
   const ndigits = amount < parseUnits("1", amountDecimals) ? 5 : 2;
   const pretty = Number(formatUnits(amount, amountDecimals)).toFixed(ndigits).toString();
 
   if (showLogo) {
     return (
-      <div className="flex gap-1 items-center">
+      <div className="flex gap-1.5 items-center">
         <TokenAvatar address={addr} className="w-4 h-4 mr-0.5" />
         <span className="tracking-wider">{pretty}</span>
-        <span className="opacity-60">{symbol}</span>
+        <span className="opacity-60">{tokenSymbol}</span>
       </div>
     );
   }
 
   return (
-    <div className="flex gap-1 items-center">
+    <div className="flex gap-1.5 items-center">
       <span className="tracking-wider">{pretty}</span>
-      <span className="opacity-60">{symbol}</span>
+      <span className="opacity-60">{tokenSymbol}</span>
     </div>
   );
 }
