@@ -1,5 +1,5 @@
 import dayjs from "dayjs";
-import { Shapes as ShapesIcon } from "lucide-react";
+import { Shapes as ShapesIcon,ChevronRight as ChevronRightIcon } from "lucide-react";
 import { formatUnits } from "viem";
 import AddressMask from "../../../components/AddressMask";
 import Amount from "../../../components/Amount";
@@ -49,6 +49,9 @@ export default function MintedGovnfts({ govnfts }) {
             )}
             %<span className="text-gray-400 dark:text-gray-600">&rarr;</span>
             <AddressMask address={govnft.owner} />
+            <NavLink href={`/govnft?id=${govnft.id}`}>
+              <div className="flex gap-2 pl-8"><span className="underline hover:no-underline">Review</span> <ChevronRightIcon size={14} /></div>
+            </NavLink>
           </div>
         </div>
       ))}

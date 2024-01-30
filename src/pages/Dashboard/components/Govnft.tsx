@@ -97,7 +97,9 @@ export default function Govnft({ govnft }) {
           </div>
 
           <div className="px-3 bg-gray-50 hover:bg-gray-100 dark:bg-gray-900/20 hover:dark:bg-gray-900/40 h-full flex items-center rounded-md cursor-pointer">
-            <ChevronRightIcon size={14} />
+            <NavLink href={`/govnft?id=${govnft.id}`}>
+              <ChevronRightIcon size={14} />
+            </NavLink>
           </div>
         </div>
       </div>

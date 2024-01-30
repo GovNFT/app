@@ -10,7 +10,7 @@ export default function Dashboard() {
   const { address } = useAccount();
   const { data: govnfts } = useGovNfts(address);
 
-  const mintedGovnfts = govnfts.filter((e) => e.minter.toLowerCase() === address.toLowerCase());
+  const mintedGovnfts = govnfts.filter((gnft) => gnft.minter.toLowerCase() === address.toLowerCase());
 
   return (
     <div className="container mx-auto px-4 lg:px-8">

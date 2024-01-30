@@ -11,6 +11,7 @@ import Delegate from "./pages/Delegate";
 import Landing from "./pages/Landing";
 import Minted from "./pages/Minted";
 import Transfer from "./pages/Transfer";
+import Govnft from "./pages/Govnft";
 
 function ConnectedOnly({ children }) {
   const { isConnected } = useAccount();
@@ -44,6 +45,10 @@ export default function App() {
           <ConnectedOnly>
             <Dash />
           </ConnectedOnly>
+        </Route>
+
+        <Route path="/govnft">
+          <Govnft />
         </Route>
 
         <Route path="/minted">
