@@ -1,5 +1,5 @@
-import { Button } from "flowbite-react";
 import { Github as GithubIcon } from "lucide-react";
+import { Button } from "flowbite-react";
 
 import Footer from "../../components/Footer";
 import Header from "../../components/Header";
@@ -27,9 +27,9 @@ export default function Landing() {
           <span className="w-44 md:w-fit text-gray-400 dark:text-gray-600 text-sm">
             A public good supported by <span className="font-bold italic">OPTIMISM</span>
           </span>
-          <Button color="light" size="sm">
+          <Button href="https://github.com/velodrome-finance/govnft" target="_blank" useButton={true} color="light" size="sm">
             <div className="flex items-center gap-3 px-2 text-sm">
-              Git Hub
+              GitHub
               <GithubIcon size={14} />
             </div>
           </Button>
