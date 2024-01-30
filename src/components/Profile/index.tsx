@@ -1,5 +1,10 @@
 import { Button } from "flowbite-react";
-import { ExternalLink as ExternalLinkIcon, Settings as SettingsIcon, Wallet as WalletIcon, ArrowRight as ArrowRightIcon } from "lucide-react";
+import {
+  ArrowRight as ArrowRightIcon,
+  ExternalLink as ExternalLinkIcon,
+  Settings as SettingsIcon,
+  Wallet as WalletIcon,
+} from "lucide-react";
 import { useState } from "react";
 import { useAccount, useBalance, useDisconnect, useSwitchChain } from "wagmi";
 
@@ -65,7 +70,7 @@ export default function Profile({ children }) {
             <NavLink href="/minted" size="sm">
               <div className="bg-gray-50 hover:bg-gray-100 dark:bg-gray-900/20 hover:dark:bg-gray-900/40  p-4 mt-4 rounded-lg">
                 <div className="flex justify-between items-center gap-8 text-gray-600 dark:text-gray-400">
-                  Review  Minted GovNFTs
+                  Review Minted GovNFTs
                   <ArrowRightIcon size={16} />
                 </div>
               </div>

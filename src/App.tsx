@@ -9,8 +9,8 @@ import Create from "./pages/Create";
 import Dash from "./pages/Dashboard";
 import Delegate from "./pages/Delegate";
 import Landing from "./pages/Landing";
-import Transfer from "./pages/Transfer";
 import Minted from "./pages/Minted";
+import Transfer from "./pages/Transfer";
 
 function ConnectedOnly({ children }) {
   const { isConnected } = useAccount();

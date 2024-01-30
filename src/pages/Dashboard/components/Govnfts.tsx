@@ -1,7 +1,7 @@
 import { Shapes as ShapesIcon } from "lucide-react";
 import AddressMask from "../../../components/AddressMask";
-import Govnft from "./Govnft";
 import NavLink from "../../../components/NavLink";
+import Govnft from "./Govnft";
 
 export default function Govnfts({ govnfts }) {
   if (!govnfts) {

@@ -1,8 +1,8 @@
 import dayjs from "dayjs";
+import { Shapes as ShapesIcon } from "lucide-react";
 import { formatUnits } from "viem";
 import AddressMask from "../../../components/AddressMask";
 import Amount from "../../../components/Amount";
-import { Shapes as ShapesIcon } from "lucide-react";
 import NavLink from "../../../components/NavLink";
 
 export default function MintedGovnfts({ govnfts }) {
