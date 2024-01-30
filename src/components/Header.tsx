@@ -14,14 +14,19 @@ export default function Header() {
           <SvgLoader src="/wordmark.svg" className="hidden sm:block h-4 w-auto dark:text-white" alt="GOVNFT" />
         </Navbar.Brand>
         <Profile>
-          <NavLink useButton={true} size="sm" color="light" href="/dash">
-            <div className="uppercase font-bold tracking-widest text-[11px]">Dashboard</div>
+
+          <NavLink size="sm" color="light" href="/dash">
+            <div className="h-8 border border-gray-200 hover:border-gray-300 dark:border-gray-700/40 hover:dark:border-gray-700/80 px-4 rounded flex items-center justify-center">
+              <div className="uppercase font-bold tracking-widest text-[11px]">Dashboard</div>
+            </div>
           </NavLink>
 
-          <NavLink useButton={true} size="sm" color="light" href="/create">
-            <div className="hidden sm:block uppercase font-bold tracking-widest text-[11px]">Create</div>
-            <div className="py-0.5 sm:hidden uppercase font-bold tracking-widest">
-              <PlusIcon size={16} />
+          <NavLink size="sm" color="light" href="/create">
+            <div className="h-8 border border-gray-200 hover:border-gray-300 dark:border-gray-700/40 hover:dark:border-gray-700/80 px-4 rounded flex items-center justify-center">
+              <div className="hidden sm:block uppercase font-bold tracking-widest text-[11px]">Create</div>
+              <div className="py-0.5 sm:hidden uppercase font-bold tracking-widest">
+                <PlusIcon size={16} />
+              </div>
             </div>
           </NavLink>
         </Profile>

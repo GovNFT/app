@@ -10,6 +10,7 @@ import Dash from "./pages/Dashboard";
 import Delegate from "./pages/Delegate";
 import Landing from "./pages/Landing";
 import Transfer from "./pages/Transfer";
+import Minted from "./pages/Minted";
 
 function ConnectedOnly({ children }) {
   const { isConnected } = useAccount();
@@ -42,6 +43,12 @@ export default function App() {
         <Route path="/dash">
           <ConnectedOnly>
             <Dash />
+          </ConnectedOnly>
+        </Route>
+
+        <Route path="/minted">
+          <ConnectedOnly>
+            <Minted />
           </ConnectedOnly>
         </Route>
 

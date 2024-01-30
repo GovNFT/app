@@ -1,6 +1,7 @@
 import { Shapes as ShapesIcon } from "lucide-react";
 import AddressMask from "../../../components/AddressMask";
 import Govnft from "./Govnft";
+import NavLink from "../../../components/NavLink";
 
 export default function Govnfts({ govnfts }) {
   if (!govnfts) {
@@ -9,7 +10,15 @@ export default function Govnfts({ govnfts }) {
         <div className="mx-auto w-16 h-16 flex justify-center items-center bg-gray-200 dark:bg-white text-gray-900 rounded-3xl">
           <ShapesIcon />
         </div>
-        <div className="w-64 mx-auto">No active GovNFTs are associated with the current address.</div>
+        <div className="w-64 mx-auto">There are no vesting GovNFTs associated with the current address.</div>
+        <div className="w-96 mx-auto flex gap-3 justify-center border-t border-gray-700/30 pt-8">
+          <NavLink href="/create" size="sm" className="w-40" color="light" useButton={true}>
+            Create GovNFT
+          </NavLink>
+          <NavLink href="/minted" size="sm" className="w-48" color="light" useButton={true}>
+            Review Minted GovNFTs
+          </NavLink>
+        </div>
       </div>
     );
   }
