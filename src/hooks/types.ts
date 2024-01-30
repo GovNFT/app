@@ -11,15 +11,16 @@ export type Token = {
 };
 
 export type GovNft = {
-  id: number;
+
+  id: bigint;
   total_locked: bigint;
   amount: bigint;
   total_claimed: bigint;
   claimable: bigint;
-  split_count: number;
-  cliff_length: number;
-  start: number;
-  end: number;
+  split_count: bigint;
+  cliff_length: bigint;
+  start: bigint;
+  end: bigint;
   token: Address;
   vault: Address;
   minter: Address;
