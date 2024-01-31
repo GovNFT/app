@@ -6,6 +6,7 @@ import { isAddress } from "viem";
 import GovnftAvatar from "../../../components/GovnftAvatar";
 import GovnftNavbar from "../../../components/GovnftNavbar";
 import GovnftProgress from "../../../components/GovnftProgress";
+import GovnftStatus from "../../../components/GovnftStatus";
 import NavLink from "../../../components/NavLink";
 
 import Amount from "../../../components/Amount";
@@ -17,46 +18,27 @@ export default function SplitNft({ govnft }) {
   return (
     <>
       <div className="lg:max-w-screen-lg mx-auto">
-        <div className="lg:flex gap-6">
-          <div className="w-8/12 mb-4 lg:mb-0 bg-white shadow-xl dark:bg-white/5 p-2 md:p-6 rounded-lg">
-            <div className="flex gap-4 items-center pb-8">
-              <GovnftProgress amount={govnft.amount} totalAmount={govnft.total_locked} />
+        <div className="mx-auto bg-white shadow-lg dark:bg-white/5 p-2 md:p-4 rounded-lg mb-1 border border-gray-200 dark:border-gray-700/50">
+          <div className="flex gap-4 items-center justify-between">
+            <div className="flex gap-4 items-center pl-4">
               <GovnftAvatar govnft={govnft} />
             </div>
-
-            <GovnftNavbar govnft={govnft} active="split" />
-
-            <div className="space-y-3 py-12">
-              <div className="text-xs text-gray-600 dark:text-gray-400">Address</div>
-              <TextInput placeholder="0x" value={toAddress} onChange={(e) => setToAddress(e.target.value)} />
+            <div className="flex gap-6 items-center pr-1">
+              <GovnftStatus govnft={govnft} />
+              <GovnftProgress amount={govnft.amount} totalAmount={govnft.total_locked} />
             </div>
           </div>
-          <div className="lg:w-6/12 p-6 sm:p-10 bg-black/[.035]  dark:bg-white/[.08] bg-opacity-70 dark:bg-opacity-50 rounded-lg">
-            <div className="flex flex-col items-center justify-center h-full space-y-6 py-8">
-              {!isAddress(toAddress) && (
-                <>
-                  <div className="bg-gray-500/10 dark:bg-white/5 p-3.5 rounded-full">
-                    <WalletIcon size={20} strokeWidth={1} />
-                  </div>
-                  <div className="text-sm text-gray-600 dark:text-gray-400 w-52 text-center pb-3">
-                    Enter the wallet address where the lock will be transfered
-                  </div>
-                </>
-              )}
+        </div>
 
-              {isAddress(toAddress) && (
-                <>
-                  <div className="bg-green-500/5 p-3.5 rounded-full text-green-500">
-                    <CheckCircle2Icon size={20} strokeWidth={1} />
-                  </div>
-                  <div className="text-sm text-gray-600 dark:text-gray-400 w-52 text-center pb-3">
-                    Wallet address is valid. You can now transfer the GovNFT.
-                  </div>
-                  <SplitButton />
-                </>
-              )}
-            </div>
+        <div className="mx-auto bg-white shadow-lg dark:bg-white/5 rounded-lg mb-5">
+          <GovnftNavbar govnft={govnft} active="split" />
+        </div>
+
+        <div className="lg:flex gap-6">
+          <div className="w-8/12 mb-4 lg:mb-0 bg-white shadow-lg dark:bg-white/5 p-2 md:px-8 md:py-6 rounded-lg">
+            <div className="text-lg text-gray-700 dark:text-gray-300">Split</div>
           </div>
+          <div className="lg:w-6/12 p-6 sm:p-10 bg-black/[.035] dark:bg-gray-700/10 rounded-lg"></div>
         </div>
       </div>
     </>

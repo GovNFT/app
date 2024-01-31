@@ -7,8 +7,8 @@ export default function GovnftProgress({ amount, totalAmount }) {
   if (percent === 100) {
     return (
       <div className="w-16 h-16 flex items-center justify-center">
-        <div className="p-5 rounded-full border border-gray-700/10 dark:border-gray-700/40 text-green-500 flex items-center justify-center">
-          <CheckIcon size={16} />
+        <div className="p-5 rounded-full border-4 border-gray-200 dark:border-gray-900 text-green-500 flex items-center justify-center">
+          <CheckIcon size={15} />
         </div>
       </div>
     );
@@ -17,8 +17,8 @@ export default function GovnftProgress({ amount, totalAmount }) {
   if (percent === 0) {
     return (
       <div className="w-16 h-16 flex items-center justify-center">
-        <div className="p-5 rounded-full border border-gray-700/10 dark:border-gray-700/40 text-amber-600 flex items-center justify-center">
-          <CalendarIcon size={16} className="animate-pulse" />
+        <div className="p-5 rounded-full border-4 border-gray-200 dark:border-gray-900 text-amber-600 flex items-center justify-center">
+          <CalendarIcon size={15} />
         </div>
       </div>
     );
