@@ -51,7 +51,7 @@ export default function Creator() {
 
   return (
     <>
-      <div className="lg:w-8/12 mb-4 lg:mb-0 bg-white shadow-md dark:bg-white/5 p-2 md:p-6 rounded-lg">
+      <div className="lg:w-8/12 mb-4 lg:mb-0 bg-white shadow-lg dark:bg-white/5 p-2 md:p-6 rounded-lg">
         <div className="px-4 mb-8 mt-4">
           <div className="space-y-3 pb-6">
             <div className="text-xs text-gray-600 dark:text-gray-400">Recipient Address</div>
@@ -181,7 +181,7 @@ export default function Creator() {
         </div>
       </div>
 
-      <div className="lg:w-6/12 p-6 sm:p-10 bg-white/90 dark:bg-white/[.08] dark:bg-opacity-50 rounded-lg">
+      <div className="lg:w-6/12 p-6 sm:p-10 bg-black/[.035] dark:bg-gray-700/10 rounded-lg">
         <Checklist toAddress={toAddress} amount={amount} vestingDuration={vestingDuration} />
         <Chart
           startDate={selectedStartDate}

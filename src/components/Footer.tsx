@@ -6,7 +6,7 @@ export default function Footer() {
       {/* @ts-ignore */}
       <span className="text-gray-600 dark:text-gray-400">
         {/* @ts-ignore */}
-        2023 &copy; GOVNFT. {__APP_VERSION__}
+        2024 &copy; GOVNFT. {__APP_VERSION__}
       </span>
       <div className="flex gap-8 items-center">
         <div className="hidden md:flex gap-2 items-center">
