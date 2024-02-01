@@ -1,13 +1,13 @@
-import { useEffect } from "react";
 import { TextInput, Tooltip } from "flowbite-react";
 import { Button } from "flowbite-react";
 import { CheckCircle2 as CheckCircle2Icon, Info as InfoIcon, Wallet as WalletIcon } from "lucide-react";
+import { useEffect } from "react";
 import { useState } from "react";
 import { isAddress } from "viem";
+import { useAccount } from "wagmi";
+import { useLocation } from "wouter";
 import GovnftHeader from "../../../components/GovnftHeader";
 import NavLink from "../../../components/NavLink";
-import { useLocation } from "wouter";
-import { useAccount } from "wagmi";
 
 import Amount from "../../../components/Amount";
 import SplitButton from "./SplitButton";
