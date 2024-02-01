@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { TextInput, Tooltip } from "flowbite-react";
 import { Button } from "flowbite-react";
 import { CheckCircle2 as CheckCircle2Icon, Info as InfoIcon, Wallet as WalletIcon } from "lucide-react";
@@ -5,17 +6,25 @@ import { useState } from "react";
 import { isAddress } from "viem";
 import GovnftHeader from "../../../components/GovnftHeader";
 import NavLink from "../../../components/NavLink";
+import { useLocation } from "wouter";
+import { useAccount } from "wagmi";
 
 import Amount from "../../../components/Amount";
 import SplitButton from "./SplitButton";
 
 export default function SplitNft({ govnft }) {
-  const [toAddress, setToAddress] = useState(null);
+  const { address } = useAccount();
+  const isOwner = govnft.owner.toString() === address.toString();
+  const [_location, navigate] = useLocation();
+
+  useEffect(() => {
+    !isOwner && navigate("/");
+  }, [isOwner, navigate]);
 
   return (
     <>
       <div className="lg:max-w-screen-lg mx-auto">
-        <GovnftHeader govnft={govnft} active="split" />
+        <GovnftHeader govnft={govnft} active="split" isOwner={isOwner} />
 
         <div className="lg:flex gap-6">
           <div className="w-7/12 mb-4 lg:mb-0 bg-white shadow-lg dark:bg-white/5 p-2 md:px-10 md:py-8 rounded-lg">

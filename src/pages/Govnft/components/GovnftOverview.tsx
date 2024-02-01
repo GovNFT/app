@@ -16,10 +16,13 @@ export default function GovnftOverview({ govnft }) {
   const startDate = dayjs.unix(Number(govnft.start)).add(govnft.cliff_length, "seconds");
   const endDate = dayjs.unix(Number(govnft.end));
 
+  const { address } = useAccount();
+  const isOwner = govnft.owner.toString() === address.toString();
+
   return (
     <>
       <div className="max-w-screen-lg mx-auto">
-        <GovnftHeader govnft={govnft} active="overview" />
+        <GovnftHeader govnft={govnft} active="overview" isOwner={isOwner} />
 
         <div className="lg:flex gap-6">
           <div className="mx-auto lg:w-7/12 mb-4 lg:mb-0 bg-white shadow-lg dark:bg-white/5 p-2 md:px-10 md:py-8 rounded-lg">
@@ -44,26 +47,30 @@ export default function GovnftOverview({ govnft }) {
             </div>
 
             <div className="space-y-1.5 mt-12 mb-8">
-              <div className="text-sm flex justify-between bg-gray-50 dark:bg-gray-700/10 px-5 py-4 rounded-lg">
-                <div className="flex gap-3">
-                  <div className="text-gray-600 dark:text-gray-400">Claimable</div>
+              {isOwner && (
+                <div className="text-sm flex justify-between bg-gray-50 dark:bg-gray-700/10 px-5 py-4 rounded-lg">
+                  <div className="flex gap-3">
+                    <div className="text-gray-600 dark:text-gray-400">Claimable</div>
+                  </div>
+                  <div className="flex gap-3">
+                    <Amount tokenAddress={govnft.token} amount={govnft.total_claimed} showLogo={true} />
+                    <ActionLink onClick="#">Claim</ActionLink>
+                  </div>
                 </div>
-                <div className="flex gap-3">
-                  <Amount tokenAddress={govnft.token} amount={govnft.total_claimed} showLogo={true} />
-                  <ActionLink onClick="#">Claim</ActionLink>
-                </div>
-              </div>
+              )}
               <div className="text-sm flex justify-between bg-gray-50 dark:bg-gray-700/10 px-5 py-4 rounded-lg mb-8">
                 <div className="text-gray-600 dark:text-gray-400">Gouvernance Delegation</div>
                 <div className="flex gap-2 items-center text-gray-400 dark:text-gray-600">
                   {govnft.delegated === ZERO_ADDRESS && "N/A"}
                   {govnft.delegated !== ZERO_ADDRESS && <AddressMask address={govnft.delegated} />}
-                  <NavLink
-                    href={`/delegate?id=${govnft.id}`}
-                    className="underline hover:no-underline text-gray-600 dark:text-gray-400"
-                  >
-                    Edit
-                  </NavLink>
+                  {isOwner && (
+                    <NavLink
+                      href={`/delegate?id=${govnft.id}`}
+                      className="underline hover:no-underline text-gray-600 dark:text-gray-400"
+                    >
+                      Edit
+                    </NavLink>
+                  )}
                 </div>
               </div>
             </div>
