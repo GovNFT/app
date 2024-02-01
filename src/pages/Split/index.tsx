@@ -6,9 +6,9 @@ import Header from "../../components/Header";
 import LoadingPlaceholder from "../../components/LoadingPlaceholder";
 import { useGovNfts } from "../../hooks/govnft";
 import useSearchParams from "../../utils/useSearchParams";
-import TransferNft from "./components/TransferNft";
+import SplitNft from "./components/SplitNft";
 
-export default function Transfer() {
+export default function Split() {
   const [searchParams, _] = useSearchParams();
   const id = searchParams.get("id");
   const { address } = useAccount();
@@ -25,7 +25,7 @@ export default function Transfer() {
       {/* @ts-ignore */}
       <Header />
 
-      {isEmpty(govnft) ? <LoadingPlaceholder message="Loading data..." /> : <TransferNft govnft={govnft} />}
+      {isEmpty(govnft) ? <LoadingPlaceholder message="Loading data..." /> : <SplitNft govnft={govnft} />}
 
       <Footer />
     </div>

@@ -8,7 +8,9 @@ import Connect from "./pages/Connect";
 import Create from "./pages/Create";
 import Dash from "./pages/Dashboard";
 import Delegate from "./pages/Delegate";
+import Govnft from "./pages/Govnft";
 import Landing from "./pages/Landing";
+import Split from "./pages/Split";
 import Transfer from "./pages/Transfer";
 
 function ConnectedOnly({ children }) {
@@ -45,6 +47,10 @@ export default function App() {
           </ConnectedOnly>
         </Route>
 
+        <Route path="/govnft">
+          <Govnft />
+        </Route>
+
         <Route path="/create">
           <ConnectedOnly>
             <Create />
@@ -60,6 +66,12 @@ export default function App() {
         <Route path="/delegate">
           <ConnectedOnly>
             <Delegate />
+          </ConnectedOnly>
+        </Route>
+
+        <Route path="/split">
+          <ConnectedOnly>
+            <Split />
           </ConnectedOnly>
         </Route>
 
