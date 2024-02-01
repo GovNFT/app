@@ -9,6 +9,7 @@ import Create from "./pages/Create";
 import Dash from "./pages/Dashboard";
 import Delegate from "./pages/Delegate";
 import Landing from "./pages/Landing";
+import Minted from "./pages/Minted";
 import Transfer from "./pages/Transfer";
 
 function ConnectedOnly({ children }) {
@@ -42,6 +43,12 @@ export default function App() {
         <Route path="/dash">
           <ConnectedOnly>
             <Dash />
+          </ConnectedOnly>
+        </Route>
+
+        <Route path="/minted">
+          <ConnectedOnly>
+            <Minted />
           </ConnectedOnly>
         </Route>
 
