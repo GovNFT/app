@@ -25,27 +25,26 @@ export default function Chart({
   console.log(typeof startDate);
 
   const options = {
-    // responsive: true,
+    responsive: true,
     // @ts-ignore
     scales: {
       x: {
-        grid: {
-          display: false,
-        },
         ticks: {
-          color: "rgba(255, 255, 255, 0.5)",
-          padding: 10,
+          color: "rgba(90,90,90)",
+          padding: 20,
         },
       },
       y: {
         position: "right",
         beginAtZero: true,
         ticks: {
+          stepSize: 20,
+          color: "rgba(90,90,90)",
           display: true,
           font: {
-            size: 10,
+            size: 9,
           },
-          callback: (value) => ` -  ${value} %`,
+          callback: (value) => `      ${value} %`,
         },
       },
     },
@@ -98,20 +97,20 @@ export default function Chart({
       {
         label: "Vesting",
         data: vestingData,
-        borderColor: "rgb(53, 162, 235)",
-        backgroundColor: "rgba(53, 162, 235)",
+        borderColor: "rgb(21, 128, 61)",
+        backgroundColor: "rgba(21, 128, 61)",
         borderWidth: 1,
-        radius: 2,
-        fill: "start",
+        radius: 3,
+        fill: true,
       },
       {
         label: "Cliff",
         data: cliffData,
         borderDash: [1, 3],
-        borderColor: "rgb(250, 218, 94)",
-        backgroundColor: "rgba(250, 218, 94)",
+        borderColor: "rgb(251, 191, 36)",
+        backgroundColor: "rgba(251, 191, 36)",
         borderWidth: 1,
-        radius: 2,
+        radius: 3,
         stepped: true,
       },
     ],

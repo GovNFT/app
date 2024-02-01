@@ -26,10 +26,11 @@ export default function Govnfts({ govnfts }) {
   return (
     <div className="space-y-2">
       <div className="pb-4 text-sm px-2 text-gray-300 dark:text-gray-700">Vesting GovNFTs </div>
-
-      {govnfts.map((govnft) => (
-        <Govnft govnft={govnft} />
-      ))}
+      <div className="space-y-3">
+        {govnfts.map((govnft) => (
+          <Govnft govnft={govnft} />
+        ))}
+      </div>
     </div>
   );
 }

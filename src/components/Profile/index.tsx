@@ -69,9 +69,9 @@ export default function Profile({ children }) {
 
             <NavLink href="/minted" size="sm">
               <div className="bg-gray-50 hover:bg-gray-100 dark:bg-gray-900/20 hover:dark:bg-gray-900/40  p-4 mt-4 rounded-lg">
-                <div className="flex justify-between items-center gap-8 text-gray-600 dark:text-gray-400">
+                <div className="text-xs flex justify-between items-center gap-8 text-gray-700 dark:text-gray-300">
                   Review Minted GovNFTs
-                  <ArrowRightIcon size={16} />
+                  <ArrowRightIcon size={14} />
                 </div>
               </div>
             </NavLink>
@@ -86,10 +86,10 @@ export default function Profile({ children }) {
           {children}
 
           <div
-            className="flex py-2 px-3 text-xs bg-gray-900 bg-opacity-5 hover:bg-opacity-10 dark:bg-gray-700 dark:bg-opacity-20 dark:hover:bg-opacity-40 rounded-md cursor-pointer"
+            className="flex py-2 px-4 text-xs bg-gray-900/5 hover:bg-gray-900/[.07] dark:bg-gray-700/20 dark:hover:bg-gray-700/30 rounded-xl cursor-pointer"
             onClick={() => setShowDisconnect(true)}
           >
-            <div className="flex items-center gap-3 sm:pl-0.5 text-gray-600 dark:text-gray-400">
+            <div className="flex items-center gap-5 sm:pl-0.5 text-gray-600 dark:text-gray-400">
               <span className="hidden sm:inline">
                 <AddressMask address={address} />
               </span>

@@ -7,8 +7,8 @@ export default function GovnftProgress({ amount, totalAmount }) {
   if (percent === 100) {
     return (
       <div className="w-16 h-16 flex items-center justify-center">
-        <div className="p-5 rounded-full border-4 border-gray-200 dark:border-gray-900 text-green-500 flex items-center justify-center">
-          <CheckIcon size={15} />
+        <div className="p-5 rounded-full border-[3px] border-gray-100 dark:border-gray-950/30 text-green-500 flex items-center justify-center">
+          <CheckIcon size={13} />
         </div>
       </div>
     );
@@ -17,8 +17,8 @@ export default function GovnftProgress({ amount, totalAmount }) {
   if (percent === 0) {
     return (
       <div className="w-16 h-16 flex items-center justify-center">
-        <div className="p-5 rounded-full border-4 border-gray-200 dark:border-gray-900 text-amber-600 flex items-center justify-center">
-          <CalendarIcon size={15} />
+        <div className="p-5 rounded-full border-[3px] border-gray-100 dark:border-gray-950/30 text-amber-600 flex items-center justify-center">
+          <CalendarIcon size={13} />
         </div>
       </div>
     );
@@ -29,7 +29,7 @@ export default function GovnftProgress({ amount, totalAmount }) {
       <svg viewBox="0 0 36 36" className="stroke-green-500">
         <title>Progress</title>
         <path
-          className="fill-none stroke-gray-200 dark:stroke-gray-900 stroke-[3px]"
+          className="fill-none stroke-gray-100 dark:stroke-gray-950/30 stroke-2"
           d="M18 2.0845
             a 15.9155 15.9155 0 0 1 0 31.831
             a 15.9155 15.9155 0 0 1 0 -31.831"

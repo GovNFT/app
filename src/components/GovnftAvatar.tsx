@@ -4,7 +4,7 @@ import { Lock as LockIcon } from "lucide-react";
 import Amount from "./Amount";
 import DateFromNow from "./DateFromNow";
 
-export default function GovnftAvatar({ govnft, expTooltip = true }) {
+export default function GovnftAvatar({ govnft, avatar = true, expTooltip = true }) {
   if (!govnft) {
     return (
       <div className="flex gap-3 items-center">
@@ -15,7 +15,12 @@ export default function GovnftAvatar({ govnft, expTooltip = true }) {
   }
 
   return (
-    <div className="flex gap-4">
+    <div className="flex gap-5 items-center">
+      {avatar && (
+        <div className="bg-gray-100 dark:bg-gray-700/20 h-14 w-14 flex items-center justify-center rounded-2xl">
+          <img src="govnft.svg" className="w-6 grayscale" alt="GovNFT" />
+        </div>
+      )}
       <div>
         <div className="flex gap-2 items-center text-gray-800 dark:text-gray-200 font-semibold text-sm">
           GovNFT #{String(govnft.id)}

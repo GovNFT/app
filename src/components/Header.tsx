@@ -15,14 +15,14 @@ export default function Header() {
         </Navbar.Brand>
         <Profile>
           <NavLink size="sm" color="light" href="/dash">
-            <div className="h-8 border border-gray-200 hover:border-gray-300 dark:border-gray-700/40 hover:dark:border-gray-700/80 px-4 rounded flex items-center justify-center">
-              <div className="uppercase font-bold tracking-widest text-[11px]">Dashboard</div>
+            <div className="h-10 border border-gray-200 hover:border-gray-300 dark:border-gray-700/40 hover:dark:border-gray-700/80 px-4 rounded-xl flex items-center justify-center">
+              <div className="uppercase font-bold tracking-widest text-[11px] px-2">Dashboard</div>
             </div>
           </NavLink>
 
           <NavLink size="sm" color="light" href="/create">
-            <div className="h-8 border border-gray-200 hover:border-gray-300 dark:border-gray-700/40 hover:dark:border-gray-700/80 px-4 rounded flex items-center justify-center">
-              <div className="hidden sm:block uppercase font-bold tracking-widest text-[11px]">Create</div>
+            <div className="h-10 border border-gray-200 hover:border-gray-300 dark:border-gray-700/40 hover:dark:border-gray-700/80 px-4 rounded-xl flex items-center justify-center">
+              <div className="hidden sm:block uppercase font-bold tracking-widest text-[11px] px-2">Create</div>
               <div className="py-0.5 sm:hidden uppercase font-bold tracking-widest">
                 <PlusIcon size={16} />
               </div>
