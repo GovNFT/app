@@ -11,6 +11,7 @@ import GovnftChart from "../../../components/GovnftChart";
 import GovnftHeader from "../../../components/GovnftHeader";
 import NavLink from "../../../components/NavLink";
 import { ZERO_ADDRESS } from "../../../constants";
+import GovnftActivity from "./GovnftActivity";
 
 export default function GovnftOverview({ govnft }) {
   const startDate = dayjs.unix(Number(govnft.start)).add(govnft.cliff_length, "seconds");
@@ -102,7 +103,7 @@ export default function GovnftOverview({ govnft }) {
           </div>
 
           <div className="lg:w-5/12 bg-black/[.035] dark:bg-gray-700/10 p-2 md:px-10 md:py-8 rounded-lg">
-            <div className="text-xs uppercase text-gray-600 dark:text-gray-400 tracking-widest">Activity</div>
+            <GovnftActivity />
           </div>
         </div>
       </div>

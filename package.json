@@ -18,7 +18,7 @@
     "events": "^3.3.0",
     "flowbite-react": "0.6.0",
     "lodash": "*",
-    "lucide-react": "^0.276.0",
+    "lucide-react": "^0.321.0",
     "process": "^0.11.10",
     "react": "^18.2.0",
     "react-chartjs-2": "^5.2.0",
