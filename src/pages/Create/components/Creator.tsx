@@ -5,9 +5,9 @@ import { isAddress, parseUnits } from "viem";
 import { useAccount } from "wagmi";
 
 import AssetInput from "../../../components/AssetInput";
+import GovnftChart from "../../../components/GovnftChart";
 import { useTokens } from "../../../hooks/token";
 import { Token } from "../../../hooks/types";
-import Chart from "./Chart";
 import Checklist from "./Checklist";
 import Preview from "./Preview";
 
@@ -183,7 +183,7 @@ export default function Creator() {
 
       <div className="lg:w-6/12 p-6 sm:p-10 bg-white/90 dark:bg-white/[.08] dark:bg-opacity-50 rounded-lg">
         <Checklist toAddress={toAddress} amount={amount} vestingDuration={vestingDuration} />
-        <Chart
+        <GovnftChart
           startDate={selectedStartDate}
           vestingDuration={vestingDuration}
           vestingInterval={vestingInterval}
