@@ -8,9 +8,9 @@ import Govnfts from "./components/Govnfts";
 
 export default function Dashboard() {
   const { address } = useAccount();
-  const { data: govnfts } = useGovNfts(address);
+  const { data: nfts } = useGovNfts(address);
 
-  const ownedGovnfts = govnfts.filter((gnft) => gnft.owner.toLowerCase() === address.toLowerCase());
+  const ownedNfts = nfts.filter((nft) => nft.isOwner);
 
   return (
     <div className="container mx-auto px-4 lg:px-8">
@@ -18,11 +18,7 @@ export default function Dashboard() {
       <Header />
 
       <div className="max-w-screen-xl mx-auto">
-        {isEmpty(ownedGovnfts) ? (
-          <LoadingPlaceholder message="Loading your gonfts..." />
-        ) : (
-          <Govnfts govnfts={ownedGovnfts} />
-        )}
+        {isEmpty(ownedNfts) ? <LoadingPlaceholder message="Loading your gonfts..." /> : <Govnfts nfts={ownedNfts} />}
       </div>
 
       <Footer />

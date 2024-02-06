@@ -6,11 +6,11 @@ import Amount from "./Amount";
 import DateFromNow from "./DateFromNow";
 
 export default function GovnftAvatar({
-  govnft,
+  nft,
 }: {
-  govnft: GovNft;
+  nft: GovNft;
 }) {
-  if (!govnft) {
+  if (!nft) {
     return (
       <div className="flex gap-3 items-center">
         <Spinner size="sm" color="gray" />
@@ -26,13 +26,13 @@ export default function GovnftAvatar({
       </div>
       <div>
         <div className="flex gap-2 items-center text-gray-800 dark:text-gray-200 font-semibold text-sm">
-          GovNFT #{String(govnft.id)}
+          GovNFT #{String(nft.id)}
           <LockIcon size={12} />
         </div>
         <div className="text-xs pt-1.5 text-gray-600 dark:text-gray-400 whitespace-nowrap flex items-center">
-          <Amount amount={govnft.amount} tokenAddress={govnft.token} showLogo={false} />
+          <Amount amount={nft.amount} tokenAddress={nft.token} showLogo={false} />
           &nbsp;
-          <DateFromNow ts={Number(govnft.end)} prefix="vesting until" pastPrefix="vested" />
+          <DateFromNow ts={nft.end} prefix="vesting until" pastPrefix="vested" />
         </div>
       </div>
     </div>

@@ -12,7 +12,7 @@ export default function DateFromNow({
   deltaDays = 0,
   tooltip = true,
 }: {
-  ts: Dayjs | number;
+  ts: Dayjs | bigint;
   prefix?: string;
   pastPrefix?: string;
   deltaDays?: number;
@@ -22,7 +22,7 @@ export default function DateFromNow({
     return <></>;
   }
 
-  const parsed = dayjs.isDayjs(ts) ? ts : dayjs.unix(ts);
+  const parsed = dayjs.isDayjs(ts) ? ts : dayjs.unix(Number(ts));
   const date = parsed.add(deltaDays, "day");
   const tooltipContent = date.toDate().toString();
 

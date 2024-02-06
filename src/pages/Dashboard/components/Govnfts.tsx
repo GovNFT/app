@@ -5,11 +5,11 @@ import { GovNft } from "../../../hooks/types";
 import Govnft from "./Govnft";
 
 export default function Govnfts({
-  govnfts,
+  nfts,
 }: {
-  govnfts: GovNft[];
+  nfts: GovNft[];
 }) {
-  if (!govnfts) {
+  if (!nfts) {
     return (
       <div className="bg-gray-300/20 dark:bg-gray-700/10 rounded-xl text-sm px-4 py-32 space-y-8 text-center">
         <div className="mx-auto w-16 h-16 flex justify-center items-center bg-gray-200 dark:bg-white text-gray-900 rounded-3xl">
@@ -32,8 +32,8 @@ export default function Govnfts({
     <div className="space-y-2">
       <div className="pb-4 text-sm px-2 text-gray-300 dark:text-gray-700">Vesting NFTs</div>
       <div className="space-y-3">
-        {govnfts.map((govnft) => (
-          <Govnft govnft={govnft} />
+        {nfts.map((nft) => (
+          <Govnft nft={nft} />
         ))}
       </div>
     </div>
