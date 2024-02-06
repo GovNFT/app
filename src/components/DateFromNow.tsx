@@ -1,11 +1,23 @@
-import dayjs from "dayjs";
+import dayjs, { Dayjs } from "dayjs";
 import relativeTime from "dayjs/plugin/relativeTime";
 import { Tooltip } from "flowbite-react";
 
 /* Enable relative time plugin */
 dayjs.extend(relativeTime);
 
-export default function DateFromNow({ ts, prefix = "", pastPrefix = "", deltaDays = 0, tooltip = true }) {
+export default function DateFromNow({ 
+  ts, 
+  prefix = "", 
+  pastPrefix = "", 
+  deltaDays = 0, 
+  tooltip = true 
+}: {
+  ts: Dayjs | number,
+  prefix?: string, 
+  pastPrefix?: string,
+  deltaDays?: number,
+  tooltip?: boolean,
+}) {
   if (!ts) {
     return <></>;
   }

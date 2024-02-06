@@ -12,8 +12,13 @@ import GovnftAvatar from "../../../components/GovnftAvatar";
 import GovnftProgress from "../../../components/GovnftProgress";
 import GovnftStatus from "../../../components/GovnftStatus";
 import NavLink from "../../../components/NavLink";
+import { GovNft } from "../../../hooks/types";
 
-export default function Govnft({ govnft }) {
+export default function Govnft({ 
+  govnft 
+}: {
+  govnft: GovNft,
+}) {
   return (
     <NavLink href={`/govnft?id=${govnft.id}`} className="block">
       <div className="bg-white hover:bg-white/50 dark:bg-white/[.04] dark:hover:bg-white/[.05] rounded-lg text-sm pl-6 pr-4 py-4 shadow-sm border border-gray-100 dark:border-gray-700/20">

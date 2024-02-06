@@ -1,17 +1,22 @@
 import dayjs from "dayjs";
 import relativeTime from "dayjs/plugin/relativeTime";
+import { GovNft } from "../hooks/types";
 
 /* Enable relative time plugin */
 dayjs.extend(relativeTime);
 import { formatUnits } from "viem";
 import DateFromNow from "./DateFromNow";
 
-export default function GovnftStatus({ govnft }) {
+export default function GovnftStatus({ 
+  govnft 
+}: {
+  govnft: GovNft,
+}) {
   if (!govnft) {
     return <></>;
   }
 
-  const startDate = dayjs.unix(Number(govnft.start)).add(govnft.cliff_length, "seconds");
+  const startDate = dayjs.unix(Number(govnft.start)).add(Number(govnft.cliff_length), "seconds");
   const endDate = dayjs.unix(Number(govnft.end));
 
   return (
