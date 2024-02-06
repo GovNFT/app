@@ -1,12 +1,12 @@
 import { Calendar as CalendarIcon, Check as CheckIcon } from "lucide-react";
 import { formatUnits } from "viem";
 
-export default function GovnftProgress({ 
-  amount, 
-  totalAmount 
+export default function GovnftProgress({
+  amount,
+  totalAmount,
 }: {
-  amount: bigint, 
-  totalAmount: bigint,
+  amount: bigint;
+  totalAmount: bigint;
 }) {
   const percent = Math.trunc(100 - (Number(formatUnits(amount, 0)) / Number(formatUnits(totalAmount, 0))) * 100);
 

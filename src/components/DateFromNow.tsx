@@ -5,18 +5,18 @@ import { Tooltip } from "flowbite-react";
 /* Enable relative time plugin */
 dayjs.extend(relativeTime);
 
-export default function DateFromNow({ 
-  ts, 
-  prefix = "", 
-  pastPrefix = "", 
-  deltaDays = 0, 
-  tooltip = true 
+export default function DateFromNow({
+  ts,
+  prefix = "",
+  pastPrefix = "",
+  deltaDays = 0,
+  tooltip = true,
 }: {
-  ts: Dayjs | number,
-  prefix?: string, 
-  pastPrefix?: string,
-  deltaDays?: number,
-  tooltip?: boolean,
+  ts: Dayjs | number;
+  prefix?: string;
+  pastPrefix?: string;
+  deltaDays?: number;
+  tooltip?: boolean;
 }) {
   if (!ts) {
     return <></>;

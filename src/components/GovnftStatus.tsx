@@ -7,10 +7,10 @@ dayjs.extend(relativeTime);
 import { formatUnits } from "viem";
 import DateFromNow from "./DateFromNow";
 
-export default function GovnftStatus({ 
-  govnft 
+export default function GovnftStatus({
+  govnft,
 }: {
-  govnft: GovNft,
+  govnft: GovNft;
 }) {
   if (!govnft) {
     return <></>;

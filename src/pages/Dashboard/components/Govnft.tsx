@@ -14,10 +14,10 @@ import GovnftStatus from "../../../components/GovnftStatus";
 import NavLink from "../../../components/NavLink";
 import { GovNft } from "../../../hooks/types";
 
-export default function Govnft({ 
-  govnft 
+export default function Govnft({
+  govnft,
 }: {
-  govnft: GovNft,
+  govnft: GovNft;
 }) {
   return (
     <NavLink href={`/govnft?id=${govnft.id}`} className="block">

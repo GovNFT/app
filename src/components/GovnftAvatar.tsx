@@ -5,10 +5,10 @@ import { GovNft } from "../hooks/types";
 import Amount from "./Amount";
 import DateFromNow from "./DateFromNow";
 
-export default function GovnftAvatar({ 
-  govnft, 
+export default function GovnftAvatar({
+  govnft,
 }: {
-  govnft: GovNft, 
+  govnft: GovNft;
 }) {
   if (!govnft) {
     return (
