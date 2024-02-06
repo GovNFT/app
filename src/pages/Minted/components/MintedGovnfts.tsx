@@ -29,7 +29,7 @@ export default function MintedGovnfts({ govnfts }) {
       {govnfts.map((govnft) => (
         <div className="flex justify-between bg-black/[.02] dark:bg-black/[.08] rounded-md text-xs px-5 py-4">
           <div className="flex gap-12 items-center ">
-            <div className="w-32">GovNFT ID #{govnft.id}</div>
+            <div className="w-32">GovNFT ID #{Number(govnft.id)}</div>
           </div>
 
           <div className="w-64 flex gap-3 justify-end text-gray-600 dark:text-gray-400">

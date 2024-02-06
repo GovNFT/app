@@ -8,9 +8,8 @@ import MintedGovnfts from "./components/MintedGovnfts";
 
 export default function Dashboard() {
   const { address } = useAccount();
-  const { data: govnfts } = useGovNfts(address);
-
-  const mintedGovnfts = govnfts.filter((gnft) => gnft.minter.toLowerCase() === address.toLowerCase());
+  const isMinted = true;
+  const { data: govnfts } = useGovNfts(address, isMinted);
 
   return (
     <div className="container mx-auto px-4 lg:px-8">
@@ -18,10 +17,10 @@ export default function Dashboard() {
       <Header />
 
       <div className="max-w-screen-xl mx-auto">
-        {isEmpty(mintedGovnfts) ? (
-          <LoadingPlaceholder message="Loading activities..." />
+        {isEmpty(govnfts) ? (
+          <LoadingPlaceholder message="Loading onchain data..." />
         ) : (
-          <MintedGovnfts govnfts={mintedGovnfts} />
+          <MintedGovnfts govnfts={govnfts} />
         )}
       </div>
 
