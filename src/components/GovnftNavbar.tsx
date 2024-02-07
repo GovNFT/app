@@ -25,7 +25,7 @@ export default function GovnftNavbar({
             <div
               className={`${
                 active === nav ? classActive : "border-t border-transparent"
-              } hover:bg-gray-50 hover:dark:bg-gray-700/20 rounded-bl-lg`}
+              } hover:bg-gray-50 hover:dark:bg-gray-700/20`}
             >
               <div className="px-8 py-4 uppercase tracking-widest">{title}</div>
             </div>
