@@ -1,3 +1,4 @@
+import { useParams } from "wouter";
 import { isEmpty } from "lodash";
 import { Info as InfoIcon } from "lucide-react";
 import { useEffect, useState } from "react";
@@ -8,20 +9,18 @@ import Footer from "../../components/Footer";
 import Header from "../../components/Header";
 import LoadingPlaceholder from "../../components/LoadingPlaceholder";
 import { useGovNfts } from "../../hooks/govnft";
-import useSearchParams from "../../utils/useSearchParams";
 import Overview from "./components/Overview";
 
 export default function Govnft() {
-  const [searchParams, _] = useSearchParams();
-  const id = searchParams.get("id");
+  const params = useParams();
   const { address } = useAccount();
   const { data: nfts } = useGovNfts(address);
   const [nft, setNft] = useState(null);
 
   useEffect(() => {
-    const byId = nfts?.find((gnft) => gnft.id.toString() === id.toString());
+    const byId = nfts?.find((gnft) => gnft.id.toString() === params.id.toString());
     setNft(byId);
-  }, [nfts, id]);
+  }, [nfts, params.id]);
 
   return (
     <div className="container mx-auto px-4 lg:px-8">

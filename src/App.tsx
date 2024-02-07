@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { useAccount } from "wagmi";
-import { Route, Switch, useLocation } from "wouter";
+import { Route, Switch, useLocation, useParams } from "wouter";
 
 import NotFound from "./NotFound";
 import Toaster from "./components/Toaster";
@@ -46,7 +46,7 @@ export default function App() {
           </ConnectedOnly>
         </Route>
 
-        <Route path="/overview">
+        <Route path="/nft/:id">
           <Govnft />
         </Route>
 
