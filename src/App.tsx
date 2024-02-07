@@ -56,11 +56,11 @@ export default function App() {
           </ConnectedOnly>
         </Route>
 
-        <Route path="/nft/:id" nest>
-          <Route path="/transfer">
+        <Route path="/nft/" nest>
+          <Route path="/:id/transfer">
             <Transfer />
           </Route>
-          <Route path="/delegate">
+          <Route path="/:id/delegate">
             <Delegate />
           </Route>
         </Route>
