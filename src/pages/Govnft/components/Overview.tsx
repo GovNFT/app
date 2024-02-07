@@ -26,7 +26,7 @@ export default function Overview({
             <div className="flex gap-2 items-center text-xs pt-3">
               <div className="text-gray-400 dark:text-gray-600">Owned by</div>
               <div className="text-gray-600 dark:text-gray-400">
-                <AddressMask address={nft.address} />
+                <AddressMask address={nft.owner} />
               </div>
             </div>
 
