@@ -23,7 +23,8 @@ export default function GovnftNavbar({
         {Object.entries(navs).map(([nav, title]) => (
           <NavLink href={`/${nav}?id=${nft.id}`}>
             <div
-              className={`${active === nav ? classActive : "border-t border-transparent"
+              className={`${
+                active === nav ? classActive : "border-t border-transparent"
               } hover:bg-gray-50 hover:dark:bg-gray-700/20 rounded-bl-lg`}
             >
               <div className="px-8 py-4 uppercase tracking-widest">{title}</div>
@@ -32,7 +33,7 @@ export default function GovnftNavbar({
         ))}
       </div>
       {/* TODO: Add eterscan url */}
-      <a href="https://etherscan.io/" target="_blank">
+      <a href="https://etherscan.io/" target="_blank" rel="noreferrer">
         <div className="flex gap-3 items-center px-7 py-4 text-gray-600 dark:text-gray-400 underline hover:no-underline">
           <MoreVerticalIcon size={12} />
           Etherscan
