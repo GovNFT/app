@@ -10,6 +10,7 @@ import Dash from "./pages/Dashboard";
 import Delegate from "./pages/Delegate";
 import Landing from "./pages/Landing";
 import Transfer from "./pages/Transfer";
+import Govnft from "./pages/Govnft";
 
 function ConnectedOnly({ children }) {
   const { isConnected } = useAccount();
@@ -43,6 +44,10 @@ export default function App() {
           <ConnectedOnly>
             <Dash />
           </ConnectedOnly>
+        </Route>
+
+        <Route path="/overview">
+          <Govnft />
         </Route>
 
         <Route path="/create">

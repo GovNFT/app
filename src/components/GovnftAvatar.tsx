@@ -32,7 +32,7 @@ export default function GovnftAvatar({
         <div className="text-xs pt-1.5 text-gray-600 dark:text-gray-400 whitespace-nowrap flex items-center">
           <Amount amount={nft.amount} tokenAddress={nft.token} showLogo={false} />
           &nbsp;
-          <DateFromNow ts={nft.end} prefix="vesting until" pastPrefix="vested" />
+          <DateFromNow ts={nft.end} prefix="vesting for" pastPrefix="vested" />
         </div>
       </div>
     </div>

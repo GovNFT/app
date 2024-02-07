@@ -3,6 +3,7 @@ import { readContract } from "@wagmi/core";
 import { formatUnits } from "viem";
 import config from "../rpc";
 import { GovNft } from "./types";
+import { ZERO_ADDRESS } from "../constants";
 
 import { GOVNFT_SUGAR_ABI, GOVNFT_SUGAR_ADDRESS } from "../constants";
 
@@ -13,7 +14,8 @@ function postFetch(nft, account) {
 
   const isOwner = nft.owner.toLowerCase() === account.toLowerCase();
   const isMinter = nft.minter.toLowerCase() === account.toLowerCase();
-  return { ...nft, isOwner, isMinter, vestedPct };
+  const isDelegated = nft.delegated.toLowerCase() !== ZERO_ADDRESS;
+  return { ...nft, isOwner, isMinter, isDelegated, vestedPct };
 }
 
 async function fetchGovNfts(account): Promise<GovNft[]> {
