@@ -21,11 +21,11 @@ export default function GovnftNavbar({
     <div className="flex justify-between text-xs border-t border-gray-100 dark:border-gray-950/30">
       <div className="flex text-gray-700 dark:text-gray-300">
         {Object.entries(navs).map(([nav, title]) => (
-          <NavLink href={`/${nav}?id=${nft.id}`}>
+          <NavLink href={`/nft/${nft.id}/${nav}`}>
             <div
               className={`${
                 active === nav ? classActive : "border-t border-transparent"
-              } hover:bg-gray-50 hover:dark:bg-gray-700/20 rounded-bl-lg`}
+              } hover:bg-gray-50 hover:dark:bg-gray-700/20`}
             >
               <div className="px-8 py-4 uppercase tracking-widest">{title}</div>
             </div>
