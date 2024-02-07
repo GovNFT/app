@@ -1,19 +1,28 @@
 import { useQuery } from "@tanstack/react-query";
 import { readContract } from "@wagmi/core";
+import { formatUnits } from "viem";
 import config from "../rpc";
 import { GovNft } from "./types";
 
 import { GOVNFT_SUGAR_ABI, GOVNFT_SUGAR_ADDRESS } from "../constants";
 
+function postFetch(nft, account) {
+  const vestedPct = Math.trunc(
+    100 - (Number(formatUnits(nft.amount, 0)) / Number(formatUnits(nft.total_locked, 0))) * 100,
+  );
+
+  const isOwner = nft.owner.toLowerCase() === account.toLowerCase();
+  const isMinter = nft.minter.toLowerCase() === account.toLowerCase();
+  return { ...nft, isOwner, isMinter, vestedPct };
+}
+
 async function fetchGovNfts(account): Promise<GovNft[]> {
-  const govnfts = await readContract(config, {
+  return await readContract(config, {
     address: GOVNFT_SUGAR_ADDRESS,
     abi: GOVNFT_SUGAR_ABI,
     functionName: "all",
     args: [account],
-  });
-
-  return Promise.all(govnfts);
+  }).then((nfts) => nfts.map((nft) => postFetch(nft, account)));
 }
 
 export function useGovNfts(accountAddress, opts = {}) {

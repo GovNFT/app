@@ -26,4 +26,8 @@ export type GovNft = {
   owner: Address;
   address: Address;
   delegated: Address;
+  // Total amount vested in percentanges
+  vestedPct: number;
+  isOwner: boolean;
+  isMinter: boolean;
 };

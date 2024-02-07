@@ -1,92 +1,62 @@
 import { Tooltip } from "flowbite-react";
-import { Info as InfoIcon } from "lucide-react";
+import {
+  ChevronRight as ChevronRightIcon,
+  Info as InfoIcon,
+  Lock as LockIcon,
+  TrendingUp as TrendingUpIcon,
+} from "lucide-react";
 
 import ActionLink from "../../../components/ActionLink";
 import AddressMask from "../../../components/AddressMask";
 import Amount from "../../../components/Amount";
+import GovnftAvatar from "../../../components/GovnftAvatar";
+import GovnftProgress from "../../../components/GovnftProgress";
+import GovnftStatus from "../../../components/GovnftStatus";
 import NavLink from "../../../components/NavLink";
+import { GovNft } from "../../../hooks/types";
 
-export default function Govnft({ withdraw }) {
+export default function Govnft({
+  nft,
+}: {
+  nft: GovNft;
+}) {
   return (
-    <div className="bg-white hover:bg-white/50 dark:bg-white/5 dark:hover:bg-white/[.07] rounded text-sm p-5 shadow-sm">
-      <div className="flex gap-24 items-center">
-        <div className="flex flex-col gap-5 lg:flex-row lg:gap-24 grow">
-          <div className="flex flex-col gap-5 sm:flex-row sm:gap-6 sm:items-center">
-            <div className="order-first sm:order-last lg:order-first bg-gray-100 dark:bg-stone-600 shadow-sm rounded sm:w-32 h-12 sm:h-20 flex items-center justify-center text-xs font-bold">
-              ID #30
-            </div>
-            <div className="space-y-1.5 w-52 sm:grow pl-2">
-              <div className="flex gap-2 items-center">
-                Unknown Recipient
-                <Tooltip content="No extra info">
-                  <InfoIcon size={12} className="text-gray-600 dark:text-gray-400" />
-                </Tooltip>
-              </div>
-              <div className="text-xs text-gray-400 dark:text-gray-600">
-                <AddressMask address={"0x09516bBBc08B8AC950A6ee22B443ca9C55Cd68Da"} />
-              </div>
-              <div className="text-xs text-gray-600 dark:text-gray-400 flex gap-1.5 pt-1">
-                <NavLink href="/delegate" className="underline hover:no-underline">
-                  Delegate
-                </NavLink>{" "}
-                &middot;{" "}
-                <NavLink href="/transfer" className="underline hover:no-underline">
-                  Transfer
-                </NavLink>
+    <NavLink href={`/govnft?id=${nft.id}`} className="block">
+      <div className="bg-white hover:bg-white/50 dark:bg-white/[.04] dark:hover:bg-white/[.05] rounded-lg text-sm pl-6 pr-4 py-4 shadow-sm border border-gray-100 dark:border-gray-700/20">
+        <div className="flex justify-between gap-12">
+          <div className="flex flex-col gap-5 sm:flex-row sm:gap-8 sm:items-center">
+            <div className="sm:grow space-y-5">
+              <GovnftAvatar nft={nft} />
+              <div className="flex items-center gap-2 text-gray-400 dark:text-gray-600 text-xs">
+                <AddressMask address={nft.address} />
               </div>
             </div>
           </div>
-          <div className="flex flex-wrap gap-8 md:flex-row md:gap-20 items-center grow px-2 border-t border-white/5 lg:border-none pt-5 lg:pt-0">
-            <div className="space-y-1.5">
-              <div className="text-xs text-gray-400 dark:text-gray-600">Amount</div>
-              <div>
-                <Amount
-                  tokenAddress={"0x4200000000000000000000000000000000000042"}
-                  decimals={18}
-                  amount={0n}
-                  symbol="OP"
-                  showLogo={true}
-                />
-              </div>
-              <div className="text-xs text-gray-600 dark:text-gray-400 pt-1">Started a month ago</div>
+          <div className="flex gap-4 items-center">
+            <div className="flex gap-5 items-center pr-3">
+              <GovnftStatus nft={nft} />
+              <GovnftProgress vestedPct={nft.vestedPct} />
             </div>
-
-            <div className="space-y-1.5">
-              <div className="text-xs text-gray-400 dark:text-gray-600">Vesting</div>
-              <div>
-                <Amount
-                  tokenAddress={"0x4200000000000000000000000000000000000042"}
-                  decimals={18}
-                  amount={0n}
-                  symbol="OP"
-                  showLogo={false}
-                />
+            <div className="px-6 py-4 w-52 flex flex-col justify-center items-end border-l border-gray-100 dark:border-gray-950/20">
+              <div className="text-gray-400 dark:text-gray-600 pb-2 text-xs">Locked</div>
+              <Amount tokenAddress={nft.token} amount={nft.amount} showLogo={true} />
+              <div className="text-gray-600 dark:text-gray-400 pt-2 text-xs flex gap-1 items-center">
+                of <Amount tokenAddress={nft.token} amount={nft.total_locked} showLogo={false} /> total
               </div>
-              <div className="text-xs text-gray-600 dark:text-gray-400 pt-1">Ends in 2 years</div>
             </div>
-
-            {withdraw && (
-              <div className="space-y-1.5 text-right grow">
-                <div className="text-xs text-gray-400 dark:text-gray-600">Withdrawable</div>
-                <div className="flex justify-end">
-                  <Amount
-                    tokenAddress={"0x4200000000000000000000000000000000000042"}
-                    decimals={18}
-                    amount={0n}
-                    symbol="OP"
-                    showLogo={false}
-                  />
-                </div>
-                <div className="flex justify-end text-xs pt-1">
-                  <ActionLink disabled={false} onClick="#">
-                    Withdraw
-                  </ActionLink>
-                </div>
+            <div className="px-6 py-4 w-52 flex flex-col justify-center items-end border-l border-gray-100 dark:border-gray-950/20">
+              <div className="text-gray-400 dark:text-gray-600 pb-2 text-xs">Claimable</div>
+              <Amount tokenAddress={nft.token} amount={nft.claimable} showLogo={false} />
+              <div className="pt-2 text-xs flex gap-2 items-center">
+                <ActionLink onClick="#">Claim</ActionLink>
               </div>
-            )}
+            </div>
+            <div className="px-3 h-full bg-gray-50 hover:bg-gray-100 dark:bg-gray-700/10 hover:dark:bg-gray-700/20 flex items-center rounded-md cursor-pointer">
+              <ChevronRightIcon size={14} />
+            </div>
           </div>
         </div>
       </div>
-    </div>
+    </NavLink>
   );
 }
