@@ -1,72 +1,46 @@
 import { TextInput, Tooltip } from "flowbite-react";
-import { CheckCircle2 as CheckCircle2Icon, Info as InfoIcon, Wallet as WalletIcon } from "lucide-react";
+import { Button } from "flowbite-react";
+import {
+  CheckCircle2 as CheckCircle2Icon,
+  ExternalLink as ExternalLinkIcon,
+  Info as InfoIcon,
+  Wallet as WalletIcon,
+} from "lucide-react";
+import { useEffect } from "react";
 import { useState } from "react";
 import { isAddress } from "viem";
+import { useAccount } from "wagmi";
+import { useLocation } from "wouter";
+import GovnftHeader from "../../../components/GovnftHeader";
+import NavLink from "../../../components/NavLink";
 
 import Amount from "../../../components/Amount";
 import TransferButton from "./TransferButton";
 
-export default function TransferNft() {
+export default function TransferNft({ nft }) {
   const [toAddress, setToAddress] = useState(null);
 
   return (
     <>
       <div className="lg:max-w-screen-lg mx-auto">
+        <GovnftHeader nft={nft} active="transfer" />
+
         <div className="lg:flex gap-6">
-          <div className="lg:w-8/12 mb-4 lg:mb-0 bg-white shadow-lg dark:bg-white/5 p-6 sm:p-12 rounded-lg">
-            <div className="text-xs text-gray-600 dark:text-gray-400">Transfer GOVNFT</div>
+          <div className="w-7/12 mb-4 lg:mb-0 bg-white shadow-lg dark:bg-white/5 p-2 md:px-10 md:py-8 rounded-lg">
+            <div className="text-2xl text-gray-700 dark:text-gray-300">Transfer</div>
 
-            <div className="flex items-center py-6 my-6 border-y border-black/5 dark:border-white/5">
-              <div className="space-y-1.5 grow">
-                <div className="flex gap-2 items-center">
-                  Unknown Recipient
-                  <Tooltip content="No extra info">
-                    <InfoIcon size={12} className="text-gray-600 dark:text-gray-400" />
-                  </Tooltip>
-                </div>
-                <div className="text-xs text-gray-400 dark:text-gray-600">0x0951...d68Da</div>
-              </div>
-              <div className="bg-white dark:bg-stone-600 shadow-md rounded px-8 h-12 flex items-center justify-center text-xs font-bold">
-                ID #30
-              </div>
+            {/* TODO: write text that describes how transfer works */}
+            <div className="text-sm text-gray-600 dark:text-gray-400 py-8 pr-8">
+              Minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute
+              irure dolor in reprehenderit in voluptate velit esse cillum.
             </div>
 
-            <div className="flex gap-16 items-center pb-6 mb-6 border-b border-black/5 dark:border-white/5">
-              <div className="space-y-1.5">
-                <div className="text-xs text-gray-400 dark:text-gray-600">Amount</div>
-                <div className="text-sm">
-                  <Amount
-                    tokenAddress={"0x4200000000000000000000000000000000000042"}
-                    decimals={18}
-                    amount={0n}
-                    symbol="OP"
-                    showLogo={true}
-                  />
-                </div>
-                <div className="text-xs text-gray-600 dark:text-gray-400 pt-1">Started a month ago</div>
-              </div>
-
-              <div className="space-y-1.5">
-                <div className="text-xs text-gray-400 dark:text-gray-600">Vesting</div>
-                <div className="text-sm">
-                  <Amount
-                    tokenAddress={"0x4200000000000000000000000000000000000042"}
-                    decimals={18}
-                    amount={0n}
-                    symbol="OP"
-                    showLogo={false}
-                  />
-                </div>
-                <div className="text-xs text-gray-600 dark:text-gray-400 pt-1">Ends in 2 years</div>
-              </div>
-            </div>
-
-            <div className="space-y-3 pb-2">
-              <div className="text-xs text-gray-600 dark:text-gray-400">Address</div>
+            <div className="space-y-3 pb-3">
+              <div className="text-gray-600 dark:text-gray-400 text-xs">Address</div>
               <TextInput placeholder="0x" value={toAddress} onChange={(e) => setToAddress(e.target.value)} />
             </div>
           </div>
-          <div className="lg:w-6/12 p-6 sm:p-10 bg-black/[.035]  dark:bg-white/[.08] bg-opacity-70 dark:bg-opacity-50 rounded-lg">
+          <div className="lg:w-5/12 bg-black/[.035] dark:bg-gray-700/10 p-2 md:px-10 md:py-8 rounded-lg">
             <div className="flex flex-col items-center justify-center h-full space-y-6 py-8">
               {!isAddress(toAddress) && (
                 <>
@@ -85,7 +59,7 @@ export default function TransferNft() {
                     <CheckCircle2Icon size={20} strokeWidth={1} />
                   </div>
                   <div className="text-sm text-gray-600 dark:text-gray-400 w-52 text-center pb-3">
-                    Wallet address is valid. You can now transfer the GovNFT.
+                    The address used is valid.
                   </div>
                   <TransferButton />
                 </>
