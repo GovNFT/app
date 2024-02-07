@@ -11,12 +11,11 @@ import GovnftHeader from "../../../components/GovnftHeader";
 import NavLink from "../../../components/NavLink";
 import { GovNft } from "../../../hooks/types";
 
-export default function Overview({ 
-  nft 
+export default function Overview({
+  nft,
 }: {
   nft: GovNft;
 }) {
-
   return (
     <>
       <div className="max-w-screen-lg mx-auto">
@@ -26,7 +25,9 @@ export default function Overview({
           <div className="mx-auto lg:w-7/12 mb-4 lg:mb-0 bg-white shadow-lg dark:bg-white/5 p-2 md:px-10 md:py-8 rounded-lg">
             <div className="flex gap-2 items-center text-xs pt-3">
               <div className="text-gray-400 dark:text-gray-600">Owned by</div>
-              <div className="text-gray-600 dark:text-gray-400"><AddressMask address={nft.address} /></div>
+              <div className="text-gray-600 dark:text-gray-400">
+                <AddressMask address={nft.address} />
+              </div>
             </div>
 
             <div className="space-y-1.5 mt-12 mb-8">
@@ -71,12 +72,9 @@ export default function Overview({
                 <Amount tokenAddress={nft.token} amount={nft.total_claimed} showLogo={false} />
               </div>
             </div>
-
           </div>
 
-          <div className="lg:w-5/12 bg-black/[.035] dark:bg-gray-700/10 p-2 md:px-10 md:py-8 rounded-lg">
-            Activity
-          </div>
+          <div className="lg:w-5/12 bg-black/[.035] dark:bg-gray-700/10 p-2 md:px-10 md:py-8 rounded-lg">Activity</div>
         </div>
       </div>
     </>

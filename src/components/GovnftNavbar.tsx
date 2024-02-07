@@ -1,12 +1,12 @@
 import { Share2 as MoreVerticalIcon } from "lucide-react";
-import NavLink from "./NavLink";
 import { GovNft } from "../hooks/types";
+import NavLink from "./NavLink";
 
-export default function GovnftNavbar({ 
-  nft, 
-  active = "overview" 
+export default function GovnftNavbar({
+  nft,
+  active = "overview",
 }: {
-  nft:GovNft;
+  nft: GovNft;
   active: string;
 }) {
   const classActive = "border-t border-primary bg-gray-50 dark:bg-gray-700/10 ";
@@ -15,7 +15,7 @@ export default function GovnftNavbar({
     delegate: "delegate",
     split: "split",
     transfer: "transfer",
-  }
+  };
 
   return (
     <div className="flex justify-between text-xs border-t border-gray-100 dark:border-gray-950/30">

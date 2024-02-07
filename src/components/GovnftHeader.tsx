@@ -1,15 +1,15 @@
 import { Button } from "flowbite-react";
 import { useAccount } from "wagmi";
+import { GovNft } from "../hooks/types";
 import GovnftAvatar from "./GovnftAvatar";
 import GovnftNavbar from "./GovnftNavbar";
 import GovnftProgress from "./GovnftProgress";
 import GovnftStatus from "./GovnftStatus";
 import NavLink from "./NavLink";
-import { GovNft } from "../hooks/types";
 
-export default function GovnftHeader({ 
-  nft, 
-  active = "overview" 
+export default function GovnftHeader({
+  nft,
+  active = "overview",
 }: {
   nft: GovNft;
   active: string;
