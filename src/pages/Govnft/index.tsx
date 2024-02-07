@@ -18,9 +18,7 @@ export default function Govnft() {
   const [nft, setNft] = useState(null);
 
   useEffect(() => {
-    {
-      /* @ts-ignore */
-    }
+    /* @ts-ignore */
     const byId = nfts?.find((gnft) => gnft.id.toString() === params.id);
     setNft(byId);
   }, [nfts, params]);
