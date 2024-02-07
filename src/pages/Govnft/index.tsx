@@ -18,9 +18,12 @@ export default function Govnft() {
   const [nft, setNft] = useState(null);
 
   useEffect(() => {
-    const byId = nfts?.find((gnft) => gnft.id.toString() === params.id.toString());
+    {
+      /* @ts-ignore */
+    }
+    const byId = nfts?.find((gnft) => gnft.id.toString() === params.id);
     setNft(byId);
-  }, [nfts, params.id]);
+  }, [nfts, params]);
 
   return (
     <div className="container mx-auto px-4 lg:px-8">
