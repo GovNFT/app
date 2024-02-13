@@ -47,10 +47,6 @@ export default function App() {
           </ConnectedOnly>
         </Route>
 
-        <Route path="/nft/:id">
-          <Govnft />
-        </Route>
-
         <Route path="/create">
           <ConnectedOnly>
             <Create />
@@ -58,12 +54,21 @@ export default function App() {
         </Route>
 
         <Route path="/nft/" nest>
+          <Route path="/:id">
+            <Govnft />
+          </Route>
           <Route path="/:id/transfer">
             <Transfer />
           </Route>
           <Route path="/:id/delegate">
             <Delegate />
           </Route>
+        </Route>
+
+        <Route path="/minted">
+          <ConnectedOnly>
+            <Minted />
+          </ConnectedOnly>
         </Route>
 
         <Route>

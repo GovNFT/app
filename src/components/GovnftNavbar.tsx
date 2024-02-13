@@ -11,7 +11,7 @@ export default function GovnftNavbar({
 }) {
   const classActive = "border-t border-primary bg-gray-50 dark:bg-gray-700/10 ";
   const navs = {
-    nft: "overview",
+    "": "overview",
     delegate: "delegate",
     split: "split",
     transfer: "transfer",
@@ -21,7 +21,7 @@ export default function GovnftNavbar({
     <div className="flex justify-between text-xs border-t border-gray-100 dark:border-gray-950/30">
       <div className="flex text-gray-700 dark:text-gray-300">
         {Object.entries(navs).map(([nav, title]) => (
-          <NavLink href={`~/nft/${nft.id}/${nav === "nft" ? "" : nav}`}>
+          <NavLink href={`~/nft/${nft.id}/${nav}`}>
             <div
               className={`${
                 active === nav ? classActive : "border-t border-transparent"

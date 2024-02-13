@@ -67,7 +67,7 @@ export default function Profile({ children }) {
 
             <CustomRpc />
 
-            <NavLink href="/minted" size="sm">
+            <NavLink href="~/minted" size="sm">
               <div className="bg-gray-50 hover:bg-gray-100 dark:bg-gray-900/20 hover:dark:bg-gray-900/40  p-4 mt-4 rounded-lg">
                 <div className="text-xs flex justify-between items-center gap-8 text-gray-700 dark:text-gray-300">
                   Review Minted GovNFTs
