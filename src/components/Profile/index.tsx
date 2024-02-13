@@ -1,5 +1,10 @@
 import { Button } from "flowbite-react";
-import { ExternalLink as ExternalLinkIcon, Settings as SettingsIcon, Wallet as WalletIcon } from "lucide-react";
+import {
+  ArrowRight as ArrowRightIcon,
+  ExternalLink as ExternalLinkIcon,
+  Settings as SettingsIcon,
+  Wallet as WalletIcon,
+} from "lucide-react";
 import { useState } from "react";
 import { useAccount, useBalance, useDisconnect, useSwitchChain } from "wagmi";
 
@@ -61,6 +66,15 @@ export default function Profile({ children }) {
             </div>
 
             <CustomRpc />
+
+            <NavLink href="/minted" size="sm">
+              <div className="bg-gray-50 hover:bg-gray-100 dark:bg-gray-900/20 hover:dark:bg-gray-900/40  p-4 mt-4 rounded-lg">
+                <div className="text-xs flex justify-between items-center gap-8 text-gray-700 dark:text-gray-300">
+                  Review Minted GovNFTs
+                  <ArrowRightIcon size={14} />
+                </div>
+              </div>
+            </NavLink>
 
             <Button onClick={() => disconnect()} className="w-full" color="light">
               Disconnect
