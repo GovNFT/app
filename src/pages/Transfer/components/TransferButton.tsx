@@ -1,9 +1,9 @@
 import { Button } from "flowbite-react";
 
-export default function DelegateButton() {
+export default function TransferButton() {
   return (
     <>
-      <Button className="px-6">Delegate</Button>
+      <Button className="px-6">Transfer</Button>
     </>
   );
 }
