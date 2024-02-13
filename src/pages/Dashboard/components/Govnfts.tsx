@@ -17,10 +17,10 @@ export default function Govnfts({
         </div>
         <div className="w-64 mx-auto">No NFTs were found.</div>
         <div className="w-96 mx-auto flex gap-3 justify-center border-t border-gray-700/30 pt-8">
-          <NavLink href="/create" size="sm" className="w-40" color="light" useButton={true}>
+          <NavLink href="~/create" size="sm" className="w-40" color="light" useButton={true}>
             Create NFTs
           </NavLink>
-          <NavLink href="/minted" size="sm" className="w-48" color="light" useButton={true}>
+          <NavLink href="~/minted" size="sm" className="w-48" color="light" useButton={true}>
             View Created NFTs
           </NavLink>
         </div>

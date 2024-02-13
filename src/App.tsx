@@ -65,6 +65,12 @@ export default function App() {
           </Route>
         </Route>
 
+        <Route path="/minted">
+          <ConnectedOnly>
+            <Minted />
+          </ConnectedOnly>
+        </Route>
+
         <Route>
           <NotFound>This page does not exist.</NotFound>
         </Route>
