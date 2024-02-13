@@ -21,7 +21,7 @@ ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
       <WagmiProvider config={config}>
         <QueryClientProvider client={queryClient}>
           {/* @ts-ignore */}
-          <ErrorBoundary FallbackComponent={Error}>
+          <ErrorBoundary FallbackComponent={NotFound}>
             <App />
           </ErrorBoundary>
         </QueryClientProvider>
