@@ -1,6 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import { readContract } from "@wagmi/core";
 import { formatUnits } from "viem";
+import { ZERO_ADDRESS } from "../constants";
 import config from "../rpc";
 import { GovNft } from "./types";
 
@@ -13,7 +14,8 @@ function postFetch(nft, account) {
 
   const isOwner = nft.owner.toLowerCase() === account.toLowerCase();
   const isMinter = nft.minter.toLowerCase() === account.toLowerCase();
-  return { ...nft, isOwner, isMinter, vestedPct };
+  const isDelegated = nft.delegated.toLowerCase() !== ZERO_ADDRESS;
+  return { ...nft, isOwner, isMinter, isDelegated, vestedPct };
 }
 
 async function fetchGovNfts(account): Promise<GovNft[]> {

@@ -21,7 +21,7 @@ export default function Govnft({
   nft: GovNft;
 }) {
   return (
-    <NavLink href={`/govnft?id=${nft.id}`} className="block">
+    <NavLink href={`/nft/${nft.id}`} className="block">
       <div className="bg-white hover:bg-white/50 dark:bg-white/[.04] dark:hover:bg-white/[.05] rounded-lg text-sm pl-6 pr-4 py-4 shadow-sm border border-gray-100 dark:border-gray-700/20">
         <div className="flex justify-between gap-12">
           <div className="flex flex-col gap-5 sm:flex-row sm:gap-8 sm:items-center">
