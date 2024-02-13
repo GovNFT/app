@@ -30,4 +30,5 @@ export type GovNft = {
   vestedPct: number;
   isOwner: boolean;
   isMinter: boolean;
+  isDelegated: boolean;
 };

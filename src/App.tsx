@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { useAccount } from "wagmi";
-import { Route, Switch, useLocation } from "wouter";
+import { Route, Switch, useLocation, useParams } from "wouter";
 
 import NotFound from "./NotFound";
 import Toaster from "./components/Toaster";
@@ -8,6 +8,7 @@ import Connect from "./pages/Connect";
 import Create from "./pages/Create";
 import Dash from "./pages/Dashboard";
 import Delegate from "./pages/Delegate";
+import Govnft from "./pages/Govnft";
 import Landing from "./pages/Landing";
 import Minted from "./pages/Minted";
 import Transfer from "./pages/Transfer";
@@ -46,10 +47,8 @@ export default function App() {
           </ConnectedOnly>
         </Route>
 
-        <Route path="/minted">
-          <ConnectedOnly>
-            <Minted />
-          </ConnectedOnly>
+        <Route path="/nft/:id">
+          <Govnft />
         </Route>
 
         <Route path="/create">
@@ -58,16 +57,13 @@ export default function App() {
           </ConnectedOnly>
         </Route>
 
-        <Route path="/transfer">
-          <ConnectedOnly>
+        <Route path="/nft/:id" nest>
+          <Route path="/transfer">
             <Transfer />
-          </ConnectedOnly>
-        </Route>
-
-        <Route path="/delegate">
-          <ConnectedOnly>
+          </Route>
+          <Route path="/delegate">
             <Delegate />
-          </ConnectedOnly>
+          </Route>
         </Route>
 
         <Route>
