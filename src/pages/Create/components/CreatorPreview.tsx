@@ -5,7 +5,7 @@ import AddressMask from "../../../components/AddressMask";
 import Amount from "../../../components/Amount";
 import CreateButton from "./CreateButton";
 
-export default function Preview({ toAddress, token, amount, recipient, desc }) {
+export default function CreatorPreview({ toAddress, token, amount, recipient, desc }) {
   return (
     <>
       <div className="space-y-6 pb-8">

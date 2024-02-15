@@ -33,7 +33,7 @@ export default function Chart({
           display: false,
         },
         ticks: {
-          color: "rgba(255, 255, 255, 0.5)",
+          color: "rgba(127, 127, 127)",
           padding: 10,
         },
       },
@@ -41,6 +41,7 @@ export default function Chart({
         position: "right",
         beginAtZero: true,
         ticks: {
+          color: "rgba(127, 127, 127)",
           display: true,
           font: {
             size: 10,
@@ -98,8 +99,8 @@ export default function Chart({
       {
         label: "Vesting",
         data: vestingData,
-        borderColor: "rgb(53, 162, 235)",
-        backgroundColor: "rgba(53, 162, 235)",
+        borderColor: "rgb(21, 128, 61)",
+        backgroundColor: "rgba(21, 128, 61)",
         borderWidth: 1,
         radius: 2,
         fill: "start",

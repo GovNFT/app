@@ -65,7 +65,7 @@ export default function AssetInput({
 
   return (
     <div>
-      <div className="flex flex-col gap-1.5 sm:flex-row justify-between items-baseline mb-3">
+      <div className="flex flex-row justify-between items-baseline mb-3">
         <div className="text-xs text-gray-600 dark:text-gray-400 grow">{title}</div>
         <div className="text-xs text-right flex gap-3 items-center">
           {!asset && <Spinner size="xs" color="gray" />}
