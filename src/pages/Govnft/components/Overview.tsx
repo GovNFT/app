@@ -19,10 +19,10 @@ export default function Overview({
   return (
     <>
       <div className="max-w-screen-lg mx-auto">
-        <GovnftHeader nft={nft} active="nft" />
+        <GovnftHeader nft={nft} active="" />
 
         <div className="lg:flex gap-6">
-          <div className="mx-auto lg:w-full mb-4 lg:mb-0 bg-white shadow-lg dark:bg-white/5 p-2 md:px-10 md:py-8 rounded-lg">
+          <div className="mx-auto lg:w-full mb-4 lg:mb-0 bg-white shadow-lg dark:bg-white/5 px-5 py-6 md:px-10 md:py-8 rounded-lg">
             <div className="flex gap-2 items-center text-xs pt-3">
               <div className="text-gray-400 dark:text-gray-600">Owned by</div>
               <div className="text-gray-600 dark:text-gray-400">

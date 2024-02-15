@@ -26,14 +26,18 @@ export default function DelegateNft({ nft }) {
         <GovnftHeader nft={nft} active="delegate" />
 
         <div className="lg:flex gap-6">
-          <div className="w-7/12 mb-4 lg:mb-0 bg-white shadow-lg dark:bg-white/5 p-2 md:px-10 md:py-8 rounded-lg">
+          <div className="lg:w-7/12 mb-4 lg:mb-0 bg-white shadow-lg dark:bg-white/5 px-5 py-6 md:px-10 md:py-8 rounded-lg">
             <div className="text-2xl text-gray-700 dark:text-gray-300">Delegate</div>
 
             {/* TODO: write text that describes how delegation works */}
-            <div className="text-sm text-gray-600 dark:text-gray-400 py-8 pr-8">
-              Consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-              minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute
-              irure dolor in reprehenderit in voluptate velit esse cillum.
+            <div className="text-xs sm:text-sm text-gray-600 dark:text-gray-400 pt-4 sm:pt-4 sm:pr-8">
+              You can delegate your locked value {nft.amount} to one of the OP Delegates. Delegates are the stewards of
+              the Optimism Token House, appointed by token holders to make governance decisions on their behalf.
+            </div>
+
+            <div className="text-sm flex justify-between bg-gray-50 dark:bg-gray-700/10 px-4 py-4 mt-10 mb-12 rounded-lg">
+              <div className="text-gray-600 dark:text-gray-400">Current Lock</div>
+              <Amount tokenAddress={nft.token} amount={nft.amount} showLogo={true} />
             </div>
 
             <div className="space-y-3 pb-3">
@@ -41,7 +45,7 @@ export default function DelegateNft({ nft }) {
                 <div>Delegate Address</div>
                 <div className="underline hover:no-underline flex gap-2 items-center">
                   <a href="https://vote.optimism.io/delegates" target="_blank" rel="noreferrer">
-                    Review Delegates
+                    View Delegates
                   </a>
                   <ExternalLinkIcon size={12} />
                 </div>
@@ -56,7 +60,7 @@ export default function DelegateNft({ nft }) {
                   <div className="bg-gray-500/10 dark:bg-white/5 p-3.5 rounded-full">
                     <WalletIcon size={20} strokeWidth={1} />
                   </div>
-                  <div className="text-sm text-gray-600 dark:text-gray-400 w-52 text-center pb-3">
+                  <div className="text-xs sm:text-sm text-gray-600 dark:text-gray-400 w-52 text-center pb-3">
                     Enter the wallet address where the lock will be delegated
                   </div>
                 </>
@@ -67,8 +71,8 @@ export default function DelegateNft({ nft }) {
                   <div className="bg-green-500/5 p-3.5 rounded-full text-green-500">
                     <CheckCircle2Icon size={20} strokeWidth={1} />
                   </div>
-                  <div className="text-sm text-gray-600 dark:text-gray-400 w-52 text-center pb-3">
-                    Delegate address is valid.
+                  <div className="text-xs sm:text-sm text-gray-600 dark:text-gray-400 w-52 text-center pb-3">
+                    Address is valid. You can now delegate gouverannce.
                   </div>
                   <DelegateButton />
                 </>
