@@ -7,7 +7,6 @@ import Header from "../../components/Header";
 export default function Landing() {
   return (
     <div className="container mx-auto px-4 lg:px-8">
-      {/* @ts-ignore */}
       <Header />
 
       <div className="w-full text-center flex flex-col items-center">

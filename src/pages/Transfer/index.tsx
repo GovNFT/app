@@ -22,7 +22,6 @@ export default function Delegate() {
 
   return (
     <div className="container mx-auto px-4 lg:px-8">
-      {/* @ts-ignore */}
       <Header />
 
       {isEmpty(nft) ? <LoadingPlaceholder message="Loading data..." /> : <TransferNft nft={nft} />}
