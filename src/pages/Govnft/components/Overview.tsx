@@ -23,10 +23,14 @@ export default function Overview({
 
         <div className="lg:flex gap-6">
           <div className="mx-auto lg:w-full mb-4 lg:mb-0 bg-white shadow-lg dark:bg-white/5 p-2 md:px-10 md:py-8 rounded-lg">
-            <div className="flex gap-2 items-center text-xs pt-3">
-              <div className="text-gray-400 dark:text-gray-600">Owned by</div>
-              <div className="text-gray-600 dark:text-gray-400">
-                <AddressMask address={nft.owner} />
+            <div className="space-y-3">
+              <div className="text-xl text-gray-700 dark:text-gray-300">{nft.name ? nft.name : ""}</div>
+              <div className="text-gray-700 dark:text-gray-300">{nft.description ? nft.decription : ""}</div>
+              <div className="flex gap-2 items-center text-xs">
+                <div className="text-gray-400 dark:text-gray-600">Owned by</div>
+                <div className="text-gray-600 dark:text-gray-400">
+                  <AddressMask address={nft.owner} />
+                </div>
               </div>
             </div>
 

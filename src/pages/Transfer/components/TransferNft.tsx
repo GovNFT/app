@@ -27,7 +27,7 @@ export default function TransferNft({ nft }) {
 
         <div className="lg:flex gap-6">
           <div className="w-7/12 mb-4 lg:mb-0 bg-white shadow-lg dark:bg-white/5 p-2 md:px-10 md:py-8 rounded-lg">
-            <div className="text-2xl text-gray-700 dark:text-gray-300">Transfer</div>
+            <div className="text-xl text-gray-700 dark:text-gray-300">Transfer</div>
 
             {/* TODO: write text that describes how transfer works */}
             <div className="text-sm text-gray-600 dark:text-gray-400 py-8 pr-8">
