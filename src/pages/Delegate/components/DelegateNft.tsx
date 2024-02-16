@@ -11,8 +11,10 @@ import { useState } from "react";
 import { isAddress } from "viem";
 import { useAccount } from "wagmi";
 import { useLocation } from "wouter";
+
 import GovnftHeader from "../../../components/GovnftHeader";
 import NavLink from "../../../components/NavLink";
+import { DELEGATES_URI } from "../../../constants";
 
 import Amount from "../../../components/Amount";
 import DelegateButton from "./DelegateButton";
@@ -30,9 +32,9 @@ export default function DelegateNft({ nft }) {
             <div className="text-2xl text-gray-700 dark:text-gray-300">Delegate</div>
 
             {/* TODO: write text that describes how delegation works */}
-            <div className="text-xs sm:text-sm text-gray-600 dark:text-gray-400 pt-4 sm:pt-4 sm:pr-8">
-              You can delegate your locked value {nft.amount} to one of the OP Delegates. Delegates are the stewards of
-              the Optimism Token House, appointed by token holders to make governance decisions on their behalf.
+            <div className="text-xs sm:text-sm text-gray-600 dark:text-gray-400 pt-4 sm:pt-4 sm:pr-12">
+              You can delegate your locked value {nft.amount}. Delegates are appointed by token holders to make
+              governance decisions on their behalf.
             </div>
 
             <div className="text-sm flex justify-between bg-gray-50 dark:bg-gray-700/10 px-4 py-4 mt-10 mb-12 rounded-lg">
@@ -44,7 +46,7 @@ export default function DelegateNft({ nft }) {
               <div className="text-gray-600 dark:text-gray-400 text-xs flex justify-between items-center">
                 <div>Delegate Address</div>
                 <div className="underline hover:no-underline flex gap-2 items-center">
-                  <a href="https://vote.optimism.io/delegates" target="_blank" rel="noreferrer">
+                  <a href={DELEGATES_URI} target="_blank" rel="noreferrer">
                     View Delegates
                   </a>
                   <ExternalLinkIcon size={12} />

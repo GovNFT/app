@@ -29,10 +29,9 @@ export default function TransferNft({ nft }) {
           <div className="lg:w-7/12 mb-4 lg:mb-0 bg-white shadow-lg dark:bg-white/5 px-5 py-6 md:px-10 md:py-8 rounded-lg">
             <div className="text-2xl text-gray-700 dark:text-gray-300">Transfer</div>
 
-            {/* TODO: write text that describes how transfer works */}
-            <div className="text-xs sm:text-sm text-gray-600 dark:text-gray-400 pt-4 sm:pt-4 pb-12 sm:pr-8">
-              Be cautious when choosing the destination address, as this decision is irreversible. Ensure precision to
-              safeguard your valuable digital assets.
+            <div className="text-xs sm:text-sm text-gray-600 dark:text-gray-400 pt-4 sm:pt-4 pb-12">
+              Be cautious when choosing the destination
+              <br /> address, as this decision is irreversible.
             </div>
 
             <div className="space-y-3 pb-3">
