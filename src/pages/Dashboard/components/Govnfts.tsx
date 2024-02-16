@@ -1,4 +1,5 @@
 import { Shapes as ShapesIcon } from "lucide-react";
+
 import AddressMask from "../../../components/AddressMask";
 import NavLink from "../../../components/NavLink";
 import { GovNft } from "../../../hooks/types";
