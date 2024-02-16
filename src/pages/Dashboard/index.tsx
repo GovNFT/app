@@ -1,5 +1,6 @@
 import { isEmpty } from "lodash";
 import { useAccount } from "wagmi";
+
 import Footer from "../../components/Footer";
 import Header from "../../components/Header";
 import LoadingPlaceholder from "../../components/LoadingPlaceholder";

@@ -7,7 +7,7 @@ import Profile from "../components/Profile";
 
 export default function Header() {
   return (
-    <div className="pt-4 pb-12 sm:pb-24">
+    <div className="pt-2 pb-24">
       <Navbar fluid={true} rounded={true} border={false}>
         <Navbar.Brand href="/">
           <img src="/govnft.svg" className="mr-5 h-6 sm:h-7" alt="GOVNFT" />
