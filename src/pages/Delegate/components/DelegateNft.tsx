@@ -27,16 +27,17 @@ export default function DelegateNft({ nft }) {
 
         <div className="lg:flex gap-6">
           <div className="w-7/12 mb-4 lg:mb-0 bg-white shadow-lg dark:bg-white/5 p-2 md:px-10 md:py-8 rounded-lg">
-            <div className="text-xl text-gray-700 dark:text-gray-300">Delegate</div>
-
-            {/* TODO: write text that describes how delegation works */}
-            <div className="text-sm text-gray-600 dark:text-gray-400 py-8 pr-8">
-              Consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-              minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute
-              irure dolor in reprehenderit in voluptate velit esse cillum.
+            <div className="space-y-3">
+              <div className="text-xl text-gray-700 dark:text-gray-300">Delegate</div>
+              {/* TODO: write text that describes how delegation works */}
+              <div className="text-sm text-gray-600 dark:text-gray-400 pr-8">
+                Consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
+                ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis
+                aute irure dolor in reprehenderit in voluptate velit esse cillum.
+              </div>
             </div>
 
-            <div className="space-y-3 pb-3">
+            <div className="space-y-3 pt-12 pb-3">
               <div className="text-gray-600 dark:text-gray-400 text-xs flex justify-between items-center">
                 <div>Delegate Address</div>
                 <div className="underline hover:no-underline flex gap-2 items-center">
