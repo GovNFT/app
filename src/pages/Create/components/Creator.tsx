@@ -9,12 +9,12 @@ import GovnftChart from "../../../components/GovnftChart";
 import { useTokens } from "../../../hooks/token";
 import { Token } from "../../../hooks/types";
 import Checklist from "./Checklist";
+import CreateButton from "./CreateButton";
 import CreatorPreview from "./CreatorPreview";
 
 export default function Creator() {
   const [splitable, setSplitable] = useState(false);
   const [amount, setAmount] = useState(parseUnits("0", 18));
-  const [preview, setPreview] = useState(false);
   const [toAddress, setToAddress] = useState(null);
 
   const today = dayjs();
@@ -38,15 +38,6 @@ export default function Creator() {
     // @ts-ignore
     setToken(tokens[0]);
   }, [tokens, tokens[0]]);
-
-  useEffect(() => {
-    // @ts-ignore
-    if (isAddress(toAddress) && amount && Number(vestingDuration) !== 0 && recipientName) {
-      setPreview(true);
-    } else {
-      setPreview(false);
-    }
-  }, [toAddress, amount, vestingDuration, recipientName]);
 
   return (
     <>
@@ -174,24 +165,23 @@ export default function Creator() {
       </div>
 
       <div className="p-8 lg:w-5/12 bg-black/[.035] dark:bg-gray-700/10 rounded-lg">
-        <div className="text-xl text-gray-700 dark:text-gray-300 pb-4">Create GovNFT</div>
+        <div className="text-xl text-gray-700 dark:text-gray-300">Create GovNFT</div>
 
-        {!preview && (
-          <div className="space-y-8">
-            <div className="text-sm pr-12 text-gray-600 dark:text-gray-400">
-              NFTs are unique digital assets that are typically used to represent ownership or proof of authenticity for
-              digital or physical items. Here's a basic outline of the process:
-            </div>
-            <Checklist
-              toAddress={toAddress}
-              amount={amount}
-              vestingDuration={vestingDuration}
-              recipient={recipientName}
-            />
+        <div className="space-y-8">
+          <div className="text-sm pr-16 pt-4 text-gray-600 dark:text-gray-400">
+            NFTs are unique digital assets that are used to represent ownership or proof of authenticity for digital or
+            physical items.
           </div>
-        )}
+          <Checklist
+            toAddress={toAddress}
+            amount={amount}
+            vestingDuration={vestingDuration}
+            recipient={recipientName}
+            token={token}
+          />
+        </div>
 
-        {preview && (
+        {isAddress(toAddress) && amount && Number(vestingDuration) !== 0 && recipientName && (
           <>
             <GovnftChart
               startDate={selectedStartDate}
@@ -200,8 +190,7 @@ export default function Creator() {
               cliffDuration={cliffDuration}
               cliffInterval={cliffInterval}
             />
-
-            <CreatorPreview toAddress={toAddress} amount={amount} token={token} recipient={recipientName} desc={desc} />
+            <CreateButton />
           </>
         )}
       </div>
