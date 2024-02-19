@@ -15,24 +15,65 @@ function postFetch(nft, account) {
   const isOwner = nft.owner.toLowerCase() === account.toLowerCase();
   const isMinter = nft.minter.toLowerCase() === account.toLowerCase();
   const isDelegated = nft.delegated.toLowerCase() !== ZERO_ADDRESS;
-  return { ...nft, isOwner, isMinter, isDelegated, vestedPct };
+  return { ...nft, isOwner, isMinter, isDelegated, vestedPct, name: "" };
 }
 
-async function fetchGovNfts(account): Promise<GovNft[]> {
+async function fetchMintedNfts(account): Promise<GovNft[]> {
   return await readContract(config, {
     address: GOVNFT_SUGAR_ADDRESS,
     abi: GOVNFT_SUGAR_ABI,
-    functionName: "all",
+    functionName: "minted",
     args: [account],
   }).then((nfts) => nfts.map((nft) => postFetch(nft, account)));
 }
 
-export function useGovNfts(accountAddress, opts = {}) {
+async function fetchOwnedNfts(account): Promise<GovNft[]> {
+  return await readContract(config, {
+    address: GOVNFT_SUGAR_ADDRESS,
+    abi: GOVNFT_SUGAR_ABI,
+    functionName: "owned",
+    args: [account],
+  }).then((nfts) => nfts.map((nft) => postFetch(nft, account)));
+}
+
+async function fetchNft(id, account): Promise<GovNft> {
+  const nft = await readContract(config, {
+    address: GOVNFT_SUGAR_ADDRESS,
+    abi: GOVNFT_SUGAR_ABI,
+    functionName: "byId",
+    args: [id],
+  });
+
+  return postFetch(nft, account);
+}
+
+export function useMintedNfts(accountAddress, opts = {}) {
   return useQuery({
-    queryKey: ["fetchGovNfts"],
-    queryFn: () => fetchGovNfts(accountAddress),
+    queryKey: ["fetchMintedNfts"],
+    queryFn: () => fetchMintedNfts(accountAddress),
     ...opts,
     placeholderData: [],
+    // @ts-ignore
+    keepPreviousData: true,
+  });
+}
+
+export function useOwnedNfts(accountAddress, opts = {}) {
+  return useQuery({
+    queryKey: ["fetchOwnedNfts"],
+    queryFn: () => fetchOwnedNfts(accountAddress),
+    ...opts,
+    placeholderData: [],
+    // @ts-ignore
+    keepPreviousData: true,
+  });
+}
+
+export function useNft(id, accountAddress, opts = {}) {
+  return useQuery({
+    queryKey: ["fetchNft"],
+    queryFn: () => fetchNft(id, accountAddress),
+    ...opts,
     // @ts-ignore
     keepPreviousData: true,
   });
