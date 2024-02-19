@@ -11,6 +11,7 @@ import TransferNft from "./components/TransferNft";
 export default function Delegate() {
   const params = useParams();
   const { address } = useAccount();
+  /* @ts-ignore */
   const { data: nft } = useNft(Number(params.id), address);
 
   return (

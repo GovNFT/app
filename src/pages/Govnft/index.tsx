@@ -14,6 +14,7 @@ import Overview from "./components/Overview";
 export default function Govnft() {
   const params = useParams();
   const { address } = useAccount();
+  /* @ts-ignore */
   const { data: nft } = useNft(Number(params.id), address);
 
   return (

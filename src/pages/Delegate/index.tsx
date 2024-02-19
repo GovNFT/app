@@ -11,6 +11,7 @@ import DelegateNft from "./components/DelegateNft";
 export default function Delegate() {
   const params = useParams();
   const { address } = useAccount();
+  /* @ts-ignore */
   const { data: nft } = useNft(Number(params.id), address);
 
   return (
