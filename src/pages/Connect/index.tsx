@@ -18,9 +18,9 @@ export default function Connect() {
   return (
     <>
       <div className="container mx-auto px-4 lg:px-8">
-        <NavLink href="/" className="flex flex-col justify-center gap-6 pt-24 pb-4">
-          <img src="govnft.svg" alt="GovNFT" className="h-8 mr-1.5" />
-          <SvgLoader src="/wordmark.svg" alt="GOVNFT" className="block h-4 w-auto dark:text-white" />
+        <NavLink href="/" className="flex items-center justify-center pt-24 pb-4">
+          <SvgLoader src="/govnft.svg" className="block h-7 w-auto mr-4" alt="GOVNFT" />
+          <SvgLoader src="/wordmark.svg" className="hidden sm:block h-5 w-auto dark:text-white" alt="GOVNFT" />
         </NavLink>
 
         <div className="pt-16 pb-32">{!isConnected && <Connectors className="flex justify-center" />}</div>
