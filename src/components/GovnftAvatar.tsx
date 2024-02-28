@@ -1,6 +1,6 @@
-import { SvgLoader } from "react-svgmt";
 import { Spinner, Tooltip } from "flowbite-react";
 import { Lock as LockIcon } from "lucide-react";
+import { SvgLoader } from "react-svgmt";
 
 import { GovNft } from "../hooks/types";
 import Amount from "./Amount";
