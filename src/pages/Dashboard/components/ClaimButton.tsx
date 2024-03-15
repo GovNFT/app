@@ -1,10 +1,10 @@
-import { Button } from "flowbite-react";
 import { Address } from "viem";
 import { useWaitForTransactionReceipt, useWriteContract } from "wagmi";
 import { useAccount } from "wagmi";
+import ActionLink from "../../../components/ActionLink";
 import { GOVNFT_ABI, GOVNFT_ADDRESS } from "../../../constants";
 
-export default function TransferButton({ id, recipient }: { id: bigint; recipient: Address }) {
+export default function ClaimButton({ id, token }: { id: bigint; token: Address }) {
   const { address } = useAccount();
 
   const { data: hash, error, isPending, writeContract } = useWriteContract();
@@ -15,20 +15,19 @@ export default function TransferButton({ id, recipient }: { id: bigint; recipien
 
   return (
     <>
-      <Button
+      <ActionLink
         onClick={() =>
           writeContract({
             abi: GOVNFT_ABI,
             address: GOVNFT_ADDRESS,
-            functionName: "transferFrom",
-            args: [address, recipient, id],
+            functionName: "sweep",
+            args: [id, token, address],
           })
         }
-        className="w-full"
         disabled={isPending || isConfirmed}
       >
-        {isPending ? "Confirming..." : isConfirmed ? "Transferred" : "Transfer"}
-      </Button>
+        Claim
+      </ActionLink>
     </>
   );
 }

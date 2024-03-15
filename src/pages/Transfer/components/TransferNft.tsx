@@ -61,7 +61,7 @@ export default function TransferNft({ nft }) {
                   <div className="text-sm text-gray-600 dark:text-gray-400 w-52 text-center pb-3">
                     The address used is valid.
                   </div>
-                  <TransferButton />
+                  <TransferButton id={nft.id} recipient={toAddress} />
                 </>
               )}
             </div>

@@ -1,9 +1,38 @@
 import { Button } from "flowbite-react";
+import { Address } from "viem";
+import { useWaitForTransactionReceipt, useWriteContract } from "wagmi";
+import { GOVNFT_ABI, GOVNFT_ADDRESS } from "../../../constants";
 
-export default function CreateButton() {
+export default function CreateButton({
+  token,
+  recipient,
+  amount,
+  start,
+  end,
+  cliff,
+}: { token: Address; recipient: Address; amount: bigint; start: bigint; end: bigint; cliff: bigint }) {
+  const { data: hash, error, isPending, writeContract } = useWriteContract();
+
+  const { isLoading: isConfirming, isSuccess: isConfirmed } = useWaitForTransactionReceipt({
+    hash,
+  });
+
   return (
     <>
-      <Button className="w-full">Create</Button>
+      <Button
+        onClick={() =>
+          writeContract({
+            abi: GOVNFT_ABI,
+            address: GOVNFT_ADDRESS,
+            functionName: "createLock",
+            args: [token, recipient, amount, start, end, cliff],
+          })
+        }
+        className="w-full"
+        disabled={isPending || isConfirmed}
+      >
+        {isPending ? "Confirming..." : isConfirmed ? "Created" : "Create"}
+      </Button>
     </>
   );
 }

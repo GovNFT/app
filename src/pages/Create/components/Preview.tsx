@@ -48,7 +48,15 @@ export default function Preview({ toAddress, token, amount, recipient, desc }) {
         </div>
       </div>
 
-      <CreateButton />
+      {/* TODO: use real values for start/end/cliff*/}
+      <CreateButton
+        token={token.address}
+        recipient={toAddress}
+        amount={amount}
+        start={BigInt(1720000000)}
+        end={BigInt(1730000000)}
+        cliff={BigInt(0)}
+      />
     </>
   );
 }

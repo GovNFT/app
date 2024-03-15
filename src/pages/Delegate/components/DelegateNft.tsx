@@ -70,7 +70,7 @@ export default function DelegateNft({ nft }) {
                   <div className="text-sm text-gray-600 dark:text-gray-400 w-52 text-center pb-3">
                     Delegate address is valid.
                   </div>
-                  <DelegateButton />
+                  <DelegateButton id={nft.id} delegatee={toAddress} />
                 </>
               )}
             </div>
