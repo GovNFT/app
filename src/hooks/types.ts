@@ -31,4 +31,6 @@ export type GovNft = {
   isOwner: boolean;
   isMinter: boolean;
   isDelegated: boolean;
+  name: string;
+  description?: string;
 };
