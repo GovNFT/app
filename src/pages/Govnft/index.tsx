@@ -19,7 +19,6 @@ export default function Govnft() {
 
   return (
     <div className="container mx-auto px-4 lg:px-8">
-      {/* @ts-ignore */}
       <Header />
 
       {isEmpty(nft) ? <LoadingPlaceholder message="Loading gonft..." /> : <Overview nft={nft} />}
