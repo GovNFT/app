@@ -29,7 +29,7 @@ export default function Minted({
 
   return (
     <div className="space-y-2">
-      <div className="pb-4 text-sm px-2 text-gray-300 dark:text-gray-700">Minted GovNFTs</div>
+      <div className="pb-4 text-sm px-2 text-gray-600 dark:text-gray-400">Minted GovNFTs</div>
 
       {nfts.map((nft) => (
         <div className="flex justify-between bg-black/[.02] dark:bg-black/[.08] rounded-md text-xs px-5 py-4">
