@@ -44,6 +44,7 @@ export default function GovnftAvatar({
             </div>
           </div>
         </div>
+      </div>
     </NavLink>
   );
 }
