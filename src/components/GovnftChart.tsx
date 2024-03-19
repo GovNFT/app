@@ -22,10 +22,8 @@ export default function Chart({
   // @ts-ignore
   const cliffDate = dayjs(startDate).add(cliffDuration, cliffInterval);
 
-  console.log(typeof startDate);
-
   const options = {
-    // responsive: true,
+    responsive: true,
     // @ts-ignore
     scales: {
       x: {
@@ -33,14 +31,14 @@ export default function Chart({
           display: false,
         },
         ticks: {
-          color: "rgba(255, 255, 255, 0.5)",
-          padding: 10,
+          color: "rgba(127, 127, 127)",
         },
       },
       y: {
         position: "right",
         beginAtZero: true,
         ticks: {
+          color: "rgba(127, 127, 127)",
           display: true,
           font: {
             size: 10,
@@ -98,8 +96,8 @@ export default function Chart({
       {
         label: "Vesting",
         data: vestingData,
-        borderColor: "rgb(53, 162, 235)",
-        backgroundColor: "rgba(53, 162, 235)",
+        borderColor: "rgb(78, 157, 114)",
+        backgroundColor: "rgba(78, 157, 114)",
         borderWidth: 1,
         radius: 2,
         fill: "start",
@@ -108,8 +106,8 @@ export default function Chart({
         label: "Cliff",
         data: cliffData,
         borderDash: [1, 3],
-        borderColor: "rgb(250, 218, 94)",
-        backgroundColor: "rgba(250, 218, 94)",
+        borderColor: "rgb(127, 127, 127)",
+        backgroundColor: "rgba(127, 127, 127)",
         borderWidth: 1,
         radius: 2,
         stepped: true,
