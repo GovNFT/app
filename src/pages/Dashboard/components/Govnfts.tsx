@@ -31,7 +31,7 @@ export default function Govnfts({
 
   return (
     <div className="space-y-2">
-      <div className="pb-4 text-sm px-2 text-gray-300 dark:text-gray-700">Vesting NFTs</div>
+      <div className="pb-4 text-sm px-2 text-gray-600 dark:text-gray-400">Vesting NFTs</div>
       <div className="space-y-3">
         {nfts.map((nft) => (
           <Govnft nft={nft} />

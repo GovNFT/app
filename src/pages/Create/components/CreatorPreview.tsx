@@ -5,18 +5,11 @@ import AddressMask from "../../../components/AddressMask";
 import Amount from "../../../components/Amount";
 import CreateButton from "./CreateButton";
 
-export default function Preview({ toAddress, token, amount, recipient, desc }) {
+export default function CreatorPreview({ toAddress, token, amount, recipient, desc }) {
   return (
     <>
       <div className="space-y-6 pb-8">
         <div className="space-y-1.5">
-          <div className="flex flex-wrap gap-3 items-center text-xl pb-4">
-            <span className="">{recipient ? recipient : "Unknown Recipient"}</span>
-            <Tooltip content={desc ? desc : "No optional details"}>
-              <InfoIcon size={12} className="text-gray-600 dark:text-gray-400" />
-            </Tooltip>
-          </div>
-
           <div className="divide-y divide-black/5 dark:divide-white/5">
             <div className="flex justify-between items-center text-xs py-3">
               <div className="text-gray-400 dark:text-gray-600">Recipient Address</div>
