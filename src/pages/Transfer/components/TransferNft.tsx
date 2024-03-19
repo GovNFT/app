@@ -29,10 +29,10 @@ export default function TransferNft({ nft }) {
           <div className="w-7/12 mb-4 lg:mb-0 bg-white shadow-lg dark:bg-white/5 p-2 md:px-10 md:py-8 rounded-lg">
             <div className="space-y-3">
               <div className="text-xl text-gray-700 dark:text-gray-300">Transfer</div>
-              {/* TODO: write text that describes how transfer works */}
-              <div className="text-sm text-gray-600 dark:text-gray-400 pr-8">
-                Minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis
-                aute irure dolor in reprehenderit in voluptate velit esse cillum.
+              <div className="text-sm text-gray-600 dark:text-gray-400 pr-4">
+                By transferring the lock, you give the ownership and the control over this NFT and underlying locked
+                token amounts to another wallet. This action is not reversible and requires due diligence before signing
+                the transfer transaction. On transfer, any existing delegation is cancelled.
               </div>
             </div>
 
