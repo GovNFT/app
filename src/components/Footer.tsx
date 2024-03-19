@@ -9,10 +9,11 @@ export default function Footer() {
           {/* @ts-ignore */}
           {new Date().getFullYear()} &copy; GovNFT. {__APP_VERSION__}
         </span>
-        <a 
-          href="https://github.com/velodrome-finance/govnft" 
+        <a
+          href="https://github.com/velodrome-finance/govnft"
           target="_blank"
           className="underline hover:no-underline text-gray-400 dark: text-gray-600 flex items-center gap-2"
+          rel="noreferrer"
         >
           <GithubIcon size={14} />
           GitHub
