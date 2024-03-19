@@ -30,9 +30,9 @@ export default function TransferNft({ nft }) {
             <div className="text-2xl text-gray-700 dark:text-gray-300">Transfer</div>
 
             <div className="text-sm text-gray-600 dark:text-gray-400 pr-4">
-              By transferring the lock, you give the ownership and the control over this NFT and underlying locked
-              token amounts to another wallet. This action is not reversible and requires due diligence before signing
-              the transfer transaction. On transfer, any existing delegation is cancelled.
+              By transferring the lock, you give the ownership and the control over this NFT and underlying locked token
+              amounts to another wallet. This action is not reversible and requires due diligence before signing the
+              transfer transaction. On transfer, any existing delegation is cancelled.
             </div>
 
             <div className="space-y-3 pb-3">
