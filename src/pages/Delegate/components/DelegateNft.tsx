@@ -30,11 +30,10 @@ export default function DelegateNft({ nft }) {
         <div className="lg:flex gap-6">
           <div className="lg:w-7/12 mb-4 lg:mb-0 bg-white shadow-lg dark:bg-white/5 px-5 py-6 md:px-10 md:py-8 rounded-lg">
             <div className="text-2xl text-gray-700 dark:text-gray-300">Delegate</div>
-
-            {/* TODO: write text that describes how delegation works */}
-            <div className="text-xs sm:text-sm text-gray-600 dark:text-gray-400 pt-4 sm:pt-4 sm:pr-12">
-              You can delegate your locked value {nft.amount}. Delegates are appointed by token holders to make
-              governance decisions on their behalf.
+            <div className="text-sm text-gray-600 dark:text-gray-400 pr-8">
+              By delegating your votes you let the locked tokens voting power to be used by another wallet. This
+              wallet could belong to you or to another person. Delegation is safe and can be cancelled any time.
+              Delegating does not change the ownership of control over the locked tokens.
             </div>
 
             <div className="text-sm flex justify-between bg-gray-50 dark:bg-gray-700/10 px-4 py-4 mt-10 mb-12 rounded-lg">
@@ -42,7 +41,7 @@ export default function DelegateNft({ nft }) {
               <Amount tokenAddress={nft.token} amount={nft.amount} showLogo={true} />
             </div>
 
-            <div className="space-y-3 pb-3">
+            <div className="space-y-3 pt-12 pb-3">
               <div className="text-gray-600 dark:text-gray-400 text-xs flex justify-between items-center">
                 <div>Delegate Address</div>
                 <div className="underline hover:no-underline flex gap-2 items-center">

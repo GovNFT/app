@@ -1,13 +1,14 @@
 import { useQuery } from "@tanstack/react-query";
 import { readContract } from "@wagmi/core";
 import { formatUnits } from "viem";
+import { Address } from "viem";
 import { ZERO_ADDRESS } from "../constants";
 import config from "../rpc";
 import { GovNft } from "./types";
 
 import { GOVNFT_SUGAR_ABI, GOVNFT_SUGAR_ADDRESS } from "../constants";
 
-function postFetch(nft, account) {
+function postFetch(nft, account: Address) {
   const vestedPct = Math.trunc(
     100 - (Number(formatUnits(nft.amount, 0)) / Number(formatUnits(nft.total_locked, 0))) * 100,
   );
@@ -15,24 +16,65 @@ function postFetch(nft, account) {
   const isOwner = nft.owner.toLowerCase() === account.toLowerCase();
   const isMinter = nft.minter.toLowerCase() === account.toLowerCase();
   const isDelegated = nft.delegated.toLowerCase() !== ZERO_ADDRESS;
-  return { ...nft, isOwner, isMinter, isDelegated, vestedPct };
+  return { ...nft, isOwner, isMinter, isDelegated, vestedPct, name: "" };
 }
 
-async function fetchGovNfts(account): Promise<GovNft[]> {
+async function fetchMintedNfts(account: Address): Promise<GovNft[]> {
   return await readContract(config, {
     address: GOVNFT_SUGAR_ADDRESS,
     abi: GOVNFT_SUGAR_ABI,
-    functionName: "all",
+    functionName: "minted",
     args: [account],
   }).then((nfts) => nfts.map((nft) => postFetch(nft, account)));
 }
 
-export function useGovNfts(accountAddress, opts = {}) {
+async function fetchOwnedNfts(account: Address): Promise<GovNft[]> {
+  return await readContract(config, {
+    address: GOVNFT_SUGAR_ADDRESS,
+    abi: GOVNFT_SUGAR_ABI,
+    functionName: "owned",
+    args: [account],
+  }).then((nfts) => nfts.map((nft) => postFetch(nft, account)));
+}
+
+async function fetchNft(id, account: Address): Promise<GovNft> {
+  const nft = await readContract(config, {
+    address: GOVNFT_SUGAR_ADDRESS,
+    abi: GOVNFT_SUGAR_ABI,
+    functionName: "byId",
+    args: [id as bigint],
+  });
+
+  return postFetch(nft, account);
+}
+
+export function useMintedNfts(accountAddress: Address, opts = {}) {
   return useQuery({
-    queryKey: ["fetchGovNfts"],
-    queryFn: () => fetchGovNfts(accountAddress),
+    queryKey: ["fetchMintedNfts"],
+    queryFn: () => fetchMintedNfts(accountAddress),
     ...opts,
     placeholderData: [],
+    // @ts-ignore
+    keepPreviousData: true,
+  });
+}
+
+export function useOwnedNfts(accountAddress: Address, opts = {}) {
+  return useQuery({
+    queryKey: ["fetchOwnedNfts"],
+    queryFn: () => fetchOwnedNfts(accountAddress),
+    ...opts,
+    placeholderData: [],
+    // @ts-ignore
+    keepPreviousData: true,
+  });
+}
+
+export function useNft(id, accountAddress: Address, opts = {}) {
+  return useQuery({
+    queryKey: ["fetchNft"],
+    queryFn: () => fetchNft(id, accountAddress),
+    ...opts,
     // @ts-ignore
     keepPreviousData: true,
   });
