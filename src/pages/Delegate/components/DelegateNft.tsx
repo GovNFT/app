@@ -31,9 +31,9 @@ export default function DelegateNft({ nft }) {
           <div className="lg:w-7/12 mb-4 lg:mb-0 bg-white shadow-lg dark:bg-white/5 px-5 py-6 md:px-10 md:py-8 rounded-lg">
             <div className="text-2xl text-gray-700 dark:text-gray-300">Delegate</div>
             <div className="text-sm text-gray-600 dark:text-gray-400 pr-8">
-              By delegating your votes you let the locked tokens voting power to be used by another wallet. This
-              wallet could belong to you or to another person. Delegation is safe and can be cancelled any time.
-              Delegating does not change the ownership of control over the locked tokens.
+              By delegating your votes you let the locked tokens voting power to be used by another wallet. This wallet
+              could belong to you or to another person. Delegation is safe and can be cancelled any time. Delegating
+              does not change the ownership of control over the locked tokens.
             </div>
 
             <div className="text-sm flex justify-between bg-gray-50 dark:bg-gray-700/10 px-4 py-4 mt-10 mb-12 rounded-lg">
