@@ -5,7 +5,9 @@ import { isAddress, parseUnits } from "viem";
 import { useAccount } from "wagmi";
 
 import AssetInput from "../../../components/AssetInput";
+import FlowAllowance from "../../../components/FlowAllowance";
 import GovnftChart from "../../../components/GovnftChart";
+import { GOVNFT_ADDRESS } from "../../../constants";
 import { useTokens } from "../../../hooks/token";
 import { Token } from "../../../hooks/types";
 import Checklist from "./Checklist";
@@ -16,6 +18,7 @@ export default function Creator() {
   const [splitable, setSplitable] = useState(false);
   const [amount, setAmount] = useState(parseUnits("0", 18));
   const [toAddress, setToAddress] = useState(null);
+  const [allowed, setAllowed] = useState(null);
 
   const today = dayjs();
   const [vestingDuration, setVestingDuration] = useState(0);
@@ -190,7 +193,19 @@ export default function Creator() {
               cliffDuration={cliffDuration}
               cliffInterval={cliffInterval}
             />
-            <CreateButton />
+
+            <FlowAllowance token={token.address} amount={amount} forAddress={GOVNFT_ADDRESS} setAllowed={setAllowed} />
+
+            {allowed && (
+              <CreateButton
+                token={token.address}
+                recipient={toAddress}
+                amount={amount}
+                start={BigInt(selectedStartDate.unix() + 1000)} //TODO: fix start date so not in past
+                end={BigInt(selectedStartDate.unix() + 1000000)} //TODO: use VestingDuration to calculate duration in seconds
+                cliff={BigInt(cliffDuration)}
+              />
+            )}
           </>
         )}
       </div>

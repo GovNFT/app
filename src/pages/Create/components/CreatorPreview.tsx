@@ -40,16 +40,6 @@ export default function CreatorPreview({ toAddress, token, amount, recipient, de
           </div>
         </div>
       </div>
-
-      {/* TODO: use real values for start/end/cliff*/}
-      <CreateButton
-        token={token.address}
-        recipient={toAddress}
-        amount={amount}
-        start={BigInt(1720000000)}
-        end={BigInt(1730000000)}
-        cliff={BigInt(0)}
-      />
     </>
   );
 }
