@@ -10,7 +10,7 @@ export default function FlowAllowance({
   amount,
   forAddress,
   setAllowed,
-}: { token: Address; amount: bigint; forAddress: Address; setAllowed: boolean | null }) {
+}: { token: Address; amount: bigint; forAddress: Address; setAllowed: boolean }) {
   const { address } = useAccount();
   const { data: allowance, refetch: refetchAllowance } = useReadContract({
     abi: ERC20_ABI,

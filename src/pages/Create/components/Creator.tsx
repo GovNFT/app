@@ -18,7 +18,7 @@ export default function Creator() {
   const [splitable, setSplitable] = useState(false);
   const [amount, setAmount] = useState(parseUnits("0", 18));
   const [toAddress, setToAddress] = useState(null);
-  const [allowed, setAllowed] = useState(null);
+  const [allowed, setAllowed] = useState(false);
 
   const today = dayjs();
   const [vestingDuration, setVestingDuration] = useState(0);
