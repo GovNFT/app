@@ -10,7 +10,8 @@ export default function SplitButton({
   start,
   end,
   cliff,
-}: { id: bigint; recipient: Address; amount: bigint; start: bigint; end: bigint; cliff: bigint }) {
+  description,
+}: { id: bigint; recipient: Address; amount: bigint; start: bigint; end: bigint; cliff: bigint; description: string }) {
   const { data: hash, error, isPending, writeContract } = useWriteContract();
 
   const { isLoading: isConfirming, isSuccess: isConfirmed } = useWaitForTransactionReceipt({
@@ -25,7 +26,17 @@ export default function SplitButton({
             abi: GOVNFT_ABI,
             address: GOVNFT_ADDRESS,
             functionName: "split",
-            args: [id, { beneficiary: recipient, start: start, end: end, cliff: cliff, amount: amount }],
+            args: [
+              id,
+              {
+                beneficiary: recipient,
+                start: start,
+                end: end,
+                cliff: cliff,
+                amount: amount,
+                description: description,
+              },
+            ],
           })
         }
         className="w-full"

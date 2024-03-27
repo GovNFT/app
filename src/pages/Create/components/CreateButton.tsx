@@ -10,7 +10,16 @@ export default function CreateButton({
   start,
   end,
   cliff,
-}: { token: Address; recipient: Address; amount: bigint; start: bigint; end: bigint; cliff: bigint }) {
+  description,
+}: {
+  token: Address;
+  recipient: Address;
+  amount: bigint;
+  start: bigint;
+  end: bigint;
+  cliff: bigint;
+  description: string;
+}) {
   const { data: hash, error, isPending, writeContract } = useWriteContract();
 
   const { isLoading: isConfirming, isSuccess: isConfirmed } = useWaitForTransactionReceipt({
@@ -25,7 +34,7 @@ export default function CreateButton({
             abi: GOVNFT_ABI,
             address: GOVNFT_ADDRESS,
             functionName: "createLock",
-            args: [token, recipient, amount, start, end, cliff],
+            args: [token, recipient, amount, start, end, cliff, description],
           })
         }
         className="w-full"
