@@ -19,31 +19,29 @@ export default function SplitButton({
   });
 
   return (
-    <>
-      <Button
-        onClick={() =>
-          writeContract({
-            abi: GOVNFT_ABI,
-            address: GOVNFT_ADDRESS,
-            functionName: "split",
-            args: [
-              id,
-              {
-                beneficiary: recipient,
-                start: start,
-                end: end,
-                cliff: cliff,
-                amount: amount,
-                description: description,
-              },
-            ],
-          })
-        }
-        className="w-full"
-        disabled={isPending || isConfirmed}
-      >
-        {isPending ? "Confirming..." : isConfirmed ? "Split Confirmed" : "Split"}
-      </Button>
-    </>
+    <Button
+      onClick={() =>
+        writeContract({
+          abi: GOVNFT_ABI,
+          address: GOVNFT_ADDRESS,
+          functionName: "split",
+          args: [
+            id,
+            {
+              beneficiary: recipient,
+              start: start,
+              end: end,
+              cliff: cliff,
+              amount: amount,
+              description: description,
+            },
+          ],
+        })
+      }
+      className="w-full"
+      disabled={isPending || isConfirmed}
+    >
+      {isPending ? "Confirming..." : isConfirmed ? "Split Confirmed" : "Split"}
+    </Button>
   );
 }

@@ -24,11 +24,7 @@ export default defineConfig(() => {
           {
             name: "govnft",
             address: process.env.VITE_GOVNFT_ADDRESS as Address,
-          },
-          {
-            name: "erc20",
-            address: process.env.VITE_TOKEN_ADDRESSES?.split(",")[0] as Address,
-          },
+          }
         ],
       }),
     ],

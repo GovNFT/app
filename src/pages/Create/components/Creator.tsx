@@ -1,7 +1,7 @@
 import dayjs from "dayjs";
 import { Datepicker, Select, TextInput, Textarea, ToggleSwitch } from "flowbite-react";
 import { useEffect, useState } from "react";
-import { isAddress, parseUnits } from "viem";
+import { isAddress } from "viem";
 import { useAccount } from "wagmi";
 
 import AssetInput from "../../../components/AssetInput";
@@ -16,7 +16,7 @@ import CreatorPreview from "./CreatorPreview";
 
 export default function Creator() {
   const [splitable, setSplitable] = useState(false);
-  const [amount, setAmount] = useState(parseUnits("0", 18));
+  const [amount, setAmount] = useState(0n);
   const [toAddress, setToAddress] = useState(null);
   const [allowed, setAllowed] = useState(false);
 
