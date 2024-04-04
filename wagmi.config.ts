@@ -20,6 +20,10 @@ export default defineConfig(() => {
           {
             name: "govnftSugar",
             address: process.env.VITE_GOVNFT_SUGAR_ADDRESS as Address,
+          },
+          {
+            name: "govnft",
+            address: process.env.VITE_GOVNFT_ADDRESS as Address,
           }
         ],
       }),

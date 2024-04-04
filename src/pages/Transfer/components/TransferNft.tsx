@@ -61,7 +61,7 @@ export default function TransferNft({ nft }) {
                   <div className="text-xs sm:text-sm text-gray-600 dark:text-gray-400 w-52 text-center pb-3">
                     The address is valid. You can now transfer your govnft.
                   </div>
-                  <TransferButton />
+                  <TransferButton id={nft.id} recipient={toAddress} />
                 </>
               )}
             </div>

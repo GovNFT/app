@@ -40,8 +40,6 @@ export default function CreatorPreview({ toAddress, token, amount, recipient, de
           </div>
         </div>
       </div>
-
-      <CreateButton />
     </>
   );
 }
