@@ -7,12 +7,11 @@ import { useAccount } from "wagmi";
 import AssetInput from "../../../components/AssetInput";
 import FlowAllowance from "../../../components/FlowAllowance";
 import GovnftChart from "../../../components/GovnftChart";
-import { GOVNFT_ADDRESS } from "../../../constants";
+import { GOVNFT_ADDRESS, HOUR } from "../../../constants";
 import { useTokens } from "../../../hooks/token";
 import { Token } from "../../../hooks/types";
 import Checklist from "./Checklist";
 import CreateButton from "./CreateButton";
-import CreatorPreview from "./CreatorPreview";
 
 export default function Creator() {
   const [splitable, setSplitable] = useState(false);
@@ -20,7 +19,7 @@ export default function Creator() {
   const [toAddress, setToAddress] = useState(null);
   const [allowed, setAllowed] = useState(false);
 
-  const today = dayjs();
+  const today = dayjs().endOf("hour");
   const [vestingDuration, setVestingDuration] = useState(0);
   const [cliffDuration, setCliffDuration] = useState(0);
   const [selectedStartDate, setSelectedStartDate] = useState(today);
@@ -201,8 +200,8 @@ export default function Creator() {
                 token={token.address}
                 recipient={toAddress}
                 amount={amount}
-                start={BigInt(selectedStartDate.unix() + 1000)} //TODO: fix start date so not in past
-                end={BigInt(selectedStartDate.unix() + 1000000)} //TODO: use VestingDuration to calculate duration in seconds
+                start={BigInt(selectedStartDate.unix() - (selectedStartDate.unix() % HOUR) + HOUR)}
+                end={BigInt(selectedStartDate.unix() - (selectedStartDate.unix() % HOUR) + HOUR + vestingDuration)}
                 cliff={BigInt(cliffDuration)}
                 description={desc}
               />

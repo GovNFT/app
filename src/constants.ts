@@ -5,6 +5,7 @@ import { Address } from "./hooks/types";
 
 export const ZERO_ADDRESS: Address = "0x0000000000000000000000000000000000000000";
 export const TOKEN_ICON = "/svg/coin.svg";
+export const HOUR = 3600;
 export const RPC_URI = import.meta.env.VITE_RPC_URI;
 export const GOVNFT_ADDRESS = import.meta.env.VITE_GOVNFT_ADDRESS;
 export const GOVNFT_SUGAR_ADDRESS = import.meta.env.VITE_GOVNFT_SUGAR_ADDRESS;
