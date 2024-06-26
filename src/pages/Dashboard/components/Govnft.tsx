@@ -29,7 +29,9 @@ export default function Govnft({
             <div className="sm:grow space-y-5">
               <GovnftAvatar nft={nft} />
               <div className="flex items-center gap-1 text-gray-400 dark:text-gray-600 text-xs">
-                <div className="text-gray-600 dark:text-gray-400">Collection: {nft.name == "" ? "Unknown" : nft.name}</div>
+                <div className="text-gray-600 dark:text-gray-400">
+                  Collection: {nft.name === "" ? "Unknown" : nft.name}
+                </div>
               </div>
             </div>
           </div>

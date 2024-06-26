@@ -24,33 +24,24 @@ export default function Overview({
 
         <div className="lg:flex gap-6">
           <div className="mx-auto lg:w-full mb-4 lg:mb-0 bg-white shadow-lg dark:bg-white/5 p-6 md:px-10 md:py-8 rounded-lg space-y-8">
-
             <div className="space-y-3">
               <div className="flex items-center gap-2">
-                <div className="text-xs text-gray-400 dark:text-gray-600">
-                  GovNFT Address:
-                </div>
+                <div className="text-xs text-gray-400 dark:text-gray-600">GovNFT Address:</div>
                 <div className="text-xs text-gray-600 dark:text-gray-400">
                   <AddressMask address={nft.address} />
                 </div>
               </div>
 
               <div className="flex items-center gap-2">
-                <div className="text-xs text-gray-400 dark:text-gray-600">
-                  Owner:
-                </div>
+                <div className="text-xs text-gray-400 dark:text-gray-600">Owner:</div>
                 <div className="text-xs text-gray-600 dark:text-gray-400">
                   <AddressMask address={nft.owner} />
                 </div>
               </div>
 
               <div className="flex items-center gap-2">
-                <div className="text-xs text-gray-400 dark:text-gray-600">
-                  Collection:
-                </div>
-                <div className="text-xs text-gray-600 dark:text-gray-400">
-                  {nft.name == "" ? "Unknown" : nft.name}
-                </div>
+                <div className="text-xs text-gray-400 dark:text-gray-600">Collection:</div>
+                <div className="text-xs text-gray-600 dark:text-gray-400">{nft.name === "" ? "Unknown" : nft.name}</div>
               </div>
             </div>
 
