@@ -28,10 +28,6 @@ export default function GovnftAvatar({
           <SvgLoader src="/govnft-gray.svg" className="w-6" alt="GovNFT" />
         </div>
         <div>
-          <div className="flex gap-2 items-center text-gray-800 dark:text-gray-200 font-semibold text-sm">
-            GovNFT #{String(nft.id)}
-            <LockIcon size={12} />
-          </div>
           <div>
             <div className="flex gap-2 items-center text-gray-800 dark:text-gray-200 font-semibold text-sm">
               GovNFT #{String(nft.id)}
