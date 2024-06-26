@@ -28,16 +28,14 @@ export default function GovnftAvatar({
           <SvgLoader src="/govnft-gray.svg" className="w-6" alt="GovNFT" />
         </div>
         <div>
-          <div>
-            <div className="flex gap-2 items-center text-gray-800 dark:text-gray-200 font-semibold text-sm">
-              GovNFT #{String(nft.id)}
-              <LockIcon size={12} />
-            </div>
-            <div className="text-xs pt-1.5 text-gray-600 dark:text-gray-400 whitespace-nowrap flex items-center">
-              <Amount amount={nft.amount} tokenAddress={nft.token} showLogo={false} />
-              &nbsp;
-              <DateFromNow ts={nft.end} prefix="vesting for" pastPrefix="vested" />
-            </div>
+          <div className="flex gap-2 items-center text-gray-800 dark:text-gray-200 font-semibold text-sm">
+            GovNFT #{String(nft.id)}
+            <LockIcon size={12} />
+          </div>
+          <div className="text-xs pt-1.5 text-gray-600 dark:text-gray-400 whitespace-nowrap flex items-center">
+            <Amount amount={nft.amount} tokenAddress={nft.token} showLogo={false} />
+            &nbsp;
+            <DateFromNow ts={nft.end} prefix="vesting for" pastPrefix="vested" />
           </div>
         </div>
       </div>
