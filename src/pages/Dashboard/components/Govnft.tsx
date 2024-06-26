@@ -28,8 +28,8 @@ export default function Govnft({
           <div className="flex flex-col gap-5 sm:flex-row sm:gap-8 sm:items-center">
             <div className="sm:grow space-y-5">
               <GovnftAvatar nft={nft} />
-              <div className="hidden sm:flex items-center gap-2 text-gray-400 dark:text-gray-600 text-xs">
-                <AddressMask address={nft.address} />
+              <div className="flex items-center gap-1 text-gray-400 dark:text-gray-600 text-xs">
+                <div className="text-gray-600 dark:text-gray-400">Collection: {nft.name == "" ? "Unknown" : nft.name}</div>
               </div>
             </div>
           </div>
