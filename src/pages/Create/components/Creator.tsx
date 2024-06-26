@@ -166,7 +166,6 @@ export default function Creator() {
                 start={BigInt(selectedStartDate.unix() + 1000)} //TODO: fix start date so not in past
                 end={BigInt(selectedStartDate.unix() + 1000000)} //TODO: use VestingDuration to calculate duration in seconds
                 cliff={BigInt(cliffDuration)}
-                description={desc}
               />
             )}
           </>
