@@ -1,5 +1,5 @@
 import dayjs from "dayjs";
-import { Datepicker, Select, TextInput, Textarea, ToggleSwitch } from "flowbite-react";
+import { Datepicker, Select, TextInput, Textarea } from "flowbite-react";
 import { useEffect, useState } from "react";
 import { isAddress } from "viem";
 import { useAccount } from "wagmi";
@@ -15,7 +15,6 @@ import CreateButton from "./CreateButton";
 import CreatorPreview from "./CreatorPreview";
 
 export default function Creator() {
-  const [splitable, setSplitable] = useState(false);
   const [amount, setAmount] = useState(0n);
   const [toAddress, setToAddress] = useState(null);
   const [allowed, setAllowed] = useState(false);
@@ -27,8 +26,6 @@ export default function Creator() {
   const [vestingInterval, setVestingInterval] = useState("years");
   const [cliffInterval, setCliffInterval] = useState("months");
 
-  const [recipientName, setRecipientName] = useState("");
-  const [desc, setDesc] = useState("");
   const timeframe = ["years", "months", "weeks"];
 
   const { address: accountAddress } = useAccount();
@@ -44,7 +41,7 @@ export default function Creator() {
 
   return (
     <>
-      <div className="lg:w-7/12 mb-4 lg:mb-0 bg-white shadow-lg dark:bg-white/5 p-6 md:px-10 md:py-8 rounded-lg">
+      <div className="lg:w-7/12 mb-4 lg:mb-0 bg-white shadow-lg dark:bg-white/5 p-6 md:p-10 rounded-lg">
         <div className="pb-6">
           <div className="text-xs pb-3 mb-6 border-b border-black/5 dark:border-white/5">
             <span className="text-gray-400 dark:text-gray-600 uppercase tracking-widest">Recipient Info</span>
@@ -55,7 +52,7 @@ export default function Creator() {
           </div>
         </div>
 
-        <div className="pb-6">
+        <div>
           <div className="text-xs pb-3 mb-6 border-b border-black/5 dark:border-white/5">
             <span className="otext-gray-400 dark:text-gray-600 uppercase tracking-widest">Vesting duration</span>
           </div>
@@ -81,7 +78,7 @@ export default function Creator() {
           </div>
 
           <div className="md:flex gap-6">
-            <div className="space-y-3 pb-6 grow">
+            <div className="space-y-3 grow">
               <div className="text-xs text-gray-600 dark:text-gray-400">Vesting Duration</div>
               <div className="relative">
                 <TextInput
@@ -108,7 +105,7 @@ export default function Creator() {
               </div>
             </div>
 
-            <div className="space-y-3 pb-6 grow">
+            <div className="space-y-3 grow">
               <div className="text-xs text-gray-600 dark:text-gray-400">Cliff Duration</div>
               <div className="relative">
                 <TextInput
@@ -136,35 +133,6 @@ export default function Creator() {
             </div>
           </div>
         </div>
-
-        <div>
-          <div className="text-xs pb-3 mb-6 border-b border-black/5 dark:border-white/5">
-            <span className="text-gray-400 dark:text-gray-600 uppercase tracking-widest">Additional Info</span>
-          </div>
-          <div className="space-y-3 pb-6">
-            <div className="mb-6 bg-black/[.03] dark:bg-white/[.02] rounded-lg flex items-center px-5 py-4">
-              <div className="text-xs text-gray-600 dark:text-gray-400 grow">Allow Split</div>
-              <ToggleSwitch
-                // @ts-ignore
-                color="green"
-                label=""
-                checked={splitable}
-                onChange={() => setSplitable(!splitable ? true : false)}
-              />
-            </div>
-            <div className="text-xs text-gray-600 dark:text-gray-400">Name</div>
-            <TextInput
-              placeholder="e.g. Velodrome Foundation"
-              value={recipientName}
-              onChange={(e) => setRecipientName(e.target.value)}
-            />
-          </div>
-
-          <div className="space-y-3 pb-6">
-            <div className="text-xs text-gray-600 dark:text-gray-400">Description (Optional)</div>
-            <Textarea value={desc} onChange={(e) => setDesc(e.target.value)} />
-          </div>
-        </div>
       </div>
 
       <div className="p-8 lg:w-5/12 bg-black/[.035] dark:bg-gray-700/10 rounded-lg">
@@ -175,16 +143,10 @@ export default function Creator() {
             NFTs are unique digital assets that are used to represent ownership or proof of authenticity for digital or
             physical items.
           </div>
-          <Checklist
-            toAddress={toAddress}
-            amount={amount}
-            vestingDuration={vestingDuration}
-            recipient={recipientName}
-            token={token}
-          />
+          <Checklist toAddress={toAddress} amount={amount} vestingDuration={vestingDuration} token={token} />
         </div>
 
-        {isAddress(toAddress) && amount && Number(vestingDuration) !== 0 && recipientName && (
+        {isAddress(toAddress) && amount && Number(vestingDuration) !== 0 && (
           <>
             <GovnftChart
               startDate={selectedStartDate}
