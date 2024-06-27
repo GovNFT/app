@@ -1,8 +1,8 @@
 import { Address } from "viem";
 import { useWaitForTransactionReceipt, useWriteContract } from "wagmi";
 import { useAccount } from "wagmi";
-import ActionLink from "../../../components/ActionLink";
-import { GOVNFT_ABI, GOVNFT_ADDRESS } from "../../../constants";
+import { GOVNFT_ABI, GOVNFT_ADDRESS } from "../constants";
+import ActionLink from "./ActionLink";
 
 export default function ClaimButton({ id, amount }: { id: bigint; amount: bigint }) {
   const { address } = useAccount();
@@ -12,6 +12,10 @@ export default function ClaimButton({ id, amount }: { id: bigint; amount: bigint
   const { isLoading: isConfirming, isSuccess: isConfirmed } = useWaitForTransactionReceipt({
     hash,
   });
+
+  if (amount === 0n) {
+    return <></>;
+  }
 
   return (
     <>

@@ -8,6 +8,7 @@ import { useAccount } from "wagmi";
 import ActionLink from "../../../components/ActionLink";
 import AddressMask from "../../../components/AddressMask";
 import Amount from "../../../components/Amount";
+import ClaimButton from "../../../components/ClaimButton";
 import GovnftHeader from "../../../components/GovnftHeader";
 import NavLink from "../../../components/NavLink";
 import { GovNft } from "../../../hooks/types";
@@ -43,7 +44,7 @@ export default function Overview({
             <div className="flex flex-col md:flex-row gap-2">
               <div className="w-full text-sm py-8 space-y-2 flex flex-col items-center justify-between bg-gray-50 dark:bg-gray-700/10 px-5 py-4 rounded-lg">
                 <div className="text-xl">
-                  <Amount tokenAddress={nft.token} amount={nft.amount} showLogo={true} symbol="OP" />
+                  <Amount tokenAddress={nft.token} amount={nft.amount} showLogo={true} />
                 </div>
                 <div className="text-gray-600 dark:text-gray-400">Current Lock</div>
               </div>
@@ -66,21 +67,21 @@ export default function Overview({
                 <div className="text-sm flex justify-between bg-gray-50 dark:bg-gray-700/10 px-5 py-4 rounded-lg">
                   <div className="text-gray-600 dark:text-gray-400">Claimable</div>
                   <div className="flex gap-3">
-                    <Amount tokenAddress={nft.token} amount={nft.total_claimed} showLogo={true} />
-                    <ActionLink onClick="#">Claim</ActionLink>
+                    <Amount tokenAddress={nft.token} amount={nft.claimable} showLogo={true} />
+                    <ClaimButton id={nft.id} amount={nft.claimable} />
                   </div>
                 </div>
               )}
               <div className="text-sm flex justify-between bg-gray-50 dark:bg-gray-700/10 px-5 py-4 rounded-lg mb-8">
                 <div className="text-gray-600 dark:text-gray-400">Delegation</div>
-                <div className="flex gap-2 items-center text-gray-400 dark:text-gray-600">
-                  {nft.isDelegated ? <AddressMask address={nft.delegated} /> : "N/A"}
+                <div className="flex gap-1 items-center text-gray-600 dark:text-gray-400">
+                  {nft.isDelegated ? <AddressMask address={nft.delegated} /> : "No delegation has been set."}
                   {nft.isOwner && (
                     <NavLink
-                      href={`/delegate?id=${nft.id}`}
+                      href={`~/nft/${nft.id}/delegate`}
                       className="underline hover:no-underline text-gray-600 dark:text-gray-400"
                     >
-                      Edit
+                      Delegate
                     </NavLink>
                   )}
                 </div>
