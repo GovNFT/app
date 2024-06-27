@@ -48,7 +48,15 @@ export default function Creator() {
             <span className="text-gray-400 dark:text-gray-600 uppercase tracking-widest">Recipient Info</span>
           </div>
           <div className="space-y-3">
-            <div className="text-xs text-gray-600 dark:text-gray-400">Recipient Address</div>
+            <div className="text-xs flex justify-between items-center">
+              <div className="text-xs text-gray-600 dark:text-gray-400">Recipient Address</div>
+              <div
+                className="text-gray-600 dark:text-gray-400 underline hover:no-underline cursor-pointer"
+                onClick={() => setToAddress(accountAddress)}
+              >
+                Use Current Wallet
+              </div>
+            </div>
             <TextInput placeholder="0x" value={toAddress} onChange={(e) => setToAddress(e.target.value)} />
           </div>
         </div>

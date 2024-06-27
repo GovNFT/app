@@ -1,4 +1,3 @@
-import { isEmpty } from "lodash";
 import { useAccount } from "wagmi";
 
 import Footer from "../../components/Footer";
@@ -9,14 +8,14 @@ import Govnfts from "./components/Govnfts";
 
 export default function Dashboard() {
   const { address } = useAccount();
-  const { data: nfts } = useOwnedNfts(address);
+  const { data: nfts = [], isLoading } = useOwnedNfts(address);
 
   return (
     <div className="container mx-auto px-4 lg:px-8">
       <Header />
 
       <div className="max-w-screen-xl mx-auto">
-        {isEmpty(nfts) ? <LoadingPlaceholder message="Loading your gonfts..." /> : <Govnfts nfts={nfts} />}
+        {isLoading ? <LoadingPlaceholder message="Loading your gov nfts..." /> : <Govnfts nfts={nfts} />}
       </div>
 
       <Footer />

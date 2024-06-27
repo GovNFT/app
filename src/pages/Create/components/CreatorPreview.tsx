@@ -20,13 +20,7 @@ export default function CreatorPreview({ toAddress, token, amount, recipient, de
             <div className="flex justify-between items-center text-xs py-3">
               <div className="text-gray-400 dark:text-gray-600">Amount</div>
               <div>
-                <Amount
-                  tokenAddress={token.address}
-                  decimals={token.decimals}
-                  amount={amount}
-                  symbol={token.symbol}
-                  showLogo={true}
-                />
+                <Amount tokenAddress={token.address} decimals={token.decimals} amount={amount} showLogo={true} />
               </div>
             </div>
             <div className="flex justify-between items-center text-xs py-3">
