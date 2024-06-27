@@ -1,5 +1,5 @@
 import dayjs from "dayjs";
-import { Datepicker, Select, TextInput, Textarea, ToggleSwitch } from "flowbite-react";
+import { Datepicker, Select, TextInput, Textarea } from "flowbite-react";
 import { useEffect, useState } from "react";
 import { isAddress } from "viem";
 import { useAccount } from "wagmi";
@@ -15,7 +15,6 @@ import CreateButton from "./CreateButton";
 import CreatorPreview from "./CreatorPreview";
 
 export default function Creator() {
-  const [splitable, setSplitable] = useState(false);
   const [amount, setAmount] = useState(0n);
   const [toAddress, setToAddress] = useState(null);
   const [allowed, setAllowed] = useState(false);
@@ -26,9 +25,8 @@ export default function Creator() {
   const [selectedStartDate, setSelectedStartDate] = useState(today);
   const [vestingInterval, setVestingInterval] = useState("years");
   const [cliffInterval, setCliffInterval] = useState("months");
+  const [description, setDescription] = useState("");
 
-  const [recipientName, setRecipientName] = useState("");
-  const [desc, setDesc] = useState("");
   const timeframe = ["years", "months", "weeks"];
 
   const { address: accountAddress } = useAccount();
@@ -44,14 +42,14 @@ export default function Creator() {
 
   return (
     <>
-      <div className="lg:w-7/12 mb-4 lg:mb-0 bg-white shadow-lg dark:bg-white/5 p-6 md:px-10 md:py-8 rounded-lg">
-        <div className="pb-6">
+      <div className="lg:w-7/12 mb-4 lg:mb-0 bg-white shadow-lg dark:bg-white/5 p-6 md:p-10 rounded-lg space-y-12">
+        <div>
           <div className="text-xs pb-3 mb-6 border-b border-black/5 dark:border-white/5">
             <span className="text-gray-400 dark:text-gray-600 uppercase tracking-widest">Recipient Info</span>
           </div>
-          <div className="space-y-3 pb-6">
+          <div className="space-y-3">
             <div className="text-xs flex justify-between items-center">
-              <div className="text-gray-600 dark:text-gray-400">Recipient Address</div>
+              <div className="text-xs text-gray-600 dark:text-gray-400">Recipient Address</div>
               <div
                 className="text-gray-600 dark:text-gray-400 underline hover:no-underline cursor-pointer"
                 onClick={() => setToAddress(accountAddress)}
@@ -63,11 +61,11 @@ export default function Creator() {
           </div>
         </div>
 
-        <div className="pb-6">
+        <div className="space-y-6">
           <div className="text-xs pb-3 mb-6 border-b border-black/5 dark:border-white/5">
             <span className="otext-gray-400 dark:text-gray-600 uppercase tracking-widest">Vesting duration</span>
           </div>
-          <div className="space-y-3 pb-6">
+          <div className="space-y-3">
             <AssetInput
               assets={tokens}
               asset={token}
@@ -79,7 +77,7 @@ export default function Creator() {
             />
           </div>
 
-          <div className="space-y-3 pb-6">
+          <div className="space-y-3">
             <div className="text-xs text-gray-600 dark:text-gray-400">Start Date</div>
             <Datepicker
               // TODO: Flowbite datepicker is not working, we need to replace it
@@ -89,7 +87,7 @@ export default function Creator() {
           </div>
 
           <div className="md:flex gap-6">
-            <div className="space-y-3 pb-6 grow">
+            <div className="space-y-3 grow">
               <div className="text-xs text-gray-600 dark:text-gray-400">Vesting Duration</div>
               <div className="relative">
                 <TextInput
@@ -116,7 +114,7 @@ export default function Creator() {
               </div>
             </div>
 
-            <div className="space-y-3 pb-6 grow">
+            <div className="space-y-3 grow">
               <div className="text-xs text-gray-600 dark:text-gray-400">Cliff Duration</div>
               <div className="relative">
                 <TextInput
@@ -149,28 +147,10 @@ export default function Creator() {
           <div className="text-xs pb-3 mb-6 border-b border-black/5 dark:border-white/5">
             <span className="text-gray-400 dark:text-gray-600 uppercase tracking-widest">Additional Info</span>
           </div>
-          <div className="space-y-3 pb-6">
-            <div className="mb-6 bg-black/[.03] dark:bg-white/[.02] rounded-lg flex items-center px-5 py-4">
-              <div className="text-xs text-gray-600 dark:text-gray-400 grow">Allow Split</div>
-              <ToggleSwitch
-                // @ts-ignore
-                color="green"
-                label=""
-                checked={splitable}
-                onChange={() => setSplitable(!splitable ? true : false)}
-              />
-            </div>
-            <div className="text-xs text-gray-600 dark:text-gray-400">Name</div>
-            <TextInput
-              placeholder="e.g. Velodrome Foundation"
-              value={recipientName}
-              onChange={(e) => setRecipientName(e.target.value)}
-            />
-          </div>
 
           <div className="space-y-3 pb-6">
-            <div className="text-xs text-gray-600 dark:text-gray-400">Description (Optional)</div>
-            <Textarea value={desc} onChange={(e) => setDesc(e.target.value)} />
+            <div className="text-xs text-gray-600 dark:text-gray-400">Description</div>
+            <Textarea value={description} onChange={(e) => setDescription(e.target.value)} />
           </div>
         </div>
       </div>
@@ -187,12 +167,12 @@ export default function Creator() {
             toAddress={toAddress}
             amount={amount}
             vestingDuration={vestingDuration}
-            recipient={recipientName}
             token={token}
+            description={description}
           />
         </div>
 
-        {isAddress(toAddress) && amount && Number(vestingDuration) !== 0 && recipientName && (
+        {isAddress(toAddress) && amount && Number(vestingDuration) !== 0 && description !== "" && (
           <>
             <GovnftChart
               startDate={selectedStartDate}
@@ -212,7 +192,7 @@ export default function Creator() {
                 start={BigInt(selectedStartDate.unix() + 1000)} //TODO: fix start date so not in past
                 end={BigInt(selectedStartDate.unix() + 1000000)} //TODO: use VestingDuration to calculate duration in seconds
                 cliff={BigInt(cliffDuration)}
-                description={desc}
+                description={description}
               />
             )}
           </>
