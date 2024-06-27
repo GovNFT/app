@@ -25,6 +25,7 @@ export default function Creator() {
   const [selectedStartDate, setSelectedStartDate] = useState(today);
   const [vestingInterval, setVestingInterval] = useState("years");
   const [cliffInterval, setCliffInterval] = useState("months");
+  const [description, setDescription] = useState("");
 
   const timeframe = ["years", "months", "weeks"];
 
@@ -41,22 +42,22 @@ export default function Creator() {
 
   return (
     <>
-      <div className="lg:w-7/12 mb-4 lg:mb-0 bg-white shadow-lg dark:bg-white/5 p-6 md:p-10 rounded-lg">
-        <div className="pb-6">
+      <div className="lg:w-7/12 mb-4 lg:mb-0 bg-white shadow-lg dark:bg-white/5 p-6 md:p-10 rounded-lg space-y-12">
+        <div>
           <div className="text-xs pb-3 mb-6 border-b border-black/5 dark:border-white/5">
             <span className="text-gray-400 dark:text-gray-600 uppercase tracking-widest">Recipient Info</span>
           </div>
-          <div className="space-y-3 pb-6">
+          <div className="space-y-3">
             <div className="text-xs text-gray-600 dark:text-gray-400">Recipient Address</div>
             <TextInput placeholder="0x" value={toAddress} onChange={(e) => setToAddress(e.target.value)} />
           </div>
         </div>
 
-        <div>
+        <div className="space-y-6">
           <div className="text-xs pb-3 mb-6 border-b border-black/5 dark:border-white/5">
             <span className="otext-gray-400 dark:text-gray-600 uppercase tracking-widest">Vesting duration</span>
           </div>
-          <div className="space-y-3 pb-6">
+          <div className="space-y-3">
             <AssetInput
               assets={tokens}
               asset={token}
@@ -68,7 +69,7 @@ export default function Creator() {
             />
           </div>
 
-          <div className="space-y-3 pb-6">
+          <div className="space-y-3">
             <div className="text-xs text-gray-600 dark:text-gray-400">Start Date</div>
             <Datepicker
               // TODO: Flowbite datepicker is not working, we need to replace it
@@ -133,6 +134,17 @@ export default function Creator() {
             </div>
           </div>
         </div>
+
+        <div>
+          <div className="text-xs pb-3 mb-6 border-b border-black/5 dark:border-white/5">
+            <span className="text-gray-400 dark:text-gray-600 uppercase tracking-widest">Additional Info</span>
+          </div>
+
+          <div className="space-y-3 pb-6">
+            <div className="text-xs text-gray-600 dark:text-gray-400">Description</div>
+            <Textarea value={description} onChange={(e) => setDescription(e.target.value)} />
+          </div>
+        </div>
       </div>
 
       <div className="p-8 lg:w-5/12 bg-black/[.035] dark:bg-gray-700/10 rounded-lg">
@@ -143,10 +155,16 @@ export default function Creator() {
             NFTs are unique digital assets that are used to represent ownership or proof of authenticity for digital or
             physical items.
           </div>
-          <Checklist toAddress={toAddress} amount={amount} vestingDuration={vestingDuration} token={token} />
+          <Checklist
+            toAddress={toAddress}
+            amount={amount}
+            vestingDuration={vestingDuration}
+            token={token}
+            description={description}
+          />
         </div>
 
-        {isAddress(toAddress) && amount && Number(vestingDuration) !== 0 && (
+        {isAddress(toAddress) && amount && Number(vestingDuration) !== 0 && description !== "" && (
           <>
             <GovnftChart
               startDate={selectedStartDate}
@@ -166,6 +184,7 @@ export default function Creator() {
                 start={BigInt(selectedStartDate.unix() + 1000)} //TODO: fix start date so not in past
                 end={BigInt(selectedStartDate.unix() + 1000000)} //TODO: use VestingDuration to calculate duration in seconds
                 cliff={BigInt(cliffDuration)}
+                description={description}
               />
             )}
           </>
