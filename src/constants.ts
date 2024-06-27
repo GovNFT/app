@@ -19,3 +19,8 @@ export const WALLETCONNECT_PROJECT_ID = import.meta.env.VITE_WALLETCONNECT_PROJE
 
 // prettier-ignore
 export const FEATURE_FLAGS = String(import.meta.env.VITE_FEATURE_FLAGS).split(",");
+
+export const INTERVALS = ["years", "months", "weeks", "days"];
+
+// Tx signing leeway time
+export const LEEWAY_MINS = Number(import.meta.env.VITE_LEEWAY_MINS || 5);

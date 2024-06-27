@@ -1,5 +1,4 @@
 import dayjs from "dayjs";
-import duration from "dayjs/plugin/duration";
 import { Datepicker, Select, TextInput, Textarea } from "flowbite-react";
 import { useCallback, useEffect, useState } from "react";
 import { isAddress } from "viem";
@@ -11,15 +10,13 @@ import GovnftChart from "#/components/GovnftChart";
 import { useCollection } from "#/hooks/collection";
 import { useDuration } from "#/hooks/duration";
 import { useTokens } from "#/hooks/token";
-import type { Interval, Token } from "#/hooks/types";
+import type { Address, Interval, Token } from "#/hooks/types";
 import Checklist from "./Checklist";
 import CreateButton from "./CreateButton";
 
-dayjs.extend(duration);
-
 export default function Creator() {
   const [amount, setAmount] = useState(0n);
-  const [toAddress, setToAddress] = useState(null);
+  const [toAddress, setToAddress] = useState("");
   const [allowed, setAllowed] = useState(false);
 
   const today = dayjs();
@@ -174,7 +171,7 @@ export default function Creator() {
             Mint an NFT with locked tokens under specified parameters. Tokens will be claimable as they vest.
           </div>
           <Checklist
-            toAddress={toAddress}
+            toAddress={toAddress as Address}
             amount={amount}
             vestingDuration={vestingDuration}
             token={token}
