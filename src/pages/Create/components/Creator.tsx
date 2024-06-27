@@ -1,6 +1,6 @@
 import dayjs from "dayjs";
 import duration from "dayjs/plugin/duration";
-import { Datepicker, Select, TextInput, Textarea, ToggleSwitch } from "flowbite-react";
+import { Datepicker, Select, TextInput, Textarea } from "flowbite-react";
 import { useCallback, useEffect, useState } from "react";
 import { isAddress } from "viem";
 import { useAccount } from "wagmi";
@@ -177,8 +177,7 @@ export default function Creator() {
 
         <div className="space-y-8">
           <div className="text-sm pr-16 pt-4 text-gray-600 dark:text-gray-400">
-            Grant governance tokens via your GovNFT under specified parameters. Granted tokens will be claimable as they
-            vest.
+            Mint an NFT with locked tokens under specified parameters. Tokens will be claimable as they vest.
           </div>
           <Checklist
             toAddress={toAddress}

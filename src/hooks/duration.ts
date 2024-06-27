@@ -10,7 +10,7 @@ export const useDuration = (initialInterval: Interval) => {
 
   const handleDuration = useCallback(
     (value: string) => {
-      const amount = parseInt(value);
+      const amount = parseFloat(value);
       //this condition is to allow an empty input field where value would be `""`
       if (Number.isNaN(amount)) {
         setDuration(0);

@@ -3,6 +3,7 @@ import { ExternalLinkIcon } from "lucide-react";
 import { useEffect } from "react";
 import { Address } from "viem";
 import { useWaitForTransactionReceipt, useWriteContract } from "wagmi";
+import { useLocation } from "wouter";
 import Toaster from "../../../components/Toaster";
 import { GOVNFT_ABI, GOVNFT_ADDRESS } from "../../../constants";
 
@@ -23,6 +24,7 @@ export default function CreateButton({
   cliff: bigint;
   description: string;
 }) {
+  const [, navigate] = useLocation();
   const { data: hash, error, isPending, writeContract } = useWriteContract();
 
   const { isLoading: isConfirming, isSuccess: isConfirmed } = useWaitForTransactionReceipt({
@@ -34,13 +36,10 @@ export default function CreateButton({
       // @ts-ignore
       Toaster.toast(error);
     } else if (isConfirmed) {
-      Toaster.toast.success(
-        <a href={"/minted"} target="_blank" rel="noreferrer">
-          "GovNFT grant is successful!" <ExternalLinkIcon size={12} className="inline" />
-        </a>,
-      );
+      navigate("/minted");
+      Toaster.toast.success("GovNFT created!");
     }
-  }, [error, isConfirmed]);
+  }, [error, isConfirmed, navigate]);
 
   return (
     <>
