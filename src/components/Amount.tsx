@@ -27,8 +27,6 @@ export default function Amount({
   const addr = String(tokenAddress).toLowerCase() as Address;
   const token = tokens?.find((t) => t.address.toLowerCase() === addr);
 
-  console.log(token);
-
   // @ts-ignore
   const amountDecimals = decimals || token?.decimals || 18;
 
