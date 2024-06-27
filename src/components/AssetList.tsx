@@ -62,7 +62,6 @@ export default function AssetsList({
                         tokenAddress={asset.address}
                         decimals={asset.decimals}
                         amount={asset.value}
-                        symbol={asset.symbol}
                         showLogo={false}
                       />
                     </div>

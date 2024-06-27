@@ -35,7 +35,7 @@ export default function Overview({
             <div className="flex flex-col md:flex-row gap-2">
               <div className="w-full text-sm py-8 space-y-2 flex flex-col items-center justify-between bg-gray-50 dark:bg-gray-700/10 px-5 py-4 rounded-lg">
                 <div className="text-xl">
-                  <Amount tokenAddress={nft.token} amount={nft.amount} showLogo={true} symbol="OP" />
+                  <Amount tokenAddress={nft.token} amount={nft.amount} showLogo={true} />
                 </div>
                 <div className="text-gray-600 dark:text-gray-400">Current Lock</div>
               </div>
