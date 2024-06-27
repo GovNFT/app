@@ -2,6 +2,7 @@ import { Tooltip } from "flowbite-react";
 import {
   ChevronRight as ChevronRightIcon,
   Info as InfoIcon,
+  Link as LinkIcon,
   Lock as LockIcon,
   TrendingUp as TrendingUpIcon,
 } from "lucide-react";
@@ -28,11 +29,6 @@ export default function Govnft({
           <div className="flex flex-col gap-5 sm:flex-row sm:gap-8 sm:items-center">
             <div className="sm:grow space-y-5">
               <GovnftAvatar nft={nft} />
-              <div className="flex items-center gap-1 text-gray-400 dark:text-gray-600 text-xs">
-                <div className="text-gray-600 dark:text-gray-400">
-                  Collection: {nft.name === "" ? "Unknown" : nft.name}
-                </div>
-              </div>
             </div>
           </div>
           <div className="flex gap-4 items-center">
@@ -40,14 +36,14 @@ export default function Govnft({
               <GovnftStatus nft={nft} />
               <GovnftProgress vestedPct={nft.vestedPct} />
             </div>
-            <div className="px-6 py-4 w-52 hidden xl:flex flex-col gap-2 justify-center items-end border-l border-gray-100 dark:border-gray-950/20">
+            <div className="px-6 py-2 w-52 hidden xl:flex flex-col gap-2 justify-center items-end border-l border-gray-100 dark:border-gray-950/20">
               <div className="text-gray-400 dark:text-gray-600 text-xs">Locked</div>
               <Amount tokenAddress={nft.token} amount={nft.amount} showLogo={true} />
               <div className="text-gray-600 dark:text-gray-400 text-xs flex gap-1 items-center">
                 of <Amount tokenAddress={nft.token} amount={nft.total_locked} showLogo={false} /> total
               </div>
             </div>
-            <div className="sm:px-6 sm:py-4 w-full sm:w-52 flex flex-row gap-6 sm:flex-col sm:gap-2 sm:justify-center items-center sm:items-end sm:border-l border-gray-100 dark:border-gray-950/20">
+            <div className="sm:px-2 w-full sm:w-52 flex flex-row gap-6 sm:flex-col sm:gap-2 sm:justify-center items-center sm:items-end sm:border-l border-gray-100 dark:border-gray-950/20">
               <div className="text-gray-400 dark:text-gray-600 text-xs">Claimable</div>
               <Amount tokenAddress={nft.token} amount={nft.claimable} showLogo={false} />
               <ClaimButton id={nft.id} amount={nft.claimable} />

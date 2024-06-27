@@ -38,11 +38,6 @@ export default function Overview({
                   <AddressMask address={nft.owner} />
                 </div>
               </div>
-
-              <div className="flex items-center gap-2">
-                <div className="text-xs text-gray-400 dark:text-gray-600">Collection:</div>
-                <div className="text-xs text-gray-600 dark:text-gray-400">{nft.name === "" ? "Unknown" : nft.name}</div>
-              </div>
             </div>
 
             <div className="flex flex-col md:flex-row gap-2">
