@@ -11,6 +11,7 @@ import Delegate from "./pages/Delegate";
 import Govnft from "./pages/Govnft";
 import Landing from "./pages/Landing";
 import Minted from "./pages/Minted";
+import Split from "./pages/Split";
 import Transfer from "./pages/Transfer";
 
 function ConnectedOnly({ children }) {
@@ -42,6 +43,7 @@ export default function App() {
           <Route path="/create" component={Create} />
           <Route path="/nft/:id/transfer" component={Transfer} />
           <Route path="/nft/:id/delegate" component={Delegate} />
+          <Route path="/nft/:id/split" component={Split} />
           <Route path="/minted" component={Minted} />
         </ConnectedOnly>
 

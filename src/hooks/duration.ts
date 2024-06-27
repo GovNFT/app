@@ -1,10 +1,16 @@
 import dayjs from "dayjs";
+import duration from "dayjs/plugin/duration";
+import relativeTime from "dayjs/plugin/relativeTime";
 import { useCallback, useMemo, useState } from "react";
+
 import type { Interval } from "./types";
 
-export const useDuration = (initialInterval: Interval) => {
+dayjs.extend(duration);
+dayjs.extend(relativeTime);
+
+export const useDuration = (initialInterval: Interval, initialDuration = 0) => {
   //note setDuration is not exposed outside this hook
-  const [duration, setDuration] = useState(0); //stored in seconds
+  const [duration, setDuration] = useState<number>(initialDuration); //stored in seconds
   const [interval, setInterval] = useState<Interval>(initialInterval);
   const [isEmpty, setIsEmpty] = useState(false);
 
@@ -24,7 +30,8 @@ export const useDuration = (initialInterval: Interval) => {
   );
   //derive displayed vesting from single state var to not duplicate state
   const displayedDuration = useMemo(() => {
-    if (isEmpty) return "";
+    if (isEmpty) return 0;
+
     const dayJSDur = dayjs.duration({ seconds: duration });
     if (interval === "years") {
       return dayJSDur.asYears();
