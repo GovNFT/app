@@ -80,7 +80,7 @@ export default function DelegateNft({ nft }) {
                     <CheckCircle2Icon size={20} strokeWidth={1} />
                   </div>
                   <div className="text-xs sm:text-sm text-gray-600 dark:text-gray-400 w-52 text-center pb-3">
-                    Address is valid. You can now delegate gouverannce.
+                    Address is valid. You can now delegate gouvernance.
                   </div>
                   <DelegateButton id={nft.id} delegatee={toAddress} />
                 </>
