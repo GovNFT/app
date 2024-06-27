@@ -8,6 +8,7 @@ import { useAccount } from "wagmi";
 import ActionLink from "../../../components/ActionLink";
 import AddressMask from "../../../components/AddressMask";
 import Amount from "../../../components/Amount";
+import ClaimButton from "../../../components/ClaimButton";
 import GovnftHeader from "../../../components/GovnftHeader";
 import NavLink from "../../../components/NavLink";
 import { GovNft } from "../../../hooks/types";
@@ -57,8 +58,8 @@ export default function Overview({
                 <div className="text-sm flex justify-between bg-gray-50 dark:bg-gray-700/10 px-5 py-4 rounded-lg">
                   <div className="text-gray-600 dark:text-gray-400">Claimable</div>
                   <div className="flex gap-3">
-                    <Amount tokenAddress={nft.token} amount={nft.total_claimed} showLogo={true} />
-                    <ActionLink onClick="#">Claim</ActionLink>
+                    <Amount tokenAddress={nft.token} amount={nft.claimable} showLogo={true} />
+                    <ClaimButton id={nft.id} amount={nft.claimable} />
                   </div>
                 </div>
               )}
