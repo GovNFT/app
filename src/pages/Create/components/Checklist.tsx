@@ -65,7 +65,7 @@ export default function Checklist({ toAddress, amount, token, vestingDuration, d
             <div className="bg-gray-200/80 dark:bg-gray-900/80 w-7 h-7 bg-gray-200 dark:bg-gray-900/80 w-7 h-7 flex items-center justify-center mr-2 rounded-full">
               <CalendarIcon size={14} />
             </div>
-            Adjust vestind duration
+            Adjust vesting duration
           </div>
         )}
 
@@ -74,7 +74,7 @@ export default function Checklist({ toAddress, amount, token, vestingDuration, d
             <div className="bg-gray-200/80 dark:bg-gray-900/80 w-7 h-7 flex items-center justify-center mr-2 rounded-full">
               <CheckCircle2Icon size={14} />
             </div>
-            Vestind duration is valid
+            Vesting duration is valid
           </div>
         )}
 
