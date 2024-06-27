@@ -19,39 +19,39 @@ function postFetch(nft, account: Address) {
   return { ...nft, isOwner, isMinter, isDelegated, vestedPct, name: "" };
 }
 
-async function fetchMintedNfts(account: Address): Promise<GovNft[]> {
+async function fetchMintedNfts(account: Address, collection: Address): Promise<GovNft[]> {
   return await readContract(config, {
     address: GOVNFT_SUGAR_ADDRESS,
     abi: GOVNFT_SUGAR_ABI,
     functionName: "minted",
-    args: [account],
+    args: [account, collection],
   }).then((nfts) => nfts.map((nft) => postFetch(nft, account)));
 }
 
-async function fetchOwnedNfts(account: Address): Promise<GovNft[]> {
+async function fetchOwnedNfts(account: Address, collection: Address): Promise<GovNft[]> {
   return await readContract(config, {
     address: GOVNFT_SUGAR_ADDRESS,
     abi: GOVNFT_SUGAR_ABI,
     functionName: "owned",
-    args: [account],
+    args: [account, collection],
   }).then((nfts) => nfts.map((nft) => postFetch(nft, account)));
 }
 
-async function fetchNft(id, account: Address): Promise<GovNft> {
+async function fetchNft(id, account: Address, collection: Address): Promise<GovNft> {
   const nft = await readContract(config, {
     address: GOVNFT_SUGAR_ADDRESS,
     abi: GOVNFT_SUGAR_ABI,
     functionName: "byId",
-    args: [id as bigint],
+    args: [id as bigint, collection],
   });
 
   return postFetch(nft, account);
 }
 
-export function useMintedNfts(accountAddress: Address, opts = {}) {
+export function useMintedNfts(accountAddress: Address, collection: Address, opts = {}) {
   return useQuery({
     queryKey: ["fetchMintedNfts"],
-    queryFn: () => fetchMintedNfts(accountAddress),
+    queryFn: () => fetchMintedNfts(accountAddress, collection),
     ...opts,
     placeholderData: [],
     // @ts-ignore
@@ -59,10 +59,10 @@ export function useMintedNfts(accountAddress: Address, opts = {}) {
   });
 }
 
-export function useOwnedNfts(accountAddress: Address, opts = {}) {
+export function useOwnedNfts(accountAddress: Address, collection: Address, opts = {}) {
   return useQuery({
     queryKey: ["fetchOwnedNfts"],
-    queryFn: () => fetchOwnedNfts(accountAddress),
+    queryFn: () => fetchOwnedNfts(accountAddress, collection),
     ...opts,
     placeholderData: [],
     // @ts-ignore
@@ -70,10 +70,10 @@ export function useOwnedNfts(accountAddress: Address, opts = {}) {
   });
 }
 
-export function useNft(id, accountAddress: Address, opts = {}) {
+export function useNft(id, accountAddress: Address, collection: Address, opts = {}) {
   return useQuery({
     queryKey: ["fetchNft"],
-    queryFn: () => fetchNft(id, accountAddress),
+    queryFn: () => fetchNft(id, accountAddress, collection),
     ...opts,
     // @ts-ignore
     keepPreviousData: true,
