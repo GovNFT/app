@@ -31,6 +31,8 @@ export default function AssetInput({
 
   const [value, setValue] = useState(formatUnits(amount, asset?.decimals));
 
+  /* TODO: Add onchain loading */
+
   function setFromBalance() {
     if (disabled) {
       return;
@@ -58,6 +60,7 @@ export default function AssetInput({
       setInvalid(true);
     }
 
+    /* TODO: Remove this */
     if (!validate) {
       setAmount(parsedAmount);
     }

@@ -9,6 +9,7 @@ export default function GovnftNavbar({
   active: string;
 }) {
   const classActive = "sm:border-t border-t-primary bg-gray-50 dark:bg-gray-700/10 ";
+  /* TODO: Don't show options if wallet not connected */
   const navs = {
     "": "overview",
     delegate: "delegate",

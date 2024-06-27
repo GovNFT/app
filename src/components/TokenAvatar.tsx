@@ -1,5 +1,6 @@
 import { Img } from "react-image";
 
+/* TODO: Use path alias */
 import { DEFAULT_CHAIN, TOKEN_ASSETS_CDN, TOKEN_ICON } from "../constants";
 import { Address } from "../hooks/types";
 

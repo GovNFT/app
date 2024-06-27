@@ -19,6 +19,7 @@ export default function CustomRpc() {
             in your browser, locally.
           </div>
 
+          {/* TODO: Add a location.reload() button */}
           <TextInput
             rightIcon={PlugZapIcon}
             value={customRpc}

@@ -4,6 +4,7 @@ import { Address, erc20Abi } from "viem";
 import { useReadContract, useWaitForTransactionReceipt, useWriteContract } from "wagmi";
 import { useAccount } from "wagmi";
 
+/* TODO: Rename this */
 export default function FlowAllowance({
   token,
   amount,
