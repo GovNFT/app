@@ -34,3 +34,5 @@ export type GovNft = {
   name: string;
   description?: string;
 };
+
+export type Interval = "days" | "months" | "weeks" | "years";

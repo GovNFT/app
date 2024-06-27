@@ -1,6 +1,7 @@
 import dayjs from "dayjs";
-import { Datepicker, Select, TextInput, Textarea } from "flowbite-react";
-import { useEffect, useState } from "react";
+import duration from "dayjs/plugin/duration";
+import { Datepicker, Select, TextInput, Textarea, ToggleSwitch } from "flowbite-react";
+import { useCallback, useEffect, useState } from "react";
 import { isAddress } from "viem";
 import { useAccount } from "wagmi";
 
@@ -8,11 +9,13 @@ import AssetInput from "../../../components/AssetInput";
 import FlowAllowance from "../../../components/FlowAllowance";
 import GovnftChart from "../../../components/GovnftChart";
 import { GOVNFT_ADDRESS } from "../../../constants";
+import { useDuration } from "../../../hooks/duration";
 import { useTokens } from "../../../hooks/token";
-import { Token } from "../../../hooks/types";
+import { Interval, Token } from "../../../hooks/types";
 import Checklist from "./Checklist";
 import CreateButton from "./CreateButton";
-import CreatorPreview from "./CreatorPreview";
+
+dayjs.extend(duration);
 
 export default function Creator() {
   const [amount, setAmount] = useState(0n);
@@ -20,14 +23,16 @@ export default function Creator() {
   const [allowed, setAllowed] = useState(false);
 
   const today = dayjs();
-  const [vestingDuration, setVestingDuration] = useState(0);
-  const [cliffDuration, setCliffDuration] = useState(0);
   const [selectedStartDate, setSelectedStartDate] = useState(today);
-  const [vestingInterval, setVestingInterval] = useState("years");
-  const [cliffInterval, setCliffInterval] = useState("months");
   const [description, setDescription] = useState("");
 
-  const timeframe = ["years", "months", "weeks"];
+  const [vestingDuration, setVestingDuration, vestingInterval, setVestingInterval, displayedVestingDuration] =
+    useDuration("years");
+  const [cliffDuration, setCliffDuration, cliffInterval, setCliffInterval, displayedCliffDuration] =
+    useDuration("months");
+
+  const [desc, setDesc] = useState("");
+  const timeframe: Interval[] = ["years", "months", "weeks", "days"];
 
   const { address: accountAddress } = useAccount();
 
@@ -39,6 +44,19 @@ export default function Creator() {
     // @ts-ignore
     setToken(tokens[0]);
   }, [tokens, tokens[0]]);
+
+  const handleStartDate = useCallback(
+    (e) => {
+      //@ts-ignore
+      const selectedTime = dayjs(e.target.value);
+      if (selectedTime.isBefore(today)) {
+        setSelectedStartDate(today);
+      } else {
+        setSelectedStartDate(selectedTime);
+      }
+    },
+    [today],
+  );
 
   return (
     <>
@@ -82,7 +100,7 @@ export default function Creator() {
             <Datepicker
               // TODO: Flowbite datepicker is not working, we need to replace it
               // @ts-ignore
-              onSelect={(e) => setSelectedStartDate(dayjs(e.target.value))}
+              onSelect={handleStartDate}
             />
           </div>
 
@@ -91,8 +109,7 @@ export default function Creator() {
               <div className="text-xs text-gray-600 dark:text-gray-400">Vesting Duration</div>
               <div className="relative">
                 <TextInput
-                  value={Number(vestingDuration)}
-                  // @ts-ignore
+                  value={displayedVestingDuration}
                   onChange={(e) => setVestingDuration(e.target.value)}
                   type="number"
                   min="0"
@@ -102,7 +119,7 @@ export default function Creator() {
                   sizing="sm"
                   className="absolute top-0.5 right-0.5 sm:top-1.5 sm:right-1.5 w-24"
                   color="gray"
-                  onChange={(e) => setVestingInterval(e.target.value)}
+                  onChange={(e) => setVestingInterval(e.target.value as Interval)}
                   defaultValue={vestingInterval}
                 >
                   {timeframe.map((time) => (
@@ -118,7 +135,7 @@ export default function Creator() {
               <div className="text-xs text-gray-600 dark:text-gray-400">Cliff Duration</div>
               <div className="relative">
                 <TextInput
-                  value={Number(cliffDuration)}
+                  value={displayedCliffDuration}
                   // @ts-ignore
                   onChange={(e) => setCliffDuration(e.target.value)}
                   type="number"
@@ -129,7 +146,7 @@ export default function Creator() {
                   sizing="sm"
                   className="absolute top-0.5 right-0.5 sm:top-1.5 sm:right-1.5 w-24"
                   color="gray"
-                  onChange={(e) => setCliffInterval(e.target.value)}
+                  onChange={(e) => setCliffInterval(e.target.value as Interval)}
                   defaultValue={cliffInterval}
                 >
                   {timeframe.map((time) => (
@@ -160,8 +177,8 @@ export default function Creator() {
 
         <div className="space-y-8">
           <div className="text-sm pr-16 pt-4 text-gray-600 dark:text-gray-400">
-            NFTs are unique digital assets that are used to represent ownership or proof of authenticity for digital or
-            physical items.
+            Grant governance tokens via your GovNFT under specified parameters. Granted tokens will be claimable as they
+            vest.
           </div>
           <Checklist
             toAddress={toAddress}
@@ -172,25 +189,27 @@ export default function Creator() {
           />
         </div>
 
+        {vestingDuration !== 0 && (
+          <GovnftChart startDate={selectedStartDate} vestingDuration={vestingDuration} cliffDuration={cliffDuration} />
+        )}
+
         {isAddress(toAddress) && amount && Number(vestingDuration) !== 0 && description !== "" && (
           <>
-            <GovnftChart
-              startDate={selectedStartDate}
-              vestingDuration={vestingDuration}
-              vestingInterval={vestingInterval}
-              cliffDuration={cliffDuration}
-              cliffInterval={cliffInterval}
+            <FlowAllowance
+              token={token.address}
+              amount={amount}
+              forAddress={GOVNFT_ADDRESS}
+              setAllowed={setAllowed}
+              ctaTexts={["Approved", "Approve Tokens"]}
             />
-
-            <FlowAllowance token={token.address} amount={amount} forAddress={GOVNFT_ADDRESS} setAllowed={setAllowed} />
 
             {allowed && (
               <CreateButton
                 token={token.address}
                 recipient={toAddress}
                 amount={amount}
-                start={BigInt(selectedStartDate.unix() + 1000)} //TODO: fix start date so not in past
-                end={BigInt(selectedStartDate.unix() + 1000000)} //TODO: use VestingDuration to calculate duration in seconds
+                start={BigInt(selectedStartDate.unix() + 1000)}
+                end={BigInt(selectedStartDate.unix() + vestingDuration)}
                 cliff={BigInt(cliffDuration)}
                 description={description}
               />
