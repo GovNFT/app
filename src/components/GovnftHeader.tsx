@@ -37,7 +37,7 @@ export default function GovnftHeader({
             <div className="flex text-gray-700 dark:text-gray-300">
               <GovnftNavbar nft={nft} active={active} />
             </div>
-            <a href={`https://etherscan.io/address/${nft.address}`} target="_blank" rel="noreferrer">
+            <a href={`https://optimistic.etherscan.io/nft/${nft.address}/${nft.id}`} target="_blank" rel="noreferrer">
               <div className="flex gap-2 items-center px-7 py-4 text-gray-600 dark:text-gray-400 underline hover:no-underline">
                 <LinkIcon size={12} />
                 Etherscan
