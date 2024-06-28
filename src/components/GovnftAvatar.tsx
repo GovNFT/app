@@ -27,15 +27,15 @@ export default function GovnftAvatar({
         <div className="bg-gray-100 dark:bg-gray-700/20 h-16 w-16 hidden sm:flex items-center justify-center rounded-2xl">
           <SvgLoader src="/govnft-gray.svg" className="w-6" alt="GovNFT" />
         </div>
-        <div>
+        <div className="space-y-1">
           <div className="flex gap-2 items-center text-gray-800 dark:text-gray-200 font-semibold text-sm">
             GovNFT #{String(nft.id)}
             <LockIcon size={12} />
           </div>
-          <div className="text-xs pt-1 text-gray-600 dark:text-gray-400 flex gap-1 items-center">
+          <div className="text-xs text-gray-600 dark:text-gray-400 flex gap-1 items-center">
             Initial Lock : <Amount amount={nft.amount} tokenAddress={nft.token} showLogo={false} />
           </div>
-          <div className="text-xs pt-1 text-gray-600 dark:text-gray-400 flex gap-1 items-center">
+          <div className="text-xs text-gray-600 dark:text-gray-400 flex gap-1 items-center">
             <div className="opacity-60">
               Vesting <DateFormat ts={nft.start} /> : <DateFormat ts={nft.end} />
             </div>
