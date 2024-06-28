@@ -9,6 +9,7 @@ import Govnfts from "./components/Govnfts";
 export default function Dashboard() {
   const { address } = useAccount();
   const { data: nfts = [], isLoading } = useOwnedNfts(address);
+  console.log(nfts);
 
   return (
     <div className="container mx-auto px-4 lg:px-8">
