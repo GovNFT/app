@@ -1,5 +1,9 @@
 import { useQuery } from "@tanstack/react-query";
 import { readContract } from "@wagmi/core";
+import { isEmpty } from "lodash";
+import { useMemo } from "react";
+import { useSearch } from "wouter";
+
 import config from "../rpc";
 import { Collection } from "./types";
 
@@ -25,4 +29,20 @@ export function useCollections(opts = {}) {
     // @ts-ignore
     keepPreviousData: true,
   });
+}
+
+export function useCollection() {
+  const searchString = useSearch();
+  const { error, data: collections } = useCollections();
+
+  const collection = useMemo(() => {
+    if (isEmpty(collections)) return;
+
+    const params = new URLSearchParams(searchString);
+    const colAddress = String(params.get("collection") || "");
+
+    return collections.find((c) => c.address.toLowerCase() === colAddress.toLowerCase()) || collections[0];
+  }, [searchString, collections]);
+
+  return collection;
 }

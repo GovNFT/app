@@ -48,7 +48,7 @@ export default function Govnft({
             <div className="sm:px-6 sm:py-4 w-full sm:w-52 flex flex-row gap-6 sm:flex-col sm:gap-2 sm:justify-center items-center sm:items-end sm:border-l border-gray-100 dark:border-gray-950/20">
               <div className="text-gray-400 dark:text-gray-600 text-xs">Claimable</div>
               <Amount tokenAddress={nft.token} amount={nft.claimable} showLogo={false} />
-              <ClaimButton id={nft.id} amount={nft.claimable} />
+              <ClaimButton nft={nft} />
             </div>
             <div className="hidden sm:flex items-center px-3 h-full bg-gray-50 hover:bg-gray-100 dark:bg-gray-700/10 hover:dark:bg-gray-700/20 rounded-md cursor-pointer">
               <ChevronRightIcon size={14} />

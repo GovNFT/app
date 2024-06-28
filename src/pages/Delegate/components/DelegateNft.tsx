@@ -15,11 +15,12 @@ import { useLocation } from "wouter";
 import GovnftHeader from "../../../components/GovnftHeader";
 import NavLink from "../../../components/NavLink";
 import { DELEGATES_URI } from "../../../constants";
+import { GovNft } from "../../../hooks/types";
 
 import Amount from "../../../components/Amount";
 import DelegateButton from "./DelegateButton";
 
-export default function DelegateNft({ nft }) {
+export default function DelegateNft({ nft }: { nft: GovNft }) {
   const [toAddress, setToAddress] = useState(null);
 
   return (
@@ -75,7 +76,7 @@ export default function DelegateNft({ nft }) {
                   <div className="text-xs sm:text-sm text-gray-600 dark:text-gray-400 w-52 text-center pb-3">
                     Address is valid. You can now delegate gouverannce.
                   </div>
-                  <DelegateButton id={nft.id} delegatee={toAddress} />
+                  <DelegateButton nft={nft} delegatee={toAddress} />
                 </>
               )}
             </div>

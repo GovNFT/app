@@ -1,7 +1,8 @@
 import { Button } from "flowbite-react";
 import { Address } from "viem";
 import { useWaitForTransactionReceipt, useWriteContract } from "wagmi";
-import { GOVNFT_ABI, GOVNFT_ADDRESS } from "../../../constants";
+import { GOVNFT_ABI } from "../../../constants";
+import { useCollection } from "../../../hooks/collection";
 
 export default function CreateButton({
   token,
@@ -20,6 +21,7 @@ export default function CreateButton({
   cliff: bigint;
   description: string;
 }) {
+  const collection = useCollection();
   const { data: hash, error, isPending, writeContract } = useWriteContract();
 
   const { isLoading: isConfirming, isSuccess: isConfirmed } = useWaitForTransactionReceipt({
@@ -32,9 +34,10 @@ export default function CreateButton({
         onClick={() =>
           writeContract({
             abi: GOVNFT_ABI,
-            address: GOVNFT_ADDRESS,
+            address: collection?.address,
             functionName: "createLock",
             args: [token, recipient, amount, start, end, cliff, description],
+            enabled: !!collection,
           })
         }
         className="w-full"

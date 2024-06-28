@@ -52,6 +52,7 @@ export function useMintedNfts(accountAddress: Address, collection: Address, opts
   return useQuery({
     queryKey: ["fetchMintedNfts"],
     queryFn: () => fetchMintedNfts(accountAddress, collection),
+    enabled: !!collection,
     ...opts,
     placeholderData: [],
     // @ts-ignore
@@ -63,6 +64,7 @@ export function useOwnedNfts(accountAddress: Address, collection: Address, opts 
   return useQuery({
     queryKey: ["fetchOwnedNfts"],
     queryFn: () => fetchOwnedNfts(accountAddress, collection),
+    enabled: !!collection,
     ...opts,
     placeholderData: [],
     // @ts-ignore
@@ -74,6 +76,7 @@ export function useNft(id, accountAddress: Address, collection: Address, opts = 
   return useQuery({
     queryKey: ["fetchNft"],
     queryFn: () => fetchNft(id, accountAddress, collection),
+    enabled: !!collection,
     ...opts,
     // @ts-ignore
     keepPreviousData: true,

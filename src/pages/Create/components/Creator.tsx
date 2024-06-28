@@ -8,6 +8,7 @@ import AssetInput from "../../../components/AssetInput";
 import FlowAllowance from "../../../components/FlowAllowance";
 import GovnftChart from "../../../components/GovnftChart";
 import { GOVNFT_ADDRESS } from "../../../constants";
+import { useCollection } from "../../../hooks/collection";
 import { useTokens } from "../../../hooks/token";
 import { Token } from "../../../hooks/types";
 import Checklist from "./Checklist";
@@ -31,6 +32,7 @@ export default function Creator() {
   const [desc, setDesc] = useState("");
   const timeframe = ["years", "months", "weeks"];
 
+  const collection = useCollection();
   const { address: accountAddress } = useAccount();
 
   const { data: tokens } = useTokens(accountAddress);
@@ -194,7 +196,12 @@ export default function Creator() {
               cliffInterval={cliffInterval}
             />
 
-            <FlowAllowance token={token.address} amount={amount} forAddress={GOVNFT_ADDRESS} setAllowed={setAllowed} />
+            <FlowAllowance
+              token={token.address}
+              amount={amount}
+              forAddress={collection?.address}
+              setAllowed={setAllowed}
+            />
 
             {allowed && (
               <CreateButton
