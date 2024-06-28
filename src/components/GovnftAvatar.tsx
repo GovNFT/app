@@ -4,7 +4,7 @@ import { SvgLoader } from "react-svgmt";
 
 import { GovNft } from "../hooks/types";
 import Amount from "./Amount";
-import DateFromNow from "./DateFromNow";
+import DateFormat from "./DateFormat";
 import NavLink from "./NavLink";
 
 export default function GovnftAvatar({
@@ -24,7 +24,7 @@ export default function GovnftAvatar({
   return (
     <NavLink href={`~/nft/${nft.id}`} className="block">
       <div className="flex gap-5 items-center">
-        <div className="bg-gray-100 dark:bg-gray-700/20 h-14 w-14 hidden sm:flex items-center justify-center rounded-2xl">
+        <div className="bg-gray-100 dark:bg-gray-700/20 h-16 w-16 hidden sm:flex items-center justify-center rounded-2xl">
           <SvgLoader src="/govnft-gray.svg" className="w-6" alt="GovNFT" />
         </div>
         <div>
@@ -32,10 +32,13 @@ export default function GovnftAvatar({
             GovNFT #{String(nft.id)}
             <LockIcon size={12} />
           </div>
-          <div className="text-xs pt-1.5 text-gray-600 dark:text-gray-400 whitespace-nowrap flex items-center">
-            <Amount amount={nft.amount} tokenAddress={nft.token} showLogo={false} />
-            &nbsp;
-            <DateFromNow ts={nft.end} prefix="vesting for" pastPrefix="vested" />
+          <div className="text-xs pt-1 text-gray-600 dark:text-gray-400 flex gap-1 items-center">
+            Initial Lock : <Amount amount={nft.amount} tokenAddress={nft.token} showLogo={false} />
+          </div>
+          <div className="text-xs pt-1 text-gray-600 dark:text-gray-400 flex gap-1 items-center">
+            <div className="opacity-60">
+              Vesting <DateFormat ts={nft.start} /> : <DateFormat ts={nft.end} />
+            </div>
           </div>
         </div>
       </div>
