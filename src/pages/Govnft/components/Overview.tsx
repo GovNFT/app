@@ -74,14 +74,20 @@ export default function Overview({
               )}
               <div className="text-sm flex justify-between bg-gray-50 dark:bg-gray-700/10 px-5 py-4 rounded-lg mb-8">
                 <div className="text-gray-600 dark:text-gray-400">Delegation</div>
-                <div className="flex gap-1 items-center text-gray-600 dark:text-gray-400">
-                  {nft.isDelegated ? <AddressMask address={nft.delegated} /> : "No delegation has been set."}
+                <div className="flex gap-3 items-center">
+                  {nft.isDelegated ? (
+                    <div className="text-gray-300 dark:text-gray700">
+                      <AddressMask address={nft.delegated} />
+                    </div>
+                  ) : (
+                    <div className="text-gray-600 dark:text-gray-400">No delegation has been set.</div>
+                  )}
                   {nft.isOwner && (
                     <NavLink
                       href={`~/nft/${nft.id}/delegate`}
                       className="underline hover:no-underline text-gray-600 dark:text-gray-400"
                     >
-                      Delegate
+                      Edit
                     </NavLink>
                   )}
                 </div>

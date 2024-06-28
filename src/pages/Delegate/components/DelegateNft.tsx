@@ -21,7 +21,7 @@ import DelegateButton from "./DelegateButton";
 
 export default function DelegateNft({ nft }) {
   const { address: accountAddress } = useAccount();
-  const [toAddress, setToAddress] = useState(null);
+  const [toAddress, setToAddress] = useState(nft.isDelegated ? nft.delegated : null);
 
   return (
     <>
