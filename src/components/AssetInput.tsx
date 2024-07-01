@@ -2,7 +2,7 @@ import { Spinner, TextInput } from "flowbite-react";
 import { useEffect, useState } from "react";
 import { formatUnits, parseUnits } from "viem";
 
-import { Token } from "../hooks/types";
+import type { Token } from "#/hooks/types";
 import ActionLink from "./ActionLink";
 import Amount from "./Amount";
 import AssetSelect from "./AssetSelect";
@@ -39,6 +39,7 @@ export default function AssetInput({
     setValue(asset?.formatted);
   }
 
+  // biome-ignore lint/correctness/useExhaustiveDependencies:
   useEffect(() => {
     setInvalid(false);
 

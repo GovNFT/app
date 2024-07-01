@@ -1,6 +1,6 @@
 import { Calendar as CalendarIcon, Check as CheckIcon } from "lucide-react";
 import { formatUnits } from "viem";
-import { GovNft } from "../hooks/types";
+import { GovNft } from "#/hooks/types";
 
 export default function GovnftProgress({
   vestedPct,

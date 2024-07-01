@@ -5,14 +5,14 @@ import { useCallback, useEffect, useState } from "react";
 import { isAddress } from "viem";
 import { useAccount } from "wagmi";
 
-import AssetInput from "../../../components/AssetInput";
-import FlowAllowance from "../../../components/FlowAllowance";
-import GovnftChart from "../../../components/GovnftChart";
-import { GOVNFT_ADDRESS } from "../../../constants";
-import { useCollection } from "../../../hooks/collection";
-import { useDuration } from "../../../hooks/duration";
-import { useTokens } from "../../../hooks/token";
-import { Interval, Token } from "../../../hooks/types";
+import AssetInput from "#/components/AssetInput";
+import FlowAllowance from "#/components/FlowAllowance";
+import GovnftChart from "#/components/GovnftChart";
+import { GOVNFT_ADDRESS } from "#/constants";
+import { useCollection } from "#/hooks/collection";
+import { useDuration } from "#/hooks/duration";
+import { useTokens } from "#/hooks/token";
+import type { Interval, Token } from "#/hooks/types";
 import Checklist from "./Checklist";
 import CreateButton from "./CreateButton";
 

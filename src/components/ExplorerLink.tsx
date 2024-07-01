@@ -1,6 +1,6 @@
 import { LinkIcon } from "lucide-react";
-import { ReactNode } from "react";
-import { useExplorer } from "../hooks/explorer";
+import type { ReactNode } from "react";
+import { useExplorer } from "#/hooks/explorer";
 
 export function ExplorerLink({
   path,

@@ -8,7 +8,7 @@ import {
 import { useState } from "react";
 import { useAccount, useBalance, useDisconnect, useSwitchChain } from "wagmi";
 
-import { DEFAULT_CHAIN } from "../../constants";
+import { DEFAULT_CHAIN } from "#/constants";
 import AddressMask from "../AddressMask";
 import Modal from "../Modal";
 import NavLink from "../NavLink";
@@ -51,7 +51,7 @@ export default function Profile({ children }) {
                     </div>
                     <div className="text-xs">
                       Balance: &nbsp;
-                      <span className="font-mono">{parseFloat(balance?.formatted || "0").toFixed(5)}</span>{" "}
+                      <span className="font-mono">{Number.parseFloat(balance?.formatted || "0").toFixed(5)}</span>{" "}
                       {balance?.symbol}
                     </div>
                   </div>

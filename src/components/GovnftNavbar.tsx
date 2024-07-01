@@ -1,4 +1,4 @@
-import { GovNft } from "../hooks/types";
+import type { GovNft } from "#/hooks/types";
 import NavLink from "./NavLink";
 
 export default function GovnftNavbar({
@@ -19,7 +19,7 @@ export default function GovnftNavbar({
   return (
     <>
       {Object.entries(navs).map(([nav, title]) => (
-        <NavLink href={`~/nft/${nft.id}/${nav}`}>
+        <NavLink href={`~/nft/${nft.id}/${nav}`} key={String(nft.id)}>
           <div
             className={`${
               active === nav ? classActive : "border-t border-transparent"

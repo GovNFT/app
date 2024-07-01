@@ -11,11 +11,11 @@ import { useState } from "react";
 import { isAddress } from "viem";
 import { useAccount } from "wagmi";
 import { useLocation } from "wouter";
-import GovnftHeader from "../../../components/GovnftHeader";
-import NavLink from "../../../components/NavLink";
+import GovnftHeader from "#/components/GovnftHeader";
+import NavLink from "#/components/NavLink";
 
-import Amount from "../../../components/Amount";
-import { GovNft } from "../../../hooks/types";
+import Amount from "#/components/Amount";
+import type { GovNft } from "#/hooks/types";
 import TransferButton from "./TransferButton";
 
 export default function TransferNft({ nft }: { nft: GovNft }) {

@@ -2,11 +2,11 @@ import { isEmpty } from "lodash";
 import { useEffect, useState } from "react";
 import { useAccount } from "wagmi";
 import { useParams } from "wouter";
-import Footer from "../../components/Footer";
-import Header from "../../components/Header";
-import LoadingPlaceholder from "../../components/LoadingPlaceholder";
-import { useCollection } from "../../hooks/collection";
-import { useNft } from "../../hooks/govnft";
+import Footer from "#/components/Footer";
+import Header from "#/components/Header";
+import LoadingPlaceholder from "#/components/LoadingPlaceholder";
+import { useCollection } from "#/hooks/collection";
+import { useNft } from "#/hooks/govnft";
 import TransferNft from "./components/TransferNft";
 
 export default function Delegate() {

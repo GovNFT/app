@@ -2,8 +2,8 @@ import { Navbar } from "flowbite-react";
 import { Plus as PlusIcon } from "lucide-react";
 import { SvgLoader } from "react-svgmt";
 
-import NavLink from "../components/NavLink";
-import Profile from "../components/Profile";
+import NavLink from "#/components/NavLink";
+import Profile from "#/components/Profile";
 
 export default function Header() {
   return (

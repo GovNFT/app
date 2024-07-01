@@ -3,7 +3,7 @@ import { isEmpty } from "lodash";
 import { ChevronDown as ChevronDownIcon, Search as SearchIcon } from "lucide-react";
 import { useEffect, useState } from "react";
 
-import { Token } from "../hooks/types";
+import type { Token } from "#/hooks/types";
 import AssetList from "./AssetList";
 import Modal from "./Modal";
 import TokenAvatar from "./TokenAvatar";

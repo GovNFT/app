@@ -1,5 +1,5 @@
-import Footer from "../../components/Footer";
-import Header from "../../components/Header";
+import Footer from "#/components/Footer";
+import Header from "#/components/Header";
 import Creator from "./components/Creator";
 
 export default function CreateGovnft() {

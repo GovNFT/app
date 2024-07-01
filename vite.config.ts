@@ -1,8 +1,8 @@
-import { defineConfig } from "vite";
-import react from "@vitejs/plugin-react";
-import legacy from "@vitejs/plugin-legacy";
-import getGitInfo from "git-repo-info";
 import mdx from "@mdx-js/rollup";
+import legacy from "@vitejs/plugin-legacy";
+import react from "@vitejs/plugin-react";
+import getGitInfo from "git-repo-info";
+import { defineConfig } from "vite";
 
 import { version } from "./package.json";
 

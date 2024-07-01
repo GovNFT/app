@@ -2,7 +2,7 @@ import { TextInput } from "flowbite-react";
 import { PlugZap as PlugZapIcon } from "lucide-react";
 import useLocalStorageState from "use-local-storage-state";
 
-import { CUSTOM_RPC_URI_KEY } from "../../rpc";
+import { CUSTOM_RPC_URI_KEY } from "#/rpc";
 
 export default function CustomRpc() {
   const [customRpc, setCustomRpc] = useLocalStorageState(CUSTOM_RPC_URI_KEY, {

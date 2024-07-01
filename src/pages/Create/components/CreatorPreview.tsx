@@ -1,8 +1,8 @@
 import { Tooltip } from "flowbite-react";
 import { Info as InfoIcon } from "lucide-react";
 
-import AddressMask from "../../../components/AddressMask";
-import Amount from "../../../components/Amount";
+import AddressMask from "#/components/AddressMask";
+import Amount from "#/components/Amount";
 import CreateButton from "./CreateButton";
 
 export default function CreatorPreview({ toAddress, token, amount, recipient, desc }) {

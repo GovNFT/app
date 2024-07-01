@@ -1,10 +1,10 @@
 import { useAccount } from "wagmi";
 
-import Footer from "../../components/Footer";
-import Header from "../../components/Header";
-import LoadingPlaceholder from "../../components/LoadingPlaceholder";
-import { useCollection, useCollections } from "../../hooks/collection";
-import { useOwnedNfts } from "../../hooks/govnft";
+import Footer from "#/components/Footer";
+import Header from "#/components/Header";
+import LoadingPlaceholder from "#/components/LoadingPlaceholder";
+import { useCollection, useCollections } from "#/hooks/collection";
+import { useOwnedNfts } from "#/hooks/govnft";
 import Govnfts from "./components/Govnfts";
 
 export default function Dashboard() {

@@ -3,8 +3,8 @@ import { Link as LinkIcon, MoreVertical as MoreVerticalIcon } from "lucide-react
 import { useState } from "react";
 import { useAccount } from "wagmi";
 
-import { useExplorer } from "../hooks/explorer";
-import { GovNft } from "../hooks/types";
+import { useExplorer } from "#/hooks/explorer";
+import type { GovNft } from "#/hooks/types";
 import { ExplorerLink } from "./ExplorerLink";
 import GovnftAvatar from "./GovnftAvatar";
 import GovnftNavbar from "./GovnftNavbar";

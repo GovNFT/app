@@ -1,5 +1,5 @@
 import { useAccount } from "wagmi";
-import { DEFAULT_CHAIN } from "../constants";
+import { DEFAULT_CHAIN } from "#/constants";
 
 type Explorer = ReturnType<typeof useAccount>["chain"]["blockExplorers"]["key"];
 
