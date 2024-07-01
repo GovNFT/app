@@ -18,7 +18,7 @@ export type GovNft = {
   claimable: bigint;
   split_count: bigint;
   cliff_length: bigint;
-  start: bigint;
+  start: number;
   end: bigint;
   token: Address;
   vault: Address;
@@ -26,7 +26,8 @@ export type GovNft = {
   owner: Address;
   address: Address; // address of the collection
   delegated: Address;
-  // Total amount vested in percentanges
+  vestingStarted: boolean;
+  // Total amount vested in percentage (decimals truncated)
   vestedPct: number;
   isOwner: boolean;
   isMinter: boolean;

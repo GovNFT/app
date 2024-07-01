@@ -12,7 +12,7 @@ export default function DateFromNow({
   deltaDays = 0,
   tooltip = true,
 }: {
-  ts: Dayjs | bigint;
+  ts: Dayjs | bigint | number;
   prefix?: string;
   pastPrefix?: string;
   deltaDays?: number;

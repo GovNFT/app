@@ -7,15 +7,16 @@ import type { Address, GovNft } from "./types";
 
 import { GOVNFT_SUGAR_ABI, GOVNFT_SUGAR_ADDRESS } from "#/constants";
 
-function postFetch(nft, account: Address) {
+function postFetch(nft, account: Address): GovNft {
   const vestedPct = Math.trunc(
     100 - (Number(formatUnits(nft.amount, 0)) / Number(formatUnits(nft.total_locked, 0))) * 100,
   );
+  const vestingStarted = nft.start * 1000 <= Date.now();
 
   const isOwner = nft.owner.toLowerCase() === account.toLowerCase();
   const isMinter = nft.minter.toLowerCase() === account.toLowerCase();
   const isDelegated = nft.delegated.toLowerCase() !== ZERO_ADDRESS;
-  return { ...nft, isOwner, isMinter, isDelegated, vestedPct, name: "" };
+  return { ...nft, isOwner, isMinter, isDelegated, vestedPct, name: "", vestingStarted };
 }
 
 async function fetchMintedNfts(account: Address, collection: Address): Promise<GovNft[]> {

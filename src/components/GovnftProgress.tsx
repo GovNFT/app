@@ -4,8 +4,10 @@ import { GovNft } from "#/hooks/types";
 
 export default function GovnftProgress({
   vestedPct,
+  vestingStarted,
 }: {
   vestedPct: number;
+  vestingStarted: boolean;
 }) {
   if (vestedPct === 100) {
     return (
@@ -17,7 +19,7 @@ export default function GovnftProgress({
     );
   }
 
-  if (vestedPct === 0) {
+  if (!vestingStarted) {
     return (
       <div className="w-16 h-16 flex items-center justify-center">
         <div className="p-5 rounded-full border-[3px] border-gray-100 dark:border-gray-950/30 text-amber-600 flex items-center justify-center">
