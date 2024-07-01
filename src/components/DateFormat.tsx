@@ -4,7 +4,7 @@ import { formatUnits } from "viem";
 export default function DateFormat({
   ts,
 }: {
-  ts: Dayjs | bigint;
+  ts: Dayjs | bigint | number;
 }) {
   if (!ts) {
     return <></>;

@@ -204,7 +204,7 @@ export default function Creator() {
                 token={token.address}
                 recipient={toAddress}
                 amount={amount}
-                start={BigInt(selectedStartDate.unix() + 1000)}
+                start={BigInt(selectedStartDate.unix())}
                 end={BigInt(selectedStartDate.unix() + vestingDuration)}
                 cliff={BigInt(cliffDuration)}
                 description={description}
