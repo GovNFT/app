@@ -8,7 +8,7 @@ import {
 import { useState } from "react";
 import { useAccount, useBalance, useDisconnect, useSwitchChain } from "wagmi";
 
-import { DEFAULT_CHAIN } from "../../constants";
+import { DEFAULT_CHAIN } from "#/constants";
 import AddressMask from "../AddressMask";
 import Modal from "../Modal";
 import NavLink from "../NavLink";

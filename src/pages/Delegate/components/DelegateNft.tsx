@@ -12,12 +12,12 @@ import { isAddress } from "viem";
 import { useAccount } from "wagmi";
 import { useLocation } from "wouter";
 
-import GovnftHeader from "../../../components/GovnftHeader";
-import NavLink from "../../../components/NavLink";
-import { DELEGATES_URI } from "../../../constants";
-import type { Address, GovNft } from "../../../hooks/types";
+import GovnftHeader from "#/components/GovnftHeader";
+import NavLink from "#/components/NavLink";
+import { DELEGATES_URI } from "#/constants";
+import type { Address, GovNft } from "#/hooks/types";
 
-import Amount from "../../../components/Amount";
+import Amount from "#/components/Amount";
 import DelegateButton from "./DelegateButton";
 
 export default function DelegateNft({ nft }: { nft: GovNft }) {

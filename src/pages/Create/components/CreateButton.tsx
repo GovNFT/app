@@ -3,10 +3,10 @@ import { ExternalLinkIcon } from "lucide-react";
 import { useEffect } from "react";
 import { useWaitForTransactionReceipt, useWriteContract } from "wagmi";
 import { useLocation } from "wouter";
+import Toaster from "#/components/Toaster";
+import { GOVNFT_ABI } from "#/constants";
+import { useCollection } from "#/hooks/collection";
 import type { Address } from "#/hooks/types";
-import Toaster from "../../../components/Toaster";
-import { GOVNFT_ABI } from "../../../constants";
-import { useCollection } from "../../../hooks/collection";
 
 export default function CreateButton({
   token,

@@ -3,8 +3,8 @@ import { SvgLoader } from "react-svgmt";
 import { useAccount } from "wagmi";
 import { useLocation } from "wouter";
 
-import Footer from "../../components/Footer";
-import NavLink from "../../components/NavLink";
+import Footer from "#/components/Footer";
+import NavLink from "#/components/NavLink";
 import Connectors from "./components/Connectors";
 
 export default function Connect() {

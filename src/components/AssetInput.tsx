@@ -2,7 +2,7 @@ import { Spinner, TextInput } from "flowbite-react";
 import { useEffect, useState } from "react";
 import { formatUnits, parseUnits } from "viem";
 
-import type { Token } from "../hooks/types";
+import type { Token } from "#/hooks/types";
 import ActionLink from "./ActionLink";
 import Amount from "./Amount";
 import AssetSelect from "./AssetSelect";

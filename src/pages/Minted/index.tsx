@@ -1,10 +1,10 @@
 import { isEmpty } from "lodash";
 import { useAccount } from "wagmi";
-import Footer from "../../components/Footer";
-import Header from "../../components/Header";
-import LoadingPlaceholder from "../../components/LoadingPlaceholder";
-import { useCollection } from "../../hooks/collection";
-import { useMintedNfts } from "../../hooks/govnft";
+import Footer from "#/components/Footer";
+import Header from "#/components/Header";
+import LoadingPlaceholder from "#/components/LoadingPlaceholder";
+import { useCollection } from "#/hooks/collection";
+import { useMintedNfts } from "#/hooks/govnft";
 import Minted from "./components/Minted";
 
 export default function Dashboard() {

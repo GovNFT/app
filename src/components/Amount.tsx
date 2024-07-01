@@ -2,8 +2,8 @@ import { Spinner } from "flowbite-react";
 import { formatUnits, parseUnits } from "viem";
 import { useAccount } from "wagmi";
 
-import { useTokens } from "../hooks/token";
-import type { Address } from "../hooks/types";
+import { useTokens } from "#/hooks/token";
+import type { Address } from "#/hooks/types";
 import TokenAvatar from "./TokenAvatar";
 
 export default function Amount({

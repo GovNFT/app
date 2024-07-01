@@ -2,7 +2,7 @@ import { Spinner, Tooltip } from "flowbite-react";
 import { Lock as LockIcon } from "lucide-react";
 import { SvgLoader } from "react-svgmt";
 
-import type { GovNft } from "../hooks/types";
+import type { GovNft } from "#/hooks/types";
 import Amount from "./Amount";
 import DateFromNow from "./DateFromNow";
 import NavLink from "./NavLink";

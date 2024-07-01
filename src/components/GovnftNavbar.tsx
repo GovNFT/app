@@ -1,4 +1,4 @@
-import type { GovNft } from "../hooks/types";
+import type { GovNft } from "#/hooks/types";
 import NavLink from "./NavLink";
 
 export default function GovnftNavbar({

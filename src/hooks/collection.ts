@@ -4,10 +4,10 @@ import { isEmpty } from "lodash";
 import { useMemo } from "react";
 import { useSearch } from "wouter";
 
-import config from "../rpc";
+import config from "#/rpc";
 import type { Collection } from "./types";
 
-import { GOVNFT_SUGAR_ABI, GOVNFT_SUGAR_ADDRESS } from "../constants";
+import { GOVNFT_SUGAR_ABI, GOVNFT_SUGAR_ADDRESS } from "#/constants";
 
 async function fetchCollections(): Promise<Collection[]> {
   const collections = await readContract(config, {

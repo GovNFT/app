@@ -7,15 +7,15 @@ import {
   TrendingUp as TrendingUpIcon,
 } from "lucide-react";
 
-import ActionLink from "../../../components/ActionLink";
-import AddressMask from "../../../components/AddressMask";
-import Amount from "../../../components/Amount";
-import ClaimButton from "../../../components/ClaimButton";
-import GovnftAvatar from "../../../components/GovnftAvatar";
-import GovnftProgress from "../../../components/GovnftProgress";
-import GovnftStatus from "../../../components/GovnftStatus";
-import NavLink from "../../../components/NavLink";
-import type { GovNft } from "../../../hooks/types";
+import ActionLink from "#/components/ActionLink";
+import AddressMask from "#/components/AddressMask";
+import Amount from "#/components/Amount";
+import ClaimButton from "#/components/ClaimButton";
+import GovnftAvatar from "#/components/GovnftAvatar";
+import GovnftProgress from "#/components/GovnftProgress";
+import GovnftStatus from "#/components/GovnftStatus";
+import NavLink from "#/components/NavLink";
+import type { GovNft } from "#/hooks/types";
 
 export default function Govnft({
   nft,

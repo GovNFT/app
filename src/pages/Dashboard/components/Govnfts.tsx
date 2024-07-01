@@ -1,8 +1,8 @@
 import { Shapes as ShapesIcon } from "lucide-react";
 
-import AddressMask from "../../../components/AddressMask";
-import NavLink from "../../../components/NavLink";
-import type { GovNft } from "../../../hooks/types";
+import AddressMask from "#/components/AddressMask";
+import NavLink from "#/components/NavLink";
+import type { GovNft } from "#/hooks/types";
 import Govnft from "./Govnft";
 
 export default function Govnfts({
