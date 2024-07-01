@@ -24,7 +24,7 @@ export default function Profile({ children }) {
   const explorer = chain?.blockExplorers?.default;
   const url = `${explorer?.url}/address/${address}`;
 
-  const [showDisconnect, setShowDisconnect] = useState(invalidChain);
+  const [showDisconnect, setShowDisconnect] = useState(false);
 
   if (isConnected) {
     return (
