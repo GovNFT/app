@@ -48,9 +48,8 @@ export default function Creator() {
   }, [tokens, tokens[0]]);
 
   const handleStartDate = useCallback(
-    (e) => {
-      //@ts-ignore
-      const selectedTime = dayjs(e.target.value);
+    (date: Date) => {
+      const selectedTime = dayjs(date);
       if (selectedTime.isBefore(today)) {
         setSelectedStartDate(today);
       } else {
@@ -99,11 +98,7 @@ export default function Creator() {
 
           <div className="space-y-3">
             <div className="text-xs text-gray-600 dark:text-gray-400">Start Date</div>
-            <Datepicker
-              // TODO: Flowbite datepicker is not working, we need to replace it
-              // @ts-ignore
-              onSelect={handleStartDate}
-            />
+            <Datepicker onSelectedDateChanged={handleStartDate} />
           </div>
 
           <div className="md:flex gap-6">
