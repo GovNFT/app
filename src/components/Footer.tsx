@@ -1,22 +1,38 @@
-import { Github as GithubIcon } from "lucide-react";
 import DarkThemeToggle from "./DarkThemeToggle";
 
 export default function Footer() {
   return (
     <div className="flex justify-between items-center text-xs border-t border-black/5 dark:border-white/5 py-4 mt-24 mb-24">
-      <div className="flex gap-5">
-        <span className="text-gray-600 dark:text-gray-400">
-          {/* @ts-ignore */}
-          {new Date().getFullYear()} &copy; GovNFT. {__APP_VERSION__}
-        </span>
+      <div className="flex gap-3 items-center text-gray-600 dark:text-gray-400">
+        <div>{__APP_VERSION__}</div>
+        <div className="text-gray-400 dark:text-gray-600">&middot;</div>
         <a
           href="https://github.com/velodrome-finance/govnft"
           target="_blank"
-          className="underline hover:no-underline text-gray-400 dark: text-gray-600 flex items-center gap-2"
+          className="underline hover:no-underline underline-offset-2"
           rel="noreferrer"
         >
-          <GithubIcon size={14} />
+          Etherscan
+        </a>
+        <a
+          href="https://cantina.xyz/portfolio/aa79aa69-8468-442d-bfbb-b403de36edec"
+          target="_blank"
+          className="underline hover:no-underline underline-offset-2"
+          rel="noreferrer"
+        >
+          Audit
+        </a>
+        <a
+          href="https://github.com/velodrome-finance/govnft"
+          target="_blank"
+          className="underline hover:no-underline underline-offset-2"
+          rel="noreferrer"
+        >
           GitHub
+        </a>
+        <div className="text-gray-400 dark:text-gray-600">&middot;</div>
+        <a href="#" className="underline hover:no-underline underline-offset-2">
+          Documentation
         </a>
       </div>
       <div className="flex gap-8 items-center">
