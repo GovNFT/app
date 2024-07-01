@@ -1,8 +1,11 @@
 {
   "name": "govnft",
-  "private": true,
-  "version": "0.0.0beta",
+  "private": false,
+  "version": "1.0.0beta",
   "type": "module",
+  "imports": {
+    "#/*": "./src/*"
+  },
   "scripts": {
     "dev": "vite",
     "build": "yarn run codegen && tsc && biome check ./src && vite build",
