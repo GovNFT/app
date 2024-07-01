@@ -19,7 +19,7 @@ export default function Minted({
         </div>
         <div className="w-64 mx-auto">There are no minted GovNFTs associated with the current address.</div>
         <div className="w-36 mx-auto">
-          <NavLink href="~/create" size="sm" color="light" useButton={true}>
+          <NavLink href="/create" size="sm" color="light" useButton={true}>
             Create GovNFT
           </NavLink>
         </div>
@@ -47,7 +47,7 @@ export default function Minted({
             </div>
             <span className="text-gray-400 dark:text-gray-600">&rarr;</span>
             <AddressMask address={nft.owner} />
-            <NavLink href={`~/nft/${nft.id}`}>
+            <NavLink href={`/nft/${nft.id}`}>
               <div className="flex gap-2 pl-8">
                 <span className="underline hover:no-underline">Review</span> <ChevronRightIcon size={14} />
               </div>
