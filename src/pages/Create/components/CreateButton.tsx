@@ -1,6 +1,10 @@
 import { Button } from "flowbite-react";
+import { ExternalLinkIcon } from "lucide-react";
+import { useEffect } from "react";
 import { Address } from "viem";
 import { useWaitForTransactionReceipt, useWriteContract } from "wagmi";
+import { useLocation } from "wouter";
+import Toaster from "../../../components/Toaster";
 import { GOVNFT_ABI } from "../../../constants";
 import { useCollection } from "../../../hooks/collection";
 
@@ -22,11 +26,22 @@ export default function CreateButton({
   description: string;
 }) {
   const collection = useCollection();
+  const [, navigate] = useLocation();
   const { data: hash, error, isPending, writeContract } = useWriteContract();
 
   const { isLoading: isConfirming, isSuccess: isConfirmed } = useWaitForTransactionReceipt({
     hash,
   });
+
+  useEffect(() => {
+    if (error) {
+      // @ts-ignore
+      Toaster.toast(error);
+    } else if (isConfirmed) {
+      navigate("~/minted");
+      Toaster.toast.success("GovNFT created!");
+    }
+  }, [error, isConfirmed, navigate]);
 
   return (
     <>
@@ -41,7 +56,7 @@ export default function CreateButton({
           })
         }
         className="w-full"
-        disabled={isPending || isConfirmed}
+        disabled={isPending || isConfirmed || isConfirming}
       >
         {isPending ? "Confirming..." : isConfirmed ? "Created" : "Create"}
       </Button>

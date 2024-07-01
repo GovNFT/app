@@ -102,7 +102,7 @@ export default function Profile({ children }) {
   }
 
   return (
-    <NavLink href="/connect" size="sm" useButton={true}>
+    <NavLink href="~/connect" size="sm" useButton={true}>
       Connect
     </NavLink>
   );

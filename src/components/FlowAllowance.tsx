@@ -9,7 +9,8 @@ export default function FlowAllowance({
   amount,
   forAddress,
   setAllowed,
-}: { token: Address; amount: bigint; forAddress: Address; setAllowed: CallableFunction }) {
+  ctaTexts = ["Approved", "Approve"],
+}: { token: Address; amount: bigint; forAddress: Address; setAllowed: CallableFunction; ctaTexts?: [string, string] }) {
   const { address } = useAccount();
   const { data: allowance, refetch: refetchAllowance } = useReadContract({
     abi: erc20Abi,
@@ -51,7 +52,7 @@ export default function FlowAllowance({
           className="w-full"
           disabled={allowed || isPending || isConfirmed}
         >
-          {isPending ? "Confirming..." : isConfirmed ? "Approved" : "Approve"}
+          {isPending ? "Confirming..." : isConfirmed ? ctaTexts[0] : ctaTexts[1]}
         </Button>
       </>
     );

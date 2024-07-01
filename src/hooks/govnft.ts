@@ -66,7 +66,6 @@ export function useOwnedNfts(accountAddress: Address, collection: Address, opts 
     queryFn: () => fetchOwnedNfts(accountAddress, collection),
     enabled: !!collection,
     ...opts,
-    placeholderData: [],
     // @ts-ignore
     keepPreviousData: true,
   });

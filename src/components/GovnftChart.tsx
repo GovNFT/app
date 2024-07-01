@@ -6,21 +6,15 @@ ChartJS.register(CategoryScale, LinearScale, LineElement, PointElement);
 
 export default function Chart({
   vestingDuration,
-  vestingInterval,
   cliffDuration,
-  cliffInterval,
   startDate,
 }: {
   vestingDuration: number;
-  vestingInterval: string;
   cliffDuration: number;
-  cliffInterval: string;
   startDate: Dayjs | null;
 }) {
-  // @ts-ignore
-  const endDate = dayjs(startDate).add(vestingDuration, vestingInterval);
-  // @ts-ignore
-  const cliffDate = dayjs(startDate).add(cliffDuration, cliffInterval);
+  const endDate = dayjs(startDate).add(vestingDuration, "seconds");
+  const cliffDate = dayjs(startDate).add(cliffDuration, "seconds");
 
   const options = {
     responsive: true,

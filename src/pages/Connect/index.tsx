@@ -12,7 +12,7 @@ export default function Connect() {
   const [_location, navigate] = useLocation();
 
   useEffect(() => {
-    isConnected && navigate("/dash");
+    isConnected && navigate("~/dash");
   }, [isConnected, navigate]);
 
   return (

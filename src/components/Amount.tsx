@@ -10,13 +10,11 @@ export default function Amount({
   amount,
   decimals = null,
   tokenAddress,
-  symbol = null,
   showLogo = true,
 }: {
   amount: bigint;
   decimals?: number | null;
   tokenAddress?: Address;
-  symbol?: string | null;
   showLogo?: boolean;
 }) {
   const { address: accountAddress } = useAccount();
@@ -27,7 +25,7 @@ export default function Amount({
   }
 
   const addr = String(tokenAddress).toLowerCase() as Address;
-  const token = tokens.filter((asset) => asset.address.includes(addr));
+  const token = tokens?.find((t) => t.address.toLowerCase() === addr);
 
   // @ts-ignore
   const amountDecimals = decimals || token?.decimals || 18;
@@ -40,7 +38,7 @@ export default function Amount({
       <div className="flex gap-1 items-center">
         <TokenAvatar address={addr} className="w-4 h-4 mr-0.5" />
         <span className="tracking-wider">{pretty}</span>
-        <span className="opacity-60">{symbol}</span>
+        <span className="opacity-60">{token?.symbol}</span>
       </div>
     );
   }
@@ -48,7 +46,7 @@ export default function Amount({
   return (
     <div className="flex gap-1 items-center">
       <span className="tracking-wider">{pretty}</span>
-      <span className="opacity-60">{symbol}</span>
+      <span className="opacity-60">{token?.symbol}</span>
     </div>
   );
 }

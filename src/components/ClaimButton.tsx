@@ -1,9 +1,9 @@
 import { Address } from "viem";
 import { useWaitForTransactionReceipt, useWriteContract } from "wagmi";
 import { useAccount } from "wagmi";
-import ActionLink from "../../../components/ActionLink";
-import { GOVNFT_ABI } from "../../../constants";
-import { GovNft } from "../../../hooks/types";
+import { GOVNFT_ABI } from "../constants";
+import { GovNft } from "../hooks/types";
+import ActionLink from "./ActionLink";
 
 export default function ClaimButton({ nft }: { nft: GovNft }) {
   const { address } = useAccount();
@@ -13,6 +13,10 @@ export default function ClaimButton({ nft }: { nft: GovNft }) {
   const { isLoading: isConfirming, isSuccess: isConfirmed } = useWaitForTransactionReceipt({
     hash,
   });
+
+  if (nft.claimable === 0n) {
+    return <></>;
+  }
 
   return (
     <ActionLink

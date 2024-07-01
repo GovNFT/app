@@ -42,3 +42,5 @@ export type Collection = {
   symbol: string;
   supply: bigint;
 };
+
+export type Interval = "days" | "months" | "weeks" | "years";

@@ -1,6 +1,7 @@
 import dayjs from "dayjs";
-import { Datepicker, Select, TextInput, Textarea, ToggleSwitch } from "flowbite-react";
-import { useEffect, useState } from "react";
+import duration from "dayjs/plugin/duration";
+import { Datepicker, Select, TextInput, Textarea } from "flowbite-react";
+import { useCallback, useEffect, useState } from "react";
 import { isAddress } from "viem";
 import { useAccount } from "wagmi";
 
@@ -9,28 +10,30 @@ import FlowAllowance from "../../../components/FlowAllowance";
 import GovnftChart from "../../../components/GovnftChart";
 import { GOVNFT_ADDRESS } from "../../../constants";
 import { useCollection } from "../../../hooks/collection";
+import { useDuration } from "../../../hooks/duration";
 import { useTokens } from "../../../hooks/token";
-import { Token } from "../../../hooks/types";
+import { Interval, Token } from "../../../hooks/types";
 import Checklist from "./Checklist";
 import CreateButton from "./CreateButton";
-import CreatorPreview from "./CreatorPreview";
+
+dayjs.extend(duration);
 
 export default function Creator() {
-  const [splitable, setSplitable] = useState(false);
   const [amount, setAmount] = useState(0n);
   const [toAddress, setToAddress] = useState(null);
   const [allowed, setAllowed] = useState(false);
 
   const today = dayjs();
-  const [vestingDuration, setVestingDuration] = useState(0);
-  const [cliffDuration, setCliffDuration] = useState(0);
   const [selectedStartDate, setSelectedStartDate] = useState(today);
-  const [vestingInterval, setVestingInterval] = useState("years");
-  const [cliffInterval, setCliffInterval] = useState("months");
+  const [description, setDescription] = useState("");
 
-  const [recipientName, setRecipientName] = useState("");
+  const [vestingDuration, setVestingDuration, vestingInterval, setVestingInterval, displayedVestingDuration] =
+    useDuration("years");
+  const [cliffDuration, setCliffDuration, cliffInterval, setCliffInterval, displayedCliffDuration] =
+    useDuration("months");
+
   const [desc, setDesc] = useState("");
-  const timeframe = ["years", "months", "weeks"];
+  const timeframe: Interval[] = ["years", "months", "weeks", "days"];
 
   const collection = useCollection();
   const { address: accountAddress } = useAccount();
@@ -44,24 +47,45 @@ export default function Creator() {
     setToken(tokens[0]);
   }, [tokens, tokens[0]]);
 
+  const handleStartDate = useCallback(
+    (e) => {
+      //@ts-ignore
+      const selectedTime = dayjs(e.target.value);
+      if (selectedTime.isBefore(today)) {
+        setSelectedStartDate(today);
+      } else {
+        setSelectedStartDate(selectedTime);
+      }
+    },
+    [today],
+  );
+
   return (
     <>
-      <div className="lg:w-7/12 mb-4 lg:mb-0 bg-white shadow-lg dark:bg-white/5 p-6 md:px-10 md:py-8 rounded-lg">
-        <div className="pb-6">
+      <div className="lg:w-7/12 mb-4 lg:mb-0 bg-white shadow-lg dark:bg-white/5 p-6 md:p-10 rounded-lg space-y-12">
+        <div>
           <div className="text-xs pb-3 mb-6 border-b border-black/5 dark:border-white/5">
             <span className="text-gray-400 dark:text-gray-600 uppercase tracking-widest">Recipient Info</span>
           </div>
-          <div className="space-y-3 pb-6">
-            <div className="text-xs text-gray-600 dark:text-gray-400">Recipient Address</div>
+          <div className="space-y-3">
+            <div className="text-xs flex justify-between items-center">
+              <div className="text-xs text-gray-600 dark:text-gray-400">Recipient Address</div>
+              <div
+                className="text-gray-600 dark:text-gray-400 underline hover:no-underline cursor-pointer"
+                onClick={() => setToAddress(accountAddress)}
+              >
+                Use Current Wallet
+              </div>
+            </div>
             <TextInput placeholder="0x" value={toAddress} onChange={(e) => setToAddress(e.target.value)} />
           </div>
         </div>
 
-        <div className="pb-6">
+        <div className="space-y-6">
           <div className="text-xs pb-3 mb-6 border-b border-black/5 dark:border-white/5">
             <span className="otext-gray-400 dark:text-gray-600 uppercase tracking-widest">Vesting duration</span>
           </div>
-          <div className="space-y-3 pb-6">
+          <div className="space-y-3">
             <AssetInput
               assets={tokens}
               asset={token}
@@ -73,22 +97,21 @@ export default function Creator() {
             />
           </div>
 
-          <div className="space-y-3 pb-6">
+          <div className="space-y-3">
             <div className="text-xs text-gray-600 dark:text-gray-400">Start Date</div>
             <Datepicker
               // TODO: Flowbite datepicker is not working, we need to replace it
               // @ts-ignore
-              onSelect={(e) => setSelectedStartDate(dayjs(e.target.value))}
+              onSelect={handleStartDate}
             />
           </div>
 
           <div className="md:flex gap-6">
-            <div className="space-y-3 pb-6 grow">
+            <div className="space-y-3 grow">
               <div className="text-xs text-gray-600 dark:text-gray-400">Vesting Duration</div>
               <div className="relative">
                 <TextInput
-                  value={Number(vestingDuration)}
-                  // @ts-ignore
+                  value={displayedVestingDuration}
                   onChange={(e) => setVestingDuration(e.target.value)}
                   type="number"
                   min="0"
@@ -98,7 +121,7 @@ export default function Creator() {
                   sizing="sm"
                   className="absolute top-0.5 right-0.5 sm:top-1.5 sm:right-1.5 w-24"
                   color="gray"
-                  onChange={(e) => setVestingInterval(e.target.value)}
+                  onChange={(e) => setVestingInterval(e.target.value as Interval)}
                   defaultValue={vestingInterval}
                 >
                   {timeframe.map((time) => (
@@ -110,11 +133,11 @@ export default function Creator() {
               </div>
             </div>
 
-            <div className="space-y-3 pb-6 grow">
+            <div className="space-y-3 grow">
               <div className="text-xs text-gray-600 dark:text-gray-400">Cliff Duration</div>
               <div className="relative">
                 <TextInput
-                  value={Number(cliffDuration)}
+                  value={displayedCliffDuration}
                   // @ts-ignore
                   onChange={(e) => setCliffDuration(e.target.value)}
                   type="number"
@@ -125,7 +148,7 @@ export default function Creator() {
                   sizing="sm"
                   className="absolute top-0.5 right-0.5 sm:top-1.5 sm:right-1.5 w-24"
                   color="gray"
-                  onChange={(e) => setCliffInterval(e.target.value)}
+                  onChange={(e) => setCliffInterval(e.target.value as Interval)}
                   defaultValue={cliffInterval}
                 >
                   {timeframe.map((time) => (
@@ -143,28 +166,10 @@ export default function Creator() {
           <div className="text-xs pb-3 mb-6 border-b border-black/5 dark:border-white/5">
             <span className="text-gray-400 dark:text-gray-600 uppercase tracking-widest">Additional Info</span>
           </div>
-          <div className="space-y-3 pb-6">
-            <div className="mb-6 bg-black/[.03] dark:bg-white/[.02] rounded-lg flex items-center px-5 py-4">
-              <div className="text-xs text-gray-600 dark:text-gray-400 grow">Allow Split</div>
-              <ToggleSwitch
-                // @ts-ignore
-                color="green"
-                label=""
-                checked={splitable}
-                onChange={() => setSplitable(!splitable ? true : false)}
-              />
-            </div>
-            <div className="text-xs text-gray-600 dark:text-gray-400">Name</div>
-            <TextInput
-              placeholder="e.g. Velodrome Foundation"
-              value={recipientName}
-              onChange={(e) => setRecipientName(e.target.value)}
-            />
-          </div>
 
           <div className="space-y-3 pb-6">
-            <div className="text-xs text-gray-600 dark:text-gray-400">Description (Optional)</div>
-            <Textarea value={desc} onChange={(e) => setDesc(e.target.value)} />
+            <div className="text-xs text-gray-600 dark:text-gray-400">Description</div>
+            <Textarea value={description} onChange={(e) => setDescription(e.target.value)} />
           </div>
         </div>
       </div>
@@ -174,33 +179,29 @@ export default function Creator() {
 
         <div className="space-y-8">
           <div className="text-sm pr-16 pt-4 text-gray-600 dark:text-gray-400">
-            NFTs are unique digital assets that are used to represent ownership or proof of authenticity for digital or
-            physical items.
+            Mint an NFT with locked tokens under specified parameters. Tokens will be claimable as they vest.
           </div>
           <Checklist
             toAddress={toAddress}
             amount={amount}
             vestingDuration={vestingDuration}
-            recipient={recipientName}
             token={token}
+            description={description}
           />
         </div>
 
-        {isAddress(toAddress) && amount && Number(vestingDuration) !== 0 && recipientName && (
-          <>
-            <GovnftChart
-              startDate={selectedStartDate}
-              vestingDuration={vestingDuration}
-              vestingInterval={vestingInterval}
-              cliffDuration={cliffDuration}
-              cliffInterval={cliffInterval}
-            />
+        {vestingDuration !== 0 && (
+          <GovnftChart startDate={selectedStartDate} vestingDuration={vestingDuration} cliffDuration={cliffDuration} />
+        )}
 
+        {isAddress(toAddress) && amount && Number(vestingDuration) !== 0 && description !== "" && (
+          <>
             <FlowAllowance
               token={token.address}
               amount={amount}
               forAddress={collection?.address}
               setAllowed={setAllowed}
+              ctaTexts={["Approved", "Approve Tokens"]}
             />
 
             {allowed && (
@@ -208,10 +209,10 @@ export default function Creator() {
                 token={token.address}
                 recipient={toAddress}
                 amount={amount}
-                start={BigInt(selectedStartDate.unix() + 1000)} //TODO: fix start date so not in past
-                end={BigInt(selectedStartDate.unix() + 1000000)} //TODO: use VestingDuration to calculate duration in seconds
+                start={BigInt(selectedStartDate.unix() + 1000)}
+                end={BigInt(selectedStartDate.unix() + vestingDuration)}
                 cliff={BigInt(cliffDuration)}
-                description={desc}
+                description={description}
               />
             )}
           </>
