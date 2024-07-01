@@ -15,11 +15,12 @@ import { useLocation } from "wouter";
 import GovnftHeader from "../../../components/GovnftHeader";
 import NavLink from "../../../components/NavLink";
 import { DELEGATES_URI } from "../../../constants";
+import { Address, GovNft } from "../../../hooks/types";
 
 import Amount from "../../../components/Amount";
 import DelegateButton from "./DelegateButton";
 
-export default function DelegateNft({ nft }) {
+export default function DelegateNft({ nft }: { nft: GovNft }) {
   const { address: accountAddress } = useAccount();
   const [toAddress, setToAddress] = useState(nft.isDelegated ? nft.delegated : null);
 
@@ -52,7 +53,7 @@ export default function DelegateNft({ nft }) {
                   Use Current Wallet
                 </div>
               </div>
-              <TextInput placeholder="0x" value={toAddress} onChange={(e) => setToAddress(e.target.value)} />
+              <TextInput placeholder="0x" value={toAddress} onChange={(e) => setToAddress(e.target.value as Address)} />
               <div className="text-gray-600 dark:text-gray-400 text-xs underline hover:no-underline flex gap-2 items-center">
                 <a href={DELEGATES_URI} target="_blank" rel="noreferrer">
                   View Delegates
@@ -82,7 +83,7 @@ export default function DelegateNft({ nft }) {
                   <div className="text-xs sm:text-sm text-gray-600 dark:text-gray-400 w-52 text-center pb-3">
                     Address is valid. You can now delegate gouvernance.
                   </div>
-                  <DelegateButton id={nft.id} delegatee={toAddress} />
+                  <DelegateButton nft={nft} delegatee={toAddress} />
                 </>
               )}
             </div>

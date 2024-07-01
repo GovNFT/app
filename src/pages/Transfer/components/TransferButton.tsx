@@ -4,11 +4,12 @@ import { Address } from "viem";
 import { useWaitForTransactionReceipt, useWriteContract } from "wagmi";
 import { useAccount } from "wagmi";
 import { useLocation } from "wouter";
+import { GOVNFT_ABI } from "../../../constants";
+import { GovNft } from "../../../hooks/types";
 
 import Toaster from "../../../components/Toaster";
-import { GOVNFT_ABI, GOVNFT_ADDRESS } from "../../../constants";
 
-export default function TransferButton({ id, recipient }: { id: bigint; recipient: Address }) {
+export default function TransferButton({ nft, recipient }: { nft: GovNft; recipient: Address }) {
   const { address } = useAccount();
   const [, navigate] = useLocation();
   const { data: hash, error, isPending, writeContract } = useWriteContract();
@@ -33,9 +34,9 @@ export default function TransferButton({ id, recipient }: { id: bigint; recipien
         onClick={() =>
           writeContract({
             abi: GOVNFT_ABI,
-            address: GOVNFT_ADDRESS,
+            address: nft.address,
             functionName: "transferFrom",
-            args: [address, recipient, id],
+            args: [address, recipient, nft.id],
           })
         }
         className="w-full"

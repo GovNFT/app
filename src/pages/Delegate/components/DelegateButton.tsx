@@ -7,14 +7,9 @@ import { useLocation } from "wouter";
 
 import Toaster from "../../../components/Toaster";
 import { GOVNFT_ABI, GOVNFT_ADDRESS } from "../../../constants";
+import { GovNft } from "../../../hooks/types";
 
-export default function DelegateButton({
-  id,
-  delegatee,
-}: {
-  id: bigint;
-  delegatee: Address;
-}) {
+export default function DelegateButton({ nft, delegatee }: { nft: GovNft; delegatee: Address }) {
   const [, navigate] = useLocation();
   const { data: hash, error, isPending, writeContract } = useWriteContract();
 
@@ -27,10 +22,10 @@ export default function DelegateButton({
       // @ts-ignore
       Toaster.toast(error);
     } else if (isConfirmed) {
-      navigate(`~/nft/${id}`);
+      navigate(`~/nft/${nft.id}`);
       Toaster.toast.success("GovNFT delegated!");
     }
-  }, [error, isConfirmed, navigate, id]);
+  }, [error, isConfirmed, navigate, nft.id]);
 
   return (
     <>
@@ -38,9 +33,9 @@ export default function DelegateButton({
         onClick={() =>
           writeContract({
             abi: GOVNFT_ABI,
-            address: GOVNFT_ADDRESS,
+            address: nft.address,
             functionName: "delegate",
-            args: [id, delegatee],
+            args: [nft.id, delegatee],
           })
         }
         className="w-full"

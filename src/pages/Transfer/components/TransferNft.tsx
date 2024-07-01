@@ -15,9 +15,10 @@ import GovnftHeader from "../../../components/GovnftHeader";
 import NavLink from "../../../components/NavLink";
 
 import Amount from "../../../components/Amount";
+import { GovNft } from "../../../hooks/types";
 import TransferButton from "./TransferButton";
 
-export default function TransferNft({ nft }) {
+export default function TransferNft({ nft }: { nft: GovNft }) {
   const [toAddress, setToAddress] = useState(null);
 
   return (
@@ -61,7 +62,7 @@ export default function TransferNft({ nft }) {
                   <div className="text-xs sm:text-sm text-gray-600 dark:text-gray-400 w-52 text-center pb-3">
                     The address is valid. You can now transfer your govnft.
                   </div>
-                  <TransferButton id={nft.id} recipient={toAddress} />
+                  <TransferButton nft={nft} recipient={toAddress} />
                 </>
               )}
             </div>

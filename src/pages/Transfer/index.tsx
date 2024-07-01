@@ -5,14 +5,16 @@ import { useParams } from "wouter";
 import Footer from "../../components/Footer";
 import Header from "../../components/Header";
 import LoadingPlaceholder from "../../components/LoadingPlaceholder";
+import { useCollection } from "../../hooks/collection";
 import { useNft } from "../../hooks/govnft";
 import TransferNft from "./components/TransferNft";
 
 export default function Delegate() {
-  const params = useParams();
+  // @ts-ignore
+  const { id } = useParams();
   const { address } = useAccount();
-  /* @ts-ignore */
-  const { data: nft } = useNft(Number(params.id), address);
+  const collection = useCollection();
+  const { data: nft } = useNft(Number(id), address, collection?.address);
 
   return (
     <div className="container mx-auto px-4 lg:px-8">

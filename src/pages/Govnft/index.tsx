@@ -8,14 +8,16 @@ import Amount from "../../components/Amount";
 import Footer from "../../components/Footer";
 import Header from "../../components/Header";
 import LoadingPlaceholder from "../../components/LoadingPlaceholder";
+import { useCollection } from "../../hooks/collection";
 import { useNft } from "../../hooks/govnft";
 import Overview from "./components/Overview";
 
 export default function Govnft() {
-  const params = useParams();
+  // @ts-ignore
+  const { id } = useParams();
   const { address } = useAccount();
-  /* @ts-ignore */
-  const { data: nft } = useNft(Number(params.id), address);
+  const collection = useCollection();
+  const { data: nft } = useNft(Number(id), address, collection?.address);
 
   return (
     <div className="container mx-auto px-4 lg:px-8">

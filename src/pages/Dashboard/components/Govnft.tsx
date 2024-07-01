@@ -46,7 +46,7 @@ export default function Govnft({
             <div className="text-gray-400 dark:text-gray-600 text-xs">Claimable</div>
             <Amount tokenAddress={nft.token} amount={nft.claimable} showLogo={false} />
             <div className="text-xs">
-              <ClaimButton id={nft.id} amount={nft.claimable} />
+              <ClaimButton nft={nft} />
             </div>
             {nft.claimable === 0n && (
               <NavLink href={`~/nft/${nft.id}`}>

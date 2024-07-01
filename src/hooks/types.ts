@@ -24,7 +24,7 @@ export type GovNft = {
   vault: Address;
   minter: Address;
   owner: Address;
-  address: Address;
+  address: Address; // address of the collection
   delegated: Address;
   // Total amount vested in percentanges
   vestedPct: number;
@@ -33,6 +33,14 @@ export type GovNft = {
   isDelegated: boolean;
   name: string;
   description?: string;
+};
+
+export type Collection = {
+  address: Address;
+  owner: Address;
+  name: string;
+  symbol: string;
+  supply: bigint;
 };
 
 export type Interval = "days" | "months" | "weeks" | "years";

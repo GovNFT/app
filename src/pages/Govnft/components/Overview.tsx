@@ -68,7 +68,7 @@ export default function Overview({
                   <div className="text-gray-600 dark:text-gray-400">Claimable</div>
                   <div className="flex gap-3">
                     <Amount tokenAddress={nft.token} amount={nft.claimable} showLogo={true} />
-                    <ClaimButton id={nft.id} amount={nft.claimable} />
+                    <ClaimButton nft={nft} />
                   </div>
                 </div>
               )}

@@ -8,6 +8,9 @@
   "linter": {
     "enabled": true,
     "rules": {
+      "correctness": {
+        "useExhaustiveDependencies": "warn"
+      },
       "suspicious": { "noConsoleLog": "warn" },
       "a11y": {
         "useKeyWithClickEvents": "off"

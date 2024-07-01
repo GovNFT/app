@@ -9,6 +9,7 @@ import AssetInput from "../../../components/AssetInput";
 import FlowAllowance from "../../../components/FlowAllowance";
 import GovnftChart from "../../../components/GovnftChart";
 import { GOVNFT_ADDRESS } from "../../../constants";
+import { useCollection } from "../../../hooks/collection";
 import { useDuration } from "../../../hooks/duration";
 import { useTokens } from "../../../hooks/token";
 import { Interval, Token } from "../../../hooks/types";
@@ -34,6 +35,7 @@ export default function Creator() {
   const [desc, setDesc] = useState("");
   const timeframe: Interval[] = ["years", "months", "weeks", "days"];
 
+  const collection = useCollection();
   const { address: accountAddress } = useAccount();
 
   const { data: tokens } = useTokens(accountAddress);
@@ -197,7 +199,7 @@ export default function Creator() {
             <FlowAllowance
               token={token.address}
               amount={amount}
-              forAddress={GOVNFT_ADDRESS}
+              forAddress={collection?.address}
               setAllowed={setAllowed}
               ctaTexts={["Approved", "Approve Tokens"]}
             />

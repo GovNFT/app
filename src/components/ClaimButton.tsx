@@ -1,10 +1,11 @@
 import { Address } from "viem";
 import { useWaitForTransactionReceipt, useWriteContract } from "wagmi";
 import { useAccount } from "wagmi";
-import { GOVNFT_ABI, GOVNFT_ADDRESS } from "../constants";
+import { GOVNFT_ABI } from "../constants";
+import { GovNft } from "../hooks/types";
 import ActionLink from "./ActionLink";
 
-export default function ClaimButton({ id, amount }: { id: bigint; amount: bigint }) {
+export default function ClaimButton({ nft }: { nft: GovNft }) {
   const { address } = useAccount();
 
   const { data: hash, error, isPending, writeContract } = useWriteContract();
@@ -13,25 +14,23 @@ export default function ClaimButton({ id, amount }: { id: bigint; amount: bigint
     hash,
   });
 
-  if (amount === 0n) {
+  if (nft.claimable === 0n) {
     return <></>;
   }
 
   return (
-    <>
-      <ActionLink
-        onClick={() =>
-          writeContract({
-            abi: GOVNFT_ABI,
-            address: GOVNFT_ADDRESS,
-            functionName: "claim",
-            args: [id, address, amount],
-          })
-        }
-        disabled={isPending || isConfirmed}
-      >
-        Claim
-      </ActionLink>
-    </>
+    <ActionLink
+      onClick={() =>
+        writeContract({
+          abi: GOVNFT_ABI,
+          address: nft.address,
+          functionName: "claim",
+          args: [nft.id, address, nft.claimable],
+        })
+      }
+      disabled={isPending || isConfirmed}
+    >
+      Claim
+    </ActionLink>
   );
 }
