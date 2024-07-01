@@ -44,6 +44,7 @@ export default function GovnftHeader({
               path={`nft/${nft.address}/${nft.id}`}
               className="flex gap-2 items-center px-7 py-4 text-gray-600 dark:text-gray-400 underline hover:no-underline"
             >
+              <LinkIcon size={12} className="inline" />
               {explorer.name}
             </ExplorerLink>
           </div>

@@ -1,6 +1,7 @@
 import { LinkIcon } from "lucide-react";
 import type { ReactNode } from "react";
 import { useExplorer } from "#/hooks/explorer";
+import { ReactNode } from "react";
 
 export function ExplorerLink({
   path,
@@ -15,7 +16,7 @@ export function ExplorerLink({
 
   return (
     <a href={`${explorer.url}/${path}`} className={className} target="_blank" rel="noreferrer">
-      <LinkIcon size={12} className="inline" /> {children}
+      {children}
     </a>
   );
 }
