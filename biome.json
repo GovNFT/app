@@ -12,7 +12,9 @@
     "enabled": true,
     "rules": {
       "correctness": {
-        "useExhaustiveDependencies": "warn"
+        "useExhaustiveDependencies": "warn",
+        "noUnusedVariables": "error",
+        "noUnusedImports": "error"
       },
       "suspicious": {
         "noConsoleLog": "warn"

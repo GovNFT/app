@@ -2,7 +2,6 @@ import { TextInput } from "flowbite-react";
 import { PlugZap as PlugZapIcon } from "lucide-react";
 import { useState } from "react";
 import useLocalStorageState from "use-local-storage-state";
-import { useAccount } from "wagmi";
 
 import ActionLink from "#/components/ActionLink";
 import { CUSTOM_RPC_URI_KEY } from "#/rpc";

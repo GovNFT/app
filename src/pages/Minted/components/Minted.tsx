@@ -1,6 +1,4 @@
-import dayjs from "dayjs";
 import { ChevronRight as ChevronRightIcon, Shapes as ShapesIcon } from "lucide-react";
-import { formatUnits } from "viem";
 import AddressMask from "#/components/AddressMask";
 import Amount from "#/components/Amount";
 import NavLink from "#/components/NavLink";

@@ -1,5 +1,4 @@
 import { isEmpty } from "lodash";
-import { useEffect, useState } from "react";
 import { useAccount } from "wagmi";
 import { useParams } from "wouter";
 

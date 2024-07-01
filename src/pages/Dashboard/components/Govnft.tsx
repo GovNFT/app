@@ -1,14 +1,4 @@
-import { Tooltip } from "flowbite-react";
-import {
-  ChevronRight as ChevronRightIcon,
-  Info as InfoIcon,
-  Link as LinkIcon,
-  Lock as LockIcon,
-  TrendingUp as TrendingUpIcon,
-} from "lucide-react";
-
-import ActionLink from "#/components/ActionLink";
-import AddressMask from "#/components/AddressMask";
+import { ChevronRight as ChevronRightIcon } from "lucide-react";
 import Amount from "#/components/Amount";
 import ClaimButton from "#/components/ClaimButton";
 import GovnftAvatar from "#/components/GovnftAvatar";

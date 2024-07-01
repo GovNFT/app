@@ -1,11 +1,3 @@
-import dayjs from "dayjs";
-import { Button } from "flowbite-react";
-import { X as ChevronLeftIcon, Wallet2 as Wallet2Icon } from "lucide-react";
-import { useEffect, useState } from "react";
-import { formatUnits } from "viem";
-import { useAccount } from "wagmi";
-
-import ActionLink from "#/components/ActionLink";
 import AddressMask from "#/components/AddressMask";
 import Amount from "#/components/Amount";
 import ClaimButton from "#/components/ClaimButton";

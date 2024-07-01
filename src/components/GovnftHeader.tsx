@@ -1,7 +1,5 @@
-import { Button } from "flowbite-react";
 import { Link as LinkIcon, MoreVertical as MoreVerticalIcon } from "lucide-react";
 import { useState } from "react";
-import { useAccount } from "wagmi";
 
 import { useExplorer } from "#/hooks/explorer";
 import type { GovNft } from "#/hooks/types";
@@ -10,7 +8,6 @@ import GovnftAvatar from "./GovnftAvatar";
 import GovnftNavbar from "./GovnftNavbar";
 import GovnftProgress from "./GovnftProgress";
 import GovnftStatus from "./GovnftStatus";
-import NavLink from "./NavLink";
 
 export default function GovnftHeader({
   nft,

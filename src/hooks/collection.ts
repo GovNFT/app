@@ -33,7 +33,7 @@ export function useCollections(opts = {}) {
 
 export function useCollection() {
   const searchString = useSearch();
-  const { error, data: collections } = useCollections();
+  const { data: collections } = useCollections();
 
   const collection = useMemo(() => {
     if (isEmpty(collections)) return;

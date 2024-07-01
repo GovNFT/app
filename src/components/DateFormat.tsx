@@ -1,5 +1,4 @@
 import dayjs, { type Dayjs } from "dayjs";
-import { formatUnits } from "viem";
 
 export default function DateFormat({
   ts,

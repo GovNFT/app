@@ -1,5 +1,4 @@
 import { Button } from "flowbite-react";
-import { ExternalLinkIcon } from "lucide-react";
 import { useEffect } from "react";
 import { useWaitForTransactionReceipt, useWriteContract } from "wagmi";
 import { useLocation } from "wouter";
