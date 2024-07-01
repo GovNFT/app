@@ -1,6 +1,6 @@
 import { defineConfig, loadEnv } from "@wagmi/cli";
 import { etherscan } from "@wagmi/cli/plugins";
-import { Address } from "viem";
+import type { Address } from "viem";
 import { optimism } from "viem/chains";
 
 export default defineConfig(() => {
@@ -24,7 +24,7 @@ export default defineConfig(() => {
           {
             name: "govnft",
             address: process.env.VITE_GOVNFT_ADDRESS as Address,
-          }
+          },
         ],
       }),
     ],

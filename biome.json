@@ -1,12 +1,12 @@
 {
+  "files": {
+    "ignore": ["./src/generated.ts", "node_modules", "dist"],
+    "ignoreUnknown": true
+  },
   "formatter": {
     "enabled": true,
     "indentStyle": "space",
-    "lineWidth": 120,
-    "ignore": ["./src/generated.ts"]
-  },
-  "organizeImports": {
-    "enabled": true
+    "lineWidth": 120
   },
   "linter": {
     "enabled": true,
@@ -14,11 +14,12 @@
       "correctness": {
         "useExhaustiveDependencies": "warn"
       },
-      "suspicious": { "noConsoleLog": "warn" },
+      "suspicious": {
+        "noConsoleLog": "warn"
+      },
       "a11y": {
         "useKeyWithClickEvents": "off"
       }
-    },
-    "ignore": ["./src/generated.ts"]
+    }
   }
 }
