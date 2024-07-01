@@ -38,7 +38,7 @@ export default function CreateButton({
       // @ts-ignore
       Toaster.toast(error);
     } else if (isConfirmed) {
-      navigate("~/minted");
+      navigate("/minted");
       Toaster.toast.success("GovNFT created!");
     }
   }, [error, isConfirmed, navigate]);

@@ -21,7 +21,7 @@ export default function DelegateButton({ nft, delegatee }: { nft: GovNft; delega
       // @ts-ignore
       Toaster.toast(error);
     } else if (isConfirmed) {
-      navigate(`~/nft/${nft.id}`);
+      navigate(`/nft/${nft.id}`);
       Toaster.toast.success("GovNFT delegated!");
     }
   }, [error, isConfirmed, navigate, nft.id]);

@@ -22,7 +22,7 @@ export default function GovnftAvatar({
   }
 
   return (
-    <NavLink href={`~/nft/${nft.id}`} className="block">
+    <NavLink href={`/nft/${nft.id}`} className="block">
       <div className="flex gap-5 items-center">
         <div className="bg-gray-100 dark:bg-gray-700/20 h-14 w-14 hidden sm:flex items-center justify-center rounded-2xl">
           <SvgLoader src="/govnft-gray.svg" className="w-6" alt="GovNFT" />

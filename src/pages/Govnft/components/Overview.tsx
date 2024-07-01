@@ -84,7 +84,7 @@ export default function Overview({
                   )}
                   {nft.isOwner && (
                     <NavLink
-                      href={`~/nft/${nft.id}/delegate`}
+                      href={`/nft/${nft.id}/delegate`}
                       className="underline hover:no-underline text-gray-600 dark:text-gray-400"
                     >
                       Edit
