@@ -9,17 +9,26 @@ import { useEffect, useState } from "react";
 import { isAddress } from "viem";
 import { formatUnits } from "viem";
 
-export default function Checklist({ toAddress, amount, token, vestingDuration, description }) {
+import type { Address, Token } from "#/hooks/types";
+
+export default function Checklist({
+  toAddress,
+  amount,
+  token,
+  vestingDuration,
+  description,
+}: {
+  toAddress: Address;
+  amount: bigint;
+  token: Token;
+  vestingDuration: number;
+  description: string;
+}) {
   const [validAmount, setValidAmount] = useState(false);
-  const parsedAmount = formatUnits(amount || 0n, token?.decimals);
 
   useEffect(() => {
-    if (amount && amount !== 0 && parsedAmount <= token?.formatted) {
-      setValidAmount(true);
-    } else {
-      setValidAmount(false);
-    }
-  }, [amount, parsedAmount, token?.formatted]);
+    setValidAmount(amount && amount !== 0n && amount <= token?.value);
+  }, [amount, token?.value]);
 
   return (
     <>

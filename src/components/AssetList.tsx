@@ -56,16 +56,14 @@ export default function AssetsList({
                 </div>
 
                 <div className="w-1/2 text-sm text-gray-600 dark:text-gray-400">
-                  {asset?.value && asset.value > 0 && (
-                    <div className="flex justify-end">
-                      <Amount
-                        tokenAddress={asset.address}
-                        decimals={asset.decimals}
-                        amount={asset.value}
-                        showLogo={false}
-                      />
-                    </div>
-                  )}
+                  <div className="flex justify-end">
+                    <Amount
+                      tokenAddress={asset.address}
+                      decimals={asset.decimals}
+                      amount={asset.value}
+                      showLogo={false}
+                    />
+                  </div>
                 </div>
               </div>
             </div>

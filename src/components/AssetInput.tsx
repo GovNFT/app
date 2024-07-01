@@ -37,7 +37,6 @@ export default function AssetInput({
     setValue(asset?.formatted);
   }
 
-  // biome-ignore lint/correctness/useExhaustiveDependencies:
   useEffect(() => {
     setInvalid(false);
 
@@ -52,6 +51,8 @@ export default function AssetInput({
     if (parsedAmount !== 0n && asset?.value && asset.value < parsedAmount) {
       setInvalid(true);
     }
+
+    setAmount?.(parsedAmount);
   }, [value, asset, setAmount]);
 
   return (
