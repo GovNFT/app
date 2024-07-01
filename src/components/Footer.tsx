@@ -35,7 +35,8 @@ export default function Footer() {
           GitHub
         </a>
         <div className="hidden md:inline text-gray-400 dark:text-gray-600">&middot;</div>
-        <a href="#" className="underline hover:no-underline underline-offset-2">
+        {/* TODO: Add docs */}
+        <a href="/docs" className="underline hover:no-underline underline-offset-2">
           Documentation
         </a>
       </div>
