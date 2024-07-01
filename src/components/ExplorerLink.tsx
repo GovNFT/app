@@ -15,7 +15,7 @@ export function ExplorerLink({
 
   return (
     <a href={`${explorer.url}/${path}`} className={className} target="_blank" rel="noreferrer">
-      <LinkIcon size={12} className="inline" /> {children}
+      {children}
     </a>
   );
 }

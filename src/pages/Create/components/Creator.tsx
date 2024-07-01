@@ -1,6 +1,7 @@
 import dayjs from "dayjs";
 import duration from "dayjs/plugin/duration";
 import { Datepicker, Select, TextInput, Textarea } from "flowbite-react";
+import { LinkIcon } from "lucide-react";
 import { useCallback, useEffect, useState } from "react";
 import { isAddress } from "viem";
 import { useAccount } from "wagmi";
