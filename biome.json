@@ -5,6 +5,9 @@
     "lineWidth": 120,
     "ignore": ["./src/generated.ts"]
   },
+  "organizeImports": {
+    "enabled": true
+  },
   "linter": {
     "enabled": true,
     "rules": {
