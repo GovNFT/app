@@ -37,7 +37,7 @@
     "wouter": "^3.0.0"
   },
   "devDependencies": {
-    "@biomejs/biome": "1.5.3",
+    "@biomejs/biome": "^1.8.3",
     "@mdx-js/react": "^2.3.0",
     "@mdx-js/rollup": "^2.3.0",
     "@types/react": "^18.2.21",
