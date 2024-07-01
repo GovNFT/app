@@ -91,7 +91,6 @@ export default function Creator() {
               setAsset={setToken}
               amount={amount}
               setAmount={setAmount}
-              validate={false}
               title="Vest"
             />
           </div>
