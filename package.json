@@ -1,6 +1,7 @@
 {
   "name": "govnft",
   "private": false,
+  "license": "GPL-3.0",
   "version": "1.0.0beta",
   "type": "module",
   "imports": {
