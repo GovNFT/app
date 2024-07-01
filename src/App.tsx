@@ -15,11 +15,12 @@ import Transfer from "./pages/Transfer";
 
 function ConnectedOnly({ children }) {
   const { isConnected } = useAccount();
-  const [_location, navigate] = useLocation();
+  const [_, setLocation] = useLocation();
 
+  // biome-ignore lint/correctness/useExhaustiveDependencies:
   useEffect(() => {
-    !isConnected && navigate("/");
-  }, [isConnected, navigate]);
+    !isConnected && setLocation("/connect");
+  }, [isConnected]);
 
   if (isConnected) {
     return children;
@@ -31,46 +32,20 @@ export default function App() {
     <>
       <Toaster />
 
-      {/* 404 page support using the `Switch` */}
       <Switch>
-        <Route path="/">
-          <Landing />
-        </Route>
+        <Route path="/" component={Landing} />
+        <Route path="/connect" component={Connect} />
+        <Route path="/nft/:id" component={Govnft} />
 
-        <Route path="/connect">
-          <Connect />
-        </Route>
+        <ConnectedOnly>
+          <Route path="/dash" component={Dash} />
+          <Route path="/create" component={Create} />
+          <Route path="/nft/:id/transfer" component={Transfer} />
+          <Route path="/nft/:id/delegate" component={Delegate} />
+          <Route path="/minted" component={Minted} />
+        </ConnectedOnly>
 
-        <Route path="/dash">
-          <ConnectedOnly>
-            <Dash />
-          </ConnectedOnly>
-        </Route>
-
-        <Route path="/create">
-          <ConnectedOnly>
-            <Create />
-          </ConnectedOnly>
-        </Route>
-
-        <Route path="/nft/" nest>
-          <Route path="/:id">
-            <Govnft />
-          </Route>
-          <Route path="/:id/transfer">
-            <Transfer />
-          </Route>
-          <Route path="/:id/delegate">
-            <Delegate />
-          </Route>
-        </Route>
-
-        <Route path="/minted">
-          <ConnectedOnly>
-            <Minted />
-          </ConnectedOnly>
-        </Route>
-
+        {/* 404 page support using the `Switch` */}
         <Route>
           <NotFound>This page does not exist.</NotFound>
         </Route>
