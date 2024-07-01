@@ -1,11 +1,10 @@
 import { Button } from "flowbite-react";
 import { useEffect } from "react";
-import type { Address } from "viem";
 import { useWaitForTransactionReceipt, useWriteContract } from "wagmi";
 import { useAccount } from "wagmi";
 import { useLocation } from "wouter";
 import { GOVNFT_ABI } from "../../../constants";
-import type { GovNft } from "../../../hooks/types";
+import type { Address, GovNft } from "../../../hooks/types";
 
 import Toaster from "../../../components/Toaster";
 

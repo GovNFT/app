@@ -1,10 +1,9 @@
 import { useQuery } from "@tanstack/react-query";
 import { readContract } from "@wagmi/core";
 import { formatUnits } from "viem";
-import type { Address } from "viem";
 import { ZERO_ADDRESS } from "../constants";
 import config from "../rpc";
-import type { GovNft } from "./types";
+import type { Address, GovNft } from "./types";
 
 import { GOVNFT_SUGAR_ABI, GOVNFT_SUGAR_ADDRESS } from "../constants";
 

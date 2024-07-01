@@ -1,8 +1,7 @@
-import { Address } from "viem";
 import { useWaitForTransactionReceipt, useWriteContract } from "wagmi";
 import { useAccount } from "wagmi";
 import { GOVNFT_ABI } from "../constants";
-import type { GovNft } from "../hooks/types";
+import type { Address, GovNft } from "../hooks/types";
 import ActionLink from "./ActionLink";
 
 export default function ClaimButton({ nft }: { nft: GovNft }) {
