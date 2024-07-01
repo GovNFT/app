@@ -1,7 +1,7 @@
 import { optimism } from "viem/chains";
 
 import { govnftAbi, govnftSugarAbi } from "./generated";
-import { Address } from "./hooks/types";
+import type { Address } from "./hooks/types";
 
 export const ZERO_ADDRESS: Address = "0x0000000000000000000000000000000000000000";
 export const TOKEN_ICON = "/svg/coin.svg";

@@ -3,7 +3,7 @@ import { formatUnits, parseUnits } from "viem";
 import { useAccount } from "wagmi";
 
 import { useTokens } from "../hooks/token";
-import { Address } from "../hooks/types";
+import type { Address } from "../hooks/types";
 import TokenAvatar from "./TokenAvatar";
 
 export default function Amount({

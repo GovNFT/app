@@ -1,7 +1,7 @@
 import { Button } from "flowbite-react";
 import { ExternalLinkIcon } from "lucide-react";
 import { useEffect } from "react";
-import { Address } from "viem";
+import type { Address } from "viem";
 import { useWaitForTransactionReceipt, useWriteContract } from "wagmi";
 import { useLocation } from "wouter";
 import Toaster from "../../../components/Toaster";

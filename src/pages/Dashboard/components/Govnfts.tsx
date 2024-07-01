@@ -2,7 +2,7 @@ import { Shapes as ShapesIcon } from "lucide-react";
 
 import AddressMask from "../../../components/AddressMask";
 import NavLink from "../../../components/NavLink";
-import { GovNft } from "../../../hooks/types";
+import type { GovNft } from "../../../hooks/types";
 import Govnft from "./Govnft";
 
 export default function Govnfts({
@@ -34,7 +34,7 @@ export default function Govnfts({
       <div className="pb-4 text-sm px-2 text-gray-600 dark:text-gray-400">Vesting NFTs</div>
       <div className="space-y-3">
         {nfts.map((nft) => (
-          <Govnft nft={nft} />
+          <Govnft nft={nft} key={String(nft.id)} />
         ))}
       </div>
     </div>

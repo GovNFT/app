@@ -3,7 +3,7 @@ import { getBalance } from "@wagmi/core";
 
 import { TOKEN_ADDRESSES } from "../constants";
 import config from "../rpc";
-import { Address, Token } from "./types";
+import type { Address, Token } from "./types";
 
 async function fetchTokens(accountAddress: Address): Promise<Token[]> {
   const tokens = TOKEN_ADDRESSES.map(async (tokenAddress: Address): Promise<Token> => {

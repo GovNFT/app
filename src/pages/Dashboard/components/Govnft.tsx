@@ -15,7 +15,7 @@ import GovnftAvatar from "../../../components/GovnftAvatar";
 import GovnftProgress from "../../../components/GovnftProgress";
 import GovnftStatus from "../../../components/GovnftStatus";
 import NavLink from "../../../components/NavLink";
-import { GovNft } from "../../../hooks/types";
+import type { GovNft } from "../../../hooks/types";
 
 export default function Govnft({
   nft,

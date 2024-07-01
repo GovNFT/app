@@ -15,7 +15,7 @@ import { useLocation } from "wouter";
 import GovnftHeader from "../../../components/GovnftHeader";
 import NavLink from "../../../components/NavLink";
 import { DELEGATES_URI } from "../../../constants";
-import { Address, GovNft } from "../../../hooks/types";
+import type { Address, GovNft } from "../../../hooks/types";
 
 import Amount from "../../../components/Amount";
 import DelegateButton from "./DelegateButton";

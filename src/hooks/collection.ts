@@ -5,7 +5,7 @@ import { useMemo } from "react";
 import { useSearch } from "wouter";
 
 import config from "../rpc";
-import { Collection } from "./types";
+import type { Collection } from "./types";
 
 import { GOVNFT_SUGAR_ABI, GOVNFT_SUGAR_ADDRESS } from "../constants";
 

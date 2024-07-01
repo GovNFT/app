@@ -1,7 +1,7 @@
 import { Img } from "react-image";
 
 import { DEFAULT_CHAIN, TOKEN_ASSETS_CDN, TOKEN_ICON } from "../constants";
-import { Address } from "../hooks/types";
+import type { Address } from "../hooks/types";
 
 export default function TokenAvatar({
   address,

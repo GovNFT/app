@@ -4,7 +4,7 @@ import { formatUnits } from "viem";
 import AddressMask from "../../../components/AddressMask";
 import Amount from "../../../components/Amount";
 import NavLink from "../../../components/NavLink";
-import { GovNft } from "../../../hooks/types";
+import type { GovNft } from "../../../hooks/types";
 
 export default function Minted({
   nfts,
@@ -32,7 +32,10 @@ export default function Minted({
       <div className="pb-4 text-sm px-2 text-gray-600 dark:text-gray-400">Minted GovNFTs</div>
 
       {nfts.map((nft) => (
-        <div className="flex justify-between bg-black/[.02] dark:bg-black/[.08] rounded-md text-xs px-5 py-4">
+        <div
+          key={String(nft.id)}
+          className="flex justify-between bg-black/[.02] dark:bg-black/[.08] rounded-md text-xs px-5 py-4"
+        >
           <div className="flex gap-12 items-center ">
             <div className="w-32">GovNFT ID #{Number(nft.id)}</div>
           </div>

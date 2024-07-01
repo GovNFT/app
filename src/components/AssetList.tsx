@@ -3,7 +3,7 @@ import { isEmpty } from "lodash";
 import { AlertCircle as AlertCircleleIcon } from "lucide-react";
 import { isAddress } from "viem";
 
-import { Token } from "../hooks/types";
+import type { Token } from "../hooks/types";
 import Amount from "./Amount";
 import TokenAvatar from "./TokenAvatar";
 

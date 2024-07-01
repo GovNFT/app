@@ -1,6 +1,6 @@
 import dayjs from "dayjs";
 import { useCallback, useMemo, useState } from "react";
-import { Interval } from "./types";
+import type { Interval } from "./types";
 
 export const useDuration = (initialInterval: Interval) => {
   //note setDuration is not exposed outside this hook
@@ -10,7 +10,7 @@ export const useDuration = (initialInterval: Interval) => {
 
   const handleDuration = useCallback(
     (value: string) => {
-      const amount = parseFloat(value);
+      const amount = Number.parseFloat(value);
       //this condition is to allow an empty input field where value would be `""`
       if (Number.isNaN(amount)) {
         setDuration(0);

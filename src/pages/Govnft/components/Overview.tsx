@@ -1,6 +1,6 @@
 import dayjs from "dayjs";
 import { Button } from "flowbite-react";
-import { Wallet2 as Wallet2Icon, X as ChevronLeftIcon } from "lucide-react";
+import { X as ChevronLeftIcon, Wallet2 as Wallet2Icon } from "lucide-react";
 import { useEffect, useState } from "react";
 import { formatUnits } from "viem";
 import { useAccount } from "wagmi";
@@ -11,7 +11,7 @@ import Amount from "../../../components/Amount";
 import ClaimButton from "../../../components/ClaimButton";
 import GovnftHeader from "../../../components/GovnftHeader";
 import NavLink from "../../../components/NavLink";
-import { GovNft } from "../../../hooks/types";
+import type { GovNft } from "../../../hooks/types";
 
 export default function Overview({
   nft,

@@ -9,6 +9,7 @@ export default function Modal({ open, onClose, size = null, children }) {
     }
   }
 
+  // biome-ignore lint/correctness/useExhaustiveDependencies:
   useEffect(() => {
     if (typeof window !== "undefined") {
       window.addEventListener("keydown", escHandler);

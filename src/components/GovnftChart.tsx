@@ -1,5 +1,5 @@
 import { CategoryScale, Chart as ChartJS, LineElement, LinearScale, PointElement } from "chart.js";
-import dayjs, { Dayjs } from "dayjs";
+import dayjs, { type Dayjs } from "dayjs";
 import { Line } from "react-chartjs-2";
 
 ChartJS.register(CategoryScale, LinearScale, LineElement, PointElement);
@@ -56,13 +56,13 @@ export default function Chart({
     // No cliff
     (cliff === 0 && [0, 20, 40, 60, 80, 100]) ||
     // Cliff 0 to 20 percent
-    (cliff > 0 && cliff <= 20 && [NaN, 20, 40, 60, 80, 100]) ||
+    (cliff > 0 && cliff <= 20 && [Number.NaN, 20, 40, 60, 80, 100]) ||
     // Cliff 20 to 40 percent
-    (cliff > 20 && cliff <= 40 && [NaN, NaN, 40, 60, 80, 100]) ||
+    (cliff > 20 && cliff <= 40 && [Number.NaN, Number.NaN, 40, 60, 80, 100]) ||
     // Cliff 40 to 60 percent
-    (cliff > 40 && cliff <= 60 && [NaN, NaN, NaN, 60, 80, 100]) ||
+    (cliff > 40 && cliff <= 60 && [Number.NaN, Number.NaN, Number.NaN, 60, 80, 100]) ||
     // Cliff higher than 60 percent
-    (cliff > 60 && [NaN, NaN, NaN, NaN, 80, 100]);
+    (cliff > 60 && [Number.NaN, Number.NaN, Number.NaN, Number.NaN, 80, 100]);
 
   const cliffData =
     // Calculat ethe length of the cliff.
@@ -70,19 +70,19 @@ export default function Chart({
     // Cliff 0 to 20 percent
     cliff > 0 && cliff <= 20
       ? [0, 100]
-      : NaN ||
+      : Number.NaN ||
           // Cliff 20 to 40 percent
           (cliff > 20 && cliff <= 40)
         ? [0, 0, 100]
-        : NaN ||
+        : Number.NaN ||
             // Cliff 40 to 60 percent
             (cliff > 40 && cliff <= 60)
           ? [0, 0, 0, 100]
-          : NaN ||
+          : Number.NaN ||
               // Cliff 60 to 100 percent
               (cliff > 60 && cliff <= 100)
             ? [0, 0, 0, 0, 100]
-            : NaN;
+            : Number.NaN;
 
   const data = {
     labels,

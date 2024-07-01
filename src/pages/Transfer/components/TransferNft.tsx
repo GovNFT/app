@@ -15,7 +15,7 @@ import GovnftHeader from "../../../components/GovnftHeader";
 import NavLink from "../../../components/NavLink";
 
 import Amount from "../../../components/Amount";
-import { GovNft } from "../../../hooks/types";
+import type { GovNft } from "../../../hooks/types";
 import TransferButton from "./TransferButton";
 
 export default function TransferNft({ nft }: { nft: GovNft }) {
