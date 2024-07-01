@@ -1,7 +1,7 @@
-import DarkThemeToggle from "./DarkThemeToggle";
-import { ExplorerLink } from "./ExplorerLink";
 import { GOVNFT_ADDRESS } from "./../constants";
 import { useExplorer } from "./../hooks/explorer";
+import DarkThemeToggle from "./DarkThemeToggle";
+import { ExplorerLink } from "./ExplorerLink";
 
 export default function Footer() {
   const { explorer } = useExplorer();
@@ -9,6 +9,7 @@ export default function Footer() {
   return (
     <div className="flex justify-between items-start md:items-center text-xs border-t border-black/5 dark:border-white/5 py-4 mt-24 mb-24">
       <div className="flex flex-col gap-2 md:flex-row md:gap-4 md:items-center text-gray-600 dark:text-gray-400 py-4">
+        {/*@ts-ignore*/}
         <div className="pb-4 md:pb-0">{__APP_VERSION__}</div>
         <div className="hidden md:inline text-gray-400 dark:text-gray-600">&middot;</div>
         <ExplorerLink
