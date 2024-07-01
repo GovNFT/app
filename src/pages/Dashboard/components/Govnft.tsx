@@ -33,7 +33,7 @@ export default function Govnft({
         <div className="flex gap-4 items-center">
           <div className="hidden lg:flex gap-5 items-center pr-3">
             <GovnftStatus nft={nft} />
-            <GovnftProgress vestedPct={nft.vestedPct} />
+            <GovnftProgress nft={nft} />
           </div>
           <div className="px-6 py-2 w-52 hidden xl:flex flex-col gap-2 justify-center items-end border-l border-gray-100 dark:border-gray-950/20">
             <div className="text-gray-400 dark:text-gray-600 text-xs">Locked</div>

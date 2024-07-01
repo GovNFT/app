@@ -10,11 +10,13 @@ export default function GovnftStatus({
 }: {
   nft: GovNft;
 }) {
+  const currentTime = Math.round(Date.now() / 1000);
+
   if (!nft) {
     return <></>;
   }
 
-  if (nft.vestedPct === 0) {
+  if (nft.vestedPct === 0 && nft.start > currentTime) {
     return (
       <div className="flex flex-col justify-center items-end rounded-md">
         <div className="flex gap-2.5 items-center text-amber-600">
@@ -28,11 +30,22 @@ export default function GovnftStatus({
     );
   }
 
+  if (nft.vestedPct === 100) {
+    return (
+      <div className="flex flex-col justify-center items-end rounded-md">
+        <div className="flex gap-2.5 items-center text-gray-500">Vested</div>
+        <div className="text-gray-500 pt-1.5 text-xs">
+          <DateFromNow ts={nft.end} pastPrefix="vesting ended" tooltip={false} />
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div className="flex flex-col justify-center items-end rounded-md">
       <div className="flex gap-2.5 items-center text-green-500">
         <div className="w-1.5 h-1.5 bg-green-500 rounded-full animate-pulse" />
-        Vessting
+        Vesting
       </div>
       <div className="text-gray-600 dark:text-gray-400 pt-1.5 text-xs">
         <DateFromNow ts={nft.end} prefix="vesting ends in" pastPrefix="vesting ended" tooltip={false} />

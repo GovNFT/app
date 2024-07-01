@@ -3,25 +3,31 @@ import { formatUnits } from "viem";
 import { GovNft } from "../hooks/types";
 
 export default function GovnftProgress({
-  vestedPct,
+  nft,
 }: {
-  vestedPct: number;
+  nft: GovNft;
 }) {
-  if (vestedPct === 100) {
+  const currentTime = Math.round(Date.now() / 1000);
+
+  if (!nft) {
+    return <></>;
+  }
+
+  if (nft.vestedPct === 0 && nft.start > currentTime) {
     return (
       <div className="w-16 h-16 flex items-center justify-center">
-        <div className="p-5 rounded-full border-[3px] border-gray-100 dark:border-gray-950/30 text-green-500 flex items-center justify-center">
-          <CheckIcon size={13} />
+        <div className="p-5 rounded-full border-[3px] border-gray-100 dark:border-gray-950/30 text-amber-600 flex items-center justify-center">
+          <CalendarIcon size={13} />
         </div>
       </div>
     );
   }
 
-  if (vestedPct === 0) {
+  if (nft.vestedPct === 100) {
     return (
       <div className="w-16 h-16 flex items-center justify-center">
-        <div className="p-5 rounded-full border-[3px] border-gray-100 dark:border-gray-950/30 text-amber-600 flex items-center justify-center">
-          <CalendarIcon size={13} />
+        <div className="p-5 rounded-full border-[3px] border-gray-100 dark:border-gray-950/30 text-green-500 flex items-center justify-center">
+          <CheckIcon size={13} />
         </div>
       </div>
     );
@@ -39,14 +45,14 @@ export default function GovnftProgress({
         />
         <path
           className="circle"
-          stroke-dasharray={`${vestedPct}, 100`}
+          stroke-dasharray={`${nft.vestedPct}, 100`}
           d="M18 2.0845
             a 15.9155 15.9155 0 0 1 0 31.831
             a 15.9155 15.9155 0 0 1 0 -31.831"
         />
       </svg>
       <div className="absolute w-16 h-16 top-0 left-0 flex items-center justify-center text-gray-600 dark:text-gray-400 text-xs">
-        {vestedPct}%
+        {nft.vestedPct}%
       </div>
     </div>
   );

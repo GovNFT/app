@@ -28,7 +28,7 @@ export default function GovnftHeader({
           </div>
           <div className="hidden sm:flex gap-5 items-center pr-1 text-sm">
             <GovnftStatus nft={nft} />
-            <GovnftProgress vestedPct={nft.vestedPct} />
+            <GovnftProgress nft={nft} />
           </div>
         </div>
         <>
