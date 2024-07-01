@@ -4,7 +4,7 @@ import { type Address, erc20Abi } from "viem";
 import { useReadContract, useWaitForTransactionReceipt, useWriteContract } from "wagmi";
 import { useAccount } from "wagmi";
 
-export default function FlowAllowance({
+export default function Allowance({
   token,
   amount,
   forAddress,
