@@ -1,9 +1,11 @@
 import { Button } from "flowbite-react";
-import { MoreVertical as MoreVerticalIcon, Share2 as Share2Icon } from "lucide-react";
+import { Link as LinkIcon, MoreVertical as MoreVerticalIcon } from "lucide-react";
 import { useState } from "react";
 import { useAccount } from "wagmi";
 
+import { useExplorer } from "../hooks/explorer";
 import { GovNft } from "../hooks/types";
+import { ExplorerLink } from "./ExplorerLink";
 import GovnftAvatar from "./GovnftAvatar";
 import GovnftNavbar from "./GovnftNavbar";
 import GovnftProgress from "./GovnftProgress";
@@ -17,6 +19,7 @@ export default function GovnftHeader({
   nft: GovNft;
   active: string;
 }) {
+  const { explorer } = useExplorer();
   const [showOptions, setShowOptions] = useState(false);
 
   return (
@@ -37,20 +40,19 @@ export default function GovnftHeader({
             <div className="flex text-gray-700 dark:text-gray-300">
               <GovnftNavbar nft={nft} active={active} />
             </div>
-            {/* TODO: Add eterscan url */}
-            <a href="https://etherscan.io/" target="_blank" rel="noreferrer">
-              <div className="flex gap-3 items-center px-7 py-4 text-gray-600 dark:text-gray-400 underline hover:no-underline">
-                <Share2Icon size={12} />
-                Etherscan
-              </div>
-            </a>
+            <ExplorerLink
+              path={`nft/${nft.address}/${nft.id}`}
+              className="flex gap-2 items-center px-7 py-4 text-gray-600 dark:text-gray-400 underline hover:no-underline"
+            >
+              {explorer.name}
+            </ExplorerLink>
           </div>
 
           {/* MOBILE MENU */}
           <div className="block sm:hidden">
             <div
               className="flex justify-between sm:hidden px-5 py-4 text-xs bg-gray-100/20 dark:bg-gray-950/10 text-gray-600 dark:text-gray-400"
-              onClick={() => setShowOptions(showOptions === true ? false : true)}
+              onClick={() => setShowOptions((bool) => !bool)}
             >
               Settings
               <MoreVerticalIcon size={14} />
