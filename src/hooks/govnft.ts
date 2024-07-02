@@ -54,7 +54,6 @@ export function useMintedNfts(accountAddress: Address, collection: Address, opts
     queryFn: () => fetchMintedNfts(accountAddress, collection),
     enabled: !!collection,
     ...opts,
-    placeholderData: [],
     // @ts-ignore
     keepPreviousData: true,
   });
