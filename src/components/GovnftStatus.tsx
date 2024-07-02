@@ -1,5 +1,4 @@
 import type { GovNft } from "#/hooks/types";
-import DateFormat from "./DateFormat";
 import DateFromNow from "./DateFromNow";
 
 export default function GovnftStatus({
