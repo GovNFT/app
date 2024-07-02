@@ -1,15 +1,15 @@
 import { useWaitForTransactionReceipt, useWriteContract } from "wagmi";
 import { useAccount } from "wagmi";
 import { GOVNFT_ABI } from "#/constants";
-import type { Address, GovNft } from "#/hooks/types";
+import type { GovNft } from "#/hooks/types";
 import ActionLink from "./ActionLink";
 
 export default function ClaimButton({ nft }: { nft: GovNft }) {
   const { address } = useAccount();
 
-  const { data: hash, error, isPending, writeContract } = useWriteContract();
+  const { data: hash, isPending, writeContract } = useWriteContract();
 
-  const { isLoading: isConfirming, isSuccess: isConfirmed } = useWaitForTransactionReceipt({
+  const { isSuccess: isConfirmed } = useWaitForTransactionReceipt({
     hash,
   });
 

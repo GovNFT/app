@@ -1,7 +1,6 @@
 import dayjs from "dayjs";
 import duration from "dayjs/plugin/duration";
 import { Datepicker, Select, TextInput, Textarea } from "flowbite-react";
-import { LinkIcon } from "lucide-react";
 import { useCallback, useEffect, useState } from "react";
 import { isAddress } from "viem";
 import { useAccount } from "wagmi";
@@ -9,7 +8,6 @@ import { useAccount } from "wagmi";
 import Allowance from "#/components/Allowance";
 import AssetInput from "#/components/AssetInput";
 import GovnftChart from "#/components/GovnftChart";
-import { GOVNFT_ADDRESS } from "#/constants";
 import { useCollection } from "#/hooks/collection";
 import { useDuration } from "#/hooks/duration";
 import { useTokens } from "#/hooks/token";
@@ -33,7 +31,6 @@ export default function Creator() {
   const [cliffDuration, setCliffDuration, cliffInterval, setCliffInterval, displayedCliffDuration] =
     useDuration("months");
 
-  const [desc, setDesc] = useState("");
   const timeframe: Interval[] = ["years", "months", "weeks", "days"];
 
   const collection = useCollection();

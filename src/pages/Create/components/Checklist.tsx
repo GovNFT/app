@@ -7,7 +7,6 @@ import {
 } from "lucide-react";
 import { useEffect, useState } from "react";
 import { isAddress } from "viem";
-import { formatUnits } from "viem";
 
 import type { Address, Token } from "#/hooks/types";
 

@@ -1,4 +1,4 @@
-import { Spinner, Tooltip } from "flowbite-react";
+import { Spinner } from "flowbite-react";
 import { Lock as LockIcon } from "lucide-react";
 import { SvgLoader } from "react-svgmt";
 

@@ -1,19 +1,10 @@
-import { TextInput, Tooltip } from "flowbite-react";
-import { Button } from "flowbite-react";
-import {
-  CheckCircle2 as CheckCircle2Icon,
-  ExternalLink as ExternalLinkIcon,
-  Info as InfoIcon,
-  Wallet as WalletIcon,
-} from "lucide-react";
-import { useEffect } from "react";
+import { TextInput } from "flowbite-react";
+import { CheckCircle2 as CheckCircle2Icon, ExternalLink as ExternalLinkIcon, Wallet as WalletIcon } from "lucide-react";
 import { useState } from "react";
 import { isAddress } from "viem";
 import { useAccount } from "wagmi";
-import { useLocation } from "wouter";
 
 import GovnftHeader from "#/components/GovnftHeader";
-import NavLink from "#/components/NavLink";
 import { DELEGATES_URI } from "#/constants";
 import type { Address, GovNft } from "#/hooks/types";
 

@@ -1,11 +1,7 @@
-import { Tooltip } from "flowbite-react";
-import { Info as InfoIcon } from "lucide-react";
-
 import AddressMask from "#/components/AddressMask";
 import Amount from "#/components/Amount";
-import CreateButton from "./CreateButton";
 
-export default function CreatorPreview({ toAddress, token, amount, recipient, desc }) {
+export default function CreatorPreview({ toAddress, token, amount }) {
   return (
     <>
       <div className="space-y-6 pb-8">

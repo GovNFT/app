@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { useAccount } from "wagmi";
-import { Route, Switch, useLocation, useParams } from "wouter";
+import { Route, Switch, useLocation } from "wouter";
 
 import NotFound from "./NotFound";
 import Toaster from "./components/Toaster";

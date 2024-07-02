@@ -1,4 +1,3 @@
-import { LinkIcon } from "lucide-react";
 import type { ReactNode } from "react";
 import { useExplorer } from "#/hooks/explorer";
 

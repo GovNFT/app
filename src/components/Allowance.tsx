@@ -19,9 +19,9 @@ export default function Allowance({
     args: [address, forAddress],
   });
 
-  const { data: hash, error, isPending, writeContract } = useWriteContract();
+  const { data: hash, isPending, writeContract } = useWriteContract();
 
-  const { isLoading: isConfirming, isSuccess: isConfirmed } = useWaitForTransactionReceipt({
+  const { isSuccess: isConfirmed } = useWaitForTransactionReceipt({
     hash,
   });
 
