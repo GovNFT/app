@@ -7,6 +7,7 @@ import { useAccount } from "wagmi";
 import Allowance from "#/components/Allowance";
 import AssetInput from "#/components/AssetInput";
 import GovnftChart from "#/components/GovnftChart";
+import { INTERVALS } from "#/constants";
 import { useCollection } from "#/hooks/collection";
 import { useDuration } from "#/hooks/duration";
 import { useTokens } from "#/hooks/token";
@@ -27,8 +28,6 @@ export default function Creator() {
     useDuration("years");
   const [cliffDuration, setCliffDuration, cliffInterval, setCliffInterval, displayedCliffDuration] =
     useDuration("months");
-
-  const timeframe: Interval[] = ["years", "months", "weeks", "days"];
 
   const collection = useCollection();
   const { address: accountAddress } = useAccount();
@@ -77,7 +76,7 @@ export default function Creator() {
 
         <div className="space-y-6">
           <div className="text-xs pb-3 mb-6 border-b border-black/5 dark:border-white/5">
-            <span className="otext-gray-400 dark:text-gray-600 uppercase tracking-widest">Vesting duration</span>
+            <span className="text-gray-400 dark:text-gray-600 uppercase tracking-widest">Vesting duration</span>
           </div>
           <div className="space-y-3">
             <AssetInput
@@ -102,6 +101,8 @@ export default function Creator() {
                 <TextInput
                   value={displayedVestingDuration}
                   onChange={(e) => setVestingDuration(e.target.value)}
+                  // @ts-ignore
+                  onClick={(e) => e.target.select()}
                   type="number"
                   min="0"
                   step="1"
@@ -114,7 +115,7 @@ export default function Creator() {
                   sizing="md"
                   className="w-36"
                 >
-                  {timeframe.map((time) => (
+                  {INTERVALS.map((time) => (
                     <option value={time} key={`vest-key-${time}`}>
                       {time}
                     </option>
@@ -129,6 +130,8 @@ export default function Creator() {
                 <TextInput
                   value={displayedCliffDuration}
                   onChange={(e) => setCliffDuration(e.target.value)}
+                  // @ts-ignore
+                  onClick={(e) => e.target.select()}
                   type="number"
                   min="0"
                   step="1"
@@ -141,7 +144,7 @@ export default function Creator() {
                   sizing="md"
                   className="w-36"
                 >
-                  {timeframe.map((time) => (
+                  {INTERVALS.map((time) => (
                     <option value={time} key={`cliff-key-${time}`}>
                       {time}
                     </option>

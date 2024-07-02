@@ -17,10 +17,7 @@ export const DELEGATES_URI = String(import.meta.env.VITE_DELEGATES_URI);
 
 export const WALLETCONNECT_PROJECT_ID = import.meta.env.VITE_WALLETCONNECT_PROJECT_ID;
 
-// prettier-ignore
-export const FEATURE_FLAGS = String(import.meta.env.VITE_FEATURE_FLAGS).split(",");
-
-export const INTERVALS = ["years", "months", "weeks", "days"];
+export const INTERVALS = ["years", "months", "weeks", "days"] as const;
 
 // Tx signing leeway time
 export const LEEWAY_MINS = Number(import.meta.env.VITE_LEEWAY_MINS || 5);
