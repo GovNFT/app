@@ -2,6 +2,7 @@ import { Navbar } from "flowbite-react";
 import { Plus as PlusIcon } from "lucide-react";
 import { SvgLoader } from "react-svgmt";
 
+import { CollectionSwitcher } from "#/components/CollectionSwitcher";
 import NavLink from "#/components/NavLink";
 import Profile from "#/components/Profile";
 
@@ -28,6 +29,7 @@ export default function Header() {
               </div>
             </div>
           </NavLink>
+          <CollectionSwitcher />
         </Profile>
       </Navbar>
     </div>
