@@ -1,4 +1,5 @@
 import type { Address } from "viem";
+import type { INTERVALS } from "#/constants";
 
 export type { Address };
 
@@ -44,4 +45,4 @@ export type Collection = {
   supply: bigint;
 };
 
-export type Interval = "days" | "months" | "weeks" | "years";
+export type Interval = (typeof INTERVALS)[number];
