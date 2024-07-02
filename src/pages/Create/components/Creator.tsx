@@ -6,8 +6,8 @@ import { useCallback, useEffect, useState } from "react";
 import { isAddress } from "viem";
 import { useAccount } from "wagmi";
 
+import Allowance from "#/components/Allowance";
 import AssetInput from "#/components/AssetInput";
-import FlowAllowance from "#/components/FlowAllowance";
 import GovnftChart from "#/components/GovnftChart";
 import { GOVNFT_ADDRESS } from "#/constants";
 import { useCollection } from "#/hooks/collection";
@@ -92,7 +92,6 @@ export default function Creator() {
               setAsset={setToken}
               amount={amount}
               setAmount={setAmount}
-              validate={false}
               title="Vest"
             />
           </div>
@@ -192,7 +191,7 @@ export default function Creator() {
 
         {isAddress(toAddress) && amount && Number(vestingDuration) !== 0 && description !== "" && (
           <>
-            <FlowAllowance
+            <Allowance
               token={token.address}
               amount={amount}
               forAddress={collection?.address}

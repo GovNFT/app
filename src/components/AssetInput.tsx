@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { formatUnits, parseUnits } from "viem";
 
 import type { Token } from "#/hooks/types";
+
 import ActionLink from "./ActionLink";
 import Amount from "./Amount";
 import AssetSelect from "./AssetSelect";
@@ -15,7 +16,6 @@ export default function AssetInput({
   amount,
   setAmount,
   disabled = false,
-  validate = true,
   title = "",
 }: {
   assets: Token[];
@@ -24,11 +24,9 @@ export default function AssetInput({
   amount: bigint;
   setAmount: (amount: bigint) => void;
   disabled?: boolean;
-  validate?: boolean;
   title?: string;
 }) {
   const [invalid, setInvalid] = useState(false);
-
   const [value, setValue] = useState(formatUnits(amount, asset?.decimals));
 
   function setFromBalance() {
@@ -39,11 +37,10 @@ export default function AssetInput({
     setValue(asset?.formatted);
   }
 
-  // biome-ignore lint/correctness/useExhaustiveDependencies:
   useEffect(() => {
     setInvalid(false);
 
-    let parsedAmount = parseUnits("0", asset?.decimals);
+    let parsedAmount = 0n;
 
     try {
       parsedAmount = parseUnits(value, asset?.decimals);
@@ -51,18 +48,12 @@ export default function AssetInput({
       value !== "" && Toaster.toast(error);
     }
 
-    // @ts-ignore
-    if (parsedAmount !== 0 && asset?.value && asset.value < parsedAmount) {
-      if (validate) {
-        setFromBalance();
-      }
+    if (parsedAmount !== 0n && asset?.value && asset.value < parsedAmount) {
       setInvalid(true);
     }
 
-    if (!validate) {
-      setAmount(parsedAmount);
-    }
-  }, [value, asset, validate, setAmount]);
+    setAmount?.(parsedAmount);
+  }, [value, asset, setAmount]);
 
   return (
     <div>

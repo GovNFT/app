@@ -2,8 +2,11 @@ import { Spinner, TextInput } from "flowbite-react";
 import { isEmpty } from "lodash";
 import { ChevronDown as ChevronDownIcon, Search as SearchIcon } from "lucide-react";
 import { useEffect, useState } from "react";
+import { isAddress } from "viem";
+import { useAccount, useBalance } from "wagmi";
 
-import type { Token } from "#/hooks/types";
+import type { Address, Token } from "#/hooks/types";
+
 import AssetList from "./AssetList";
 import Modal from "./Modal";
 import TokenAvatar from "./TokenAvatar";
@@ -23,18 +26,37 @@ export default function AssetSelect({
   const [search, setSearch] = useState("");
   const [filteredAssetOptions, setFilteredAssetOptions] = useState([]);
 
+  const { address: accountAddress } = useAccount();
+  const { data: onchainToken } = useBalance({
+    token: search as Address,
+    address: accountAddress,
+    query: {
+      enabled: isAddress(search),
+    },
+  });
+
   useEffect(() => {
     let found = [];
     const toFind = (search || "").toLowerCase();
+    const withOnchainToken = !onchainToken
+      ? []
+      : [
+          {
+            ...onchainToken,
+            address: search as Address,
+          },
+        ];
 
     if (!isEmpty(found)) {
       found = assets;
     } else {
-      found = assets.filter((asset) => asset.address.includes(toFind) || asset.symbol.toLowerCase().includes(toFind));
+      found = assets
+        .concat(withOnchainToken)
+        .filter((asset) => asset.address.includes(toFind) || asset.symbol.toLowerCase().includes(toFind));
     }
 
     setFilteredAssetOptions(found);
-  }, [assets, search]);
+  }, [assets, search, onchainToken]);
 
   const onLocalSelect = (asset) => {
     setSearch("");
