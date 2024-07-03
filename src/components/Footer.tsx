@@ -1,11 +1,9 @@
-import { GOVNFT_ADDRESS } from "./../constants";
-import { useExplorer } from "./../hooks/explorer";
+import { GOVNFT_ADDRESS } from "#/constants";
+
 import DarkThemeToggle from "./DarkThemeToggle";
-import { ExplorerLink } from "./ExplorerLink";
+import ExplorerLink from "./ExplorerLink";
 
 export default function Footer() {
-  const { explorer } = useExplorer();
-
   return (
     <div className="flex justify-between items-start md:items-center text-xs border-t border-black/5 dark:border-white/5 py-4 mt-24 mb-24">
       <div className="flex flex-col gap-2 md:flex-row md:gap-4 md:items-center text-gray-600 dark:text-gray-400 py-4">
@@ -16,7 +14,7 @@ export default function Footer() {
           path={`address/${GOVNFT_ADDRESS}`}
           className="flex gap-2 items-center text-gray-600 dark:text-gray-400 underline hover:no-underline"
         >
-          {explorer.name}
+          Latest Deployment
         </ExplorerLink>
         <a
           href="https://cantina.xyz/portfolio/aa79aa69-8468-442d-bfbb-b403de36edec"
