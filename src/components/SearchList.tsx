@@ -66,7 +66,7 @@ export function SearchList<T extends { name: string }>({
               <div
                 className={`h-[calc(100vh-300px)] overflow-auto overflow-x-hidden pb-4 pt-2 ${columnNames ? "" : "mt-4"}`}
               >
-                <div className="mx-4">
+                <div className="mx-8">
                   {shownOptions.map((option) => (
                     <div
                       className="py-4 cursor-pointer rounded-lg border border-transparent hover:bg-black/[.03] hover:dark:bg-gray-900/40"

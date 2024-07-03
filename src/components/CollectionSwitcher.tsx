@@ -19,13 +19,9 @@ export const CollectionSwitcher = () => {
     (collection: Collection) => {
       return (
         <div className="flex justify-between items-center gap-8 px-4">
-          <div className="flex flex-col">
-            <div className={"flex"}>
-              <div className="text-xs">{collection.symbol}</div>
-            </div>
-            <div className={"flex"}>
-              <div className="text-gray-500 text-xs">{collection.name}</div>
-            </div>
+          <div className="flex flex-col gap-2">
+            <div className="text-xs">{collection.symbol}</div>
+            <div className="text-gray-500 text-xs">{collection.name}</div>
           </div>
 
           <div className="text-sm text-gray-600 dark:text-gray-400">
@@ -46,8 +42,8 @@ export const CollectionSwitcher = () => {
 
   //button that opens the search modal
   const buttonElem = (
-    <div className="h-10 bg-gray-900 bg-opacity-5 dark:bg-gray-800 dark:bg-opacity-0 border border-gray-200 hover:border-gray-300 dark:border-gray-700/40 hover:dark:border-gray-900/80 px-2 rounded-xl flex items-center justify-center cursor-pointer">
-      <div className="flex justify-between items-center gap-6 uppercase text-gray-600 dark:text-gray-400 tracking-widest text-[11px] px-2">
+    <div className="h-10 flex py-2 px-3 text-xs bg-gray-900 bg-opacity-5 hover:bg-opacity-10 dark:bg-gray-700 dark:bg-opacity-20 dark:hover:bg-opacity-40 rounded-lg cursor-pointer">
+      <div className="flex items-center gap-3 sm:pl-0.5 text-gray-600 dark:text-gray-400">
         {selectedCollection?.symbol} <ChevronDownIcon size={14} />
       </div>
     </div>
