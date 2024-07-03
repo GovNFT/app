@@ -15,35 +15,28 @@ export default function Header() {
         </Navbar.Brand>
         <Navbar.Toggle />
 
+        <Navbar.Collapse>
+          <div className="flex gap-2 items-center justify-between bg-gray-300/20 dark:bg-gray-700/10 md:bg-transparent p-4 md:p-0 rounded-lg">
+            <div className="flex gap-2 items-center">
+              <NavLink size="sm" color="light" href="/dash">
+                <div className="h-10 border border-gray-200 hover:border-gray-300 dark:border-gray-700/40 hover:dark:border-gray-700/80 px-4 rounded-xl flex items-center justify-center">
+                  <div className="uppercase font-bold tracking-widest text-[11px] px-2">Dashboard</div>
+                </div>
+              </NavLink>
 
-
-          <Navbar.Collapse>
-            <div className="flex gap-2 items-center justify-between bg-gray-300/20 dark:bg-gray-700/10 md:bg-transparent p-4 md:p-0 rounded-lg">
-              
-              <div className="flex gap-2 items-center">
-                <NavLink size="sm" color="light" href="/dash">
-                  <div className="h-10 border border-gray-200 hover:border-gray-300 dark:border-gray-700/40 hover:dark:border-gray-700/80 px-4 rounded-xl flex items-center justify-center">
-                    <div className="uppercase font-bold tracking-widest text-[11px] px-2">Dashboard</div>
-                  </div>
-                </NavLink>
-
-                <NavLink size="sm" color="light" href="/create">
-                  <div className="h-10 border border-gray-200 hover:border-gray-300 dark:border-gray-700/40 hover:dark:border-gray-700/80 px-4 rounded-xl flex items-center justify-center">
-                    <div className="uppercase font-bold tracking-widest text-[11px] px-2">Create</div>
-                  </div>
-                </NavLink>
-              </div>
-
-              <div className="flex gap-2 items-center">
-                <CollectionSwitcher />
-                <Profile />
-              </div>
-
+              <NavLink size="sm" color="light" href="/create">
+                <div className="h-10 border border-gray-200 hover:border-gray-300 dark:border-gray-700/40 hover:dark:border-gray-700/80 px-4 rounded-xl flex items-center justify-center">
+                  <div className="uppercase font-bold tracking-widest text-[11px] px-2">Create</div>
+                </div>
+              </NavLink>
             </div>
-          </Navbar.Collapse>
 
-
-
+            <div className="flex gap-2 items-center">
+              <CollectionSwitcher />
+              <Profile />
+            </div>
+          </div>
+        </Navbar.Collapse>
       </Navbar>
     </div>
   );
