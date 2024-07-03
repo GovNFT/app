@@ -98,23 +98,24 @@ export default function Creator() {
             <Datepicker onSelectedDateChanged={handleStartDate} />
           </div>
 
-          <div className="md:flex gap-6">
+          <div className="flex flex-col md:flex-row gap-6">
             <div className="space-y-3 grow">
               <div className="text-xs text-gray-600 dark:text-gray-400">Vesting Duration</div>
-              <div className="relative">
+              <div className="flex gap-2 items-center">
                 <TextInput
                   value={displayedVestingDuration}
                   onChange={(e) => setVestingDuration(e.target.value)}
                   type="number"
                   min="0"
                   step="1"
+                  className="grow"
+                  sizing="md"
                 />
                 <Select
-                  sizing="sm"
-                  className="absolute top-0.5 right-0.5 sm:top-1.5 sm:right-1.5 w-24"
-                  color="gray"
                   onChange={(e) => setVestingInterval(e.target.value as Interval)}
                   defaultValue={vestingInterval}
+                  sizing="md"
+                  className="w-36"
                 >
                   {timeframe.map((time) => (
                     <option value={time} key={`vest-key-${time}`}>
@@ -127,21 +128,21 @@ export default function Creator() {
 
             <div className="space-y-3 grow">
               <div className="text-xs text-gray-600 dark:text-gray-400">Cliff Duration</div>
-              <div className="relative">
+              <div className="flex gap-2 items-center">
                 <TextInput
                   value={displayedCliffDuration}
-                  // @ts-ignore
                   onChange={(e) => setCliffDuration(e.target.value)}
                   type="number"
                   min="0"
                   step="1"
+                  className="grow"
+                  sizing="md"
                 />
                 <Select
-                  sizing="sm"
-                  className="absolute top-0.5 right-0.5 sm:top-1.5 sm:right-1.5 w-24"
-                  color="gray"
                   onChange={(e) => setCliffInterval(e.target.value as Interval)}
                   defaultValue={cliffInterval}
+                  sizing="md"
+                  className="w-36"
                 >
                   {timeframe.map((time) => (
                     <option value={time} key={`cliff-key-${time}`}>
@@ -159,9 +160,9 @@ export default function Creator() {
             <span className="text-gray-400 dark:text-gray-600 uppercase tracking-widest">Additional Info</span>
           </div>
 
-          <div className="space-y-3 pb-6">
+          <div className="space-y-3">
             <div className="text-xs text-gray-600 dark:text-gray-400">Description</div>
-            <Textarea value={description} onChange={(e) => setDescription(e.target.value)} />
+            <Textarea value={description} onChange={(e) => setDescription(e.target.value)} rows={4} />
           </div>
         </div>
       </div>
