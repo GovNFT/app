@@ -59,9 +59,6 @@ export default {
       field: {
         input: {
           base: "block w-full border disabled:cursor-not-allowed disabled:text-opacity-50 dark:disabled:text-opacity-30",
-          sizes: {
-            md: "p-3 text-sm",
-          },
           colors: {
             gray: "bg-transparent border-gray-300 text-gray-900 placeholder-black/40 dark:placeholder-white/20 hover:border-opacity-70 dark:hover:border-opacity-70 dark:border-gray-600 dark:bg-transparent dark:text-white outline-0",
             info: "border-gray-900 border-opacity-10 placeholder-black/40 dark:placeholder-white/20 bg-transparent text-gray-900 dark:text-white dark:border-white dark:border-opacity-10 dark:bg-transparent outline-0",
