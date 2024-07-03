@@ -4,6 +4,8 @@ import { type Address, erc20Abi } from "viem";
 import { useReadContract, useWaitForTransactionReceipt, useWriteContract } from "wagmi";
 import { useAccount } from "wagmi";
 
+import { DEFAULT_CHAIN } from "#/constants";
+
 export default function Allowance({
   token,
   amount,
@@ -13,6 +15,7 @@ export default function Allowance({
 }: { token: Address; amount: bigint; forAddress: Address; setAllowed: CallableFunction; ctaTexts?: [string, string] }) {
   const { address } = useAccount();
   const { data: allowance, refetch: refetchAllowance } = useReadContract({
+    chainId: DEFAULT_CHAIN.id,
     abi: erc20Abi,
     address: token,
     functionName: "allowance",
@@ -43,6 +46,7 @@ export default function Allowance({
         <Button
           onClick={() =>
             writeContract({
+              chainId: DEFAULT_CHAIN.id,
               abi: erc20Abi,
               address: token,
               functionName: "approve",
