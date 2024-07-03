@@ -14,7 +14,7 @@ import Modal from "../Modal";
 import NavLink from "../NavLink";
 import CustomRpc from "./CustomRpc";
 
-export default function Profile({ children }) {
+export default function Profile() {
   const { switchChain } = useSwitchChain();
   const { chain, address, isConnected } = useAccount();
   const { disconnect } = useDisconnect();
@@ -83,10 +83,8 @@ export default function Profile({ children }) {
         </Modal>
 
         <div className="flex gap-2">
-          {children}
-
           <div
-            className="flex py-2 px-3 text-xs bg-gray-900 bg-opacity-5 hover:bg-opacity-10 dark:bg-gray-700 dark:bg-opacity-20 dark:hover:bg-opacity-40 rounded-md cursor-pointer"
+            className="h-10 flex py-2 px-3 text-xs bg-gray-900 bg-opacity-5 hover:bg-opacity-10 dark:bg-gray-700 dark:bg-opacity-20 dark:hover:bg-opacity-40 rounded-lg cursor-pointer"
             onClick={() => setShowDisconnect(true)}
           >
             <div className="flex items-center gap-3 sm:pl-0.5 text-gray-600 dark:text-gray-400">

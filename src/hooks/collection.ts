@@ -25,7 +25,6 @@ export function useCollections(opts = {}) {
     queryKey: ["fetchCollections"],
     queryFn: () => fetchCollections(),
     ...opts,
-    placeholderData: [],
     // @ts-ignore
     keepPreviousData: true,
   });
@@ -33,7 +32,7 @@ export function useCollections(opts = {}) {
 
 export function useCollection() {
   const searchString = useSearch();
-  const { data: collections } = useCollections();
+  const { data: collections = [] } = useCollections();
 
   const collection = useMemo(() => {
     if (isEmpty(collections)) return;
