@@ -3,7 +3,7 @@ import { useState } from "react";
 
 import { useExplorer } from "#/hooks/explorer";
 import type { GovNft } from "#/hooks/types";
-import { ExplorerLink } from "./ExplorerLink";
+import ExplorerLink from "./ExplorerLink";
 import GovnftAvatar from "./GovnftAvatar";
 import GovnftNavbar from "./GovnftNavbar";
 import GovnftProgress from "./GovnftProgress";

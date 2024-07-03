@@ -1,7 +1,8 @@
 import type { ReactNode } from "react";
+
 import { useExplorer } from "#/hooks/explorer";
 
-export function ExplorerLink({
+export default function ExplorerLink({
   path,
   className = "",
   children,

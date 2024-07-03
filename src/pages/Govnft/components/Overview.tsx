@@ -1,6 +1,7 @@
 import AddressMask from "#/components/AddressMask";
 import Amount from "#/components/Amount";
 import ClaimButton from "#/components/ClaimButton";
+import ExplorerLink from "#/components/ExplorerLink";
 import GovnftHeader from "#/components/GovnftHeader";
 import NavLink from "#/components/NavLink";
 import type { GovNft } from "#/hooks/types";
@@ -20,16 +21,23 @@ export default function Overview({
             <div className="space-y-3">
               <div className="flex items-center gap-2">
                 <div className="text-xs text-gray-400 dark:text-gray-600">GovNFT Address:</div>
-                <div className="text-xs text-gray-600 dark:text-gray-400">
+                <ExplorerLink path={`address/${nft.address}`} className="text-xs text-gray-600 dark:text-gray-400">
                   <AddressMask address={nft.address} />
-                </div>
+                </ExplorerLink>
+              </div>
+
+              <div className="flex items-center gap-2">
+                <div className="text-xs text-gray-400 dark:text-gray-600">Token:</div>
+                <ExplorerLink path={`address/${nft.token}`} className="text-xs text-gray-600 dark:text-gray-400">
+                  <AddressMask address={nft.token} />
+                </ExplorerLink>
               </div>
 
               <div className="flex items-center gap-2">
                 <div className="text-xs text-gray-400 dark:text-gray-600">Owner:</div>
-                <div className="text-xs text-gray-600 dark:text-gray-400">
+                <ExplorerLink path={`address/${nft.owner}`} className="text-xs text-gray-600 dark:text-gray-400">
                   <AddressMask address={nft.owner} />
-                </div>
+                </ExplorerLink>
               </div>
             </div>
 
