@@ -42,7 +42,7 @@ export const CollectionSwitcher = () => {
 
   //button that opens the search modal
   const buttonElem = (
-    <div className="flex py-2 px-3 text-xs bg-gray-900 bg-opacity-5 hover:bg-opacity-10 dark:bg-gray-700 dark:bg-opacity-20 dark:hover:bg-opacity-40 rounded-lg cursor-pointer">
+    <div className="h-10 flex py-2 px-3 text-xs bg-gray-900 bg-opacity-5 hover:bg-opacity-10 dark:bg-gray-700 dark:bg-opacity-20 dark:hover:bg-opacity-40 rounded-lg cursor-pointer">
       <div className="flex items-center gap-3 sm:pl-0.5 text-gray-600 dark:text-gray-400">
         {selectedCollection?.symbol} <ChevronDownIcon size={14} />
       </div>
