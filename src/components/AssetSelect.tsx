@@ -52,7 +52,7 @@ export default function AssetSelect({
     } else {
       found = assets
         .concat(withOnchainToken)
-        .filter((asset) => asset.address.includes(toFind) || asset.symbol.toLowerCase().includes(toFind));
+        .filter((asset) => asset.address.toLowerCase().includes(toFind) || asset.symbol.toLowerCase().includes(toFind));
     }
 
     setFilteredAssetOptions(found);
