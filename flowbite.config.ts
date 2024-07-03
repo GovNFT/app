@@ -89,5 +89,48 @@ export default {
         },
       },
     },
+    datepicker: {
+      "popup": {
+        "view": {
+          "base": "p-1"
+        },
+        "footer": {
+          "button": {
+            "base": "w-full rounded-lg px-5 py-2 text-center text-sm font-medium focus:ring-0",
+            "today": "bg-gray-600 text-white hover:bg-gray-700 dark:bg-gray-600 dark:hover:bg-gray-500",
+          }
+        }
+      },
+      "views": {
+        "days": {
+          "items": {
+            "item": {
+              "selected": "bg-gray-500 text-white hover:bg-gray-600",
+            }
+          }
+        },
+        "months": {
+          "items": {
+            "item": {
+              "selected": "bg-gray-500 text-white hover:bg-gray-600",
+            }
+          }
+        },
+        "years": {
+          "items": {
+            "item": {
+              "selected": "bg-gray-500 text-white hover:bg-gray-600",
+            }
+          }
+        },
+        "decades": {
+          "items": {
+            "item": {
+              "selected": "bg-gray-500 text-white hover:bg-gray-600",
+            }
+          }
+        }
+      }
+    },
   },
 };
