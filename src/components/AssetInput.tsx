@@ -34,7 +34,7 @@ export default function AssetInput({
       return;
     }
 
-    setValue(asset?.formatted);
+    setValue(formatUnits(asset.value, asset.decimals));
   }
 
   useEffect(() => {
