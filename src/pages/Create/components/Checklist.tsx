@@ -91,7 +91,7 @@ export default function Checklist({
             <div className="bg-gray-200/80 dark:bg-gray-900/80 w-7 h-7 bg-gray-200 dark:bg-gray-900/80 w-7 h-7 flex items-center justify-center mr-2 rounded-full">
               <Settings2Icon size={14} />
             </div>
-            Review additional information
+            Add additional info (optional)
           </div>
         )}
 
@@ -100,7 +100,7 @@ export default function Checklist({
             <div className="bg-gray-200/80 dark:bg-gray-900/80 w-7 h-7 flex items-center justify-center mr-2 rounded-full">
               <CheckCircle2Icon size={14} />
             </div>
-            Additional information reviewed
+            Additional information added
           </div>
         )}
       </div>

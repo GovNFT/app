@@ -185,7 +185,7 @@ export default function Creator() {
           />
         </div>
 
-        {isAddress(toAddress) && amount && Number(vestingDuration) !== 0 && description && (
+        {isAddress(toAddress) && amount && Number(vestingDuration) !== 0 && (
           <>
             <Allowance
               token={token}
