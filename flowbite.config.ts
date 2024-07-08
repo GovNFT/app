@@ -73,22 +73,6 @@ export default {
         gray: "bg-transparent border-gray-300 text-gray-900 hover:border-opacity-70 dark:hover:border-opacity-70 focus:border-gray-400 dark:border-gray-600 dark:bg-transparent dark:text-white dark:focus:border-gray-500 outline-0",
       },
     },
-    timeline: {
-      item: {
-        content: {
-          time: "mb-1 text-sm font-normal leading-none text-gray-700 dark:text-gray-400",
-        },
-        point: {
-          marker: {
-            icon: {
-              wrapper:
-                  "space-x-2 absolute -left-3 flex h-6 w-6 items-center justify-center rounded-full bg-white ring-0 dark:ring-0 ring-white dark:bg-gray-900 dark:ring-gray-700",
-              base: "h-3 w-3 text-primary dark:text-white",
-            },
-          },
-        },
-      },
-    },
     toggleSwitch: {
       root: {
         label: "text-sm font-medium text-gray-900 dark:text-gray-300",
