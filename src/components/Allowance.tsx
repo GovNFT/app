@@ -1,4 +1,4 @@
-import { Button, Timeline } from "flowbite-react";
+import { Button } from "flowbite-react";
 import { useEffect } from "react";
 import { type Address, erc20Abi } from "viem";
 import { useReadContract, useWaitForTransactionReceipt, useWriteContract } from "wagmi";
