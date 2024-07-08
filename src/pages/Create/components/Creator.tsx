@@ -168,12 +168,13 @@ export default function Creator() {
       </div>
 
       <div className="p-8 lg:w-5/12 bg-black/[.035] dark:bg-gray-700/10 rounded-lg">
-        <div className="text-xl text-gray-700 dark:text-gray-300">Create GovNFT</div>
+        <div className="text-2xl text-gray-700 dark:text-gray-300">Create GovNFT</div>
 
         <div className="space-y-8">
           <div className="text-sm pr-16 pt-4 text-gray-600 dark:text-gray-400">
             Mint an NFT with locked tokens under specified parameters. Tokens will be claimable as they vest.
           </div>
+
           <Checklist
             toAddress={toAddress as Address}
             amount={amount}
@@ -183,14 +184,10 @@ export default function Creator() {
           />
         </div>
 
-        {vestingDuration !== 0 && (
-          <GovnftChart startDate={selectedStartDate} vestingDuration={vestingDuration} cliffDuration={cliffDuration} />
-        )}
-
-        {isAddress(toAddress) && amount && Number(vestingDuration) !== 0 && description !== "" && (
+        {isAddress(toAddress) && amount && Number(vestingDuration) !== 0 && (
           <>
             <Allowance
-              token={token.address}
+              token={token}
               amount={amount}
               forAddress={collection?.address}
               setAllowed={setAllowed}
@@ -206,6 +203,14 @@ export default function Creator() {
                 end={BigInt(selectedStartDate.unix() + vestingDuration)}
                 cliff={BigInt(cliffDuration)}
                 description={description}
+              />
+            )}
+
+            {vestingDuration !== 0 && (
+              <GovnftChart
+                startDate={selectedStartDate}
+                vestingDuration={vestingDuration}
+                cliffDuration={cliffDuration}
               />
             )}
           </>
