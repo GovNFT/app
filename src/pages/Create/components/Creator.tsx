@@ -187,10 +187,10 @@ export default function Creator() {
           <GovnftChart startDate={selectedStartDate} vestingDuration={vestingDuration} cliffDuration={cliffDuration} />
         )}
 
-        {isAddress(toAddress) && amount && Number(vestingDuration) !== 0 && description !== "" && (
+        {isAddress(toAddress) && amount && Number(vestingDuration) !== 0 && (
           <>
             <Allowance
-              token={token.address}
+              token={token}
               amount={amount}
               forAddress={collection?.address}
               setAllowed={setAllowed}
