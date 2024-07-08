@@ -8,6 +8,7 @@ import Connect from "./pages/Connect";
 import Create from "./pages/Create";
 import Dash from "./pages/Dashboard";
 import Delegate from "./pages/Delegate";
+import Docs from "./pages/Docs";
 import Govnft from "./pages/Govnft";
 import Landing from "./pages/Landing";
 import Minted from "./pages/Minted";
@@ -36,6 +37,7 @@ export default function App() {
         <Route path="/" component={Landing} />
         <Route path="/connect" component={Connect} />
         <Route path="/nft/:id" component={Govnft} />
+        <Route path="docs" component={Docs} />
 
         <ConnectedOnly>
           <Route path="/dash" component={Dash} />
