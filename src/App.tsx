@@ -37,7 +37,7 @@ export default function App() {
         <Route path="/" component={Landing} />
         <Route path="/connect" component={Connect} />
         <Route path="/nft/:id" component={Govnft} />
-        <Route path="docs" component={Docs} />
+        <Route path="/docs" component={Docs} />
 
         <ConnectedOnly>
           <Route path="/dash" component={Dash} />

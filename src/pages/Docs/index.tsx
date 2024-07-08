@@ -1,6 +1,6 @@
 import Footer from "#/components/Footer";
 import Header from "#/components/Header";
-import Specification from "../../../docs/SPECIFICATION.md";
+import Specification from "../../../contracts/SPECIFICATION.md";
 import MdComponents from "./md-components";
 
 export default function Docs() {
@@ -9,7 +9,7 @@ export default function Docs() {
       <Header />
 
       <div className="max-w-screen-xl mx-auto">
-        <Specification components={MdComponents} someProp={"dsfd"} />
+        <Specification components={MdComponents} />
       </div>
 
       <Footer />

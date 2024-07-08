@@ -15,4 +15,4 @@ jobs:
       - name: Runs code QA and tests
         env:
           ETHERSCAN_API_KEY: ${{secrets.ETHERSCAN_API_KEY}}
-        run: docker run --rm --env-file=.env.example -e ETHERSCAN_API_KEY="$ETHERSCAN_API_KEY" -t govnft/app sh -c 'yarn build'
+        run: docker run --rm --env-file=.env.example -e ETHERSCAN_API_KEY="$ETHERSCAN_API_KEY" -t govnft/app sh -c 'git submodule update --init --recursive && yarn build'
