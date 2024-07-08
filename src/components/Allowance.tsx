@@ -4,7 +4,7 @@ import { type Address, erc20Abi } from "viem";
 import { useReadContract, useWaitForTransactionReceipt, useWriteContract } from "wagmi";
 import { useAccount } from "wagmi";
 
-import { CheckCircle2 as CheckCircle2Icon, Lock as LockIcon, Hourglass as HourglassIcon } from "lucide-react";
+import { CheckCircle2 as CheckCircle2Icon, Hourglass as HourglassIcon, Lock as LockIcon } from "lucide-react";
 import { DEFAULT_CHAIN } from "#/constants";
 import type { Token } from "#/hooks/types";
 
@@ -52,21 +52,21 @@ export default function Allowance({
           <div className="text-sm">Allowance not granted for {token.symbol}</div>
         </div>
         <Button
-            onClick={() =>
-              writeContract({
-                chainId: DEFAULT_CHAIN.id,
-                abi: erc20Abi,
-                address: token.address,
-                functionName: "approve",
-                args: [forAddress, amount],
-              })
-            }
-            className="w-full mt-4"
-            color="light"
-            disabled={allowed || isPending || isConfirmed}
-          >
-            {isPending ? "Confirming..." : isConfirmed ? ctaTexts[0] : ctaTexts[1]}
-          </Button>
+          onClick={() =>
+            writeContract({
+              chainId: DEFAULT_CHAIN.id,
+              abi: erc20Abi,
+              address: token.address,
+              functionName: "approve",
+              args: [forAddress, amount],
+            })
+          }
+          className="w-full mt-4"
+          color="light"
+          disabled={allowed || isPending || isConfirmed}
+        >
+          {isPending ? "Confirming..." : isConfirmed ? ctaTexts[0] : ctaTexts[1]}
+        </Button>
 
         <div className="flex gap-2 items-center text-amber-500 pt-6">
           <div className="bg-gray-200/80 dark:bg-gray-900/80 w-7 h-7 flex items-center justify-center mr-2 rounded-full">

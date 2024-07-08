@@ -164,7 +164,6 @@ export default function Creator() {
             <div className="text-xs text-gray-600 dark:text-gray-400">Description</div>
             <Textarea value={description} onChange={(e) => setDescription(e.target.value)} rows={4} />
           </div>
-
         </div>
       </div>
 
@@ -208,7 +207,11 @@ export default function Creator() {
             )}
 
             {vestingDuration !== 0 && (
-              <GovnftChart startDate={selectedStartDate} vestingDuration={vestingDuration} cliffDuration={cliffDuration} />
+              <GovnftChart
+                startDate={selectedStartDate}
+                vestingDuration={vestingDuration}
+                cliffDuration={cliffDuration}
+              />
             )}
           </>
         )}
