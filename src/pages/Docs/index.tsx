@@ -8,7 +8,7 @@ export default function Docs() {
     <div className="container mx-auto px-4 lg:px-8">
       <Header />
 
-      <div className="max-w-screen-xl mx-auto">
+      <div className="max-w-screen-sm mx-auto pb-20">
         <Specification components={MdComponents} />
       </div>
 
