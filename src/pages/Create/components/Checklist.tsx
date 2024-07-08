@@ -31,9 +31,9 @@ export default function Checklist({
 
   return (
     <>
-      <div className="space-y-4 text-sm pb-4">
+      <div className="space-y-3 text-sm pb-3">
         {!isAddress(toAddress) && (
-          <div className="flex gap-3 items-center text-gray-600 dark:text-gray-400">
+          <div className="flex gap-2 items-center text-gray-600 dark:text-gray-400">
             <div className="bg-gray-200/80 dark:bg-gray-900/80 w-7 h-7 flex items-center justify-center mr-2 rounded-full">
               <WalletIcon size={14} />
             </div>
@@ -42,7 +42,7 @@ export default function Checklist({
         )}
 
         {isAddress(toAddress) && (
-          <div className="flex gap-3 items-center text-green-500">
+          <div className="flex gap-2 items-center text-green-500">
             <div className="bg-gray-200/80 dark:bg-gray-900/80 w-7 h-7 flex items-center justify-center mr-2 rounded-full">
               <CheckCircle2Icon size={14} />
             </div>
@@ -51,7 +51,7 @@ export default function Checklist({
         )}
 
         {!validAmount && (
-          <div className="flex gap-3 items-center text-gray-600 dark:text-gray-400">
+          <div className="flex gap-2 items-center text-gray-600 dark:text-gray-400">
             <div className="bg-gray-200/80 dark:bg-gray-900/80 w-7 h-7 flex items-center justify-center mr-2 rounded-full">
               <CoinsIcon size={14} />
             </div>
@@ -60,7 +60,7 @@ export default function Checklist({
         )}
 
         {validAmount && (
-          <div className="flex gap-3 items-center text-green-500">
+          <div className="flex gap-2 items-center text-green-500">
             <div className="bg-gray-200/80 dark:bg-gray-900/80 w-7 h-7 flex items-center justify-center mr-2 rounded-full">
               <CheckCircle2Icon size={14} />
             </div>
@@ -69,7 +69,7 @@ export default function Checklist({
         )}
 
         {Number(vestingDuration) === 0 && (
-          <div className="flex gap-3 items-center text-gray-600 dark:text-gray-400">
+          <div className="flex gap-2 items-center text-gray-600 dark:text-gray-400">
             <div className="bg-gray-200/80 dark:bg-gray-900/80 w-7 h-7 bg-gray-200 dark:bg-gray-900/80 w-7 h-7 flex items-center justify-center mr-2 rounded-full">
               <CalendarIcon size={14} />
             </div>
@@ -78,7 +78,7 @@ export default function Checklist({
         )}
 
         {Number(vestingDuration) !== 0 && (
-          <div className="flex gap-3 items-center text-green-500">
+          <div className="flex gap-2 items-center text-green-500">
             <div className="bg-gray-200/80 dark:bg-gray-900/80 w-7 h-7 flex items-center justify-center mr-2 rounded-full">
               <CheckCircle2Icon size={14} />
             </div>
@@ -87,7 +87,7 @@ export default function Checklist({
         )}
 
         {!description && (
-          <div className="flex gap-3 items-center text-gray-600 dark:text-gray-400">
+          <div className="flex gap-2 items-center text-gray-600 dark:text-gray-400">
             <div className="bg-gray-200/80 dark:bg-gray-900/80 w-7 h-7 bg-gray-200 dark:bg-gray-900/80 w-7 h-7 flex items-center justify-center mr-2 rounded-full">
               <Settings2Icon size={14} />
             </div>
@@ -96,7 +96,7 @@ export default function Checklist({
         )}
 
         {description && (
-          <div className="flex gap-3 items-center text-green-500">
+          <div className="flex gap-2 items-center text-green-500">
             <div className="bg-gray-200/80 dark:bg-gray-900/80 w-7 h-7 flex items-center justify-center mr-2 rounded-full">
               <CheckCircle2Icon size={14} />
             </div>

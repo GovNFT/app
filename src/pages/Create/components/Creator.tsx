@@ -164,16 +164,18 @@ export default function Creator() {
             <div className="text-xs text-gray-600 dark:text-gray-400">Description</div>
             <Textarea value={description} onChange={(e) => setDescription(e.target.value)} rows={4} />
           </div>
+
         </div>
       </div>
 
       <div className="p-8 lg:w-5/12 bg-black/[.035] dark:bg-gray-700/10 rounded-lg">
-        <div className="text-xl text-gray-700 dark:text-gray-300">Create GovNFT</div>
+        <div className="text-2xl text-gray-700 dark:text-gray-300">Create GovNFT</div>
 
         <div className="space-y-8">
           <div className="text-sm pr-16 pt-4 text-gray-600 dark:text-gray-400">
             Mint an NFT with locked tokens under specified parameters. Tokens will be claimable as they vest.
           </div>
+
           <Checklist
             toAddress={toAddress as Address}
             amount={amount}
@@ -183,11 +185,7 @@ export default function Creator() {
           />
         </div>
 
-        {vestingDuration !== 0 && (
-          <GovnftChart startDate={selectedStartDate} vestingDuration={vestingDuration} cliffDuration={cliffDuration} />
-        )}
-
-        {isAddress(toAddress) && amount && Number(vestingDuration) !== 0 && (
+        {isAddress(toAddress) && amount && Number(vestingDuration) !== 0 && description && (
           <>
             <Allowance
               token={token}
@@ -207,6 +205,10 @@ export default function Creator() {
                 cliff={BigInt(cliffDuration)}
                 description={description}
               />
+            )}
+
+            {vestingDuration !== 0 && (
+              <GovnftChart startDate={selectedStartDate} vestingDuration={vestingDuration} cliffDuration={cliffDuration} />
             )}
           </>
         )}
