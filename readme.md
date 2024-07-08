@@ -9,7 +9,7 @@ A public good supported by _OPTIMISM_.
 Simplest way to run the UI locally:
 
 ```
-yarn && yarn dev --host
+git submodule update --init --recursive && yarn && yarn dev --host
 ```
 
 Before submitting the code, run
@@ -21,7 +21,7 @@ yarn lint
 To auto-fix some issues, run
 
 ```
-yarn lint --apply
+yarn lint --write
 ```
 
 ## Dependencies
