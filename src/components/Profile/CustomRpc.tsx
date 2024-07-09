@@ -1,9 +1,8 @@
-import { TextInput } from "flowbite-react";
+import { Button, TextInput } from "flowbite-react";
 import { PlugZap as PlugZapIcon } from "lucide-react";
 import { useState } from "react";
 import useLocalStorageState from "use-local-storage-state";
 
-import ActionLink from "#/components/ActionLink";
 import { CUSTOM_RPC_URI_KEY } from "#/rpc";
 
 export default function CustomRpc() {
@@ -15,36 +14,29 @@ export default function CustomRpc() {
 
   return (
     <div className="bg-gray-50 dark:bg-gray-900 dark:bg-opacity-20 p-6 rounded-lg">
-      <div className="flex justify-between items-center gap-8 text-gray-600 dark:text-gray-400">
-        <div className="w-full">
-          <div className="pb-4">
-            To communicate with the network with your personal RPC, add it here and reload the page. This is saved only
-            in your browser, locally.
-          </div>
-
-          <div className="flex justify-between">
+      <div className="text-gray-600 dark:text-gray-400 w-full">
+          <div className="pr-16">To communicate with the network with your personal RPC, add it here and reload the page. This is saved only
+          in your browser, locally.</div>
+          <div className="flex gap-4 ites-center justify-between pt-8">
             <TextInput
-              className="w-4/5"
               rightIcon={PlugZapIcon}
               value={rpc}
               // @ts-ignore
               onClick={(e) => e.target.select()}
               onChange={(e) => setRpc(e.target.value)}
               placeholder="RPC URL ..."
+              className="grow"
             />
-            <ActionLink
-              useButton={true}
+            <Button
               onClick={() => {
                 setCustomRpc(rpc);
                 window.location.reload();
               }}
             >
               Save
-            </ActionLink>
+            </Button>
           </div>
-
-          <div className="pt-3 text-xs opacity-50">Leave blank if you want to use the RPC provided by us.</div>
-        </div>
+          <div className="pt-4 text-xs text-gray-500">Leave blank if you want to use the RPC provided by us.</div>
       </div>
     </div>
   );

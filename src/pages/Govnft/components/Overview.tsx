@@ -20,21 +20,21 @@ export default function Overview({
           <div className="mx-auto lg:w-full mb-4 lg:mb-0 bg-white shadow-lg dark:bg-white/5 p-6 md:px-10 md:py-8 rounded-lg space-y-8">
             <div className="space-y-3">
               <div className="flex items-center gap-2">
-                <div className="text-xs text-gray-400 dark:text-gray-600">GovNFT Address:</div>
+                <div className="text-xs text-gray-500">GovNFT Address:</div>
                 <ExplorerLink path={`address/${nft.address}`} className="text-xs text-gray-600 dark:text-gray-400">
                   <AddressMask address={nft.address} />
                 </ExplorerLink>
               </div>
 
               <div className="flex items-center gap-2">
-                <div className="text-xs text-gray-400 dark:text-gray-600">Token:</div>
+                <div className="text-xs text-gray-500">Token:</div>
                 <ExplorerLink path={`address/${nft.token}`} className="text-xs text-gray-600 dark:text-gray-400">
                   <AddressMask address={nft.token} />
                 </ExplorerLink>
               </div>
 
               <div className="flex items-center gap-2">
-                <div className="text-xs text-gray-400 dark:text-gray-600">Owner:</div>
+                <div className="text-xs text-gray-500">Owner:</div>
                 <ExplorerLink path={`address/${nft.owner}`} className="text-xs text-gray-600 dark:text-gray-400">
                   <AddressMask address={nft.owner} />
                 </ExplorerLink>
@@ -80,7 +80,7 @@ export default function Overview({
                       <AddressMask address={nft.delegated} />
                     </div>
                   ) : (
-                    <div className="text-gray-600 dark:text-gray-400">No delegation has been set.</div>
+                    <div className="text-gray-500">No delegation has been set.</div>
                   )}
                   {nft.isOwner && (
                     <NavLink

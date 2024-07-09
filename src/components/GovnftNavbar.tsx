@@ -28,14 +28,13 @@ export default function GovnftNavbar({
   return (
     <>
       {Object.entries(navs).map(([nav, title]) => (
-        <NavLink href={`/nft/${nft.id}/${nav}`} key={String(nav)}>
-          <div
-            className={`${
+        <NavLink 
+          href={`/nft/${nft.id}/${nav}`} key={String(nav)}
+          className={`${
               active === nav ? classActive : "border-t border-transparent"
-            } hover:bg-gray-50 hover:dark:bg-gray-700/20`}
-          >
+            } hover:bg-gray-50 hover:dark:bg-gray-700/20 first:rounded-bl-lg`}
+        >
             <div className="px-5 sm:px-8 py-4 uppercase tracking-widest">{title}</div>
-          </div>
         </NavLink>
       ))}
     </>

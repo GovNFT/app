@@ -23,11 +23,11 @@ export default function GovnftAvatar({
 
   return (
     <NavLink href={`/nft/${nft.id}`} className="block">
-      <div className="flex gap-5 items-center">
-        <div className="bg-gray-100 dark:bg-gray-700/20 h-14 w-14 hidden sm:flex items-center justify-center rounded-2xl">
-          <SvgLoader src="/govnft-gray.svg" className="w-6" alt="GovNFT" />
+      <div className="flex gap-6 items-center">
+        <div className="bg-gray-100 dark:bg-gray-700/20 h-16 w-16 hidden sm:flex items-center justify-center rounded-2xl">
+          <SvgLoader src="/govnft-gray.svg" className="w-7" alt="GovNFT" />
         </div>
-        <div className="space-y-1">
+        <div className="space-y-1.5">
           <div className="flex gap-2 items-center text-gray-800 dark:text-gray-200 font-semibold text-sm">
             GovNFT #{String(nft.id)}
             <LockIcon size={12} />
@@ -39,8 +39,8 @@ export default function GovnftAvatar({
             </div>
           </div>
           <div className="flex gap-1 items-center">
-            <div className="text-xs text-gray-400 dark:text-gray-600 ">
-              <DateFormat ts={nft.start} /> : <DateFormat ts={nft.end} />
+            <div className="text-xs text-gray-500">
+              Vesting <DateFormat ts={nft.start} /> : <DateFormat ts={nft.end} />
             </div>
           </div>
         </div>

@@ -38,14 +38,14 @@ export default function DelegateNft({ nft }: { nft: GovNft }) {
               <div className="text-gray-600 dark:text-gray-400 text-xs flex justify-between items-center">
                 <div>Delegate Address</div>
                 <div
-                  className="text-gray-600 dark:text-gray-400 underline hover:no-underline cursor-pointer"
+                  className="text-gray-500 underline hover:no-underline cursor-pointer"
                   onClick={() => setToAddress(accountAddress)}
                 >
                   Use Current Wallet
                 </div>
               </div>
               <TextInput placeholder="0x" value={toAddress} onChange={(e) => setToAddress(e.target.value as Address)} />
-              <div className="text-gray-600 dark:text-gray-400 text-xs underline hover:no-underline flex gap-2 items-center">
+              <div className="text-gray-500 text-xs underline hover:no-underline flex gap-2 items-center pt-1">
                 <a href={DELEGATES_URI} target="_blank" rel="noreferrer">
                   View Delegates
                 </a>
