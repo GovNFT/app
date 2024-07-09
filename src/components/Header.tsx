@@ -1,13 +1,35 @@
 import { Navbar } from "flowbite-react";
 import { SvgLoader } from "react-svgmt";
 
+import { useAccount, useSwitchChain } from "wagmi";
 import { CollectionSwitcher } from "#/components/CollectionSwitcher";
 import NavLink from "#/components/NavLink";
 import Profile from "#/components/Profile";
+import { DEFAULT_CHAIN } from "#/constants";
 
 export default function Header() {
+  const { chain } = useAccount();
+  const { switchChain } = useSwitchChain();
+
+  const isInvalidChain = chain?.id !== DEFAULT_CHAIN.id;
   return (
-    <div className="pt-2 sm:pt-4 pb-24">
+    <div className={isInvalidChain ? "sm:pt-4 pb-24 mt-16 md:mt-10" : "pt-2 sm:pt-4 pb-24"}>
+      {isInvalidChain && (
+        <div
+          className={
+            "absolute top-0 left-0 w-full bg-black/[.03] dark:bg-white/[.03] py-3 text-center text-gray-600 dark:text-gray-400"
+          }
+        >
+          You're connected to a different network.{" "}
+          <span
+            onClick={() => switchChain({ chainId: DEFAULT_CHAIN.id })}
+            className={"font-extrabold text-primary underline cursor-pointer"}
+          >
+            Switch to {DEFAULT_CHAIN.name}
+          </span>{" "}
+          and continue using the app.
+        </div>
+      )}
       <Navbar fluid={true} rounded={true} border={false}>
         <Navbar.Brand href="/">
           <SvgLoader src="/govnft.svg" className="block h-7 w-auto mr-4" alt="GOVNFT" />
