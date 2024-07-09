@@ -29,7 +29,7 @@ export default function TransferNft({ nft }: { nft: GovNft }) {
               <TextInput placeholder="0x" value={toAddress} onChange={(e) => setToAddress(e.target.value)} />
             </div>
           </div>
-          <div className="lg:w-5/12 bg-black/[.035] dark:bg-gray-700/10 p-2 md:px-10 md:py-8 rounded-lg">
+          <div className="lg:w-5/12 bg-black/[.035] dark:bg-gray-700/10 p-2 md:p-10 rounded-lg">
             <div className="flex flex-col items-center justify-center h-full space-y-6 py-8">
               {!isAddress(toAddress) && (
                 <>

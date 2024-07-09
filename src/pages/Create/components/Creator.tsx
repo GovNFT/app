@@ -167,7 +167,7 @@ export default function Creator() {
         </div>
       </div>
 
-      <div className="p-8 lg:w-5/12 bg-black/[.035] dark:bg-gray-700/10 rounded-lg">
+      <div className="p-10 lg:w-5/12 bg-black/[.035] dark:bg-gray-700/10 rounded-lg">
         <div className="text-2xl text-gray-700 dark:text-gray-300">Create GovNFT</div>
 
         <div className="space-y-8">

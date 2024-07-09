@@ -176,7 +176,7 @@ export default function Splitter({ nft }: { nft: GovNft }) {
             </div>
           </div>
 
-          <div className="p-8 lg:w-5/12 bg-black/[.035] dark:bg-gray-700/10 rounded-lg">
+          <div className="p-10 lg:w-5/12 bg-black/[.035] dark:bg-gray-700/10 rounded-lg">
             <div className="text-xl text-gray-700 dark:text-gray-300">Splitting</div>
 
             <div className="space-y-8">
