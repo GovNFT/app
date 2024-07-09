@@ -38,10 +38,7 @@ export default function Govnft({
             <div className="text-xs">
               <ClaimButton nft={nft} />
               {nft.claimable === 0n && (
-                <NavLink
-                  href={`/nft/${nft.id}`}
-                  className="text-gray-500 underline hover:no-underline"
-                >
+                <NavLink href={`/nft/${nft.id}`} className="text-gray-500 underline hover:no-underline">
                   Review
                 </NavLink>
               )}

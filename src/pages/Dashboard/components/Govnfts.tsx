@@ -14,7 +14,10 @@ export default function Govnfts({
         <div className="mx-auto w-16 h-16 flex justify-center items-center bg-gray-200 dark:bg-white text-gray-900 rounded-3xl">
           <ShapesIcon />
         </div>
-        <div className="md:w-96 mx-auto px-2">The dashboard currently shows no NFTs minted. You can create your first NFT to get started. Once minted, you can find all your NFTs under settings.</div>
+        <div className="md:w-96 mx-auto px-2">
+          The dashboard currently shows no NFTs minted. You can create your first NFT to get started. Once minted, you
+          can find all your NFTs under settings.
+        </div>
         <div className="w-80 mx-auto flex gap-3 justify-center">
           <NavLink href="/create" size="sm" className="w-32" useButton={true}>
             Create
