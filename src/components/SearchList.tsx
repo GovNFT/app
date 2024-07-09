@@ -64,12 +64,12 @@ export function SearchList<T extends { name: string }>({
               )}
 
               <div
-                className={`h-[calc(100vh-300px)] overflow-auto overflow-x-hidden pb-4 pt-2 ${columnNames ? "" : "mt-4"}`}
+                className={`h-[calc(100vh-300px)] overflow-auto overflow-x-hidden pb-4 pt-2 space-y-2 ${columnNames ? "" : "mt-4"}`}
               >
-                <div className="mx-8">
+                <div className="space-y-3 mx-8">
                   {shownOptions.map((option) => (
                     <div
-                      className="py-4 cursor-pointer rounded-lg border border-transparent hover:bg-black/[.03] hover:dark:bg-gray-900/40"
+                      className="py-4 cursor-pointer rounded-lg border border-transparent bg-gray-300/10 hover:bg-gray-300/20 dark:bg-gray-950/10 hover:dark:bg-gray-950/30"
                       key={`option-select-item-${option.name}`}
                       onClick={() => onSelect(option)}
                     >
