@@ -180,9 +180,8 @@ export default function Splitter({ nft }: { nft: GovNft }) {
             </div>
           </div>
 
-          <div className="p-8 lg:w-5/12 bg-black/[.035] dark:bg-gray-700/10 rounded-lg">
+          <div className="p-10 lg:w-5/12 bg-black/[.035] dark:bg-gray-700/10 rounded-lg">
             <div className="text-2xl text-gray-700 dark:text-gray-300">Split</div>
-
             <div className="space-y-8 pb-3">
               <div className="text-sm pr-16 pt-4 text-gray-600 dark:text-gray-400">
                 Divide your locked amount while inheriting the vesting and cliff parameters.
