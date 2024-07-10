@@ -72,7 +72,7 @@ export default function Splitter({ nft }: { nft: GovNft }) {
               <div className="text-xs flex justify-between items-center">
                 <div className="text-xs text-gray-600 dark:text-gray-400">Recipient Address</div>
                 <div
-                  className="text-gray-600 dark:text-gray-400 underline hover:no-underline cursor-pointer"
+                  className="text-gray-500 underline hover:no-underline cursor-pointer"
                   onClick={() => setToAddress(accountAddress)}
                 >
                   Use Current Wallet
