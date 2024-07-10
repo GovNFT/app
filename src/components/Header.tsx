@@ -20,7 +20,7 @@ export default function Header() {
             "absolute top-0 left-0 w-full bg-black/[.03] dark:bg-white/[.03] py-3 text-center text-gray-600 dark:text-gray-400 text-xs px-8"
           }
         >
-          <span className="hidden sm:inline">You're connected to a different network.{" "}</span>
+          <span className="hidden sm:inline">You're connected to a different network.</span>{" "}
           <span
             onClick={() => switchChain({ chainId: DEFAULT_CHAIN.id })}
             className={"font-extrabold text-primary underline cursor-pointer"}
