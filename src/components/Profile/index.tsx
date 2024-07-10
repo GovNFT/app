@@ -6,21 +6,18 @@ import {
   Wallet as WalletIcon,
 } from "lucide-react";
 import { useState } from "react";
-import { useAccount, useBalance, useDisconnect, useSwitchChain } from "wagmi";
+import { useAccount, useBalance, useDisconnect } from "wagmi";
 
-import { DEFAULT_CHAIN } from "#/constants";
 import AddressMask from "../AddressMask";
 import Modal from "../Modal";
 import NavLink from "../NavLink";
 import CustomRpc from "./CustomRpc";
 
 export default function Profile() {
-  const { switchChain } = useSwitchChain();
   const { chain, address, isConnected } = useAccount();
   const { disconnect } = useDisconnect();
   const { data: balance } = useBalance({ address: address });
 
-  const invalidChain = chain?.id !== DEFAULT_CHAIN.id;
   const explorer = chain?.blockExplorers?.default;
   const url = `${explorer?.url}/address/${address}`;
 
@@ -57,12 +54,6 @@ export default function Profile() {
                   </div>
                 </div>
               </div>
-
-              {invalidChain && (
-                <Button onClick={() => switchChain({ chainId: DEFAULT_CHAIN.id })} className="w-full">
-                  Switch to {DEFAULT_CHAIN.name} to continue
-                </Button>
-              )}
             </div>
 
             <CustomRpc />
