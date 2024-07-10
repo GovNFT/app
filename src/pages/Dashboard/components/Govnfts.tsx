@@ -14,13 +14,16 @@ export default function Govnfts({
         <div className="mx-auto w-16 h-16 flex justify-center items-center bg-gray-200 dark:bg-white text-gray-900 rounded-3xl">
           <ShapesIcon />
         </div>
-        <div className="w-64 mx-auto">No NFTs were found.</div>
-        <div className="w-96 mx-auto flex gap-3 justify-center border-t border-gray-700/30 pt-8">
-          <NavLink href="/create" size="sm" className="w-40" color="light" useButton={true}>
-            Create NFTs
+        <div className="md:w-96 mx-auto px-2">
+          The dashboard currently shows no NFTs minted. You can create your first NFT to get started. Once minted, you
+          can find all your NFTs under settings.
+        </div>
+        <div className="w-80 mx-auto flex gap-3 justify-center">
+          <NavLink href="/create" size="sm" className="w-32" useButton={true}>
+            Create
           </NavLink>
-          <NavLink href="/minted" size="sm" className="w-48" color="light" useButton={true}>
-            View Created NFTs
+          <NavLink href="/minted" size="sm" className="w-32" color="light" useButton={true}>
+            Minted NFTs
           </NavLink>
         </div>
       </div>
@@ -30,7 +33,7 @@ export default function Govnfts({
   return (
     <div className="space-y-2">
       <div className="pb-4 text-sm px-2 text-gray-600 dark:text-gray-400">Vesting NFTs</div>
-      <div className="space-y-3">
+      <div className="space-y-2">
         {nfts.map((nft) => (
           <Govnft nft={nft} key={String(nft.id)} />
         ))}

@@ -64,8 +64,10 @@ export default function AssetInput({
 
           {asset?.value && (
             <ActionLink className="no-underline" onClick={() => setFromBalance()}>
-              Available{" "}
-              <Amount tokenAddress={asset.address} decimals={asset.decimals} amount={asset.value} showLogo={false} />
+              <div className="text-gray-500 hover:text-gray-600 hover:dark:text-gray-400 flex gap-1 items-center">
+                <div className="text-gray-400 dark:text-gray-600">Available</div>
+                <Amount tokenAddress={asset.address} decimals={asset.decimals} amount={asset.value} showLogo={false} />
+              </div>
             </ActionLink>
           )}
         </div>

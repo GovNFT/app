@@ -65,6 +65,7 @@ export default function Splitter({ nft }: { nft: GovNft }) {
           <div className="lg:w-7/12 mb-4 lg:mb-0 bg-white shadow-lg dark:bg-white/5 p-6 md:p-10 rounded-lg space-y-12">
             <Stats nft={nft} />
 
+
             <div className="space-y-6">
               <div className="text-xs pb-3 mb-6 border-b border-black/5 dark:border-white/5">
                 <span className="text-gray-400 dark:text-gray-600 uppercase tracking-widest">Recipient Info</span>
