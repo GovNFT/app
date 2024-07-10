@@ -196,7 +196,6 @@ export default function Splitter({ nft }: { nft: GovNft }) {
               />
             </div>
 
-            {/* TODO: Hide button if vesting amount is > than available amount*/}
             {isAddress(toAddress) && amount !== 0n && (
               <SplitButton
                 nft={nft}
