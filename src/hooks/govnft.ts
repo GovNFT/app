@@ -61,7 +61,7 @@ export function useMintedNfts(accountAddress: Address, collection: Address, opts
 
 export function useOwnedNfts(accountAddress: Address, collection: Address, opts = {}) {
   return useQuery({
-    queryKey: ["fetchOwnedNfts"],
+    queryKey: ["fetchOwnedNfts", collection],
     queryFn: () => fetchOwnedNfts(accountAddress, collection),
     enabled: !!collection,
     ...opts,
