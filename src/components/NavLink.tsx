@@ -1,9 +1,9 @@
 import { Button } from "flowbite-react";
-import { useLocation } from "wouter";
+import { useSearchParams } from "#/hooks/searchParams";
 
 export default function NavLink({ href, children, useButton = false, ...opts }) {
   const LinkComponent = useButton ? Button : "a";
-  const [_location, navigate] = useLocation();
+  const [, , navigate] = useSearchParams();
   const goTo = (event, ref) => {
     if (navigate) {
       event.preventDefault();
