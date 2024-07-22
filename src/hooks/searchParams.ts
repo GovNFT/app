@@ -14,5 +14,13 @@ export function useSearchParams() {
     [location, navigate],
   );
 
-  return [searchParams, setSearchParams] as const;
+  const handleNavigate = useCallback(
+    (href: string, preserveParams = true) => {
+      const params = preserveParams ? `?${search}` : "";
+      navigate(`${href}${params}`);
+    },
+    [navigate, search],
+  );
+
+  return [searchParams, setSearchParams, handleNavigate] as const;
 }
