@@ -34,9 +34,9 @@ export default function SplitButton({
       Toaster.toast(error);
     } else if (isConfirmed) {
       Toaster.toast.success(`Lock #${nft.id} split to ${recipient}`);
-      navigate(`/nft/${nft.id}`);
+      navigate(`/nft/${nft.id}?collection=${nft.address}`);
     }
-  }, [error, isConfirmed, navigate, recipient, nft.id]);
+  }, [error, isConfirmed, navigate, recipient, nft.id, nft.address]);
 
   return (
     <Button
