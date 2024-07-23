@@ -50,7 +50,7 @@ async function fetchNft(id, account: Address, collection: Address): Promise<GovN
 
 export function useMintedNfts(accountAddress: Address, collection: Address, opts = {}) {
   return useQuery({
-    queryKey: ["fetchMintedNfts"],
+    queryKey: ["fetchMintedNfts", collection],
     queryFn: () => fetchMintedNfts(accountAddress, collection),
     enabled: !!collection,
     ...opts,
@@ -72,7 +72,7 @@ export function useOwnedNfts(accountAddress: Address, collection: Address, opts 
 
 export function useNft(id, accountAddress: Address, collection: Address, opts = {}) {
   return useQuery({
-    queryKey: ["fetchNft"],
+    queryKey: ["fetchNft", collection],
     queryFn: () => fetchNft(id, accountAddress, collection),
     enabled: !!collection,
     ...opts,
