@@ -20,9 +20,10 @@ export default function GovnftNavbar({
   nft: GovNft;
   active: string;
 }) {
-  const { isConnected } = useAccount();
+  const { address, isConnected } = useAccount();
 
-  const navs = Object.assign({}, SAFE_NAVS, isConnected ? UNSAFE_NAVS : {});
+  const isOwner = isConnected && String(address).toLowerCase() === nft.owner.toLowerCase();
+  const navs = Object.assign({}, SAFE_NAVS, isOwner ? UNSAFE_NAVS : {});
   const classActive = "sm:border-t border-t-primary bg-gray-50 dark:bg-gray-700/10 ";
 
   return (
