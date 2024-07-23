@@ -1,10 +1,10 @@
 import { Button } from "flowbite-react";
 import { useEffect } from "react";
 import { useWaitForTransactionReceipt, useWriteContract } from "wagmi";
-import { useLocation } from "wouter";
 import Toaster from "#/components/Toaster";
 import { GOVNFT_ABI } from "#/constants";
 import { useCollection } from "#/hooks/collection";
+import { useSearchParams } from "#/hooks/searchParams";
 import type { Address } from "#/hooks/types";
 
 export default function CreateButton({
@@ -25,7 +25,7 @@ export default function CreateButton({
   description: string;
 }) {
   const collection = useCollection();
-  const [, navigate] = useLocation();
+  const [, , navigate] = useSearchParams();
   const { data: hash, error, isPending, writeContract } = useWriteContract();
 
   const { isLoading: isConfirming, isSuccess: isConfirmed } = useWaitForTransactionReceipt({

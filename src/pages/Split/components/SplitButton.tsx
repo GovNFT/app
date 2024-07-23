@@ -1,10 +1,10 @@
 import { Button } from "flowbite-react";
 import { useEffect } from "react";
 import { useWaitForTransactionReceipt, useWriteContract } from "wagmi";
-import { useLocation } from "wouter";
 
 import Toaster from "#/components/Toaster";
 import { DEFAULT_CHAIN, GOVNFT_ABI } from "#/constants";
+import { useSearchParams } from "#/hooks/searchParams";
 import type { Address, GovNft } from "#/hooks/types";
 
 export default function SplitButton({
@@ -24,7 +24,7 @@ export default function SplitButton({
   cliff: bigint;
   description: string;
 }) {
-  const [, navigate] = useLocation();
+  const [, , navigate] = useSearchParams();
   const { data: hash, error, isPending, writeContract } = useWriteContract();
   const { isSuccess: isConfirmed } = useWaitForTransactionReceipt({ hash });
 
@@ -34,9 +34,9 @@ export default function SplitButton({
       Toaster.toast(error);
     } else if (isConfirmed) {
       Toaster.toast.success(`Lock #${nft.id} split to ${recipient}`);
-      navigate(`/nft/${nft.id}?collection=${nft.address}`);
+      navigate(`/nft/${nft.id}`);
     }
-  }, [error, isConfirmed, navigate, recipient, nft.id, nft.address]);
+  }, [error, isConfirmed, navigate, recipient, nft.id]);
 
   return (
     <Button
