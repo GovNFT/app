@@ -22,10 +22,10 @@ export default function TransferButton({ nft, recipient }: { nft: GovNft; recipi
       // @ts-ignore
       Toaster.toast(error);
     } else if (isConfirmed) {
-      navigate("/dash");
+      navigate(`/dash?collection=${nft.address}`);
       Toaster.toast.success("GovNFT transfered!");
     }
-  }, [error, isConfirmed, navigate]);
+  }, [error, isConfirmed, navigate, nft.address]);
 
   return (
     <>
