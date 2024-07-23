@@ -8,10 +8,10 @@ import Profile from "#/components/Profile";
 import { DEFAULT_CHAIN } from "#/constants";
 
 export default function Header() {
-  const { chain } = useAccount();
+  const { chain, isConnected } = useAccount();
   const { switchChain } = useSwitchChain();
 
-  const isInvalidChain = chain?.id !== DEFAULT_CHAIN.id;
+  const isInvalidChain = isConnected && chain?.id !== DEFAULT_CHAIN.id;
   return (
     <div className={isInvalidChain ? "sm:pt-4 pb-24 mt-16 md:mt-10" : "pt-2 sm:pt-4 pb-24"}>
       {isInvalidChain && (
