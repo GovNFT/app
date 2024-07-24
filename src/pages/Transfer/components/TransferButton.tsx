@@ -2,15 +2,15 @@ import { Button } from "flowbite-react";
 import { useEffect } from "react";
 import { useWaitForTransactionReceipt, useWriteContract } from "wagmi";
 import { useAccount } from "wagmi";
-import { useLocation } from "wouter";
 import { GOVNFT_ABI } from "#/constants";
 import type { Address, GovNft } from "#/hooks/types";
 
 import Toaster from "#/components/Toaster";
+import { useSearchParams } from "#/hooks/searchParams";
 
 export default function TransferButton({ nft, recipient }: { nft: GovNft; recipient: Address }) {
   const { address } = useAccount();
-  const [, navigate] = useLocation();
+  const [, , navigate] = useSearchParams();
   const { data: hash, error, isPending, writeContract } = useWriteContract();
 
   const { isLoading: isConfirming, isSuccess: isConfirmed } = useWaitForTransactionReceipt({
@@ -22,10 +22,10 @@ export default function TransferButton({ nft, recipient }: { nft: GovNft; recipi
       // @ts-ignore
       Toaster.toast(error);
     } else if (isConfirmed) {
-      navigate(`/dash?collection=${nft.address}`);
+      navigate("/dash");
       Toaster.toast.success("GovNFT transfered!");
     }
-  }, [error, isConfirmed, navigate, nft.address]);
+  }, [error, isConfirmed, navigate]);
 
   return (
     <>
