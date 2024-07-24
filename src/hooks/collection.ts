@@ -7,7 +7,7 @@ import { useSearch } from "wouter";
 import config from "#/rpc";
 import type { Collection } from "./types";
 
-import { GOVNFT_SUGAR_ABI, GOVNFT_SUGAR_ADDRESS } from "#/constants";
+import { GOVNFT_ADDRESS, GOVNFT_SUGAR_ABI, GOVNFT_SUGAR_ADDRESS } from "#/constants";
 
 async function fetchCollections(): Promise<Collection[]> {
   const collections = await readContract(config, {
@@ -38,7 +38,7 @@ export function useCollection() {
     if (isEmpty(collections)) return;
 
     const params = new URLSearchParams(searchString);
-    const colAddress = String(params.get("collection") || "");
+    const colAddress = String(params.get("collection") || "") || GOVNFT_ADDRESS;
 
     return collections.find((c) => c.address.toLowerCase() === colAddress.toLowerCase()) || collections[0];
   }, [searchString, collections]);
