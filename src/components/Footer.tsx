@@ -34,8 +34,15 @@ export default function Footer() {
         >
           GitHub
         </a>
+        <a
+          href="https://www.figma.com/community/file/1392890250452830165"
+          target="_blank"
+          className="underline hover:no-underline underline-offset-2 text-gray-500"
+          rel="noreferrer"
+        >
+          Figma
+        </a>
         <div className="hidden md:inline text-gray-500">&middot;</div>
-        {/* TODO: Add docs */}
         <a href="/docs" className="underline hover:no-underline underline-offset-2 text-gray-500">
           Documentation
         </a>
