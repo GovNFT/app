@@ -1,9 +1,11 @@
 import { GOVNFT_ADDRESS } from "#/constants";
 
+import { useCollection } from "#/hooks/collection";
 import DarkThemeToggle from "./DarkThemeToggle";
 import ExplorerLink from "./ExplorerLink";
 
 export default function Footer() {
+  const collection = useCollection();
   return (
     <div className="flex justify-between items-start md:items-center text-xs border-t border-black/5 dark:border-white/5 py-4 mt-24 mb-24">
       <div className="flex flex-col gap-2 md:flex-row md:gap-4 md:items-center text-gray-500 py-4">
@@ -11,7 +13,7 @@ export default function Footer() {
         <div className="pb-4 md:pb-0 text-gray-500">{__APP_VERSION__}</div>
         <div className="hidden md:inline text-gray-500">&middot;</div>
         <ExplorerLink
-          path={`address/${GOVNFT_ADDRESS}`}
+          path={`address/${collection?.address || GOVNFT_ADDRESS}`}
           className="flex gap-2 items-center text-gray-500 underline hover:no-underline"
         >
           Latest Deployment
