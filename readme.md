@@ -1,4 +1,4 @@
-# GOVNFT 🔴🟪
+# GOVNFT 🔴🔲
 
 Mint NFTs for vesting and distribution of (governance) tokens.
 
@@ -35,3 +35,6 @@ We're using the following libraries:
 ## Environment variables
 
 The easiest way to start, is to copy the `.env.example` to `.env.development`.
+
+## Design
+— [Figma] (https://www.figma.com/community/file/1392890250452830165)
