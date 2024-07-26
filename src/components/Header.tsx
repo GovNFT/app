@@ -42,22 +42,26 @@ export default function Header() {
 
         <div className="flex gap-2 items-center">
           {/* DESKTOP MENU */}
-          <div className="hidden md:flex gap-2 items-center">
-            <HeaderNav />
-          </div>
+          {isConnected && (
+            <>
+              <div className="hidden md:flex gap-2 items-center">
+                <HeaderNav />
+              </div>
+              <div className="hidden md:block px-2 text-xs text-gray-500">&middot;</div>
+            </>
+          )}
 
-          {/* SETTINGS MENU */}
-          <div className="hidden md:block px-2 text-xs text-gray-500">&middot;</div>
           <CollectionSwitcher />
           <Profile />
 
-          {/* TOGGLE MENU */}
-          <div
-            className="flex md:hidden items-center h-10 flex py-2 px-3 text-xs bg-gray-900 bg-opacity-5 hover:bg-opacity-10 dark:bg-gray-700 dark:bg-opacity-20 dark:hover:bg-opacity-40 rounded-lg cursor-pointer text-gray-600 dark:text-gray-400"
-            onClick={() => (showMenu !== true ? setShowMenu(true) : setShowMenu(false))}
-          >
-            <MenuIcon size={14} />
-          </div>
+          {isConnected && (
+            <div
+              className="flex md:hidden items-center h-10 flex py-2 px-3 text-xs bg-gray-900 bg-opacity-5 hover:bg-opacity-10 dark:bg-gray-700 dark:bg-opacity-20 dark:hover:bg-opacity-40 rounded-lg cursor-pointer text-gray-600 dark:text-gray-400"
+              onClick={() => (showMenu !== true ? setShowMenu(true) : setShowMenu(false))}
+            >
+              <MenuIcon size={14} />
+            </div>
+          )}
         </div>
       </div>
 
