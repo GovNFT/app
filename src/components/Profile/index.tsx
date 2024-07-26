@@ -89,7 +89,7 @@ export default function Profile() {
   }
 
   return (
-    <NavLink href="/connect" size="sm" useButton={true}>
+    <NavLink href="/connect" size="md" useButton={true}>
       Connect
     </NavLink>
   );
