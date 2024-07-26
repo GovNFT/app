@@ -1,4 +1,5 @@
-import { Navbar } from "flowbite-react";
+import { Menu as MenuIcon } from "lucide-react";
+import { useState } from "react";
 import { SvgLoader } from "react-svgmt";
 
 import { useAccount, useSwitchChain } from "wagmi";
@@ -6,10 +7,12 @@ import { CollectionSwitcher } from "#/components/CollectionSwitcher";
 import NavLink from "#/components/NavLink";
 import Profile from "#/components/Profile";
 import { DEFAULT_CHAIN } from "#/constants";
+import HeaderNav from "./HeaderNav";
 
 export default function Header() {
   const { chain, isConnected } = useAccount();
   const { switchChain } = useSwitchChain();
+  const [showMenu, setShowMenu] = useState(false);
 
   const isInvalidChain = isConnected && chain?.id !== DEFAULT_CHAIN.id;
   return (
@@ -30,36 +33,40 @@ export default function Header() {
           and continue using the app.
         </div>
       )}
-      <Navbar fluid={true} rounded={true} border={false}>
-        <Navbar.Brand href="/">
+
+      <div className="flex justify-between">
+        <NavLink className="flex gap-1 items-center" href="/">
           <SvgLoader src="/govnft.svg" className="block h-7 w-auto mr-4" alt="GOVNFT" />
-          <SvgLoader src="/wordmark.svg" className="h-5 w-auto dark:text-white" alt="GOVNFT" />
-        </Navbar.Brand>
-        <Navbar.Toggle />
+          <SvgLoader src="/wordmark.svg" className="hidden lg:block h-5 w-auto dark:text-white" alt="GOVNFT" />
+        </NavLink>
 
-        <Navbar.Collapse>
-          <div className="flex gap-2 items-center justify-between bg-gray-300/20 md:bg-transparent dark:bg-gray-700/10 md:dark:bg-transparent md:bg-transparent p-4 md:p-0 rounded-lg">
-            <div className="flex gap-2 items-center">
-              <NavLink size="sm" color="light" href="/dash">
-                <div className="h-10 border border-gray-200 hover:border-gray-300 dark:border-gray-700/40 hover:dark:border-gray-700/80 px-4 rounded-xl flex items-center justify-center">
-                  <div className="uppercase font-bold tracking-widest text-[11px] px-2">Dashboard</div>
-                </div>
-              </NavLink>
-
-              <NavLink size="sm" color="light" href="/create">
-                <div className="h-10 border border-gray-200 hover:border-gray-300 dark:border-gray-700/40 hover:dark:border-gray-700/80 px-4 rounded-xl flex items-center justify-center">
-                  <div className="uppercase font-bold tracking-widest text-[11px] px-2">Create</div>
-                </div>
-              </NavLink>
-            </div>
-
-            <div className="flex gap-2 items-center">
-              <CollectionSwitcher />
-              <Profile />
-            </div>
+        <div className="flex gap-2 items-center">
+          {/* DESKTOP MENU */}
+          <div className="hidden md:flex gap-2 items-center">
+            <HeaderNav />
           </div>
-        </Navbar.Collapse>
-      </Navbar>
+
+          {/* SETTINGS MENU */}
+          <div className="hidden md:block px-2 text-xs text-gray-500">&middot;</div>
+          <CollectionSwitcher />
+          <Profile />
+
+          {/* TOGGLE MENU */}
+          <div
+            className="flex md:hidden items-center h-10 flex py-2 px-3 text-xs bg-gray-900 bg-opacity-5 hover:bg-opacity-10 dark:bg-gray-700 dark:bg-opacity-20 dark:hover:bg-opacity-40 rounded-lg cursor-pointer text-gray-600 dark:text-gray-400"
+            onClick={() => (showMenu !== true ? setShowMenu(true) : setShowMenu(false))}
+          >
+            <MenuIcon size={14} />
+          </div>
+        </div>
+      </div>
+
+      {/* MOBILE MENU */}
+      {showMenu && (
+        <div className="py-6 flex flex-col gap-2">
+          <HeaderNav />
+        </div>
+      )}
     </div>
   );
 }

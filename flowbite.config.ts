@@ -14,11 +14,6 @@ export default {
         gray: "text-gray-900 bg-white border border-white hover:bg-white hover:text-primary disabled:hover:bg-white dark:bg-gray-50 dark:text-gray-700 dark:border-gray-50 dark:hover:text-primary dark:hover:bg-white dark:disabled:hover:bg-gray-50",
       },
     },
-    navbar: {
-      root: {
-        base: "py-2.5",
-      },
-    },
     avatar: {
       root: {
         base: "flex items-start",
