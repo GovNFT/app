@@ -13,13 +13,13 @@ export default function CustomRpc() {
   const [rpc, setRpc] = useState<string>(customRpc);
 
   return (
-    <div className="bg-gray-50 dark:bg-gray-900 dark:bg-opacity-20 p-6 rounded-lg">
+    <div className="bg-gray-50 dark:bg-gray-900 dark:bg-opacity-20 p-4 md:p-6 rounded-lg">
       <div className="text-gray-600 dark:text-gray-400 w-full">
-        <div className="pr-16">
+        <div className="md:pr-16">
           To communicate with the network with your personal RPC, add it here and reload the page. This is saved only in
           your browser, locally.
         </div>
-        <div className="flex gap-4 ites-center justify-between pt-8">
+        <div className="flex flex-col md:flex-row gap-4 ites-center justify-between pt-8">
           <TextInput
             rightIcon={PlugZapIcon}
             value={rpc}
