@@ -18,11 +18,11 @@ export default function Govnfts({
           The dashboard currently shows no NFTs minted. You can create your first NFT to get started. Once minted, you
           can find all your NFTs under settings.
         </div>
-        <div className="w-80 mx-auto flex gap-3 justify-center">
-          <NavLink href="/create" size="sm" className="w-32" useButton={true}>
+        <div className="md:w-80 mx-auto flex gap-3 justify-center">
+          <NavLink href="/create" size="sm" useButton={true}>
             Create
           </NavLink>
-          <NavLink href="/minted" size="sm" className="w-32" color="light" useButton={true}>
+          <NavLink href="/minted" size="sm" color="light" useButton={true}>
             Minted NFTs
           </NavLink>
         </div>
