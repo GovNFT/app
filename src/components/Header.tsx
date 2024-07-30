@@ -57,7 +57,7 @@ export default function Header() {
           {isConnected && (
             <div
               className="flex md:hidden items-center h-10 flex py-2 px-3 text-xs bg-gray-900 bg-opacity-5 hover:bg-opacity-10 dark:bg-gray-700 dark:bg-opacity-20 dark:hover:bg-opacity-40 rounded-lg cursor-pointer text-gray-600 dark:text-gray-400"
-              onClick={() => (showMenu !== true ? setShowMenu(true) : setShowMenu(false))}
+              onClick={() => setShowMenu((bool) => !bool)}
             >
               <MenuIcon size={14} />
             </div>
