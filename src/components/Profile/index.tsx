@@ -79,10 +79,8 @@ export default function Profile() {
             onClick={() => setShowDisconnect(true)}
           >
             <div className="flex items-center gap-3 sm:pl-0.5 text-gray-600 dark:text-gray-400">
-              <span className="hidden sm:inline">
-                <AddressMask address={address} />
-              </span>
-              <SettingsIcon size={12} />
+              <AddressMask address={address} className="hidden md:inline" />
+              <SettingsIcon size={14} />
             </div>
           </div>
         </div>
@@ -91,7 +89,7 @@ export default function Profile() {
   }
 
   return (
-    <NavLink href="/connect" size="sm" useButton={true}>
+    <NavLink href="/connect" size="md" useButton={true}>
       Connect
     </NavLink>
   );
