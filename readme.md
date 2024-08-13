@@ -4,6 +4,11 @@ Mint NFTs for vesting and distribution of (governance) tokens.
 
 A public good supported by _OPTIMISM_.
 
+## Community
+
+There's a [GOVNFT group on Telegram](https://t.me/+8T4wA24yWr8wYTQ0) for those
+who want to help with the development.
+
 ## Development
 
 Simplest way to run the UI locally:
