@@ -13,8 +13,10 @@ who want to help with the development.
 
 Simplest way to run the UI locally:
 
+Make sure you have .env.development set up with the necessary API keys (optimistic etherscan, walletconnect) and then run
+
 ```
-git submodule update --init --recursive && yarn && yarn dev --host
+git submodule update --init --recursive && yarn && yarn codegen && yarn dev --host
 ```
 
 Before submitting the code, run
@@ -42,4 +44,5 @@ We're using the following libraries:
 The easiest way to start, is to copy the `.env.example` to `.env.development`.
 
 ## Design
+
 — [Figma] (https://www.figma.com/community/file/1392890250452830165)
