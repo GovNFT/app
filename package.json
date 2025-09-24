@@ -36,7 +36,7 @@
     "use-local-storage-state": "^19.0.4",
     "util": "^0.12.5",
     "viem": "2.x",
-    "wagmi": "^2.2.1",
+    "wagmi": "2.2.1",
     "wouter": "^3.0.0"
   },
   "devDependencies": {
