@@ -9,7 +9,9 @@
   },
   "scripts": {
     "dev": "vite",
-    "build": "yarn run codegen && tsc && biome check ./src && vite build",
+    "pre:build": "yarn run codegen && tsc && biome check ./src",
+    "build": "yarn pre:build && vite build",
+    "build:ci": "yarn pre:build && vite build --mode example",
     "preview": "vite preview",
     "lint": "biome check ./src",
     "codegen": "yarn wagmi generate"
@@ -44,7 +46,7 @@
     "@types/react": "^18.2.21",
     "@types/react-dom": "^18.2.7",
     "@vitejs/plugin-react": "^4.0.4",
-    "@wagmi/cli": "^2",
+    "@wagmi/cli": "2.3.2",
     "autoprefixer": "^10.4.15",
     "flowbite": "1.8.1",
     "git-repo-info": "^2.1.1",

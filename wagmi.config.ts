@@ -5,7 +5,7 @@ import { optimism } from "viem/chains";
 
 export default defineConfig(() => {
   loadEnv({
-    mode: process.env.NODE_ENV ?? "development",
+    mode: process.env.MODE ?? process.env.NODE_ENV ?? "development",
     envDir: process.cwd(),
   });
 
