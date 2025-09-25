@@ -7,23 +7,12 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
-        with:
-          node-version: 22.14.x
+      - uses: actions/checkout@master
 
-      - name: Install dependencies
-        uses: borales/actions-yarn@3766bb1335b98fb13c60eaf358fe20811b730a88
-        with:
-          cmd: install --frozen-lockfile
+      - name: Builds the Docker image
+        run: docker build ./ -t govnft/app
 
-      - name: Update submodules
-        run: git submodule update --init --recursive
-
-      - name: Build app with .example env
+      - name: Runs code QA and tests
         env:
           ETHERSCAN_API_KEY: ${{secrets.ETHERSCAN_API_KEY}}
-          MODE: example
-        uses: borales/actions-yarn@3766bb1335b98fb13c60eaf358fe20811b730a88
-        with:
-          cmd: build:ci
+        run: docker run --rm --env-file=.env.example -e ETHERSCAN_API_KEY="$ETHERSCAN_API_KEY" -t govnft/app sh -c 'git submodule update --init --recursive && yarn build'
