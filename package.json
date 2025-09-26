@@ -9,9 +9,7 @@
   },
   "scripts": {
     "dev": "vite",
-    "pre:build": "yarn run codegen && tsc && biome check ./src",
-    "build": "yarn pre:build && vite build",
-    "build:ci": "yarn pre:build && vite build --mode example",
+    "build": "yarn run codegen && tsc && biome check ./src && vite build",
     "preview": "vite preview",
     "lint": "biome check ./src",
     "codegen": "yarn wagmi generate"
